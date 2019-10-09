@@ -1,0 +1,7 @@
+{
+  "editor.rulers": [
+    100
+  ],
+  "html.format.wrapAttributes": "preserve-aligned",
+  "html.format.wrapLineLength": 100,
+}

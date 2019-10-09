@@ -1,0 +1,39 @@
+
+<div fxFlex="66.67" fxFlex.lt-sm="100" class="matero-col">
+  <mat-card>
+    <mat-card-title>Country Info</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="reactiveForm1" class="matero-form-horizontal">
+        <div fxLayout="column wrap" fxLayoutGap="8px grid">
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Country Name</mat-label>
+                <input matInput placeholder="" formControlName="name"
+                       required>
+              <mat-error *ngIf="reactiveForm1.get('name').invalid">Please enter username
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Short Country Name</mat-label>
+              <input matInput placeholder="" formControlName="short_name"
+                     required>
+              <mat-error *ngIf="reactiveForm1.get('short_name').invalid">Please enter country name
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+        <button (click)='countryFormSubmit(reactiveForm1.value)' mat-raised-button color="primary" class="m-t-8">Save</button>
+
+      </form>
+    <!--  {{reactiveForm1.value|json}}  -->
+    </mat-card-content>
+  </mat-card>
+</div>

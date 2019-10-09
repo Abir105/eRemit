@@ -1,0 +1,85 @@
+<app-notification-comp></app-notification-comp>
+<div class="container mat-elevation-z8">
+
+  <div style="width: 100%">
+    <!-- <mat-form-field style="float: left;"  >
+      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field> -->
+    <div Layout="row" >
+      <div fxFlex="40">
+
+      </div>
+        <mat-form-field fxFlex="25" style="color: black;height: 48px;">
+            <input
+                   type="search"
+                   aria-label="Search"
+                   placeholder="Search"
+                   matInput
+                   (keyup)="doFilter($event.target.value)" />
+            <button mat-button matSuffix mat-icon-button aria-label="Clear">
+              <mat-icon style="margin-top: -11px;">search</mat-icon>
+            </button>
+          </mat-form-field>
+          <div fxFlex="35">
+
+          </div>
+          <button mat-icon-button color="primary" matTooltip="Add New" style="float: right;"
+            (click)="addNew()">
+      <!--mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon-->
+      <mat-icon>add_box</mat-icon>
+    </button>
+
+    </div>
+  </div>
+
+
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="Short_Name">
+      <th mat-header-cell *matHeaderCellDef> Short_Name</th>
+      <td mat-cell *matCellDef="let element"> {{element.short_name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="details">
+      <th mat-header-cell *matHeaderCellDef> Details</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="primary" (click)="redirectToUpdate(element.id)">
+          <mat-icon class="mat-18">reorder</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="update">
+      <th mat-header-cell *matHeaderCellDef> Update</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button color="accent" (click)="UpdateCountry(element)">
+          <mat-icon class="mat-18">update</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> Delete</th>
+      <td mat-cell *matCellDef="let element">
+        <!--button mat-icon-button color="warn" (click)="redirectToDelete(element.short_name)"-->
+        <button mat-icon-button color="warn" (click)="deleteCountryRow(element.short_name)">
+          <mat-icon class="mat-18">delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
+  </mat-paginator>
+
+</div>
+
+
