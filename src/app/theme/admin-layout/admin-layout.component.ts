@@ -21,7 +21,7 @@ const WIDTH_BREAKPOINT = '960px';
 export class AdminLayoutComponent implements OnInit, OnDestroy {
   @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   @ViewChild('content', { static: true }) content: MatSidenavContent;
-
+  hideNavBarButtonFlag = false;
   options = this.settings.getOptions();
   sidenavCollapsed = false;
 
@@ -101,6 +101,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy {
     this.setTheme(options);
     this.setBodyDir(options);
   }
+
   setTheme(options: AppSettings) {
     if (options.theme === 'dark') {
       this.overlay.getContainerElement().classList.add('theme-dark');

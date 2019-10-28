@@ -32,4 +32,7 @@ export class CustomizerComponent implements OnInit {
   sendOptions() {
     this.optionsEvent.emit(this.options);
   }
+
+  chengeOptions() {
+  }
 }

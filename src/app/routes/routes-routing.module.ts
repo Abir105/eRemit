@@ -21,8 +21,8 @@ const routes: Routes = [
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
       {
-        path: 'ex_house',
-        loadChildren: () => import('./ex-house/ex-house.module').then(m => m.ExHouseModule),
+        path: 'config',
+        loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),
         data: { title: 'Material', titleI18n: 'material' },
       },
       {

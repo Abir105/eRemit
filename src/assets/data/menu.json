@@ -11,7 +11,7 @@
       }
     },
     {
-      "state": "ex_house",
+      "state": "config",
       "name": "Configuration",
       "type": "sub",
       "icon": "apps",

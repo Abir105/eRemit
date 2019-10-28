@@ -1,8 +1,5 @@
-import { Component, Inject, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit} from '@angular/core';
 import { RepositoryService } from '@core/services/repository.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { CountryInfo } from '../../model/countryInfo';
-import { CountryListComponent } from '../country-list/country-list.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -24,7 +21,7 @@ export class DeleteCountryComponent implements OnInit {
 
   deleteCountry() {
     this.repoService.delete(this.short_name).subscribe((res) => {
-      this.dialogRef.close(JSON.stringify(res));
+        this.dialogRef.close(JSON.stringify(res));
       }
     );
   }

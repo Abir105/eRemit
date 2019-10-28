@@ -29,7 +29,6 @@ import {
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
-import { DeleteCountryComponent } from './routes/ex-house/delete-country/delete-country.component';
 
 
 @NgModule({

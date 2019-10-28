@@ -25,9 +25,9 @@ export class AddCountryComponent implements OnInit {
   countryFormSubmit(data) {
     console.log(data);
     this.repoService.create('addCountry', data)
-        .subscribe(res => {
-          this.dialogRef.close(JSON.stringify(res));
-        });
+      .subscribe(res => {
+        this.dialogRef.close(JSON.stringify(res));
+      });
   }
 }
 /*

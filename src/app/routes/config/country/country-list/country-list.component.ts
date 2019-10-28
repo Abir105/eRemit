@@ -1,12 +1,10 @@
-import {AddCountryComponent} from '../add-country/add-country.component';
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import {RepositoryService } from '@core/services/repository.service';
-import { MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource } from '@angular/material';
-import {CountryInfo} from '../../model/countryInfo';
-import { NotificationCompoComponent } from '../../notificationComp/notificationCompo.component';
-import { DialogFruitComponent } from '../../material/dialog/dialog.component';
+import { MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource} from '@angular/material';
+import { CountryInfo } from '../../../model/countryInfo';
+import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
+import { AddCountryComponent } from '../add-country/add-country.component';
 import { DeleteCountryComponent } from '../delete-country/delete-country.component';
-import {MatTooltipModule} from '@angular/material/tooltip';
 import { UpdateCountryComponent } from '../update-country/update-country.component';
 
 @Component({
@@ -15,7 +13,8 @@ import { UpdateCountryComponent } from '../update-country/update-country.compone
   styleUrls: ['./country-list.component.scss'],
 })
 export class CountryListComponent implements OnInit {
-  public displayedColumns = ['Name', 'Short_Name', 'details', 'update', 'delete'];
+
+  public displayedColumns = ['sl', 'Name', 'Short_Name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;
@@ -24,7 +23,6 @@ export class CountryListComponent implements OnInit {
   }
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
-
   public doFilter = (value: string) => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
@@ -38,13 +36,13 @@ export class CountryListComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
   }
 
-
   public getAllCountries = () => {
     this.repoService.getData('countries')
       .subscribe(res  => {
         this.dataSource.data = res.Country;
       });
   };
+
 
   public redirectToCreate = (body: string) => {
     this.repoService.create('addCountry', body)
@@ -61,14 +59,14 @@ export class CountryListComponent implements OnInit {
   };
 
   public redirectToDelete = (id: string) => {
-  /*
-    const dialogRef = this.matDialog.open(DeleteCountryComponent);
-    dialogRef.afterClosed().subscribe(result => {
-    });  */
+    /*
+      const dialogRef = this.matDialog.open(DeleteCountryComponent);
+      dialogRef.afterClosed().subscribe(result => {
+      });  */
     this.repoService.delete(id)
       .subscribe(res => {
-      this.getAllCountries();
-    });
+        this.getAllCountries();
+      });
   };
 
   private refreshTable() {
@@ -99,9 +97,11 @@ export class CountryListComponent implements OnInit {
     });
   }
 
+
+  // tslint:disable-next-line:variable-name
   deleteCountryRow(short_name: string) {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { short_name: short_name };
+    dialogConfig.data = { short_name };
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.matDialog.open(DeleteCountryComponent, dialogConfig);
@@ -118,7 +118,7 @@ export class CountryListComponent implements OnInit {
     });
   }
 
-  UpdateCountry(element){
+  UpdateCountry(element) {
 
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = element;
@@ -137,4 +137,5 @@ export class CountryListComponent implements OnInit {
       }
     });
   }
+
 }

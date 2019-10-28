@@ -12,7 +12,7 @@ export class UpdateCountryComponent implements OnInit {
 
   description = 'Update a Country';
   reactiveForm2: FormGroup;
-   element;
+  element;
   id: number;
   shortName: string;
   name: string;
@@ -25,17 +25,17 @@ export class UpdateCountryComponent implements OnInit {
     this.element = data;
 
 
-   // this.shortName = data.short_name;
-  //   this.name = data.name;
+    // this.shortName = data.short_name;
+    //   this.name = data.name;
     //this.id = data.id;
   }
 
   ngOnInit() {
-       this.shortName = this.element.short_name;
-       this.name = this.element.name;
-       this.id = this.element.id;
+    this.shortName = this.element.short_name;
+    this.name = this.element.name;
+    this.id = this.element.id;
 
-   //  console.log(this.data);
+    //  console.log(this.data);
     // console.log(this.data.short_name,'dddddddddddddddddddd');
     // this.reactiveForm2.patchValue({short_name:  this.data.short_name});
   }
