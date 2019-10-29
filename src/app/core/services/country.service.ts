@@ -8,7 +8,7 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 
-export class RepositoryService {
+export class CountryService {
 
   constructor(private http: HttpClient) { }
 
