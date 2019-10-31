@@ -1,0 +1,57 @@
+<h2 mat-dialog-title align="center">Add New Currency</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="reactiveForm2" class="matero-form-horizontal">
+
+    <div fxLayout="column wrap">
+      <div   fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Currency Name</mat-label>
+          <input matInput placeholder="" formControlName="name" required>
+          <mat-error *ngIf="reactiveForm2.get('name').invalid">Currency Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div  fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Short Currency Name</mat-label>
+          <input matInput placeholder="" formControlName="short_name"
+                 required>
+          <mat-error *ngIf="reactiveForm2.get('short_name').invalid">Short Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+        <div fxFlex="50" fxFlex.lt-sm="100">
+          <mat-form-field>
+            <mat-label>Swift code</mat-label>
+            <input matInput placeholder="" formControlName="sft_code"
+                   required>
+            <mat-error *ngIf="reactiveForm2.get('sft_code').invalid">Swift code Name Required
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+          <div fxFlex="50" fxFlex.lt-sm="100">
+            <mat-form-field>
+              <mat-label>Report Name</mat-label>
+              <input matInput placeholder="" formControlName="report_name"
+                     required>
+              <mat-error *ngIf="reactiveForm2.get('report_name').invalid">Report Name Required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button mat-dialog-close align="center">Close</button>
+  <!--button (click)='countryFormSubmit(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="m-t-8">Save</button-->
+  <button  [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="m-t-8">Save</button>
+</div>

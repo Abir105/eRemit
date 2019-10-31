@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit} from '@angular/core';
-import { RepositoryService } from '@core/services/repository.service';
+import { CountryService } from '@core/services/country.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
@@ -11,7 +11,7 @@ export class DeleteCountryComponent implements OnInit {
 
   short_name: string;
 
-  constructor(private repoService: RepositoryService, private dialogRef: MatDialogRef<DeleteCountryComponent>, @Inject(MAT_DIALOG_DATA) data) {
+  constructor(private repoService: CountryService, private dialogRef: MatDialogRef<DeleteCountryComponent>, @Inject(MAT_DIALOG_DATA) data) {
     this.short_name = data.short_name;
   }
 

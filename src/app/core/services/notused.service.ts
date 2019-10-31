@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class CountryServiceService {
+export class NotusedService {
 
   httpOptions = {
     headers: new HttpHeaders({

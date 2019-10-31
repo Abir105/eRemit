@@ -32,8 +32,7 @@ export class CountryService {
       }),
       body: {short_name: body},
     };
-    return this.http
-      .delete('http://10.11.201.37:3000/deleteCountry', options);
+    return this.http.delete('http://10.11.201.37:3000/deleteCountry', options);
     // return this.http.put(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     // return this.http.put('http://10.11.201.37:3000/updateCountry', body);
   };

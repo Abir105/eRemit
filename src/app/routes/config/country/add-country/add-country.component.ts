@@ -1,4 +1,4 @@
-import { RepositoryService } from '@core/services/repository.service';
+import { CountryService } from '@core/services/country.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material';
@@ -12,7 +12,7 @@ export class AddCountryComponent implements OnInit {
   description = 'Add New Country';
   reactiveForm1: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<AddCountryComponent>, private fb: FormBuilder, private repoService: RepositoryService) {
+  constructor(public dialogRef: MatDialogRef<AddCountryComponent>, private fb: FormBuilder, private repoService: CountryService) {
     this.reactiveForm1 = this.fb.group({
       name: ['', [Validators.required]],
       short_name: ['', [Validators.required]]

@@ -1,11 +1,12 @@
 import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import {RepositoryService } from '@core/services/repository.service';
+import {CountryService } from '@core/services/country.service';
 import { MatDialog, MatDialogConfig, MatPaginator, MatTableDataSource} from '@angular/material';
 import { CountryInfo } from '../../../model/countryInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { DeleteCountryComponent } from '../delete-country/delete-country.component';
 import { UpdateCountryComponent } from '../update-country/update-country.component';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-country-list',
@@ -14,17 +15,20 @@ import { UpdateCountryComponent } from '../update-country/update-country.compone
 })
 export class CountryListComponent implements OnInit {
 
-  public displayedColumns = ['sl', 'Name', 'Short_Name', 'update', 'delete'];
+  public displayedColumns = ['sl', 'name', 'short_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;
 
-  constructor(private repoService: RepositoryService, private matDialog: MatDialog) {
+  constructor(private repoService: CountryService, private matDialog: MatDialog) {
   }
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
+  @ViewChild(MatSort, null) sort: MatSort;
   public doFilter = (value: string) => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
+    value = value.trim(); // Remove whitespace
+    value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = value;
   };
 
   ngOnInit() {
@@ -34,6 +38,7 @@ export class CountryListComponent implements OnInit {
   // tslint:disable-next-line:use-lifecycle-interface
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
   public getAllCountries = () => {

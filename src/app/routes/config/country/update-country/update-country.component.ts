@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { RepositoryService } from '@core/services/repository.service';
+import { CountryService } from '@core/services/country.service';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -17,17 +17,12 @@ export class UpdateCountryComponent implements OnInit {
   shortName: string;
   name: string;
 
-  constructor(public dialogRef: MatDialogRef<UpdateCountryComponent>, private fb: FormBuilder, private repoService: RepositoryService, @Inject(MAT_DIALOG_DATA) data) {
+  constructor(public dialogRef: MatDialogRef<UpdateCountryComponent>, private fb: FormBuilder, private repoService: CountryService, @Inject(MAT_DIALOG_DATA) data) {
     this.reactiveForm2 = this.fb.group({
       name: ['', [Validators.required]],
       short_name: ['', [Validators.required]]
     });
     this.element = data;
-
-
-    // this.shortName = data.short_name;
-    //   this.name = data.name;
-    //this.id = data.id;
   }
 
   ngOnInit() {
