@@ -20,6 +20,7 @@ import { CountryListComponent } from '../country/country-list/country-list.compo
 import { AddCountryComponent } from '../country/add-country/add-country.component';
 import { DeleteCountryComponent } from '../country/delete-country/delete-country.component';
 import { UpdateCountryComponent } from '../country/update-country/update-country.component';
+import { MatSortModule } from '@angular/material/sort';
 
 const COMPONENTS = [CurrencyListComponent];
 const COMPONENTS_DYNAMIC = [AddCurrencyComponent];
@@ -40,6 +41,7 @@ const COMPONENTS_DYNAMIC = [AddCurrencyComponent];
     MatButtonModule,
     FlexModule,
     MatTooltipModule,
+    MatSortModule,
   ],
   entryComponents: COMPONENTS_DYNAMIC,
   exports: [

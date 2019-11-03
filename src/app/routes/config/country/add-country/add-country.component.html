@@ -1,11 +1,21 @@
-<h2 mat-dialog-title align="center">Add New Country</h2>
+<h3 mat-dialog-title>Add Country</h3>
 
 <mat-dialog-content>
   <form [formGroup]="reactiveForm1" class="matero-form-horizontal">
 
     <div fxLayout="column wrap">
-      <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+      <div
+        fxLayout="row wrap"
+        fxLayoutGap="10px"
+        fxFlex="100%"
+        fxFlex.sm="50%"
+        fxLayout.lt-sm="column"
+        fxFlex.xs="100%"
+        fxLayoutAlign="flex-start"
+        class="pp"
+      >
+        <mat-form-field fxFlex="0 1 calc(33% - 10px)" fxFlex.lt-md="0 1 calc(100% - 10px)" fxFlex.lt-sm="100%"
+                        fxFlex.xs="100%" appearance="fill">
           <mat-label>Country Name</mat-label>
           <input matInput placeholder="" formControlName="name"
                  required>
@@ -28,7 +38,11 @@
   </form>
 </mat-dialog-content>
 
-<div mat-dialog-actions align="center">
+<!--div mat-dialog-actions align="center">
   <button mat-raised-button mat-dialog-close align="center">Close</button>
   <button (click)='countryFormSubmit(reactiveForm1.value)' [disabled]="!reactiveForm1.valid" mat-raised-button color="primary" class="m-t-8">Save</button>
-</div>
+</div-->
+<mat-dialog-actions>
+  <button class="mat-raised-button" mat-dialog-close>Close</button>
+  <button (click)='countryFormSubmit(reactiveForm1.value)' [disabled]="!reactiveForm1.valid" mat-raised-button color="red" class="mat-raised-button mat-primary">Save</button>
+</mat-dialog-actions>
