@@ -27,6 +27,6 @@ const COMPONENTS_DYNAMIC = [AddCountryComponent, DeleteCountryComponent, UpdateC
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, CountryListComponent, NotificationCompoComponent, AddCountryComponent, NotificationCompoComponent, DeleteCountryComponent, UpdateCountryComponent],
   entryComponents: COMPONENTS_DYNAMIC,
   exports: [MatTableModule, MatSortModule, MatInputModule, FlexLayoutModule, MatPaginatorModule, AddCountryComponent,
-    CountryListComponent, DeleteCountryComponent, UpdateCountryComponent]
+    CountryListComponent, DeleteCountryComponent, UpdateCountryComponent, NotificationCompoComponent],
 })
 export class CountryModule { }

@@ -10,17 +10,17 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class DeleteCurrencyComponent implements OnInit {
 
-  short_name: string;
+  curShortName: string;
 
   constructor(private repoService: CurrencyService, private dialogRef: MatDialogRef<DeleteCurrencyComponent>, @Inject(MAT_DIALOG_DATA) data) {
-    this.short_name = data.short_name;
+    this.curShortName = data.cur_short_name;
   }
 
   ngOnInit() {
   }
 
   deleteCurrency() {
-    this.repoService.delete(this.short_name).subscribe((res) => {
+    this.repoService.delete(this.curShortName).subscribe((res) => {
         this.dialogRef.close(JSON.stringify(res));
       }
     );

@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CountryService } from '@core/services/country.service';
+import { CurrencyService } from '@core/services/currency.service';
+
 
 @Component({
   selector: 'app-update-currency',
@@ -14,28 +15,34 @@ export class UpdateCurrencyComponent implements OnInit {
   reactiveForm2: FormGroup;
   element;
   id: number;
-  shortName: string;
-  name: string;
+  curShortName: string;
+  curName: string;
+  curSwiftCode: string;
+  curReportName: string;
 
-  constructor(public dialogRef: MatDialogRef<UpdateCurrencyComponent>, private fb: FormBuilder, private repoService: CountryService, @Inject(MAT_DIALOG_DATA) data) {
+  constructor(public dialogRef: MatDialogRef<UpdateCurrencyComponent>, private fb: FormBuilder, private repoService: CurrencyService, @Inject(MAT_DIALOG_DATA) data) {
 
     this.reactiveForm2 = this.fb.group({
-      name: ['', [Validators.required]],
-      short_name: ['', [Validators.required]]
+      cur_name: ['', [Validators.required]],
+      cur_short_name: ['', [Validators.required]],
+      cur_swift_code: ['', [Validators.required]],
+      cur_report_name: ['', [Validators.required]]
     });
     this.element = data;
   }
 
   ngOnInit() {
 
-    this.shortName = this.element.short_name;
-    this.name = this.element.name;
+    this.curShortName = this.element.cur_short_name;
+    this.curName = this.element.cur_name;
+    this.curSwiftCode = this.element.cur_swift_code;
+    this.curReportName = this.element.cur_report_name;
     this.id = this.element.id;
   }
 
   currencyFormUpdate(data) {
-    const updateCountryData = {id: this.element.id, name: data.name, short_name: data.short_name};
-    this.repoService.update('updateCountry', updateCountryData)
+    const updateCurrencyData = {id: this.element.id, cur_name: data.cur_name, cur_short_name: data.cur_short_name, cur_report_name: data.cur_report_name, cur_swift_code: data.cur_swift_code };
+    this.repoService.update('updateCurrency', updateCurrencyData)
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));
       });
