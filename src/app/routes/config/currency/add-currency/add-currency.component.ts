@@ -14,10 +14,10 @@ export class AddCurrencyComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddCurrencyComponent>, private fb: FormBuilder, private repoService: CurrencyService) {
     this.reactiveForm2 = this.fb.group({
-      name: ['', [Validators.required]],
-      short_name: ['', [Validators.required]],
-      sft_code: ['', [Validators.required]],
-      report_name: ['', [Validators.required]]
+      cur_name: ['', [Validators.required]],
+      cur_short_name: ['', [Validators.required]],
+      cur_swift_code: ['', [Validators.required]],
+      cur_report_name: ['', [Validators.required]]
     });
 
 
@@ -26,11 +26,11 @@ export class AddCurrencyComponent implements OnInit {
   }
 
   currencyFormSubmit(data) {
-    /*console.log(data);
-    this.repoService.create('addCountry', data)
+    console.log(data);
+    this.repoService.create('addCurrency', data)
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));
-      }); */
+      });
   }
 
 }
