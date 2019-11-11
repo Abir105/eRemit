@@ -25,6 +25,16 @@
           "state": "currency",
           "name": "Currency Info",
           "type": "link"
+        },
+        {
+          "state": "time",
+          "name": "Time Info",
+          "type": "link"
+        },
+        {
+          "state": "bank",
+          "name": "Bank Info",
+          "type": "link"
         }]
     },
     {
