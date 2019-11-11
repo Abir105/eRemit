@@ -27,7 +27,7 @@ export class AddCurrencyComponent implements OnInit {
 
   currencyFormSubmit(data) {
     console.log(data);
-    this.repoService.create('addCurrency', data)
+    this.repoService.create({ route: 'addCurrency', body: data })
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));
       });

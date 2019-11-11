@@ -19,7 +19,7 @@ export class CurrencyService {
     // return this.http.get(this.createCompleteRoute(route, environment.SERVER_URL));
   };
 
-  public create = (route: string, body) => {
+  public create = ({ route, body }: { route: string, body: any }) => {
     // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     console.log(body);
     return this.http.post('http://10.11.201.37:3001/addCurrency', body);
