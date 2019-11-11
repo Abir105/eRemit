@@ -21,9 +21,10 @@ import { AddCountryComponent } from '../country/add-country/add-country.componen
 import { DeleteCountryComponent } from '../country/delete-country/delete-country.component';
 import { UpdateCountryComponent } from '../country/update-country/update-country.component';
 import { MatSortModule } from '@angular/material/sort';
+import { CountryModule } from '../country/country.module';
 
 const COMPONENTS = [CurrencyListComponent];
-const COMPONENTS_DYNAMIC = [AddCurrencyComponent];
+const COMPONENTS_DYNAMIC = [AddCurrencyComponent, UpdateCurrencyComponent];
 
 
 @NgModule({
@@ -42,6 +43,7 @@ const COMPONENTS_DYNAMIC = [AddCurrencyComponent];
     FlexModule,
     MatTooltipModule,
     MatSortModule,
+    CountryModule,
   ],
   entryComponents: COMPONENTS_DYNAMIC,
   exports: [
@@ -52,7 +54,7 @@ const COMPONENTS_DYNAMIC = [AddCurrencyComponent];
     MatIconModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule, DeleteCurrencyComponent
   ]
 })
 export class CurrencyModule { }

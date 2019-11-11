@@ -7,8 +7,8 @@
       <div   fxFlex="50" fxFlex.lt-sm="100">
         <mat-form-field>
           <mat-label>Currency Name</mat-label>
-          <input matInput placeholder="" formControlName="name" required>
-          <mat-error *ngIf="reactiveForm2.get('name').invalid">Currency Name Required
+          <input matInput placeholder="" formControlName="cur_name" required>
+          <mat-error *ngIf="reactiveForm2.get('cur_name').invalid">Currency Name Required
           </mat-error>
         </mat-form-field>
       </div>
@@ -17,9 +17,9 @@
       <div  fxFlex="50" fxFlex.lt-sm="100">
         <mat-form-field>
           <mat-label>Short Currency Name</mat-label>
-          <input matInput placeholder="" formControlName="short_name"
+          <input matInput placeholder="" formControlName="cur_short_name"
                  required>
-          <mat-error *ngIf="reactiveForm2.get('short_name').invalid">Short Name Required
+          <mat-error *ngIf="reactiveForm2.get('cur_short_name').invalid">Short Name Required
           </mat-error>
         </mat-form-field>
       </div>
@@ -28,9 +28,9 @@
         <div fxFlex="50" fxFlex.lt-sm="100">
           <mat-form-field>
             <mat-label>Swift code</mat-label>
-            <input matInput placeholder="" formControlName="sft_code"
+            <input matInput placeholder="" formControlName="cur_swift_code"
                    required>
-            <mat-error *ngIf="reactiveForm2.get('sft_code').invalid">Swift code Name Required
+            <mat-error *ngIf="reactiveForm2.get('cur_swift_code').invalid">Swift code Name Required
             </mat-error>
           </mat-form-field>
         </div>
@@ -38,9 +38,9 @@
           <div fxFlex="50" fxFlex.lt-sm="100">
             <mat-form-field>
               <mat-label>Report Name</mat-label>
-              <input matInput placeholder="" formControlName="report_name"
+              <input matInput placeholder="" formControlName="cur_report_name"
                      required>
-              <mat-error *ngIf="reactiveForm2.get('report_name').invalid">Report Name Required
+              <mat-error *ngIf="reactiveForm2.get('cur_report_name').invalid">Report Name Required
               </mat-error>
             </mat-form-field>
           </div>
@@ -53,6 +53,6 @@
 <div mat-dialog-actions align="center">
   <button mat-raised-button mat-dialog-close class="mat-raised-button">Close</button>
   <!--button (click)='countryFormSubmit(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="m-t-8">Save</button-->
-  <button  [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
+  <button (click)='currencyFormSubmit(reactiveForm2.value)'  [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
 </div>
-<!-- bely apu -->
+
