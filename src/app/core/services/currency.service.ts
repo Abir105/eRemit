@@ -27,7 +27,7 @@ export class CurrencyService {
 
 
   public delete = (body) => {
-    alert(body);
+
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
