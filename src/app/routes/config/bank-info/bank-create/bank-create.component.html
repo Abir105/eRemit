@@ -1,168 +1,207 @@
-<!--form [id]="formId" [formGroup]="form" enctype="multipart/form-data" novalidate-->
-<form [formGroup]="reactiveForm4" class="matero-form-horizontal">
-  <mat-tab-group dynamicHeight>
-    <mat-tab label="Basic Information">
-      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
-        <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
-             fxFlex.xs="100%" fxLayoutAlign="flex-start">
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Full Name</mat-label>
-            <label>
-              <input matInput placeholder="Full name" formControlName="fullName" required />
-            </label>
-            <!--mat-error *ngIf="
-                firstName.invalid && (firstName.dirty || firstName.touched)
-              ">
-              <ng-container *ngIf="firstName.hasError('required')">First name is required.</ng-container>
-              <ng-container *ngIf="firstName.hasError('minlength')">First name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Short Name</mat-label>
-            <input matInput placeholder="Short name" formControlName="shortName" required />
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Report Name</mat-label>
-            <input matInput placeholder="Report name" formControlName="reportName" required />
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>BB code</mat-label>
-            <input matInput placeholder="BB code" formControlName="bbCode" required />
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Swift code</mat-label>
-            <label>
-              <input matInput placeholder="Swift code" formControlName="swiftCode" required />
-            </label>
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>BB Reg No.</mat-label>
-            <label>
-              <input matInput placeholder="BB Reg" formControlName="bbReg" required />
-            </label>
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Country</mat-label>
-            <label>
-              <input matInput placeholder="Country" formControlName="country" required />
-            </label>
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Open Date</mat-label>
-            <label>
-              <input matInput placeholder="Open Date" formControlName="openDate" required />
-            </label>
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Base Currency</mat-label>
-            <mat-select placeholder="Base Currency" formControlName="baseCurrency"   (change)="selectCurrency($event)" required>
-              <mat-option *ngFor="let currency of cur_name" [value]="currency.cur_name">
-                {{currency.cur_name}}
-              </mat-option>
-            </mat-select>
-
-
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>City</mat-label>
-            <label>
-              <input matInput placeholder="City" formControlName="city" required />
-            </label>
-            <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
-              <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
-              <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
-        </div>
+<app-notification-comp></app-notification-comp>
+<div class="card">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="3" >
+        <button style="margin-top: 10px" mat-icon-button aria-label="Example icon-button with a heart icon">
+          <mat-icon>home</mat-icon>
+        </button>
       </div>
-    </mat-tab>
-    <mat-tab label="Other Information">
-      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
-        <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
-             fxFlex.xs="100%" fxLayoutAlign="flex-start">
-          <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                          fxFlex.xs="100%" appearance="fill">
-            <mat-label>Division</mat-label>
-            <mat-select placeholder="Division" formControlName="division" required>
-              <mat-option [value]="'divValue'">Dhaka</mat-option>
-              <mat-option [value]="'divValue'">Chattogram</mat-option>
-              <mat-option [value]="'divValue'">Rajshahi</mat-option>
-              <mat-option [value]="'divValue'">Khulna</mat-option>
-              <mat-option [value]="'divValue'">Barisal</mat-option>
-              <mat-option [value]="'divValue'">Sylhet</mat-option>
-            </mat-select>
-            <!--mat-error *ngIf="
-                firstName.invalid && (firstName.dirty || firstName.touched)
-              ">
-              <ng-container *ngIf="firstName.hasError('required')">First name is required.</ng-container>
-              <ng-container *ngIf="firstName.hasError('minlength')">First name must be at least 2 characters long.
-              </ng-container>
-            </mat-error-->
-          </mat-form-field>
+      <div fxFlex="37" >
+        <h3 style="padding-top: 20px">Bank Create</h3>
+      </div>
 
+      <div fxFlexOffset="33" fxFlex="30"  >
+        <div class="right-nevigation">
+          <button mat-icon-button matTooltip="Go Back">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" matTooltip="Cancel" >
+            <mat-icon>cancel</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Save">
+            <mat-icon>save</mat-icon>
+          </button>
         </div>
 
       </div>
-    </mat-tab>
-  </mat-tab-group>
-</form>
+
+    </div>
+
+  </div>
+  <div class="container">
+
+    <!--form [id]="formId" [formGroup]="form" enctype="multipart/form-data" novalidate-->
+    <form [formGroup]="reactiveForm4" class="matero-form-horizontal">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Basic Information">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                 fxFlex.xs="100%" fxLayoutAlign="flex-start">
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Full Name</mat-label>
+                <label>
+                  <input matInput placeholder="Full name" formControlName="fullName" required />
+                </label>
+                <!--mat-error *ngIf="
+                    firstName.invalid && (firstName.dirty || firstName.touched)
+                  ">
+                  <ng-container *ngIf="firstName.hasError('required')">First name is required.</ng-container>
+                  <ng-container *ngIf="firstName.hasError('minlength')">First name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Short Name</mat-label>
+                <input matInput placeholder="Short name" formControlName="shortName" required />
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Report Name</mat-label>
+                <input matInput placeholder="Report name" formControlName="reportName" required />
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>BB code</mat-label>
+                <input matInput placeholder="BB code" formControlName="bbCode" required />
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Swift code</mat-label>
+                <label>
+                  <input matInput placeholder="Swift code" formControlName="swiftCode" required />
+                </label>
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>BB Reg No.</mat-label>
+                <label>
+                  <input matInput placeholder="BB Reg" formControlName="bbReg" required />
+                </label>
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Country</mat-label>
+                <label>
+                  <input matInput placeholder="Country" formControlName="country" required />
+                </label>
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Open Date</mat-label>
+                <label>
+                  <input matInput placeholder="Open Date" formControlName="openDate" required />
+                </label>
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Base Currency</mat-label>
+                <mat-select placeholder="Base Currency" formControlName="baseCurrency"   (change)="selectCurrency($event)" required>
+                  <mat-option *ngFor="let currency of cur_name" [value]="currency.cur_name">
+                    {{currency.cur_name}}
+                  </mat-option>
+                </mat-select>
+
+
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>City</mat-label>
+                <label>
+                  <input matInput placeholder="City" formControlName="city" required />
+                </label>
+                <!--mat-error *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)">
+                  <ng-container *ngIf="lastName.hasError('required')">Last name is required.</ng-container>
+                  <ng-container *ngIf="lastName.hasError('minlength')">Last name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Other Information">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                 fxFlex.xs="100%" fxLayoutAlign="flex-start">
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Division</mat-label>
+                <mat-select placeholder="Division" formControlName="division" required>
+                  <mat-option [value]="'divValue'">Dhaka</mat-option>
+                  <mat-option [value]="'divValue'">Chattogram</mat-option>
+                  <mat-option [value]="'divValue'">Rajshahi</mat-option>
+                  <mat-option [value]="'divValue'">Khulna</mat-option>
+                  <mat-option [value]="'divValue'">Barisal</mat-option>
+                  <mat-option [value]="'divValue'">Sylhet</mat-option>
+                </mat-select>
+                <!--mat-error *ngIf="
+                    firstName.invalid && (firstName.dirty || firstName.touched)
+                  ">
+                  <ng-container *ngIf="firstName.hasError('required')">First name is required.</ng-container>
+                  <ng-container *ngIf="firstName.hasError('minlength')">First name must be at least 2 characters long.
+                  </ng-container>
+                </mat-error-->
+              </mat-form-field>
+
+            </div>
+
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </form>
+  </div>
+</div>
+
+
+
+
 
