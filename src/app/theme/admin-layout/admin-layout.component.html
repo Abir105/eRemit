@@ -16,8 +16,8 @@
 
   <mat-sidenav-container class="matero-container" autosize autoFocus>
     <mat-sidenav #sidenav class="matero-sidenav"
-                 [mode]="isOver ? 'over' : 'side'"
-                 [opened]="options.navPos==='side' && !isOver"
+                 [mode]="isOver ? 'over' : 'push'"
+                 [opened]="options.navPos==='push' && !isOver"
                  (openedChange)="openedChange($event)">
       <app-sidebar (toggleCollapsed)="toggleCollapsed()"
                    [showToggle]="!isOver"
