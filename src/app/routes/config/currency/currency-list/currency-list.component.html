@@ -1,84 +1,104 @@
 <app-notification-comp></app-notification-comp>
-<div class="container mat-elevation-z8">
-
-  <div style="width: 100%">
-    <!-- <mat-form-field style="float: left;"  >
-      <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field> -->
-    <div Layout="row" >
-      <div fxFlex="40">
-
-      </div>
-      <mat-form-field fxFlex="25" style="color: black;height: 48px;">
-        <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
-        <button mat-button matSuffix mat-icon-button aria-label="Clear">
-          <mat-icon style="margin-top: -11px;">search</mat-icon>
+<div class="card">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="3" >
+        <button style="margin-top: 10px" mat-icon-button aria-label="Example icon-button with a heart icon">
+          <mat-icon>home</mat-icon>
         </button>
-      </mat-form-field>
-      <div fxFlex="35">
       </div>
-      <button mat-icon-button color="primary" matTooltip="Add New" style="float: right;"
-              (click)="addNew()">
+      <div fxFlex="37" >
+        <h3 style="padding-top: 20px">Currency Info</h3>
+      </div>
+      <div fxFlex="33" >
+        <mat-form-field >
+          <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex="30"  >
+        <div class="right-nevigation">
+          <button mat-icon-button matTooltip="Go Back">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button mat-icon-button matTooltip="refresh" >
+            <mat-icon>refresh</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" matTooltip="Add New"
+                  (click)="addNew()">
+            <!--button mat-icon-button color="primary" matTooltip="Add New" style="float: right;"
+                    [routerLink]="['/#/ex-house/country/add']"-->
 
-        <mat-icon>add_box</mat-icon>
-      </button>
+            <!--a [routerLink]="['add']" >add</a-->
+            <!--mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon-->
+            <mat-icon>add_box</mat-icon>
+          </button>
+
+        </div>
+
+      </div>
 
     </div>
+
   </div>
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="sl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+        <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.cur_name}} </td>
+      </ng-container>
 
 
-  <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="short_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.cur_short_name}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="sl">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
-      <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
-    </ng-container>
+      <ng-container matColumnDef="sft_code">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Swift Code</th>
+        <td mat-cell *matCellDef="let element"> {{element.cur_swift_code}} </td>
+      </ng-container>
 
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name</th>
-      <td mat-cell *matCellDef="let element"> {{element.cur_name}} </td>
-    </ng-container>
+      <ng-container matColumnDef="report_name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Report Name</th>
+        <td mat-cell *matCellDef="let element"> {{element.cur_report_name}} </td>
+      </ng-container>
 
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" (click)="UpdateCurrency(element)">
+            <!--button mat-icon-button color="accent" -->
+            <mat-icon class="mat-18">update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="short_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Name</th>
-      <td mat-cell *matCellDef="let element"> {{element.cur_short_name}} </td>
-    </ng-container>
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <!--button mat-icon-button color="warn" (click)="redirectToDelete(element.short_name)"-->
+          <button mat-icon-button color="warn" (click)="deleteCurrencyRow(element.cur_short_name)">
+            <!--button mat-icon-button color="warn" -->
+            <mat-icon class="mat-18">delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="sft_code">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Swift Code</th>
-      <td mat-cell *matCellDef="let element"> {{element.cur_swift_code}} </td>
-    </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
+    </mat-paginator>
 
-    <ng-container matColumnDef="report_name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Report Name</th>
-      <td mat-cell *matCellDef="let element"> {{element.cur_report_name}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="update">
-      <th mat-header-cell *matHeaderCellDef> Update</th>
-      <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="accent" (click)="UpdateCurrency(element)">
-          <!--button mat-icon-button color="accent" -->
-          <mat-icon class="mat-18">update</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef> Delete</th>
-      <td mat-cell *matCellDef="let element">
-        <!--button mat-icon-button color="warn" (click)="redirectToDelete(element.short_name)"-->
-        <button mat-icon-button color="warn" (click)="deleteCurrencyRow(element.cur_short_name)">
-          <!--button mat-icon-button color="warn" -->
-          <mat-icon class="mat-18">delete_forever</mat-icon>
-        </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 25, 50, 100]">
-  </mat-paginator>
+  </div>
 </div>
+

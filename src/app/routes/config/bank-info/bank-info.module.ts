@@ -9,6 +9,7 @@ import { CountryModule } from '../country/country.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     MatTabsModule,
     MatSelectModule,
+    MatCardModule,
   ],
 })
 export class BankInfoModule { }
