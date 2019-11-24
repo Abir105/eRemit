@@ -4,11 +4,7 @@
       "state": "dashboard",
       "name": "Dashboard",
       "type": "link",
-      "icon": "dashboard",
-      "badge": {
-        "color": "red-500",
-        "value": "5"
-      }
+      "icon": "dashboard"
     },
     {
       "state": "config",
@@ -285,10 +281,6 @@
       "name": "Gallery",
       "type": "sub",
       "icon": "image",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "state": "media",
@@ -338,10 +330,6 @@
       "name": "Profile",
       "type": "sub",
       "icon": "person",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      },
       "children": [
         {
           "state": "overview",
@@ -382,11 +370,7 @@
       "state": "helpers",
       "name": "Helpers",
       "type": "link",
-      "icon": "all_inbox",
-      "label": {
-        "color": "indigo-500",
-        "value": "new"
-      }
+      "icon": "all_inbox"
     }
   ]
 }

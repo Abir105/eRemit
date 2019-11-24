@@ -34,5 +34,6 @@ export class CustomizerComponent implements OnInit {
   }
 
   chengeOptions() {
+
   }
 }

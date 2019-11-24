@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CurrencyService } from '@core/services/currency.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-bank-create',
@@ -6,10 +8,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bank-create.component.scss']
 })
 export class BankCreateComponent implements OnInit {
+  description = 'Add New Bank';
+  reactiveForm4: FormGroup;
 
-  constructor() { }
+
+  // tslint:disable-next-line:variable-name
+  public cur_name: any;
+  public selectedCurrency: string;
+
+  constructor(private repoService: CurrencyService, private fb: FormBuilder) {
+    this.reactiveForm4 = this.fb.group({
+      fullName: ['', [Validators.required]],
+      shortName: ['', [Validators.required]],
+      reportName: ['', [Validators.required]],
+      bbCode: ['', [Validators.required]],
+      swiftCode: ['', [Validators.required]],
+      bbReg: ['', [Validators.required]],
+      country: ['', [Validators.required]],
+      openDate: ['', [Validators.required]],
+      baseCurrency: ['', [Validators.required]],
+      city: ['', [Validators.required]],
+      division: ['', [Validators.required]]
+    });
+
+    this.repoService.getData('currencies')
+      .subscribe(res  => {
+        this.cur_name = res.Currency;
+      });
+
+  }
 
   ngOnInit() {
   }
 
+
+  selectCurrency(event: any) {
+    this.selectedCurrency = event.target.value;
+  }
 }
