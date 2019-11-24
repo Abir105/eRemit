@@ -62,11 +62,8 @@
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <div fxLayout="row" >
-    <button style="float: right;" class="mat-raised-button" mat-dialog-close>Close</button>
-    <button style="float: right;"  (click)='countryFormSubmit(reactiveForm1.value)' [disabled]="!reactiveForm1.valid"
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="accent" mat-dialog-close >Close</button>
+    <button (click)='countryFormSubmit(reactiveForm1.value)' [disabled]="!reactiveForm1.valid"
             mat-raised-button color="red" class="mat-raised-button mat-primary">Save</button>
-  </div>
-
 </mat-dialog-actions>
