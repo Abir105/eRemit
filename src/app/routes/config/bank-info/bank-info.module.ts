@@ -10,6 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { MatCardModule } from '@angular/material/card';
     MatTabsModule,
     MatSelectModule,
     MatCardModule,
+    MatDatepickerModule,
   ],
 })
 export class BankInfoModule { }

@@ -55,3 +55,6 @@ input[type="search"]::placeholder {
   background-color: blue;
   color: black
 }
+::ng-deep .mat-step-header .mat-step-icon-selected {
+  background-color: red;
+}

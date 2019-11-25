@@ -7,20 +7,29 @@ import { AddCountryComponent } from '../add-country/add-country.component';
 import { DeleteCountryComponent } from '../delete-country/delete-country.component';
 import { UpdateCountryComponent } from '../update-country/update-country.component';
 import { MatSort } from '@angular/material/sort';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {STEPPER_GLOBAL_OPTIONS} from '@angular/cdk/stepper';
+
 
 @Component({
   selector: 'app-country-list',
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.scss'],
+  providers: [{
+    provide: STEPPER_GLOBAL_OPTIONS, useValue: {displayDefaultIndicatorType: false}
+  }]
 })
 export class CountryListComponent implements OnInit {
+  isLinear = true;
+  firstFormGroup: FormGroup;
+  secondFormGroup: FormGroup;
 
   public displayedColumns = ['sl', 'name', 'short_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;
 
-  constructor(private repoService: CountryService, private matDialog: MatDialog) {
+  constructor(private repoService: CountryService, private matDialog: MatDialog, private _formBuilder: FormBuilder) {
   }
 
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
@@ -33,6 +42,12 @@ export class CountryListComponent implements OnInit {
 
   ngOnInit() {
     this.getAllCountries();
+    this.firstFormGroup = this._formBuilder.group({
+      firstCtrl: ['', Validators.required]
+    });
+    this.secondFormGroup = this._formBuilder.group({
+      secondCtrl: ['', Validators.required]
+    });
   }
 
   // tslint:disable-next-line:use-lifecycle-interface

@@ -28,7 +28,19 @@ export class BankCreateComponent implements OnInit {
       openDate: ['', [Validators.required]],
       baseCurrency: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      division: ['', [Validators.required]]
+      division: ['', [Validators.required]],
+      postalcode: ['', [Validators.required]],
+      phone: ['', [Validators.required]],
+      depCompId: ['', [Validators.required]],
+      cntrBankAgent: ['', [Validators.required]],
+      foreignInstitute: ['', [Validators.required]],
+      depositoryPart: ['', [Validators.required]],
+      contactPerson: ['', [Validators.required]],
+      web: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      fax: ['', [Validators.required]],
+      thana: ['', [Validators.required]],
+      district: ['', [Validators.required]]
     });
 
     this.repoService.getData('currencies')
