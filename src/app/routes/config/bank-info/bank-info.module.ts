@@ -11,6 +11,9 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MaterialModule } from '../../../material.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -27,6 +30,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSelectModule,
     MatCardModule,
     MatDatepickerModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MaterialModule
   ],
 })
 export class BankInfoModule { }

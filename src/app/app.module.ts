@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { AppComponent } from './app.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -50,7 +51,7 @@ import {
     FormlyModule.forRoot(),
     ToastrModule.forRoot(),
   ],
-  providers: [
+  providers: [ DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
     StartupService,
     {
