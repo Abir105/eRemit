@@ -12,7 +12,7 @@ export class DeleteCurrencyComponent implements OnInit {
   shortName: string;
 
   constructor(private repoService: CurrencyService, private dialogRef: MatDialogRef<DeleteCurrencyComponent>, @Inject(MAT_DIALOG_DATA) data) {
-    this.shortName = data.short_name;
+    this.shortName = data.cur_short_name;
   }
 
   ngOnInit() {

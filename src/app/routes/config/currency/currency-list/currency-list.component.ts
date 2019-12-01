@@ -1,18 +1,13 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { CountryInfo } from '../../../model/countryInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
-import { CountryService } from '@core/services/country.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { CurrencyService } from '@core/services/currency.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { AddCountryComponent } from '../../country/add-country/add-country.component';
 import { AddCurrencyComponent } from '../add-currency/add-currency.component';
 import { CurrencyInfo } from '../../../model/currencyInfo';
-import { UpdateCountryComponent } from '../../country/update-country/update-country.component';
 import { UpdateCurrencyComponent } from '../update-currency/update-currency.component';
-import { DeleteCountryComponent } from '../../country/delete-country/delete-country.component';
 import { DeleteCurrencyComponent } from '../delete-currency/delete-currency.component';
 
 @Component({
@@ -20,14 +15,15 @@ import { DeleteCurrencyComponent } from '../delete-currency/delete-currency.comp
   templateUrl: './currency-list.component.html',
   styleUrls: ['./currency-list.component.scss']
 })
-export class CurrencyListComponent implements OnInit {
+export class CurrencyListComponent implements OnInit, AfterViewInit  {
 
-  public displayedColumns = ['sl', 'name', 'short_name', 'sft_code', 'report_name', 'update', 'delete'];
+  public displayedColumns = ['sl', 'cur_name', 'cur_short_name', 'cur_swift_code', 'cur_report_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CurrencyInfo>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;
 
-  constructor(private repoService: CurrencyService, private matDialog: MatDialog) { }
+  constructor(private repoService: CurrencyService, private matDialog: MatDialog) {
+  }
   @ViewChild(MatPaginator, null) paginator: MatPaginator;
   @ViewChild(MatSort, null) sort: MatSort;
 
@@ -37,13 +33,22 @@ export class CurrencyListComponent implements OnInit {
     this.dataSource.filter = value;
   };
 
+
+
   ngOnInit() {
     this.getAllCurrencies();
   }
+
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   public getAllCurrencies = () => {
     this.repoService.getData('currencies')
       .subscribe(res  => {
-        this.dataSource.data = res.Currency;
+        this.dataSource.data = res.data;
       });
   };
 

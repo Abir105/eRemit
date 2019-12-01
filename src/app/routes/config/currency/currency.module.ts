@@ -53,6 +53,7 @@ const COMPONENTS_DYNAMIC = [AddCurrencyComponent, UpdateCurrencyComponent];
     MatFormFieldModule,
     MatIconModule,
     MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
     MatInputModule, DeleteCurrencyComponent
   ]

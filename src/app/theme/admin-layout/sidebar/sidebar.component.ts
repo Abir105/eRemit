@@ -5,7 +5,7 @@ import { Component, Output, EventEmitter, Input } from '@angular/core';
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent {
-  @Input() showToggle = true;
+  @Input() showToggle = false;
   @Input() showUser = true;
   @Input() showHeader = true;
 

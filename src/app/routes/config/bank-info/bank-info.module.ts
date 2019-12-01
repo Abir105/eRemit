@@ -14,10 +14,12 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MaterialModule } from '../../../material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { BankDetailsComponent } from './bank-details/bank-details.component';
+import { BankDeleteComponent } from './bank-delete/bank-delete.component';
 
 
 @NgModule({
-  declarations: [BankListComponent, BankCreateComponent],
+  declarations: [BankListComponent, BankCreateComponent, BankDetailsComponent, BankDeleteComponent],
   imports: [
     CommonModule,
     BankInfoRoutingModule,

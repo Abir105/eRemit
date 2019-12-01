@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { BankService } from '@core/services/bank.service';
 import { DatePipe } from '@angular/common';
+import { CurrencyService } from '@core/services/currency.service';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./bank-create.component.scss']
 })
 export class BankCreateComponent implements OnInit {
+  selectedDivision = 0;
+  selectedDistrict = 0;
   description = 'Add New Bank';
   reactiveForm4: FormGroup;
   bankAddId: 'addBank';
@@ -17,14 +20,14 @@ export class BankCreateComponent implements OnInit {
   private divisionData: any;
   private districtData: any;
   private upzillaData: any;
+  private countryData: any;
+  private currencyData: any;
 
-  constructor(private bankService: BankService,
+  constructor(private bankService: BankService, private currencyService: CurrencyService,
               private fb: FormBuilder, public datepipe: DatePipe) {}
 
 
   ngOnInit() {
-    // const ddMMyyyy = this.datepipe.transform(new Date(), 'yyyy-MM-dd');
-    // console.log(ddMMyyyy);
     this.reactiveForm4 = this.fb.group({
       fullName: ['', [Validators.required]],
       shortName: ['', [Validators.required]],
@@ -32,13 +35,13 @@ export class BankCreateComponent implements OnInit {
       bbCode: ['', [Validators.required]],
       swiftCode: ['', [Validators.required]],
       bbReg: ['', [Validators.required]],
-      country: ['', [Validators.required]],
+      country: ['Bangladesh', [Validators.required]],
       openDate: ['', [Validators.required]],
-      baseCurrency: ['', [Validators.required]],
       city: ['', [Validators.required]],
       division: ['', [Validators.required]],
       postalcode: ['', [Validators.required]],
       phone: ['', [Validators.required]],
+      currency: ['', [Validators.required]],
       depCompId: ['', [Validators.required]],
       cntrBankAgent: ['', [Validators.required]],
       foreignInstitute: ['', [Validators.required]],
@@ -50,9 +53,11 @@ export class BankCreateComponent implements OnInit {
       upzilla: ['', [Validators.required]],
       district: ['', [Validators.required]]
     });
+    // this.reactiveForm4.controls['country'].disable();
+    // this.reactiveForm4.controls.country.disable();
     this.getAllDivision();
-    this.getAllDistrict();
-    this.getAllUpzilla();
+    this.getAllCountry();
+    this.getAllCurrency();
   }
 
   get fullName() { return this.reactiveForm4.get('fullName'); }
@@ -62,8 +67,8 @@ export class BankCreateComponent implements OnInit {
   get swiftCode() { return this.reactiveForm4.get('swiftCode'); }
   get bbReg() { return this.reactiveForm4.get('bbReg'); }
   get country() { return this.reactiveForm4.get('country'); }
+  get currency() { return this.reactiveForm4.get('currency'); }
   get openDate() { return this.reactiveForm4.get('openDate'); }
-  get baseCurrency() { return this.reactiveForm4.get('baseCurrency'); }
   get city() { return this.reactiveForm4.get('city'); }
   get division() { return this.reactiveForm4.get('division'); }
   get postalcode() { return this.reactiveForm4.get('postalcode'); }
@@ -91,19 +96,40 @@ export class BankCreateComponent implements OnInit {
   public getAllDivision = () => {
     this.bankService.getDevision('division')
       .subscribe(res  => {
-        this.divisionData = res;
+        this.divisionData = res.data;
+      });
+
+  };
+  onSelect(id) {
+    this.selectedDivision = id;
+    this.getAllDistrict(id);
+  }
+  onSelectDistrict(id) {
+    this.selectedDistrict = id;
+    this.getAllUpzilla(id);
+  }
+  public getAllDistrict = (id) => {
+    this.bankService.getDistrict('district', id)
+      .subscribe(res  => {
+        this.districtData = res.data;
       });
   };
-  public getAllDistrict = () => {
-    this.bankService.getDistrict('district')
+  public getAllUpzilla = (id) => {
+    this.bankService.getUpzilla('upzilla', id)
       .subscribe(res  => {
-        this.districtData = res;
+        this.upzillaData = res.data;
       });
   };
-  public getAllUpzilla = () => {
-    this.bankService.getUpzilla('upzilla')
+  public getAllCountry = () => {
+    this.bankService.getCountry('country')
       .subscribe(res  => {
-        this.upzillaData = res;
+        this.countryData = res;
+      });
+  };
+  public getAllCurrency = () => {
+    this.currencyService.getData('currency')
+      .subscribe(res  => {
+        this.currencyData = res.data;
       });
   };
 

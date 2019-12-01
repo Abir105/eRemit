@@ -11,7 +11,7 @@
         <h3 >Country Info</h3>
       </div>
       <div fxFlex="30" >
-        <mat-form-field>
+        <mat-form-field >
           <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
           <button mat-button matSuffix mat-icon-button aria-label="Clear">
             <mat-icon>search</mat-icon>
@@ -28,11 +28,6 @@
           </button>
           <button mat-icon-button color="primary" matTooltip="Add New"
                   (click)="addNew()">
-            <!--button mat-icon-button color="primary" matTooltip="Add New" style="float: right;"
-                    [routerLink]="['/#/ex-house/country/add']"-->
-
-            <!--a [routerLink]="['add']" >add</a-->
-            <!--mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon-->
             <mat-icon>add_box</mat-icon>
           </button>
         </div>
@@ -87,71 +82,6 @@
     </mat-paginator>
   </div>
 
-<!--  stepper example-->
-  <div>
-    <mat-horizontal-stepper [linear]="isLinear" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>name</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Fill out your address</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Address" formControlName="secondCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You are now done.
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button (click)="stepper.reset()">Reset</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
-    <mat-horizontal-stepper>
-      <mat-step label="Step 1" state="phone">
-        <p>Put down your phones.</p>
-        <div>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
-      <mat-step label="Step 2" state="chat">
-        <p>Socialize with each other.</p>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
-        </div>
-      </mat-step>
-      <mat-step label="Step 3" state="finish">
-        <p>You're welcome.</p>
-      </mat-step>
-
-      <!-- Icon overrides. -->
-      <ng-template matStepperIcon="phone">
-        <mat-icon >call_end</mat-icon>
-      </ng-template>
-      <ng-template matStepperIcon="chat">
-        <mat-icon>forum</mat-icon>
-      </ng-template>
-      <ng-template matStepperIcon="finish">
-        <mat-icon>home</mat-icon>
-      </ng-template>
-    </mat-horizontal-stepper>
-  </div>
 
 </div>
 

@@ -12,6 +12,7 @@ import { BankInfo } from '../../routes/model/BankInfo';
 })
 
 export class BankService {
+  Url = 'http://10.11.201.40:3000/';
 
   constructor(private http: HttpClient) { }
 
@@ -23,22 +24,25 @@ export class BankService {
   //   );
   // }
   public getDevision = (route: string): Observable<any> => {
-    return this.http.get('http://10.11.201.40:3000/location/division');
+    return this.http.get(this.Url + 'location/division');
   };
-  public getDistrict = (route: string): Observable<any> => {
-    return this.http.get('http://10.11.201.40:3000/location/district');
+  public getDistrict = (route: string, id: string): Observable<any> => {
+    return this.http.get(this.Url + `location/district/${id}`);
   };
-  public getUpzilla = (route: string): Observable<any> => {
-    return this.http.get('http://10.11.201.40:3000/location/upzilla');
+  public getUpzilla = (route: string, id: string): Observable<any> => {
+    return this.http.get(this.Url + `location/upzilla/${id}`);
+  };
+  public getCountry = (route: string): Observable<any> => {
+    return this.http.get(this.Url + 'country');
   };
 
   public getData = (route: string): Observable<any> => {
     // console.log( '${envAddress}/${route}');
-    return this.http.get('http://10.11.201.40:3000/bank'); // this.createCompleteRoute(route, environment.SERVER_URL));
+    return this.http.get(this.Url + 'bank'); // this.createCompleteRoute(route, environment.SERVER_URL));
     // return this.http.get(this.createCompleteRoute(route, environment.SERVER_URL));
   };
   addBank(bank): Observable<any> {
-    return this.http.post<any>('http://10.11.201.40:3000/bank/', bank).pipe(
+    return this.http.post<any>(this.Url + 'bank/', bank).pipe(
       map(response => (response.isExecuted && response.data ? true : false)),
       catchError(error => of(false))
     );
@@ -51,14 +55,13 @@ export class BankService {
   };
 
 
-  public delete = (body) => {
+  public delete = (id) => {
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-      }),
-      body: {short_name: body},
+      })
     };
-    return this.http.delete('http://10.11.201.37:3000/deleteCountry', options);
+    return this.http.delete(`http://10.11.201.40:3000/bank/${id}`, options);
     // return this.http.put(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     // return this.http.put('http://10.11.201.37:3000/updateCountry', body);
   };

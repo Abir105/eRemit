@@ -12,7 +12,8 @@ export class AddCountryComponent implements OnInit {
   description = 'Add New Country';
   reactiveForm1: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<AddCountryComponent>, private fb: FormBuilder, private repoService: CountryService) {
+  constructor(public dialogRef: MatDialogRef<AddCountryComponent>,
+              private fb: FormBuilder, private countryService: CountryService) {
     this.reactiveForm1 = this.fb.group({
       name: ['', [Validators.required]],
       short_name: ['', [Validators.required]]
@@ -24,7 +25,7 @@ export class AddCountryComponent implements OnInit {
 
   countryFormSubmit(data) {
     console.log(data);
-    this.repoService.create('addCountry', data)
+    this.countryService.create('addCountry', data)
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));
       });
