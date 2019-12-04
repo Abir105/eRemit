@@ -1,19 +1,41 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BankService } from '@core/services/bank.service';
+import { Subscription } from 'rxjs';
 import { DatePipe } from '@angular/common';
 import { CurrencyService } from '@core/services/currency.service';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 
 
 @Component({
-  selector: 'app-bank-create',
-  templateUrl: './bank-create.component.html',
-  styleUrls: ['./bank-create.component.scss']
+  selector: 'app-bank-update',
+  templateUrl: './bank-update.component.html',
+  styleUrls: ['./bank-update.component.scss']
 })
-export class BankCreateComponent implements OnInit {
-  selectedDivision = 0;
-  selectedDistrict = 0;
+export class BankUpdateComponent implements OnInit {
+  bankFullName: string;
+  bankShortName: string;
+  bankReportName: string;
+  bankbbCode: string;
+  bankSwiftCode: string;
+  bankbbReg: string;
+  bankOpenDate: string;
+  bankPhone: string;
+  bankCurrency: string;
+  bankFax: string;
+  bankEmail: string;
+  bankWeb: string;
+  bankContactPerson: string;
+  bankdepositoryPart: string;
+  bankForeignInstitute: string;
+  bankCntrBankAgent: string;
+  bankDepCompId: string;
+  selectedDivision: number;
+  bankCity: string;
+  selectedDistrict: number;
+  bankUpzilla: number;
+  bankPostalcode: number;
   description = 'Add New Bank';
   reactiveForm4: FormGroup;
   bankAddId: 'addBank';
@@ -23,13 +45,22 @@ export class BankCreateComponent implements OnInit {
   private upzillaData: any;
   private countryData: any;
   private currencyData: any;
+  bank: Subscription;
+  bankDetailsDatabyId: any;
+  bankDetailsData: any;
+  private id: string;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
-  constructor(private bankService: BankService, private currencyService: CurrencyService,
-              private fb: FormBuilder, public datepipe: DatePipe) {}
-
+  constructor(private router: Router, private route: ActivatedRoute,
+              private currencyService: CurrencyService,
+              private fb: FormBuilder, public datepipe: DatePipe,
+              private bankService: BankService) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    const id = this.id;
+    this.getBankDetails(id);
     this.reactiveForm4 = this.fb.group({
+      id: [ id, [Validators.required]],
       fullName: ['', [Validators.required]],
       shortName: ['', [Validators.required]],
       reportName: ['', [Validators.required]],
@@ -59,8 +90,38 @@ export class BankCreateComponent implements OnInit {
     this.getAllDivision();
     this.getAllCountry();
     this.getAllCurrency();
-  }
 
+
+  }
+  private getBankDetails(id: string) {
+    this.bank = this.bankService.getBankId(id).subscribe(data => {
+      this.bankDetailsDatabyId = data;
+      this.bankDetailsData = this.bankDetailsDatabyId[0];
+      this.bankFullName = this.bankDetailsData.fullName;
+      this.bankShortName = this.bankDetailsData.shortName;
+      this.bankReportName = this.bankDetailsData.reportName;
+      this.bankbbCode = this.bankDetailsData.bbCode;
+      this.bankSwiftCode = this.bankDetailsData.swiftCode;
+      this.bankbbReg = this.bankDetailsData.bbReg;
+      this.bankOpenDate = this.bankDetailsData.openDate;
+      this.bankPhone = this.bankDetailsData.phone;
+      this.bankCurrency = this.bankDetailsData.currency;
+      this.bankFax = this.bankDetailsData.fax;
+      this.bankEmail = this.bankDetailsData.email;
+      this.bankWeb = this.bankDetailsData.web;
+      this.bankContactPerson = this.bankDetailsData.contactPerson;
+      this.bankdepositoryPart = this.bankDetailsData.depositoryPart;
+      this.bankForeignInstitute = this.bankDetailsData.foreignInstitute;
+      this.bankCntrBankAgent = this.bankDetailsData.cntrBankAgent;
+      this.bankDepCompId = this.bankDetailsData.depCompId;
+      this.selectedDivision = +this.bankDetailsData.division;
+      this.bankCity = this.bankDetailsData.city;
+      this.selectedDistrict = +this.bankDetailsData.district;
+      this.bankUpzilla = +this.bankDetailsData.upzilla;
+      this.bankPostalcode = this.bankDetailsData.postalcode;
+    });
+
+  }
   get fullName() { return this.reactiveForm4.get('fullName'); }
   get shortName() { return this.reactiveForm4.get('shortName'); }
   get reportName() { return this.reactiveForm4.get('reportName'); }
@@ -85,13 +146,12 @@ export class BankCreateComponent implements OnInit {
   get district() { return this.reactiveForm4.get('district'); }
   get phone() { return this.reactiveForm4.get('phone'); }
 
-
-  addBank(form: NgForm) {
-    this.bankAdd = this.bankService.addBank(form)
+  updateBank(form: NgForm) {
+    this.bankAdd = this.bankService.bankUpdate(form)
       .subscribe(data => {
-        this.notification.successmsg('Bank  added successfully');
+        this.notification.successmsg('Bank  updated successfully');
         }, (err) => {
-        this.notification.errorsmsg('Sorry! Bank not added');
+        this.notification.errorsmsg('Sorry! Bank not updated');
         }
       );
   }

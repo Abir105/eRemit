@@ -37,19 +37,30 @@ export class BankService {
   };
 
   public getData = (route: string): Observable<any> => {
-    // console.log( '${envAddress}/${route}');
-    return this.http.get(this.Url + 'bank'); // this.createCompleteRoute(route, environment.SERVER_URL));
-    // return this.http.get(this.createCompleteRoute(route, environment.SERVER_URL));
+    return this.http.get(this.Url + 'bank');
   };
+  getBankId(id: string): Observable<any> {
+    return this.http.get<any>(this.Url + `bank/${id}`).pipe(
+      map(response => response.data
+      ),
+      catchError(error => of(null))
+    );
+  }
+
   addBank(bank): Observable<any> {
     return this.http.post<any>(this.Url + 'bank/', bank).pipe(
       map(response => (response.isExecuted && response.data ? true : false)),
       catchError(error => of(false))
     );
   }
+  bankUpdate(bank): Observable<any> {
+    return this.http.put<any>(this.Url + 'bank/', bank).pipe(
+      map(response => (response.isExecuted && response.data ? true : false)),
+      catchError(error => of(false))
+    );
+  }
 
   public create = (route: string, body) => {
-    // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     console.log(body);
     return this.http.post('http://10.11.201.40:3000/bank', body);
   };

@@ -1,1 +1,100 @@
-<p>bank-details works!</p>
+
+<!--<pre>{{bankDetailsData.id | json}}</pre>-->
+<app-notification-comp></app-notification-comp>
+<div class="mainCard">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="3" >
+        <button  mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="47" >
+        <h3 class="main-header">Bank Details</h3>
+      </div>
+      <div fxFlex="50"  >
+        <div class="right-nevigation" *ngIf="bankDetailsData">
+          <button mat-icon-button matTooltip="edit" [routerLink]="['../../update' , bankDetailsData.id]" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div fxLayout="column" *ngIf="bankDetailsData" class="mainContainer">
+    <div class="card">
+      <div class="headerStyle">
+        <h3 >Basic Information</h3>
+      </div>
+      <div fxLayout="row" class="container">
+        <div fxFlex="33">
+          <div class="info"><b>Full Name:</b> {{bankDetailsData.fullName}}</div>
+          <div class="info"><b>BB Code:</b> {{bankDetailsData.bbCode}}</div>
+          <div class="info"><b>Open Date:</b> {{bankDetailsData.openDate | date: 'dd/MM/yyyy'}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Short Name:</b> {{bankDetailsData.shortName}}</div>
+          <div class="info"><b>Swift Code:</b> {{bankDetailsData.swiftCode}}</div>
+          <div class="info"><b>Phone No:</b> {{bankDetailsData.phone}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Report Name:</b> {{bankDetailsData.reportName}}</div>
+          <div class="info"><b>BB Reg No:</b>{{bankDetailsData.bbReg}}</div>
+          <div class="info"><b>Currancy:</b> {{bankDetailsData.currency}}</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="headerStyle">
+        <h3>Other Information</h3>
+      </div>
+
+      <div fxLayout="row" class="container">
+        <div fxFlex="33">
+          <div class="info"><b>Fax:</b> {{bankDetailsData.fax}}</div>
+          <div class="info"><b>Contact Person:</b> {{bankDetailsData.contactPerson}}</div>
+          <div class="info"><b>Center Bank Agent:</b> {{bankDetailsData.cntrBankAgent}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Email:</b> {{bankDetailsData.email}}</div>
+          <div class="info"><b>Depository Part:</b> {{bankDetailsData.depositoryPart}}</div>
+          <div class="info"><b>DEpo Comp Id:</b> {{bankDetailsData.depCompId}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Web:</b> {{bankDetailsData.web}}</div>
+          <div class="info"><b>Foreign Institute:</b> {{bankDetailsData.foreignInstitute}}</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <div class="headerStyle">
+        <h3>Address</h3>
+      </div>
+      <div fxLayout="row" class="container" >
+        <div fxFlex="33">
+          <div class="info"><b>Country:</b> {{bankDetailsData.country}}</div>
+          <div class="info"><b>District:</b> {{bankDetailsData.district}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Division:</b> {{bankDetailsData.division}}</div>
+          <div class="info"><b>Upzilla:</b> {{bankDetailsData.upzilla}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>City:</b> {{bankDetailsData.city}}</div>
+          <div class="info"><b>Postal code:</b> {{bankDetailsData.postalcode}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+

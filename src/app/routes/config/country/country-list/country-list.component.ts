@@ -98,6 +98,8 @@ export class CountryListComponent implements OnInit, AfterViewInit {
     dialogConfig.data = element;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
+    dialogConfig.height = '500px';
+    dialogConfig.width = '250px';
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);

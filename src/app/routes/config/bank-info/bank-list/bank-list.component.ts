@@ -16,7 +16,7 @@ import { BankDeleteComponent } from '../bank-delete/bank-delete.component';
 })
 export class BankListComponent implements OnInit {
     dataSource: MatTableDataSource<BankInfo>;
-    displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'update', 'delete'];
+    displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'details', 'update', 'delete'];
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
    constructor(private bankService: BankService, public dialog: MatDialog) { }

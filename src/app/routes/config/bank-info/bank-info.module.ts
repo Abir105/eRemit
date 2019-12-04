@@ -16,10 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BankDetailsComponent } from './bank-details/bank-details.component';
 import { BankDeleteComponent } from './bank-delete/bank-delete.component';
+import { BankUpdateComponent } from './bank-update/bank-update.component';
 
 
 @NgModule({
-  declarations: [BankListComponent, BankCreateComponent, BankDetailsComponent, BankDeleteComponent],
+  declarations: [BankListComponent, BankCreateComponent, BankDetailsComponent, BankDeleteComponent, BankUpdateComponent],
   imports: [
     CommonModule,
     BankInfoRoutingModule,

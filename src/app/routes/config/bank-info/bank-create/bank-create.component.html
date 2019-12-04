@@ -4,7 +4,7 @@
   <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="3" >
-          <button style="margin-top: 10px" mat-icon-button aria-label="Example icon-button with a heart icon">
+          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../']" >
             <mat-icon>home</mat-icon>
           </button>
         </div>
@@ -13,13 +13,13 @@
         </div>
         <div fxFlexOffset="33" fxFlex="30"  >
           <div class="right-nevigation">
-            <button mat-icon-button matTooltip="Go Back">
+            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../']" >
               <mat-icon>arrow_back</mat-icon>
             </button>
-            <button mat-icon-button color="warn" matTooltip="Cancel" >
-              <mat-icon>cancel</mat-icon>
-            </button>
-            <button mat-icon-button color="primary" type="submit" matTooltip="Save">
+<!--            <button mat-icon-button color="warn" matTooltip="Cancel" >-->
+<!--              <mat-icon>cancel</mat-icon>-->
+<!--            </button>-->
+            <button mat-icon-button color="primary" type="submit" [disabled]="!reactiveForm4.valid" matTooltip="Save">
               <mat-icon>save</mat-icon>
             </button>
           </div>
@@ -35,34 +35,66 @@
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                                 fxFlex.xs="100%" appearance="fill">
               <mat-label>Full Name</mat-label>
-                  <label>
                     <input matInput placeholder="Full name" formControlName="fullName" required />
-                  </label>
+              <div *ngIf="fullName.invalid && (fullName.dirty || fullName.touched)"
+                   class="alert alert-danger">
 
+                <div style="color: red" *ngIf="fullName.errors.required">
+                 Full Name is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Short Name</mat-label>
               <input matInput placeholder="Short name" formControlName="shortName" required />
+              <div *ngIf="shortName.invalid && (shortName.dirty || shortName.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="shortName.errors.required">
+                  Short Name is required.
+                </div>
+              </div>
 
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Report Name</mat-label>
               <input matInput placeholder="Report name" formControlName="reportName" required />
+              <div *ngIf="reportName.invalid && (reportName.dirty || reportName.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="reportName.errors.required">
+                  Report Name is required.
+                </div>
+              </div>
 
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>BB code</mat-label>
               <input matInput placeholder="BB code" formControlName="bbCode" required />
+              <div *ngIf="bbCode.invalid && (bbCode.dirty || bbCode.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="bbCode.errors.required">
+                  BB code is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Swift code</mat-label>
-              <label>
+
                 <input matInput placeholder="Swift code" formControlName="swiftCode" required />
-              </label>
+              <div *ngIf="swiftCode.invalid && (swiftCode.dirty || swiftCode.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="swiftCode.errors.required">
+                 Swift Code is required.
+                </div>
+              </div>
+
             </mat-form-field>
 <!--            <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"-->
 <!--                            fxFlex.xs="100%" appearance="fill">-->
@@ -74,29 +106,53 @@
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>BB Reg No.</mat-label>
-              <label>
                 <input matInput placeholder="BB Reg" formControlName="bbReg" required />
-              </label>
+              <div *ngIf="bbReg.invalid && (bbReg.dirty || bbReg.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="bbReg.errors.required">
+                  BB Reg No. is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <input matInput [matDatepicker]="picker" ng-model-options="{ timezone: 'utc' }" placeholder="Open Date" formControlName="openDate" required >
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <div *ngIf="openDate.invalid && (openDate.dirty || openDate.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="openDate.errors.required">
+                  Open Date is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Phone</mat-label>
-              <label>
                 <input matInput placeholder="Phone" formControlName="phone" required />
-              </label>
+              <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="phone.errors.required">
+                  Phone is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Currancy</mat-label>
               <mat-select placeholder="Currancy" formControlName="currency" required>
-                <mat-option *ngFor="let currency of currencyData" [value]="currency.id">{{currency.cur_name}} </mat-option>
+                <mat-option *ngFor="let currency of currencyData" [value]="currency.cur_name">{{currency.cur_name}} </mat-option>
               </mat-select>
+              <div *ngIf="currency.invalid && (currency.dirty || currency.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="currency.errors.required">
+                  Currancy is required.
+                </div>
+              </div>
             </mat-form-field>
           </div>
         </div>
@@ -108,58 +164,109 @@
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Fax</mat-label>
-                <label>
+
                   <input matInput placeholder="fax" formControlName="fax" required />
-                </label>
+                <div *ngIf="fax.invalid && (fax.dirty || fax.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="fax.errors.required">
+                    Fax is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Email</mat-label>
-                <label>
+
                   <input matInput placeholder="Email" formControlName="email" required />
-                </label>
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="email.errors.required">
+                    Email is required.
+                  </div>
+                  <div style="color: red" *ngIf="email.errors.email">
+                   Valid Email is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Web</mat-label>
-                <label>
+
                   <input matInput placeholder="Web" formControlName="web" required />
-                </label>
+                <div *ngIf="web.invalid && (web.dirty || web.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="web.errors.required">
+                    Web is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Contact Person</mat-label>
-                <label>
+
                   <input matInput placeholder="Contact Person" formControlName="contactPerson" required />
-                </label>
+                <div *ngIf="contactPerson.invalid && (contactPerson.dirty || contactPerson.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="contactPerson.errors.required">
+                    Contact Person is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Depository Part</mat-label>
-                <label>
+
                   <input matInput placeholder="Depository Part" formControlName="depositoryPart" required />
-                </label>
+                <div *ngIf="depositoryPart.invalid && (depositoryPart.dirty || depositoryPart.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="depositoryPart.errors.required">
+                    Depository Part is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Foreign Institute</mat-label>
-                <label>
+
                   <input matInput placeholder="Foreign Institute" formControlName="foreignInstitute" required />
-                </label>
+                <div *ngIf="foreignInstitute.invalid && (foreignInstitute.dirty || foreignInstitute.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="foreignInstitute.errors.required">
+                    Foreign Institute is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Cntr Bank Agent</mat-label>
-                <label>
+
                   <input matInput placeholder="Cntr Bank Agent" formControlName="cntrBankAgent" required />
-                </label>
+                <div *ngIf="cntrBankAgent.invalid && (cntrBankAgent.dirty || cntrBankAgent.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="cntrBankAgent.errors.required">
+                    Cntr Bank Agent is required.
+                  </div>
+                </div>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Depo Comp Id</mat-label>
-                <label>
+
                   <input matInput placeholder="Depo Comp Id" formControlName="depCompId" required />
-                </label>
+                <div *ngIf="depCompId.invalid && (depCompId.dirty || depCompId.touched)"
+                     class="alert alert-danger">
+
+                  <div style="color: red" *ngIf="depCompId.errors.required">
+                    Depo Comp Id is required.
+                  </div>
+                </div>
               </mat-form-field>
             </div>
           </div>
@@ -178,9 +285,15 @@
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Country</mat-label>
-              <label>
+
                 <input matInput placeholder="Country" formControlName="country" [disabled]="true" required >
-              </label>
+              <div *ngIf="country.invalid && (country.dirty || country.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="country.errors.required">
+                  Country is required.
+                </div>
+              </div>
             </mat-form-field>
 
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
@@ -189,13 +302,26 @@
               <mat-select placeholder="Division" [ngModel]="selectedDivision" (ngModelChange)="onSelect($event)"  formControlName="division" required>
                 <mat-option *ngFor="let division of divisionData" [value]="division.id">{{division.name}} </mat-option>
               </mat-select>
+              <div *ngIf="division.invalid && (division.dirty || division.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="division.errors.required">
+                  Division is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>City</mat-label>
-              <label>
+
                 <input matInput placeholder="City" formControlName="city" required />
-              </label>
+              <div *ngIf="city.invalid && (city.dirty || city.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="fullName.errors.required">
+                  City is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
@@ -203,20 +329,40 @@
               <mat-select placeholder="District" [ngModel]="selectedDistrict" (ngModelChange)="onSelectDistrict($event)"  formControlName="district" required>
                 <mat-option *ngFor="let district of districtData" [value]="district.id">{{district.name}} </mat-option>
               </mat-select>
+              <div *ngIf="district.invalid && (district.dirty || district.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="district.errors.required">
+                  District is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Upzilla</mat-label>
               <mat-select placeholder="Upzilla" formControlName="upzilla" required>
-                <mat-option *ngFor="let upzilla of upzillaData" [value]="upzilla.id">{{upzilla.name}} </mat-option>
+                <mat-option *ngFor="let upzilla of upzillaData" [value]="upzilla.name">{{upzilla.name}} </mat-option>
               </mat-select>
+              <div *ngIf="upzilla.invalid && (upzilla.dirty || upzilla.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="upzilla.errors.required">
+                  Upzilla is required.
+                </div>
+              </div>
             </mat-form-field>
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Postal Code</mat-label>
-              <label>
+
                 <input matInput placeholder="Postal Code" type="number" formControlName="postalcode" required />
-              </label>
+              <div *ngIf="postalcode.invalid && (postalcode.dirty || postalcode.touched)"
+                   class="alert alert-danger">
+
+                <div style="color: red" *ngIf="postalcode.errors.required">
+                 Postal code is required.
+                </div>
+              </div>
             </mat-form-field>
           </div>
         </div>
