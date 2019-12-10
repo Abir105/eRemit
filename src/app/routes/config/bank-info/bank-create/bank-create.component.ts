@@ -90,6 +90,7 @@ export class BankCreateComponent implements OnInit {
     this.bankAdd = this.bankService.addBank(form)
       .subscribe(data => {
         this.notification.successmsg('Bank  added successfully');
+        this.reactiveForm4.reset();
         }, (err) => {
         this.notification.errorsmsg('Sorry! Bank not added');
         }

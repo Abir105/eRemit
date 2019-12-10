@@ -13,6 +13,7 @@ export class BankDetailsComponent implements OnInit {
   bankDetailsDatabyId: any;
   bankDetailsData: any;
   private id: string;
+  private divisionData: any;
 
   constructor(private router: Router, private route: ActivatedRoute,  private bankService: BankService) { }
 
@@ -25,9 +26,15 @@ export class BankDetailsComponent implements OnInit {
     this.bank = this.bankService.getBankId(id).subscribe(data => {
       this.bankDetailsDatabyId = data;
       this.bankDetailsData = this.bankDetailsDatabyId[0];
-      console.log(this.bankDetailsData, 'bank detailllssssss');
     });
 
   }
+  public getAllDivision = () => {
+    this.bankService.getDevision('division')
+      .subscribe(res  => {
+        this.divisionData = res.data;
+      });
+
+  };
 
 }

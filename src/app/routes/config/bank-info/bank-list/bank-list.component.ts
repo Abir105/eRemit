@@ -1,12 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { BankInfo } from '../../../model/BankInfo';
 import { BankService } from '@core/services/bank.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { DeleteCountryComponent } from '../../country/delete-country/delete-country.component';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
-import { CountryService } from '@core/services/country.service';
 import { BankDeleteComponent } from '../bank-delete/bank-delete.component';
+
 
 
 @Component({
@@ -15,13 +16,18 @@ import { BankDeleteComponent } from '../bank-delete/bank-delete.component';
   styleUrls: ['./bank-list.component.scss']
 })
 export class BankListComponent implements OnInit {
-    dataSource: MatTableDataSource<BankInfo>;
-    displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'details', 'update', 'delete'];
-  private dialogRef: any;
+   public dataSource: MatTableDataSource<BankInfo>;
+   public displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'details', 'update', 'delete'];
+   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
    constructor(private bankService: BankService, public dialog: MatDialog) { }
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
+  public doFilter = (value: string) => {
+    value = value.trim(); // Remove whitespace
+    value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = value;
+  };
 
   ngOnInit() {
     this.getAllBanks();
@@ -29,19 +35,11 @@ export class BankListComponent implements OnInit {
   public getAllBanks = () => {
     this.bankService.getData('bank')
       .subscribe(res  => {
-        this.dataSource = res.data;
-        this.dataSource.sort = this.sort;
+        this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
-        console.log(this.dataSource.paginator, 'bank list' );
+        this.dataSource.sort = this.sort;
       });
   };
-  applyFilter(filterValue: string) {
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  }
 
   deleteBankRow(id: string) {
     const dialogConfig = new MatDialogConfig();
@@ -51,7 +49,6 @@ export class BankListComponent implements OnInit {
     this.dialogRef = this.dialog.open(BankDeleteComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);
-      //  console.log(obj);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
         this.notification.successmsg('Country Deleted successfully');

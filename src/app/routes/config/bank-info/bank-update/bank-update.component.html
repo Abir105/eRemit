@@ -5,7 +5,7 @@
     <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="3" >
-          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../']" >
+          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../../']" >
             <mat-icon>home</mat-icon>
           </button>
         </div>
@@ -14,13 +14,13 @@
         </div>
         <div fxFlexOffset="33" fxFlex="30"  >
           <div class="right-nevigation">
-            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../']" >
+            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../../']" >
               <mat-icon>arrow_back</mat-icon>
             </button>
             <!--            <button mat-icon-button color="warn" matTooltip="Cancel" >-->
             <!--              <mat-icon>cancel</mat-icon>-->
             <!--            </button>-->
-            <button mat-icon-button color="primary" type="submit" *ngIf="reactiveForm4" [disabled]="!reactiveForm4.valid" matTooltip="Save">
+            <button mat-icon-button color="primary" type="submit" [disabled]="!reactiveForm4.valid" *ngIf="reactiveForm4"  matTooltip="Save">
               <mat-icon>save</mat-icon>
             </button>
           </div>
@@ -326,7 +326,7 @@
                 <div *ngIf="city.invalid && (city.dirty || city.touched)"
                      class="alert alert-danger">
 
-                  <div style="color: red" *ngIf="fullName.errors.required">
+                  <div style="color: red" *ngIf="city.errors.required">
                     City is required.
                   </div>
                 </div>

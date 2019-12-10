@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'country', loadChildren: () => import('./country/country.module').then(m => m.CountryModule) },
   { path: 'currency', loadChildren: () => import('./currency/currency.module').then(m => m.CurrencyModule) },
   { path: 'time', loadChildren: () => import('./timestamp/timestamp.module').then(m => m.TimestampModule) },
-  { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) }
+  { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) },
+  { path: 'branch', loadChildren: () => import('./branch-info/branch-info.module').then(m => m.BranchInfoModule) }
 ];
 
 @NgModule({

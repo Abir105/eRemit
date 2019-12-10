@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import { DeleteCurrencyComponent } from '../delete-currency/delete-currency.comp
   templateUrl: './currency-list.component.html',
   styleUrls: ['./currency-list.component.scss']
 })
-export class CurrencyListComponent implements OnInit, AfterViewInit  {
+export class CurrencyListComponent implements OnInit  {
 
   public displayedColumns = ['sl', 'cur_name', 'cur_short_name', 'cur_swift_code', 'cur_report_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CurrencyInfo>();
@@ -32,23 +32,15 @@ export class CurrencyListComponent implements OnInit, AfterViewInit  {
     value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = value;
   };
-
-
-
   ngOnInit() {
     this.getAllCurrencies();
   }
-
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
-
   public getAllCurrencies = () => {
     this.repoService.getData('currencies')
       .subscribe(res  => {
-        this.dataSource.data = res.data;
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   };
 

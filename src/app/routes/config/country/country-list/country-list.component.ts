@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {  Component, OnInit, ViewChild } from '@angular/core';
 import { CountryService } from '@core/services/country.service';
 import { CountryInfo } from '../../../model/countryInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
@@ -16,7 +16,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.scss'],
 })
-export class CountryListComponent implements OnInit, AfterViewInit {
+export class CountryListComponent implements OnInit{
   // private addCountryComponent = AddCountryComponent;
   public displayedColumns = ['sl', 'name', 'short_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
@@ -35,15 +35,13 @@ export class CountryListComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.getAllCountries();
   }
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
-  }
 
   public getAllCountries = () => {
     this.countryService.getCountry('country')
       .subscribe(res => {
-        this.dataSource = res.data;
+        this.dataSource = new MatTableDataSource(res.data);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       });
   //  console.log(this.dataSource);
   };
@@ -54,7 +52,7 @@ export class CountryListComponent implements OnInit, AfterViewInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.dialog.open(AddCountryComponent, {
-      height: '300px',
+      height: '280px',
       width: '400px',
       autoFocus: false,
       disableClose: true,
@@ -98,8 +96,8 @@ export class CountryListComponent implements OnInit, AfterViewInit {
     dialogConfig.data = element;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '500px';
-    dialogConfig.width = '250px';
+    dialogConfig.height = '300px';
+    dialogConfig.width = '400px';
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);

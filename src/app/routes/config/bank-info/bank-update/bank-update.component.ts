@@ -150,6 +150,7 @@ export class BankUpdateComponent implements OnInit {
     this.bankAdd = this.bankService.bankUpdate(form)
       .subscribe(data => {
         this.notification.successmsg('Bank  updated successfully');
+        this.reactiveForm4.reset();
         }, (err) => {
         this.notification.errorsmsg('Sorry! Bank not updated');
         }
