@@ -51,10 +51,10 @@ export class BankListComponent implements OnInit {
       const obj = JSON.parse(value);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
-        this.notification.successmsg('Country Deleted successfully');
+        this.notification.successmsg('Bank Deleted successfully');
         this.getAllBanks();
       } else {
-        this.notification.errorsmsg('Sorry! Country not Deleted');
+        this.notification.errorsmsg('Sorry! Bank not Deleted');
       }
     });
   }

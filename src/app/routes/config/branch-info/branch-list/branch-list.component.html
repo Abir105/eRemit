@@ -1,5 +1,5 @@
 <!--<pre>-->
-<!--  {{bankData | json}}-->
+<!--  {{dataSource | json}}-->
 <!--</pre>-->
 
 <div class="card">
@@ -16,7 +16,7 @@
       <div fxFlex="30">
         <mat-form-field >
           <mat-label>Select a bank</mat-label>
-          <mat-select placeholder="Select a bank">
+          <mat-select placeholder="Select a bank" [ngModel]="selectedBank" (ngModelChange)="onSelect($event)" >
             <mat-option *ngFor="let bank of bankData" [value]="bank.id">{{bank.fullName}} </mat-option>
           </mat-select>
         </mat-form-field>
@@ -29,7 +29,7 @@
           </button>
         </mat-form-field>
       </div>
-      <div fxFlex="17"  >
+      <div fxFlex="20"  >
         <div class="right-nevigation">
 
           <button mat-icon-button color="primary" matTooltip="Add New"  [routerLink]="['create']">
@@ -42,33 +42,33 @@
     </div>
 
   </div>
-  <div class="container">
+  <div class="container" >
 
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" matSort>
 
         <!-- ID Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-          <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+        <ng-container matColumnDef="fullName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Full Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.fullName}} </td>
         </ng-container>
 
         <!-- Progress Column -->
-        <ng-container matColumnDef="progress">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-          <td mat-cell *matCellDef="let row"> {{row.progress}}% </td>
+        <ng-container matColumnDef="shortName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Short Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.shortName}} </td>
         </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-          <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+        <ng-container matColumnDef="routingNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Routing No </th>
+          <td mat-cell *matCellDef="let row"> {{row.routingNo}} </td>
         </ng-container>
-
-        <!-- Color Column -->
-        <ng-container matColumnDef="color">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-          <td mat-cell *matCellDef="let row" [style.color]="row.color"> {{row.color}} </td>
+        <ng-container matColumnDef="reportName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Report Name </th>
+          <td mat-cell *matCellDef="let row"> {{row.reportName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="swiftCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Swift Code  </th>
+          <td mat-cell *matCellDef="let row"> {{row.swiftCode}} </td>
         </ng-container>
         <ng-container matColumnDef="update">
           <th mat-header-cell *matHeaderCellDef> Update</th>
@@ -82,7 +82,7 @@
         <ng-container matColumnDef="delete">
           <th mat-header-cell *matHeaderCellDef> Delete</th>
           <td mat-cell *matCellDef="let row">
-            <button mat-icon-button color="warn" (click)="deleteBankRow(row.id)">
+            <button mat-icon-button color="warn" (click)="deleteBranchRow(row.id)" >
               <mat-icon class="mat-18">delete_forever</mat-icon>
             </button>
           </td>

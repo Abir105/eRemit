@@ -1,25 +1,29 @@
 <app-notification-comp></app-notification-comp>
-<form  [formGroup]="branchAddForm" class="matero-form-horizontal" >
+
+<form  [formGroup]="branchUpdateForm" (ngSubmit)="updateBranch(branchUpdateForm.value)"  class="matero-form-horizontal" >
   <div class="card">
     <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="3" >
-          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../']" >
+          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../../']" >
             <mat-icon>home</mat-icon>
           </button>
         </div>
         <div fxFlex="37" >
-          <h3>Branch Update</h3>
+          <h3>Update Branch</h3>
         </div>
         <div fxFlexOffset="33" fxFlex="30"  >
           <div class="right-nevigation">
-            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../']" >
+            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../../']" >
               <mat-icon>arrow_back</mat-icon>
             </button>
             <!--            <button mat-icon-button color="warn" matTooltip="Cancel" >-->
             <!--              <mat-icon>cancel</mat-icon>-->
             <!--            </button>-->
-            <button mat-icon-button color="primary" type="submit" matTooltip="Save">
+            <button mat-icon-button color="primary" type="submit"
+                    [disabled]="!branchUpdateForm.valid"
+                    *ngIf="branchUpdateForm"
+                    matTooltip="Save">
               <mat-icon>save</mat-icon>
             </button>
           </div>
@@ -35,57 +39,72 @@
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Select a bank</mat-label>
-                <mat-select placeholder="Select a bank">
+                <mat-select placeholder="Select a bank" [(ngModel)]="bankcode"  formControlName="bankcode">
                   <mat-option *ngFor="let bank of bankData" [value]="bank.id">{{bank.fullName}} </mat-option>
                 </mat-select>
+                <mat-error *ngIf="branchUpdateForm.get('bankcode').invalid">Bank Name Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Full Name</mat-label>
-                <input matInput placeholder="Full name" formControlName="fullName" required />
+                <input matInput placeholder="Full name" [(ngModel)]="fullName" formControlName="fullName" required />
 
+                <mat-error *ngIf="branchUpdateForm.get('fullName').invalid">full Name Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Short Name</mat-label>
-                <input matInput placeholder="Short name" formControlName="shortName" required />
-
+                <input matInput placeholder="Short name" [(ngModel)]="shortName" formControlName="shortName" required />
+                <mat-error *ngIf="branchUpdateForm.get('shortName').invalid">Short Name Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Report Name</mat-label>
-                <input matInput placeholder="Report Name" formControlName="reportName" required />
-
+                <input matInput placeholder="Report Name" [(ngModel)]="reportName" formControlName="reportName" required />
+                <mat-error *ngIf="branchUpdateForm.get('reportName').invalid">Report Name Required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Branch code</mat-label>
+                <input matInput placeholder="Branch code" type="number" [(ngModel)]="branchcode" formControlName="branchcode" required />
+                <mat-error *ngIf="branchUpdateForm.get('branchcode').invalid">Branch Code Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>BB Code</mat-label>
-                <input matInput placeholder="BB Code" formControlName="bbCode" required />
-
+                <input matInput placeholder="BB Code" [(ngModel)]="bbCode" formControlName="bbCode" required />
+                <mat-error *ngIf="branchUpdateForm.get('bbCode').invalid">BB code Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>BB Reg No.</mat-label>
-                <input matInput placeholder="BB Reg" formControlName="bbReg" required />
+                <input matInput placeholder="BB Reg" [(ngModel)]="bbReg" formControlName="bbReg" required />
+                <mat-error *ngIf="branchUpdateForm.get('bbReg').invalid">BB reg No: Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Swift Code</mat-label>
-                <input matInput placeholder="Swift Code" formControlName="swiftCode" required />
+                <input matInput placeholder="Swift Code" [(ngModel)]="swiftCode" formControlName="swiftCode" required />
+                <mat-error *ngIf="branchUpdateForm.get('swiftCode').invalid">Swift code Required
+                </mat-error>
 
               </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Branch Type</mat-label>
-                <input matInput placeholder="Swift Code" formControlName="branchType" required />
 
-              </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Currancy</mat-label>
-                <mat-select placeholder="Currancy" formControlName="currency" required>
-                  <mat-option *ngFor="let currency of currencyData" [value]="currency.cur_name">{{currency.cur_name}} </mat-option>
+                <mat-select placeholder="Currancy" [(ngModel)]="baseCurrency" formControlName="baseCurrency" required>
+                  <mat-option *ngFor="let currency of currencyData" [value]="currency.id">{{currency.cur_name}} </mat-option>
                 </mat-select>
+                <mat-error *ngIf="branchUpdateForm.get('baseCurrency').invalid">Currency Required
+                </mat-error>
 
               </mat-form-field>
 
@@ -97,45 +116,32 @@
           <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
             <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
                  fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
-                <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" formControlName="phone" required />
+                <mat-label>Created By</mat-label>
+
+                <input matInput placeholder="Created By"  [(ngModel)]="create_by" formControlName="create_by" required />
+                <mat-error *ngIf="branchUpdateForm.get('create_by').invalid">Created By Required
+                </mat-error>
 
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
-                <mat-label>Fax</mat-label>
-
-                <input matInput placeholder="fax" formControlName="fax" required />
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Email</mat-label>
-
-                <input matInput placeholder="Email" formControlName="email" required />
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Web</mat-label>
-
-                <input matInput placeholder="Web" formControlName="web" required />
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Contact Person</mat-label>
-
-                <input matInput placeholder="Contact Person" formControlName="contactPerson" required />
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <input matInput [matDatepicker]="picker" ng-model-options="{ timezone: 'utc' }" placeholder="Open Date" formControlName="openDate" required >
+                <input matInput [matDatepicker]="picker" ng-model-options="{ timezone: 'utc' }" placeholder="Open Date" [(ngModel)]="openDate" formControlName="openDate" required >
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="branchUpdateForm.get('openDate').invalid">Open Date Required
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Routing No</mat-label>
+                <input matInput placeholder="Routing No" formControlName="routingNo" [(ngModel)]="routingNo" required />
+                <mat-error *ngIf="branchUpdateForm.get('routingNo').invalid">Routing No Required
+                </mat-error>
+
               </mat-form-field>
 
             </div>
@@ -149,47 +155,25 @@
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Country</mat-label>
 
-                <input matInput placeholder="Country" formControlName="country" [disabled]="true" required >
-
+                <input matInput placeholder="Country" formControlName="country" required >
               </mat-form-field>
 
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>Division</mat-label>
-                <mat-select placeholder="Division" [ngModel]="selectedDivision" (ngModelChange)="onSelect($event)"  formControlName="division" required>
+                <mat-select placeholder="Division" [(ngModel)]="division"  formControlName="division" required>
                   <mat-option *ngFor="let division of divisionData" [value]="division.id">{{division.name}} </mat-option>
                 </mat-select>
-
+                <mat-error *ngIf="branchUpdateForm.get('division').invalid">Division Required
+                </mat-error>
               </mat-form-field>
               <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                               fxFlex.xs="100%" appearance="fill">
                 <mat-label>City</mat-label>
 
-                <input matInput placeholder="City" formControlName="city" required />
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>District</mat-label>
-                <mat-select placeholder="District" [ngModel]="selectedDistrict" (ngModelChange)="onSelectDistrict($event)"  formControlName="district" required>
-                  <mat-option *ngFor="let district of districtData" [value]="district.id">{{district.name}} </mat-option>
-                </mat-select>
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Upzilla</mat-label>
-                <mat-select placeholder="Upzilla" formControlName="upzilla" required>
-                  <mat-option *ngFor="let upzilla of upzillaData" [value]="upzilla.name">{{upzilla.name}} </mat-option>
-                </mat-select>
-
-              </mat-form-field>
-              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                              fxFlex.xs="100%" appearance="fill">
-                <mat-label>Postal Code</mat-label>
-
-                <input matInput placeholder="Postal Code" type="number" formControlName="postalcode" required />
-
+                <input matInput placeholder="City" formControlName="city" [(ngModel)]="city" required />
+                <mat-error *ngIf="branchUpdateForm.get('city').invalid">City Required
+                </mat-error>
               </mat-form-field>
 
 

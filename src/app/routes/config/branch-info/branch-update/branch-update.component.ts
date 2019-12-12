@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { BankService } from '@core/services/bank.service';
 import { CurrencyService } from '@core/services/currency.service';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-branch-update',
@@ -10,51 +12,78 @@ import { CurrencyService } from '@core/services/currency.service';
   styleUrls: ['./branch-update.component.scss']
 })
 export class BranchUpdateComponent implements OnInit {
-
-  selectedDivision = 0;
-  selectedDistrict = 0;
   private divisionData: any;
-  private districtData: any;
-  private upzillaData: any;
-  private countryData: any;
   private currencyData: any;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
-  branchAddForm: FormGroup;
+  branchUpdateForm: FormGroup;
   private bankData: any;
-  constructor(private fb: FormBuilder, private bankService: BankService, private currencyService: CurrencyService) { }
+  private branch: Subscription;
+  private branchDetailsDatabyId: any;
+  private id: string;
+  bankcode: number;
+  branchcode: number;
+  fullName: string;
+  shortName: string;
+  routingNo: string;
+  reportName: string;
+  bbCode: string;
+  swiftCode: string;
+  bbReg: string;
+  country: string;
+  baseCurrency: number;
+  city: string;
+  openDate: string;
+  division: number;
+  // tslint:disable-next-line:variable-name
+  create_by: string;
+  constructor(private fb: FormBuilder, private bankService: BankService, private router: Router, private route: ActivatedRoute, private currencyService: CurrencyService) { }
 
   ngOnInit() {
-    this.branchAddForm = this.fb.group({
-      fullName: ['', [Validators.required]],
-      shortName: ['', [Validators.required]],
-      reportName: ['', [Validators.required]],
-      bbCode: ['', [Validators.required]],
-      bbReg: ['', [Validators.required]],
-      branchType: ['', [Validators.required]],
-      openDate: ['', [Validators.required]],
-      swiftCode: ['', [Validators.required]],
-      country: ['Bangladesh', [Validators.required]],
-      city: ['', [Validators.required]],
-      division: ['', [Validators.required]],
-      postalcode: ['', [Validators.required]],
-      upzilla: ['', [Validators.required]],
-      district: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      web: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      fax: ['', [Validators.required]],
-      currency: ['', [Validators.required]],
-      contactPerson: ['', [Validators.required]],
-    });
-    this.getAllBanks();
-    this.getAllDivision();
-    this.getAllCountry();
-    this.getAllCurrency();
+     this.getAllBanks();
+     this.getAllCurrency();
+     this.getAllDivision();
+     this.id = this.route.snapshot.paramMap.get('id');
+     const id = this.id;
+     this.getBranchDetails(id);
+     this.branchUpdateForm = this.fb.group({
+           id: [ id, [Validators.required]],
+           fullName: ['', [Validators.required]],
+           shortName: ['', [Validators.required]],
+           reportName: ['', [Validators.required]],
+           bbCode: ['', [Validators.required]],
+           branchcode: ['', [Validators.required]],
+           bbReg: ['', [Validators.required]],
+           bankcode: ['', [Validators.required]],
+           openDate: ['', [Validators.required]],
+           swiftCode: ['', [Validators.required]],
+           country: ['Bangladesh', [Validators.required]],
+           city: [ '', [Validators.required]],
+           baseCurrency: [ '', [Validators.required]],
+           division: ['', [Validators.required]],
+           routingNo: ['', [Validators.required]],
+           create_by: ['', [Validators.required]],
+     });
+
+  }
+  updateBranch(form: NgForm) {
+    this.bankService.branchUpdate(form).subscribe(data => {
+          this.notification.successmsg('Bank  updated successfully');
+          this.branchUpdateForm.reset();
+        }, (err) => {
+          this.notification.errorsmsg('Sorry! Bank not updated');
+        }
+      );
   }
   public getAllBanks = () => {
     this.bankService.getData('bank')
       .subscribe(res  => {
         this.bankData = res.data;
+      });
+  };
+  public getAllCurrency = () => {
+    this.currencyService.getData('currency')
+      .subscribe(res  => {
+        this.currencyData = res.data;
       });
   };
   public getAllDivision = () => {
@@ -64,38 +93,24 @@ export class BranchUpdateComponent implements OnInit {
       });
 
   };
-  onSelect(id) {
-    this.selectedDivision = id;
-    this.getAllDistrict(id);
+  private getBranchDetails(id: string) {
+    this.branch = this.bankService.getBranchById(id).subscribe(data => {
+      this.branchDetailsDatabyId = data;
+      this.bankcode = this.branchDetailsDatabyId[0].bankcode;
+      this.branchcode = this.branchDetailsDatabyId[0].branchcode;
+      this.fullName = this.branchDetailsDatabyId[0].fullName;
+      this.shortName = this.branchDetailsDatabyId[0].shortName;
+      this.routingNo = this.branchDetailsDatabyId[0].routingNo;
+      this.reportName = this.branchDetailsDatabyId[0].reportName;
+      this.bbCode = this.branchDetailsDatabyId[0].bbCode;
+      this.swiftCode = this.branchDetailsDatabyId[0].swiftCode;
+      this.bbReg = this.branchDetailsDatabyId[0].bbReg;
+      this.country = this.branchDetailsDatabyId[0].country;
+      this.baseCurrency = +this.branchDetailsDatabyId[0].baseCurrency;
+      this.city = this.branchDetailsDatabyId[0].city;
+      this.openDate = this.branchDetailsDatabyId[0].openDate;
+      this.division = +this.branchDetailsDatabyId[0].division;
+      this.create_by = this.branchDetailsDatabyId[0].create_by;
+    });
   }
-  onSelectDistrict(id) {
-    this.selectedDistrict = id;
-    this.getAllUpzilla(id);
   }
-  public getAllDistrict = (id) => {
-    this.bankService.getDistrict('district', id)
-      .subscribe(res  => {
-        this.districtData = res.data;
-      });
-  };
-  public getAllUpzilla = (id) => {
-    this.bankService.getUpzilla('upzilla', id)
-      .subscribe(res  => {
-        this.upzillaData = res.data;
-      });
-  };
-  public getAllCountry = () => {
-    this.bankService.getCountry('country')
-      .subscribe(res  => {
-        this.countryData = res;
-      });
-  };
-  public getAllCurrency = () => {
-    this.currencyService.getData('currency')
-      .subscribe(res  => {
-        this.currencyData = res.data;
-      });
-  };
-
-
-}

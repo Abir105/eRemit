@@ -14,13 +14,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { BranchCreateComponent } from './branch-create/branch-create.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CountryModule } from '../country/country.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../material.module';
 import { BranchUpdateComponent } from './branch-update/branch-update.component';
+import { BranchDeleteComponent } from './branch-delete/branch-delete.component';
 
 
 @NgModule({
-  declarations: [BranchListComponent, BranchCreateComponent, BranchUpdateComponent],
+  declarations: [BranchListComponent, BranchCreateComponent, BranchUpdateComponent, BranchDeleteComponent],
   imports: [
     CommonModule,
     BranchInfoRoutingModule,
@@ -37,6 +38,7 @@ import { BranchUpdateComponent } from './branch-update/branch-update.component';
     CountryModule,
     ReactiveFormsModule,
     MaterialModule,
+    FormsModule,
   ],
 })
 export class BranchInfoModule { }

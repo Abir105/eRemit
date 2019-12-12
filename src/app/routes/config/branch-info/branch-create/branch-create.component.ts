@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { BankService } from '@core/services/bank.service';
 import { CurrencyService } from '@core/services/currency.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-branch-create',
@@ -20,35 +21,44 @@ export class BranchCreateComponent implements OnInit {
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
   branchAddForm: FormGroup;
   private bankData: any;
+  addBranchData: any;
   constructor(private fb: FormBuilder, private bankService: BankService, private currencyService: CurrencyService) { }
 
   ngOnInit() {
     this.branchAddForm = this.fb.group({
+      bankcode: ['', [Validators.required]],
       fullName: ['', [Validators.required]],
       shortName: ['', [Validators.required]],
       reportName: ['', [Validators.required]],
+      branchcode: ['', [Validators.required]],
+      routingNo: ['', [Validators.required]],
       bbCode: ['', [Validators.required]],
       bbReg: ['', [Validators.required]],
-      branchType: ['', [Validators.required]],
       openDate: ['', [Validators.required]],
       swiftCode: ['', [Validators.required]],
       country: ['Bangladesh', [Validators.required]],
+      // country: [{value: 'Bangladesh', disabled: true}, [Validators.required]],
       city: ['', [Validators.required]],
       division: ['', [Validators.required]],
-      postalcode: ['', [Validators.required]],
-      upzilla: ['', [Validators.required]],
-      district: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      web: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      fax: ['', [Validators.required]],
-      currency: ['', [Validators.required]],
-      contactPerson: ['', [Validators.required]],
+      baseCurrency: ['', [Validators.required]],
+      create_by: ['', [Validators.required]],
       });
     this.getAllBanks();
     this.getAllDivision();
     this.getAllCountry();
     this.getAllCurrency();
+  }
+  // get fullName() { return this.branchAddForm.get('fullName'); }
+
+  addBranch(form: NgForm) {
+    this.addBranchData = this.bankService.branchAdd(form)
+      .subscribe(data => {
+          this.notification.successmsg('Branch  added successfully');
+          this.branchAddForm.reset();
+        }, (err) => {
+          this.notification.errorsmsg('Sorry! Branch not added');
+        }
+      );
   }
   public getAllBanks = () => {
     this.bankService.getData('bank')

@@ -3,23 +3,12 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { BankService } from '@core/services/bank.service';
+import { Subscription } from 'rxjs';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { BranchDeleteComponent } from '../branch-delete/branch-delete.component';
+import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
+import { ToastrService } from 'ngx-toastr';
 
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-/** Constants used to fill up our data base. */
-const COLORS: string[] = [
-  'maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple', 'fuchsia', 'lime', 'teal',
-  'aqua', 'blue', 'navy', 'black', 'gray'
-];
-const NAMES: string[] = [
-  'Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack', 'Charlotte', 'Theodore', 'Isla', 'Oliver',
-  'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
-];
 
 
 @Component({
@@ -28,25 +17,21 @@ const NAMES: string[] = [
   styleUrls: ['./branch-list.component.scss']
 })
 export class BranchListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color', 'update', 'delete'];
-  dataSource: MatTableDataSource<UserData>;
-
+  selectedBank = 0;
+  displayedColumns: string[] = ['fullName', 'shortName', 'routingNo', 'reportName', 'swiftCode', 'update', 'delete'];
+  private dialogRef: any;
+  dataSource: MatTableDataSource<any>;
+  @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   private bankData: any;
+  private branch: Subscription;
+  private branchDetailsDatabyId: any;
 
 
-  constructor(private bankService: BankService ) {
-    // Create 100 users
-    const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(users);
-  }
+  constructor(private bankService: BankService , public dialog: MatDialog, private toastr: ToastrService) {}
 
   ngOnInit() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
     this.getAllBanks();
   }
   public getAllBanks = () => {
@@ -55,6 +40,18 @@ export class BranchListComponent implements OnInit {
         this.bankData = res.data;
       });
   };
+  onSelect(id) {
+    this.selectedBank = id;
+    this.getBranchList(id);
+  }
+  private getBranchList(id: string) {
+    this.branch = this.bankService.getBranchByBankCode(id).subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    });
+
+  }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -62,16 +59,24 @@ export class BranchListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
+  private deleteBranchRow(id: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = { id };
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialogRef = this.dialog.open(BranchDeleteComponent, dialogConfig);
+    this.dialogRef.afterClosed().subscribe(value => {
+      const obj = JSON.parse(value);
+      const affectedRows = obj.data.affectedRows;
+      if (affectedRows === 1) {
+        this.toastr.success('Branch  Deleted successfully');
+        // this.notification.successmsg('Branch  Deleted successfully');
+        this.getBranchList(id);
+      } else {
+        this.notification.errorsmsg('Sorry! Branch not Deleted');
+      }
+    });
+  }
 
-}
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
 
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
 }
