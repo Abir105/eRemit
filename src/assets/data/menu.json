@@ -22,11 +22,7 @@
           "name": "Currency Info",
           "type": "link"
         },
-        {
-          "state": "time",
-          "name": "Time Info",
-          "type": "link"
-        },
+
         {
           "state": "bank",
           "name": "Bank Info",
@@ -35,6 +31,19 @@
         {
           "state": "branch",
           "name": "Branch Info",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "state": "exchangeHouse",
+      "name": "Exchange House",
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "exchangeHouseList",
+          "name": "Exchange House List",
           "type": "link"
         }
       ]

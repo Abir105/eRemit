@@ -23,7 +23,12 @@ const routes: Routes = [
       {
         path: 'config',
         loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),
-        data: { title: 'Material', titleI18n: 'material' },
+        data: { title: 'Config', titleI18n: 'config' },
+      },
+      {
+        path: 'exchangeHouse',
+        loadChildren: () => import('./exchange-house-setup/exchange-house-setup.module').then(m => m.ExchangeHouseSetupModule),
+        data: { title: 'ExchangeHouse', titleI18n: 'exchangeHouse' },
       },
       {
         path: 'setup',

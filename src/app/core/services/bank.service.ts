@@ -12,7 +12,7 @@ import { BankInfo } from '../../routes/model/BankInfo';
 })
 
 export class BankService {
-  Url = 'http://10.11.201.40:3000/';
+  Url = 'http://10.11.201.92:3001/';
   Url2 = 'http://10.11.201.92:3001/';
 
   constructor(private http: HttpClient) { }
