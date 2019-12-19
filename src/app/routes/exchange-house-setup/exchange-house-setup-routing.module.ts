@@ -7,10 +7,10 @@ import { ExchangeHouseUpdateComponent } from './exchange-house-update/exchange-h
 
 
 const routes: Routes = [
-  { path: 'exchangeHouseList', component: ExchangeHouseListComponent },
-  {path: 'exchangeHouseAdd', component: ExchangeHouseAddComponent},
-  {path: 'exchangeHouseUpdate', component: ExchangeHouseUpdateComponent},
-  {path: 'exchangeHouseDelete', component: ExchangeHouseDeleteComponent}
+  { path: '', component: ExchangeHouseListComponent },
+  {path: 'add', component: ExchangeHouseAddComponent},
+  {path: 'update', component: ExchangeHouseUpdateComponent},
+  {path: 'delete', component: ExchangeHouseDeleteComponent}
 ];
 
 @NgModule({

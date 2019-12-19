@@ -3,15 +3,15 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-user',
   template: `
-    <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">
-      <img
-        class="matero-user-avatar r-full align-middle"
-        src="assets/images/eraLogo.png"
-        width="24"
-        alt="avatar"
-      />
-      <span class="align-middle">eRemit</span>
-    </a>
+<!--    <a mat-button href="javascript:void(0)" [matMenuTriggerFor]="menu">-->
+<!--      <img-->
+<!--        class="matero-user-avatar r-full align-middle"-->
+<!--        src="assets/images/eraLogo.png"-->
+<!--        width="24"-->
+<!--        alt="avatar"-->
+<!--      />-->
+<!--      <span class="align-middle">eRemit</span>-->
+<!--    </a>-->
 
 <!--    <mat-menu #menu="matMenu">-->
 <!--      <a routerLink="/profile/overview" mat-menu-item>-->

@@ -64,25 +64,25 @@ export class BankService {
 
   addBank(bank): Observable<any> {
     return this.http.post<any>(this.Url + 'bank/', bank).pipe(
-      map(response => (response.isExecuted && response.data ? true : false)),
+      map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
   }
   branchAdd(branch): Observable<any> {
     return this.http.post<any>(this.Url2 + 'branch', branch).pipe(
-      map(response => (response.isExecuted && response.data ? true : false)),
+      map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
   }
   bankUpdate(bank): Observable<any> {
     return this.http.put<any>(this.Url + 'bank/', bank).pipe(
-      map(response => (response.isExecuted && response.data ? true : false)),
+      map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
   }
   branchUpdate(branch): Observable<any> {
     return this.http.put<any>(this.Url2 + 'branch/', branch).pipe(
-      map(response => (response.isExecuted && response.data ? true : false)),
+      map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
   }

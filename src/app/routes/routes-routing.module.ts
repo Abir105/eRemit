@@ -83,7 +83,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'auth',
+    path: '',
     component: AuthLayoutComponent,
     children: [
       { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } },
@@ -94,7 +94,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'login' },
 ];
 
 @NgModule({

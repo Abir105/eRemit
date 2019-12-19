@@ -38,15 +38,8 @@
     {
       "state": "exchangeHouse",
       "name": "Exchange House",
-      "type": "sub",
-      "icon": "apps",
-      "children": [
-        {
-          "state": "exchangeHouseList",
-          "name": "Exchange House List",
-          "type": "link"
-        }
-      ]
+      "type": "link",
+      "icon": "apps"
     }
   ]
 }

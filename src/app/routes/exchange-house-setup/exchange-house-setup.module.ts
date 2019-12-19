@@ -19,6 +19,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MaterialModule } from '../../material.module';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MaterialModule } from '../../material.module';
     MatSelectModule,
     MatCardModule,
     MatDatepickerModule,
-    MaterialModule
+    MaterialModule,
+    MatStepperModule
   ],
 })
 export class ExchangeHouseSetupModule { }
