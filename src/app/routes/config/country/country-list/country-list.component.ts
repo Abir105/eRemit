@@ -16,8 +16,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './country-list.component.html',
   styleUrls: ['./country-list.component.scss'],
 })
-export class CountryListComponent implements OnInit{
-  // private addCountryComponent = AddCountryComponent;
+export class CountryListComponent implements OnInit {
   public displayedColumns = ['sl', 'name', 'short_name', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
   private dialogRef: any;
@@ -45,20 +44,20 @@ export class CountryListComponent implements OnInit{
       });
   //  console.log(this.dataSource);
   };
-
-  addNew(): void {
+  addNew() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { name: 'some name' };
+    dialogConfig.data = { name: '' };
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.dialog.open(AddCountryComponent, {
-      height: '280px',
+      height: '400px',
       width: '400px',
       autoFocus: false,
-      disableClose: true,
+      disableClose: true
     });
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);
+      console.log(obj);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
         this.notification.successmsg('Country Added successfully');
@@ -68,6 +67,8 @@ export class CountryListComponent implements OnInit{
       }
     });
   }
+
+
 
   // tslint:disable-next-line:variable-name
   deleteCountryRow(short_name: string) {

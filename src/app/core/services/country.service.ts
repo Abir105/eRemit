@@ -16,12 +16,12 @@ export class CountryService {
   public getCountry = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'country');
   };
-
-  public create = (route: string, body) => {
-   // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
+  public create = ({ route, body }: { route: string, body: any }) => {
+    // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     console.log(body);
-    return this.http.post('http://10.11.201.92:3001/', body);
+    return this.http.post('http://10.11.201.92:3001/country', body);
   };
+
 
 
   public delete = (body) => {

@@ -3,15 +3,15 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 @font-face {
   font-family: Univers;
-  src: url(assets/fonts/Univers-Condensed.otf);
+  src: url(assets/fonts/NotoSans-Regular.ttf);
 }
 
 body {
-  font-family: Univers;
+  font-family: San-Serif;
 }
 
 * {
-  font-family: Univers;
+  font-family: San-Serif;
 }
 
 

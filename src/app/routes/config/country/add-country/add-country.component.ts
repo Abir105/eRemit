@@ -22,10 +22,9 @@ export class AddCountryComponent implements OnInit {
 
   ngOnInit() {
   }
-
   countryFormSubmit(data) {
     console.log(data);
-    this.countryService.create('addCountry', data)
+    this.countryService.create({ route: 'addCountry', body: data })
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));
       });

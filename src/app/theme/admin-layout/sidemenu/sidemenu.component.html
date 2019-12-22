@@ -2,7 +2,7 @@
   <li navAccordionLink class="matero-sidemenu-item" routerLinkActive="active"
       *ngFor="let menuItem of menus"
       [group]="menuItem.state">
-    <a class="matero-sidemenu-link" [routerLink]="['/', menuItem.state]"
+    <a class="matero-sidemenu-link"  [routerLink]="['/', menuItem.state]"
        *ngIf="menuItem.type === 'link'"
        matRipple [matRippleDisabled]="!ripple" (click)="generateOutputEvent()" >
       <mat-icon class="menu-icon">{{ menuItem.icon }}</mat-icon>
