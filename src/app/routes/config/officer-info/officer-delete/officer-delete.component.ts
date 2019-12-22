@@ -18,7 +18,7 @@ export class OfficerDeleteComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteCurrency() {
+  deleteOffice() {
     this.officerService.delete(this.id).subscribe((res) => {
         this.dialogRef.close(JSON.stringify(res));
       }

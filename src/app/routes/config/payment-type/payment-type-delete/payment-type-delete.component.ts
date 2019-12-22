@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { PaymentTypeService } from '@core/services/payment-type.service';
 
 @Component({
   selector: 'app-payment-type-delete',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentTypeDeleteComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+
+  constructor(private paymentTypeService: PaymentTypeService, private dialogRef: MatDialogRef<PaymentTypeDeleteComponent>, @Inject(MAT_DIALOG_DATA) data) {
+    this.id = data.id;
+  }
 
   ngOnInit() {
+  }
+
+  deletePaymentType() {
+    this.paymentTypeService.delete(this.id).subscribe((res) => {
+        this.dialogRef.close(JSON.stringify(res));
+      }
+    );
   }
 
 }

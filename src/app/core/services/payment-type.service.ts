@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OfficerService {
+export class PaymentTypeService {
   Url = 'http://10.11.201.92:3001/';
 
   constructor(private http: HttpClient) { }
 
-  public officerList = (route: string): Observable<any> => {
-    return this.http.get(this.Url + 'officer');
+  public paymentTypeList = (route: string): Observable<any> => {
+    return this.http.get(this.Url + 'paymentType');
   };
-  public addOfficer = ({ route, body }: { route: string, body: any }) => {
+  public addPaymentType = ({ route, body }: { route: string, body: any }) => {
     console.log(body);
-    return this.http.post(this.Url + 'officer', body);
+    return this.http.post(this.Url + 'paymentType', body);
   };
   public delete = (id) => {
     const options = {
@@ -24,10 +23,11 @@ export class OfficerService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(this.Url + `officer/${id}`, options);
+    return this.http.delete(this.Url + `paymentType/${id}`, options);
   };
 
   public update = (route: string, element) => {
-    return this.http.put(this.Url + 'officer/', element);
+    console.log(element);
+    return this.http.put(this.Url + 'paymentType/', element);
   };
 }

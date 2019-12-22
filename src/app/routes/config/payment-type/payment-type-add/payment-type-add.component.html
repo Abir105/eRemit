@@ -1,1 +1,27 @@
-<p>payment-type-add works!</p>
+<h2 mat-dialog-title align="center">Add New Payment Type</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="PaymentTypeAddForm" class="matero-form-horizontal">
+
+    <div fxLayout="column wrap">
+      <div   fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Payment Type Name</mat-label>
+          <input matInput placeholder="" formControlName="paymentTypeName" required>
+          <mat-error *ngIf="PaymentTypeAddForm.get('paymentTypeName').invalid">Payment Type Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="accent" mat-dialog-close >Close</button>
+  <button (click)='paymentTypeAdd(PaymentTypeAddForm.value)' [disabled]="!PaymentTypeAddForm.valid"
+          mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
+</div>
+
+
+

@@ -25,4 +25,8 @@ export class SidemenuComponent {
   filterStates(states: string[]) {
     return states.filter(item => item && item.trim());
   }
+
+  generateOutputEvent() {
+    this.toggleSidenavAfterClick.emit();
+  }
 }

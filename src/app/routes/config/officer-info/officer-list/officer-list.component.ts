@@ -8,7 +8,7 @@ import { OfficerService } from '@core/services/officer.service';
 import { OfficerAddComponent } from '../officer-add/officer-add.component';
 import { OfficerDeleteComponent } from '../officer-delete/officer-delete.component';
 import { ToastrService } from 'ngx-toastr';
-import { AddCurrencyComponent } from '../../currency/add-currency/add-currency.component';
+import { OfficerUpdateComponent } from '../officer-update/officer-update.component';
 
 
 @Component({
@@ -47,7 +47,6 @@ export class OfficerListComponent implements OnInit {
   };
   addNew() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.data = { name: '' };
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.matDialog.open(OfficerAddComponent, {
@@ -70,53 +69,28 @@ export class OfficerListComponent implements OnInit {
   }
 
 
-  // addNew() {
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.data = { employeeName: '' };
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //   this.dialogRef = this.matDialog.open(OfficerAddComponent, {
-  //     height: '400px',
-  //     width: '400px',
-  //     autoFocus: false,
-  //     disableClose: true
-  //   });
-  //   this.dialogRef.afterClosed().subscribe(value => {
-  //     const obj = JSON.parse(value);
-  //     console.log(obj);
-  //     const affectedRows = obj.data.affectedRows;
-  //     if (affectedRows === 1) {
-  //       this.toastr.success('Officer  Deleted successfully');
-  //       // this.notification.successmsg('Currency Added successfully');
-  //       this.getAllOfficers();
-  //     } else {
-  //       this.notification.errorsmsg('Sorry! Officer not Added');
-  //     }
-  //   });
-  // }
+  UpdateOfficer(element) {
 
-  // UpdateCurrency(element) {
-  //
-  //   const dialogConfig = new MatDialogConfig();
-  //   dialogConfig.data = element;
-  //   dialogConfig.disableClose = true;
-  //   dialogConfig.autoFocus = true;
-  //   dialogConfig.height = '400px';
-  //   dialogConfig.width = '400px';
-  //   this.dialogRef = this.matDialog.open(UpdateCurrencyComponent, dialogConfig);
-  //   this.dialogRef.afterClosed().subscribe(value => {
-  //     const obj = JSON.parse(value);
-  //     console.log(obj);
-  //     const affectedRows = obj.data.affectedRows;
-  //     if (affectedRows === 1) {
-  //       this.notification.successmsg('Currency Updated successfully');
-  //       this.getAllCurrencies();
-  //     } else {
-  //       this.notification.errorsmsg('Sorry! Currency not Updated');
-  //     }
-  //   });
-  // }
-  deleteCurrencyRow( id: string) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = element;
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.height = '400px';
+    dialogConfig.width = '400px';
+    this.dialogRef = this.matDialog.open(OfficerUpdateComponent, dialogConfig);
+    this.dialogRef.afterClosed().subscribe(value => {
+      const obj = JSON.parse(value);
+      console.log(obj);
+      const affectedRows = obj.data.affectedRows;
+      if (affectedRows === 1) {
+        this.toastr.success('Officer  Updated successfully');
+        this.getAllOfficers();
+      } else {
+        this.notification.errorsmsg('Sorry! Officer not Updated');
+      }
+    });
+  }
+  deleteOfficerRow( id: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { id };
     dialogConfig.disableClose = true;
@@ -131,7 +105,7 @@ export class OfficerListComponent implements OnInit {
        // this.notification.successmsg('Currency Deleted successfully');
         this.getAllOfficers();
       } else {
-        this.notification.errorsmsg('Officer! Currency not Deleted');
+        this.notification.errorsmsg('Sorry! Officer not Deleted');
       }
     });
   }

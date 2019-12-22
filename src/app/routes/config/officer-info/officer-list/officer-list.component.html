@@ -65,16 +65,16 @@
       <ng-container matColumnDef="update">
         <th mat-header-cell *matHeaderCellDef> Update</th>
         <td mat-cell *matCellDef="let element">
-<!--          <button mat-icon-button color="accent" (click)="UpdateCurrency(element)">-->
-<!--            <mat-icon class="mat-18">update</mat-icon>-->
-<!--          </button>-->
+          <button mat-icon-button color="accent" (click)="UpdateOfficer(element)">
+            <mat-icon class="mat-18">update</mat-icon>
+          </button>
         </td>
       </ng-container>
 
       <ng-container matColumnDef="delete">
         <th mat-header-cell *matHeaderCellDef> Delete</th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button color="warn" (click)="deleteCurrencyRow(element.id)">
+          <button mat-icon-button color="warn" (click)="deleteOfficerRow(element.id)">
             <mat-icon class="mat-18">delete_forever</mat-icon>
           </button>
         </td>
