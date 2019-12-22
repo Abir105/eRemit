@@ -6,10 +6,8 @@ import { SharedModule } from '@shared/shared.module';
 import {MaterialModule} from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ThemeModule } from '../../theme/theme.module';
-
 const COMPONENTS = [ ];
 const COMPONENTS_DYNAMIC = [];
-
 @NgModule({
   imports: [SharedModule, ConfigRoutingModule, MaterialModule, MatTableModule, MatSortModule,
     MatInputModule, FlexLayoutModule, MatPaginatorModule, ThemeModule,

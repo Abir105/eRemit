@@ -7,5 +7,5 @@
 <div class="matero-sidebar-inner">
   <app-user-panel *ngIf="showUser"></app-user-panel>
 <!--  <app-sidemenu [ripple]="showToggle" ></app-sidemenu>-->
-  <app-sidemenu [ripple]="showToggle" ></app-sidemenu>
+  <app-sidemenu [ripple]="showToggle" (toggleSidenavAfterClick) ="toggleCollapsedSideMenu.emit()" ></app-sidemenu>
 </div>

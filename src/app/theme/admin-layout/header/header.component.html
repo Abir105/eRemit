@@ -1,6 +1,6 @@
 <mat-toolbar class="matero-toolbar" color="primary">
 
-  <button mat-button class="matero-hamburger" (click)="toggleSidenav.emit()" *ngIf="showToggle">
+  <button mat-button class="matero-hamburger" (click)="toggleSidenav.emit()" *ngIf="showToggle && !hideMenuButton">
     <mat-icon>menu</mat-icon>
   </button>
 

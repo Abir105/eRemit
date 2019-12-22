@@ -32,6 +32,16 @@
           "state": "branch",
           "name": "Branch Info",
           "type": "link"
+        },
+        {
+          "state": "officer",
+          "name": "Officer Info",
+          "type": "link"
+        },
+        {
+          "state": "paymentType",
+          "name": "Payment Type",
+          "type": "link"
         }
       ]
     },

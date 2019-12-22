@@ -17,6 +17,7 @@ import * as screenfull from 'screenfull';
 export class HeaderComponent implements OnInit {
   @Input() showToggle = true;
   @Input() showBranding = false;
+  @Input() hideMenuButton = true;
 
   @Output() toggleSidenav = new EventEmitter<void>();
   @Output() toggleSidenavRight = new EventEmitter<void>();

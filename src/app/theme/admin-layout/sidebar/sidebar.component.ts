@@ -10,6 +10,7 @@ export class SidebarComponent {
   @Input() showHeader = true;
 
   @Output() toggleCollapsed = new EventEmitter<void>();
+  @Output() toggleCollapsedSideMenu = new EventEmitter<void>();
 
   constructor() {}
 }
