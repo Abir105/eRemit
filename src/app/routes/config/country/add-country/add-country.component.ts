@@ -16,7 +16,9 @@ export class AddCountryComponent implements OnInit {
               private fb: FormBuilder, private countryService: CountryService) {
     this.reactiveForm1 = this.fb.group({
       name: ['', [Validators.required]],
-      short_name: ['', [Validators.required]]
+      short_name: ['', [Validators.required]],
+      isoCode: ['', [Validators.required]],
+
     });
   }
 

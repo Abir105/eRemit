@@ -19,7 +19,7 @@ import { PaymentTypeUpdateComponent } from '../payment-type-update/payment-type-
 export class PaymentTypeListComponent implements OnInit {
 
 
-  public displayedColumns = ['paymentTypeName',  'update', 'delete'];
+  public displayedColumns = ['sl', 'paymentTypeName',  'update', 'delete'];
   public dataSource = new MatTableDataSource<any>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;

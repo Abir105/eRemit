@@ -16,11 +16,13 @@ export class UpdateCountryComponent implements OnInit {
   id: number;
   shortName: string;
   name: string;
+  isoCode: string;
 
   constructor(public dialogRef: MatDialogRef<UpdateCountryComponent>, private fb: FormBuilder, private repoService: CountryService, @Inject(MAT_DIALOG_DATA) data) {
     this.reactiveForm2 = this.fb.group({
       name: ['', [Validators.required]],
-      short_name: ['', [Validators.required]]
+      short_name: ['', [Validators.required]],
+      isoCode: ['', [Validators.required]]
     });
     this.element = data;
   }
@@ -29,6 +31,7 @@ export class UpdateCountryComponent implements OnInit {
     this.shortName = this.element.short_name;
     this.name = this.element.name;
     this.id = this.element.id;
+    this.isoCode = this.element.isoCode;
 
     //  console.log(this.data);
     // console.log(this.data.short_name,'dddddddddddddddddddd');
@@ -36,7 +39,7 @@ export class UpdateCountryComponent implements OnInit {
   }
 
   countryFormUpdate(data) {
-    const updateCountryData = {id: this.element.id, name: data.name, short_name: data.short_name};
+    const updateCountryData = {id: this.element.id, name: data.name, short_name: data.short_name, isoCode: data.isoCode};
     this.repoService.update('updateCountry', updateCountryData)
       .subscribe(res => {
         this.dialogRef.close(JSON.stringify(res));

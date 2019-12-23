@@ -17,7 +17,7 @@ import { MatSort } from '@angular/material/sort';
   styleUrls: ['./country-list.component.scss'],
 })
 export class CountryListComponent implements OnInit {
-  public displayedColumns = ['sl', 'name', 'short_name', 'update', 'delete'];
+  public displayedColumns = ['sl', 'name', 'short_name', 'isoCode', 'update', 'delete'];
   public dataSource = new MatTableDataSource<CountryInfo>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
@@ -50,7 +50,7 @@ export class CountryListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.dialog.open(AddCountryComponent, {
-      height: '400px',
+      height: '350px',
       width: '400px',
       autoFocus: false,
       disableClose: true
@@ -97,7 +97,7 @@ export class CountryListComponent implements OnInit {
     dialogConfig.data = element;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '300px';
+    dialogConfig.height = '350px';
     dialogConfig.width = '400px';
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {

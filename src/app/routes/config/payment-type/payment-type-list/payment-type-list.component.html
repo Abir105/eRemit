@@ -39,7 +39,10 @@
   </div>
   <div class="container">
     <table mat-table [dataSource]="dataSource" matSort>
-
+      <ng-container matColumnDef="sl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+        <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+      </ng-container>
 
       <ng-container matColumnDef="paymentTypeName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Type Name</th>

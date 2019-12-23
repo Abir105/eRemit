@@ -19,6 +19,13 @@
                 <mat-error *ngIf="reactiveForm1.get('short_name').invalid">Short Name Required
                 </mat-error>
               </mat-form-field>
+              <mat-form-field>
+                <mat-label>Iso Code</mat-label>
+                <input matInput placeholder="" formControlName="isoCode"
+                       required>
+                <mat-error *ngIf="reactiveForm1.get('isoCode').invalid">Short Name Required
+                </mat-error>
+              </mat-form-field>
     </div>
   </form>
 </mat-dialog-content>

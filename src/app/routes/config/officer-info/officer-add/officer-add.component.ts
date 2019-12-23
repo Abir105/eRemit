@@ -10,8 +10,8 @@ import { OfficerService } from '@core/services/officer.service';
 })
 export class OfficerAddComponent implements OnInit {
   statusValue = [
-    {value: '0', viewValue: 'False'},
-    {value: '1', viewValue: 'True'},
+    {value: '0', viewValue: 'Inactive'},
+    {value: '1', viewValue: 'Active'},
   ];
   officerAddForm: FormGroup;
 

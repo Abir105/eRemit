@@ -2,7 +2,6 @@
 
 <mat-dialog-content>
   <form [formGroup]="officerAddForm" class="matero-form-horizontal">
-
     <div fxLayout="column wrap">
       <div   fxFlex="50" fxFlex.lt-sm="100">
         <mat-form-field>
@@ -12,27 +11,6 @@
           </mat-error>
         </mat-form-field>
       </div>
-
-
-      <div  fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
-          <mat-label>Status</mat-label>
-          <mat-select matInput placeholder="" formControlName="status">
-            <mat-option *ngFor="let s of statusValue" [value]="s.value">
-              {{s.viewValue}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-<!--        <mat-form-field>-->
-<!--          <mat-label>Status</mat-label>-->
-<!--          <input matInput placeholder="" formControlName="status" type="number"-->
-<!--                 required>-->
-<!--          <mat-error *ngIf="officerAddForm.get('status').invalid">Status Required-->
-<!--          </mat-error>-->
-<!--        </mat-form-field>-->
-      </div>
-
-
       <div fxFlex="50" fxFlex.lt-sm="100">
         <mat-form-field>
           <mat-label>Employee Name</mat-label>
@@ -42,7 +20,6 @@
           </mat-error>
         </mat-form-field>
       </div>
-
       <div fxFlex="50" fxFlex.lt-sm="100">
         <mat-form-field>
           <mat-label>Email Address</mat-label>
@@ -52,8 +29,16 @@
           </mat-error>
         </mat-form-field>
       </div>
-
-
+      <div  fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Status</mat-label>
+          <mat-select matInput placeholder="" formControlName="status">
+            <mat-option *ngFor="let s of statusValue" [value]="s.value">
+              {{s.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </form>
 </mat-dialog-content>

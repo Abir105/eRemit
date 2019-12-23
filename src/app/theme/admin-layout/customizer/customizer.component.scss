@@ -9,6 +9,10 @@ $theme: mat-dark-theme($primary, $accent, $warn);
 $background: mat-color($theme, 'background');
 $foreground: mat-color($theme, 'foreground');
 
+.settingsButton {
+  background-color: #1f5090 !important;
+}
+
 .customizer-handle {
   position: fixed;
   bottom: 30px;
