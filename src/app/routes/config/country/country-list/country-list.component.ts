@@ -50,7 +50,7 @@ export class CountryListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.dialog.open(AddCountryComponent, {
-      height: '350px',
+      height: '330px',
       width: '400px',
       autoFocus: false,
       disableClose: true
@@ -97,7 +97,7 @@ export class CountryListComponent implements OnInit {
     dialogConfig.data = element;
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.height = '350px';
+    dialogConfig.height = '330px';
     dialogConfig.width = '400px';
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {

@@ -6,7 +6,7 @@
     <div fxLayout="column wrap">
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Currency Name</mat-label>
           <input matInput placeholder="" formControlName="cur_name" [ngModel]="curName"
                  required>
@@ -17,7 +17,7 @@
 
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Short Currency Name</mat-label>
           <input matInput placeholder="" formControlName="cur_short_name" [(ngModel)]="curShortName"
                  required>
@@ -27,7 +27,7 @@
       </div>
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Swift code</mat-label>
           <input matInput placeholder="" formControlName="cur_swift_code" [ngModel]="curSwiftCode"
                  required>
@@ -37,7 +37,7 @@
       </div>
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Report Name</mat-label>
           <input matInput placeholder="" formControlName="cur_report_name" [ngModel]="curReportName"
                  required>
@@ -53,7 +53,7 @@
   <button mat-raised-button mat-dialog-close align="center">Close</button>
   <button (click)='countryFormUpdate(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="m-t-8">Update</button>
 </div-->
-<mat-dialog-actions>
-  <button class="mat-raised-button" mat-dialog-close>Close</button>
-  <button (click)='currencyFormUpdate(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="red" class="mat-raised-button mat-primary">Save</button>
+<mat-dialog-actions  align="center">
+  <button class="mat-raised-button" mat-dialog-close color="accent">Close</button>
+  <button (click)='currencyFormUpdate(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
 </mat-dialog-actions>

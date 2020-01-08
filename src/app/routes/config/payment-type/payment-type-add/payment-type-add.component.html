@@ -5,7 +5,7 @@
 
     <div fxLayout="column wrap">
       <div   fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Payment Type Name</mat-label>
           <input matInput placeholder="" formControlName="paymentTypeName" required>
           <mat-error *ngIf="PaymentTypeAddForm.get('paymentTypeName').invalid">Payment Type Name Required

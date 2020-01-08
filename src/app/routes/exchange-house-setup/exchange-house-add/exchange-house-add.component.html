@@ -1,37 +1,27 @@
 <app-notification-comp></app-notification-comp>
+<!--<pre>{{officerListData | json}}</pre>-->
 <form [formGroup]="reactiveForm1"  class="matero-form-horizontal">
   <div class="card">
     <div class="card-header">
       <div fxLayout="row">
-        <div fxFlex="3" >
-          <button style="margin-top: 10px" mat-icon-button  [routerLink]="['../']" >
+        <div fxFlex="2" >
+          <button style="margin-top: 4px" mat-icon-button  [routerLink]="['../']" >
             <mat-icon>home</mat-icon>
           </button>
         </div>
-        <div fxFlex="37" >
-          <h3>Add Exchange House</h3>
+        <div fxFlex="38" >
+          <h3 style="padding-left: 8px">Add Exchange House</h3>
         </div>
         <div fxFlexOffset="33" fxFlex="30"  >
           <div class="right-nevigation">
-            <button mat-icon-button matTooltip="Go Back"  [routerLink]="['../']" >
-              <mat-icon>arrow_back</mat-icon>
+            <button mat-icon-button color="primary" type="button" (click)="exchangeHouseAdd(ex_house_name.value,
+                    ex_house_prefix.value,ex_house_address.value, country_code.value,
+                    currency_code.value, city.value, postal_code.value,
+                    state.value, web_address.value,account_nature.value,
+                    account_type.value,account_number.value)"
+                    [disabled]="!reactiveForm1.valid"  matTooltip="Save">
+              <mat-icon>save</mat-icon>
             </button>
-            <!--            <button mat-icon-button color="warn" matTooltip="Cancel" >-->
-            <!--              <mat-icon>cancel</mat-icon>-->
-            <!--            </button>-->
-<!--            <button mat-icon-button color="primary"-->
-<!--                    type="button"-->
-<!--                    (click)="exchangeHouseAdd(ex_house_name.value,-->
-<!--                    ex_house_prefix.value,ex_house_address.value, country_code.value,-->
-<!--                    currency_code.value, postal_code.value, city.value,-->
-<!--                    state.value, web_address.value,-->
-<!--                     time_zone_id.value, cash_payment_from.value,-->
-<!--                     account_debit_ins.value, account_debit_from.value,-->
-<!--                     create_by.value, update_by.value,-->
-<!--                     status.value, web_cash.value, create_date.value )"-->
-<!--                    [disabled]="!reactiveForm1.valid" matTooltip="Save">-->
-<!--              <mat-icon>save</mat-icon>-->
-<!--            </button>-->
           </div>
         </div>
       </div>
@@ -40,7 +30,7 @@
       <div fxLayout="column">
         <mat-horizontal-stepper #exHouseStepper formArrayName="formArray" [linear]="true">
           <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
-            <ng-template matStepLabel>Basic</ng-template>
+            <ng-template matStepLabel><b>Basic</b></ng-template>
 
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
               <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
@@ -49,18 +39,12 @@
                                 fxFlex.xs="100%" appearance="fill">
                   <mat-label>Exchange House name</mat-label>
                   <input matInput formControlName="ex_house_name" #ex_house_name required>
-                  <mat-error>This field is required</mat-error>
+                  <mat-error *ngIf="ex_house_name.required">This field is required and text only</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                                 fxFlex.xs="100%" appearance="fill">
                   <mat-label>Exchange House Prefix</mat-label>
                   <input matInput formControlName="ex_house_prefix" #ex_house_prefix required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Exchange House Address</mat-label>
-                  <input matInput formControlName="ex_house_address" #ex_house_address required>
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
@@ -81,147 +65,231 @@
                   <mat-error>This field is required</mat-error>
 
                 </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>City</mat-label>
-                  <input matInput formControlName="city" #city required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Postal Code</mat-label>
-                  <input matInput formControlName="postal_code"  #postal_code required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>State</mat-label>
-                  <input matInput formControlName="state" #state required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Web Address</mat-label>
-                  <input matInput formControlName="web_address" #web_address required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
+
               </div>
             </div>
-<!--            <div>-->
-<!--              <button mat-button matStepperNext>Next</button>-->
-<!--            </div>-->
+            <div class="navigationButtons">
+              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+          </mat-step>
+          <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
+            <ng-template matStepLabel><b>Address</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                        <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                        fxFlex.xs="100%" appearance="fill">
+                          <mat-label>City</mat-label>
+                          <input matInput formControlName="city" #city required>
+                          <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                        fxFlex.xs="100%" appearance="fill">
+                          <mat-label>State</mat-label>
+                          <input matInput formControlName="state" #state required>
+                          <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                        fxFlex.xs="100%" appearance="fill">
+                          <mat-label>Postal Code</mat-label>
+                          <input matInput formControlName="postal_code" type="number" #postal_code required>
+                          <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                        fxFlex.xs="100%" appearance="fill">
+                          <mat-label>Exchange House Address</mat-label>
+                          <textarea matInput rows="1" formControlName="ex_house_address" #ex_house_address required></textarea>
+                          <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                        fxFlex.xs="100%" appearance="fill">
+                          <mat-label>Web Address</mat-label>
+                          <input matInput formControlName="web_address" #web_address required>
+                          <mat-error>This field is required</mat-error>
+                        </mat-form-field>
+              </div>
+            </div>
+            <div class="navigationButtons">
+              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
           </mat-step>
 
-          <mat-step formGroupName="1" [stepControl]="formArray?.get([1])">
-            <ng-template matStepLabel>
-              <div>Other Informations</div>
-            </ng-template>
+          <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+            <ng-template matStepLabel><b>Account Information</b></ng-template>
+
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
               <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
                    fxFlex.xs="100%" fxLayoutAlign="flex-start">
                 <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                                 fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Time zone</mat-label>
-                  <input matInput formControlName="time_zone_id" #time_zone_id required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Cash Payment From</mat-label>
-                  <mat-select  formControlName="cash_payment_from" #cash_payment_from required>
-                    <mat-option *ngFor="let cp of cashPayment" [value]="cp.value">
-                      {{cp.viewValue}}
-                    </mat-option>
-                  </mat-select>
-<!--                  <input matInput formControlName="cash_payment_from" #cash_payment_from required>-->
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Account Debit Ins</mat-label>
-                  <mat-select  formControlName="account_debit_ins" #account_debit_ins required>
-                    <mat-option *ngFor="let dbf of acDbIns" [value]="dbf.value">
-                      {{dbf.viewValue}}
+                  <mat-label>Account Nature:</mat-label>
+                  <mat-select  formControlName="account_nature" #account_nature required>
+                    <mat-option *ngFor="let acN of acNature" [value]="acN.value">
+                      {{acN.viewValue}}
                     </mat-option>
                   </mat-select>
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                                 fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Account Debit From</mat-label>
-                  <mat-select  formControlName="account_debit_from" #account_debit_from required>
-                    <mat-option *ngFor="let dbf of acDFrom" [value]="dbf.value">
-                      {{dbf.viewValue}}
+                  <mat-label>Account Type:</mat-label>
+                  <mat-select  formControlName="account_type" #account_type required>
+                    <mat-option *ngFor="let acT of acType" [value]="acT.value">
+                      {{acT.viewValue}}
                     </mat-option>
                   </mat-select>
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
                 <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                                 fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Created date</mat-label>
-                  <input matInput [matDatepicker]="picker" ng-model-options="{ timezone: 'utc' }"  formControlName="create_date" #create_date required >
-                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                  <mat-datepicker #picker></mat-datepicker>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Created By</mat-label>
-                  <input matInput formControlName="create_by" #create_by required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Update By</mat-label>
-                  <input matInput formControlName="update_by" #update_by required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Status</mat-label>
-                  <mat-select  formControlName="status" #status required>
-                    <mat-option *ngFor="let s of Status" [value]="s.value">
-                     {{s.viewValue}}
-                    </mat-option>
-                  </mat-select>
-                  <input matInput formControlName="status" #status required>
-                  <mat-error>This field is required</mat-error>
-                </mat-form-field>
-                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
-                                fxFlex.xs="100%" appearance="fill">
-                  <mat-label>Web cash</mat-label>
-                  <input matInput formControlName="web_cash" #web_cash required>
+                  <mat-label>Account No:</mat-label>
+                  <input matInput formControlName="account_number" type="number" #account_number required>
                   <mat-error>This field is required</mat-error>
                 </mat-form-field>
               </div>
             </div>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-<!--              <button mat-button matStepperNext>Next</button>-->
+            <div  class="navigationButtons">
+
+              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
             </div>
           </mat-step>
 
-          <mat-step>
-            <ng-template matStepLabel>Confirm your information</ng-template>
-            Everything seems correct.
+          <mat-step formGroupName="3" [stepControl]="formArray?.get([3])">
+            <ng-template matStepLabel><b>Debit from</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                <mat-form-field fxFlex="0 1 calc(30% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                fxFlex.xs="100%" appearance="fill">
+                  <mat-label>Transaction Type:</mat-label>
+                  <mat-select  formControlName="transaction_type" #transaction_type required>
+                    <mat-option *ngFor="let cF of creditFrom" [value]="cF.viewValue">
+                      {{cF.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>This field is required</mat-error>
+
+                </mat-form-field>
+                <mat-form-field fxFlex="0 1 calc(30% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                fxFlex.xs="100%" appearance="fill">
+                  <mat-label>Debit Account Type:</mat-label>
+                  <mat-select  formControlName="debit_account_type" #debit_account_type required>
+                    <mat-option *ngFor="let ca of creditAccount" [value]="ca.viewValue">
+                      {{ca.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+                <mat-form-field fxFlex="0 1 calc(30% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                fxFlex.xs="100%" appearance="fill">
+                  <mat-label>Debit Instruction:</mat-label>
+                  <mat-select  formControlName="debit_instruction" #debit_instruction required>
+                    <mat-option *ngFor="let ca of debitIns" [value]="ca.viewValue">
+                      {{ca.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>This field is required</mat-error>
+                </mat-form-field>
+                <div fxFlex="0 1 calc(10% - 10px)">
+                  <button mat-mini-fab color="primary" style="margin-top: 12px"
+                          (click)="getdebitfromDAta(transaction_type.value,debit_account_type.value,debit_instruction.value)">
+                    <mat-icon>add</mat-icon></button>
+                </div>
+              </div>
+            </div>
             <div>
-              <button mat-button color="primary"
-                      type="button"
-                      (click)="exchangeHouseAdd(ex_house_name.value,
-                    ex_house_prefix.value,ex_house_address.value, country_code.value,
-                    currency_code.value, postal_code.value, city.value,
-                    state.value, web_address.value,
-                     time_zone_id.value, cash_payment_from.value,
-                     account_debit_ins.value, account_debit_from.value,
-                     create_by.value, update_by.value,
-                     status.value, web_cash.value, create_date.value )"
-                      [disabled]="!reactiveForm1.valid" matTooltip="Save">
-                Save
-              </button>
-<!--              <button mat-button type="submit" [disabled]="!reactiveForm1.valid">Save</button>-->
-              <button type="button" mat-button (click)="exHouseStepper.reset()">Reset</button>
+              <table class="exhouseTable"  [hidden] = "isShow">
+                <tr>
+                  <th>Transaction Type</th>
+                  <th>Debit Account Type</th>
+                  <th>Debit Instruction</th>
+                </tr>
+                <tr *ngFor="let s of showData">
+                  <td>{{s.transaction_type}}</td>
+                  <td>{{s.debit_account_type}}</td>
+                  <td>{{s.debit_instruction}}</td>
+                </tr>
+
+              </table>
+              <div class="navigationButtons">
+                <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+                <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+              </div>
+
+
             </div>
           </mat-step>
+          <mat-step formGroupName="4" [stepControl]="formArray?.get([4])">
+            <ng-template matStepLabel><b>Officer Setup</b></ng-template>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                fxFlex.xs="100%" appearance="fill">
+                  <mat-label>Officer Name:</mat-label>
+                  <mat-select  formControlName="officer" #officer required>
+                    <mat-option *ngFor="let ofs of officerListData" [value]="ofs">
+                      {{ofs.employeeName}}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error>This field is required</mat-error>
+
+                </mat-form-field>
+
+                <button mat-mini-fab color="primary"  (click)="getofficerdata(officer.value)"> <mat-icon>add</mat-icon></button>
+              </div>
+            </div>
+            <div>
+              <table  class="exhouseTable">
+                <tr>
+                  <th>officer Code</th>
+                  <th>officer Name</th>
+                  <th>officer Address</th>
+                  <th>Phone Number</th>
+                </tr>
+                <tr *ngFor="let o of officerData">
+                  <td>{{o.employeeCode}}</td>
+                  <td>{{o.employeeName}}</td>
+                  <td>{{o.emailAddress}}</td>
+                  <td>{{o.phoneNumber}}</td>
+                </tr>
+
+              </table>
+              <div class="navigationButtons">
+                <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+                <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+              </div>
+            </div>
+          </mat-step>
+<!--          <mat-step>-->
+<!--            <ng-template matStepLabel><b>Email</b></ng-template>-->
+<!--            <div>-->
+<!--              <ckeditor [editor]="Editor"></ckeditor>-->
+<!--            </div>-->
+<!--          </mat-step>-->
+<!--          <mat-step>-->
+<!--            <ng-template matStepLabel><b>Confirm your information</b></ng-template>-->
+<!--            Everything seems correct.-->
+<!--            <div>-->
+<!--              <button mat-button color="primary"-->
+<!--                      type="button"-->
+<!--                      (click)="exchangeHouseAdd(ex_house_name.value,-->
+<!--                    ex_house_prefix.value,ex_house_address.value, country_code.value,-->
+<!--                    currency_code.value, city.value, postal_code.value,-->
+<!--                    state.value, web_address.value,account_nature.value,-->
+<!--                    account_type.value,account_number.value)"-->
+<!--                      [disabled]="!reactiveForm1.valid" matTooltip="Save">-->
+<!--                Save-->
+<!--              </button>-->
+<!--              <button mat-button type="submit" [disabled]="!reactiveForm1.valid">Save</button>-->
+<!--              <button type="button" mat-button (click)="exHouseStepper.reset()">Reset</button>-->
+<!--            </div>-->
+<!--          </mat-step>-->
         </mat-horizontal-stepper>
 
       </div>

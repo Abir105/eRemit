@@ -1,17 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 @import "styles/app";
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-@font-face {
-  font-family: Univers;
-  src: url(assets/fonts/NotoSans-Regular.ttf);
-}
+//@font-face {
+//  font-family: Univers;
+//  src: url(assets/fonts/NotoSans-Regular.ttf);
+//}
 
 body {
-  font-family: San-Serif;
+  font-family: 'Exo 2', sans-serif;
+  font-size: 10pt;
 }
 
 * {
-  font-family: San-Serif;
+  font-family: 'Exo 2', sans-serif;
 }
 
 

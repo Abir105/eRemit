@@ -20,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MaterialModule } from '../../material.module';
 import { MatStepperModule } from '@angular/material/stepper';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { MatStepperModule } from '@angular/material/stepper';
     MatCardModule,
     MatDatepickerModule,
     MaterialModule,
-    MatStepperModule
+    MatStepperModule,
+    CKEditorModule
   ],
 })
 export class ExchangeHouseSetupModule { }

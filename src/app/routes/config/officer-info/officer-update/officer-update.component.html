@@ -5,7 +5,7 @@
 
     <div fxLayout="column wrap">
       <div   fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Employee Code</mat-label>
           <input matInput placeholder="" formControlName="employeeCode" [ngModel]="employeeCode" required>
           <mat-error *ngIf="officerUpdateForm.get('employeeCode').invalid">Employee Code Required
@@ -13,7 +13,7 @@
         </mat-form-field>
       </div>
       <div  fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Status</mat-label>
           <mat-select  [(ngModel)]="status"  formControlName="status" required>
             <mat-option *ngFor="let s of statusValue" [value]="s.value">
@@ -25,7 +25,7 @@
         </mat-form-field>
       </div>
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Employee Name</mat-label>
           <input matInput placeholder="" formControlName="employeeName"  [ngModel]="employeeName" required>
           <mat-error *ngIf="officerUpdateForm.get('employeeName').invalid">Employee Name Required
@@ -34,7 +34,7 @@
       </div>
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Email Address</mat-label>
           <input matInput placeholder="" formControlName="emailAddress" [ngModel]="emailAddress" required>
           <mat-error *ngIf="officerUpdateForm.get('emailAddress').invalid">Email Address Required

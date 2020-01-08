@@ -1,36 +1,48 @@
+<h2 mat-dialog-title align="center">Add Country</h2>
+
 <mat-dialog-content>
-  <div class="headerStyle">
-    <h3 mat-dialog-title>Add Country</h3>
-  </div>
 
   <form [formGroup]="reactiveForm1" class="matero-form-horizontal">
-    <div fxLayout="column">
-              <mat-form-field>
-                <mat-label>Country Name</mat-label>
-                <input matInput placeholder="" formControlName="name"
-                       required>
-                <mat-error *ngIf="reactiveForm1.get('name').invalid">Country Name Required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Country Short Name</mat-label>
-                <input matInput placeholder="" formControlName="short_name"
-                       required>
-                <mat-error *ngIf="reactiveForm1.get('short_name').invalid">Short Name Required
-                </mat-error>
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Iso Code</mat-label>
-                <input matInput placeholder="" formControlName="isoCode"
-                       required>
-                <mat-error *ngIf="reactiveForm1.get('isoCode').invalid">Short Name Required
-                </mat-error>
-              </mat-form-field>
+
+    <div fxLayout="column wrap">
+      <div   fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Country Name</mat-label>
+          <input matInput placeholder="" formControlName="name" required>
+          <mat-error *ngIf="reactiveForm1.get('name').invalid">Country Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div  fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Short Name</mat-label>
+          <input matInput placeholder="" formControlName="short_name"
+                 required>
+          <mat-error *ngIf="reactiveForm1.get('short_name').invalid">Short Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>ISO code</mat-label>
+          <input matInput placeholder="" formControlName="isoCode"
+                 required>
+          <mat-error *ngIf="reactiveForm1.get('isoCode').invalid">Swift code Name Required
+          </mat-error>
+        </mat-form-field>
+      </div>
     </div>
   </form>
 </mat-dialog-content>
-<mat-dialog-actions align="center">
-    <button mat-raised-button color="accent" mat-dialog-close >Close</button>
-    <button (click)='countryFormSubmit(reactiveForm1.value)' [disabled]="!reactiveForm1.valid"
-            mat-raised-button color="red" class="mat-raised-button mat-primary">Save</button>
-</mat-dialog-actions>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="accent" mat-dialog-close >Close</button>
+  <button (click)='countryFormSubmit(reactiveForm1.value)'  [disabled]="!reactiveForm1.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
+</div>
+
+
+

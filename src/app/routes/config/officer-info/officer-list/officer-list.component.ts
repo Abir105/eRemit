@@ -19,7 +19,7 @@ import { OfficerUpdateComponent } from '../officer-update/officer-update.compone
 export class OfficerListComponent implements OnInit {
 
 
-  public displayedColumns = ['employeeCode', 'status', 'employeeName', 'emailAddress',  'update', 'delete'];
+  public displayedColumns = ['employeeCode', 'status', 'employeeName', 'emailAddress', 'phoneNumber',  'update', 'delete'];
   public dataSource = new MatTableDataSource<any>();
   private dialogRef: any;
   @ViewChild(NotificationCompoComponent, {static: false}) notification: NotificationCompoComponent;
@@ -50,7 +50,7 @@ export class OfficerListComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     this.dialogRef = this.matDialog.open(OfficerAddComponent, {
-      height: '400px',
+      height: '480px',
       width: '400px',
       autoFocus: false,
       disableClose: true

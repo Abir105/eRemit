@@ -18,10 +18,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../material.module';
 import { BranchUpdateComponent } from './branch-update/branch-update.component';
 import { BranchDeleteComponent } from './branch-delete/branch-delete.component';
+import { BranchDetailsComponent } from './branch-details/branch-details.component';
 
 
 @NgModule({
-  declarations: [BranchListComponent, BranchCreateComponent, BranchUpdateComponent, BranchDeleteComponent],
+  declarations: [BranchListComponent, BranchCreateComponent, BranchUpdateComponent, BranchDeleteComponent, BranchDetailsComponent],
   imports: [
     CommonModule,
     BranchInfoRoutingModule,

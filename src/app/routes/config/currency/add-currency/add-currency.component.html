@@ -5,7 +5,7 @@
 
     <div fxLayout="column wrap">
       <div   fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Currency Name</mat-label>
           <input matInput placeholder="" formControlName="cur_name" required>
           <mat-error *ngIf="reactiveForm2.get('cur_name').invalid">Currency Name Required
@@ -15,7 +15,7 @@
 
 
       <div  fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Short Currency Name</mat-label>
           <input matInput placeholder="" formControlName="cur_short_name"
                  required>
@@ -26,7 +26,7 @@
 
 
         <div fxFlex="50" fxFlex.lt-sm="100">
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Swift code</mat-label>
             <input matInput placeholder="" formControlName="cur_swift_code"
                    required>
@@ -36,7 +36,7 @@
         </div>
 
           <div fxFlex="50" fxFlex.lt-sm="100">
-            <mat-form-field>
+            <mat-form-field appearance="fill">
               <mat-label>Report Name</mat-label>
               <input matInput placeholder="" formControlName="cur_report_name"
                      required>
@@ -52,7 +52,6 @@
 
 <div mat-dialog-actions align="center">
   <button mat-raised-button color="accent" mat-dialog-close >Close</button>
-  <!--button (click)='countryFormSubmit(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="m-t-8">Save</button-->
   <button (click)='currencyFormSubmit(reactiveForm2.value)'  [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
 </div>
 

@@ -20,6 +20,7 @@ export class OfficerAddComponent implements OnInit {
       employeeCode: ['', [Validators.required]],
       status: ['', [Validators.required]],
       employeeName: ['', [Validators.required]],
+      phoneNumber : ['', [Validators.required]],
       emailAddress: ['', [Validators.required, Validators.email]]
     });
 

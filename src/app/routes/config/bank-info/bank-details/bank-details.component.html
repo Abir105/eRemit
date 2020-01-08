@@ -4,13 +4,13 @@
 <div class="mainCard">
   <div class="card-header">
     <div fxLayout="row">
-      <div fxFlex="3" >
-        <button  mat-icon-button>
+      <div fxFlex="2" >
+        <button style="margin-top: 4px" mat-icon-button>
           <mat-icon>home</mat-icon>
         </button>
       </div>
-      <div fxFlex="47" >
-        <h3 class="main-header">Bank Details</h3>
+      <div fxFlex="48" >
+        <h3 style="padding-left: 8px">Bank Details</h3>
       </div>
       <div fxFlex="50"  >
         <div class="right-nevigation" *ngIf="bankDetailsData">
@@ -25,7 +25,7 @@
 
   </div>
   <div fxLayout="column" *ngIf="bankDetailsData" class="mainContainer">
-    <div class="card">
+    <div class="detailsCard">
       <div class="headerStyle">
         <h3 >Basic Information</h3>
       </div>
@@ -48,7 +48,7 @@
       </div>
     </div>
     <br>
-    <div class="card">
+    <div class="detailsCard">
       <div class="headerStyle">
         <h3>Other Information</h3>
       </div>
@@ -71,7 +71,7 @@
       </div>
     </div>
     <br>
-    <div class="card">
+    <div class="detailsCard">
       <div class="headerStyle">
         <h3>Address</h3>
       </div>
@@ -81,7 +81,7 @@
           <div class="info"><b>District:</b> {{bankDetailsData.district}}</div>
         </div>
         <div fxFlex="33">
-          <div class="info"><b>Division:</b> {{bankDetailsData.division}}</div>
+          <div class="info"><b>Division:</b> {{bankDetailsData.divisionName}}</div>
           <div class="info"><b>Upzilla:</b> {{bankDetailsData.upzilla}}</div>
         </div>
         <div fxFlex="33">

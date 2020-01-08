@@ -38,6 +38,8 @@
     "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.7",
     "@antv/g2-plugin-slider": "^2.1.1",
+    "@ckeditor/ckeditor5-angular": "^1.1.2",
+    "@ckeditor/ckeditor5-build-classic": "^16.0.0",
     "@ng-select/ng-select": "^2.20.3",
     "@ngx-formly/core": "^5.4.0",
     "@ngx-formly/material": "^5.4.0",

@@ -5,7 +5,7 @@
 
     <div fxLayout="column wrap">
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Country Name</mat-label>
           <input matInput placeholder="" formControlName="name" [ngModel]="name"
                  required>
@@ -15,7 +15,7 @@
       </div>
 
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>Short Country Name</mat-label>
           <input matInput placeholder="" formControlName="short_name" [(ngModel)]="shortName"
                  required>
@@ -24,7 +24,7 @@
         </mat-form-field>
       </div>
       <div fxFlex="50" fxFlex.lt-sm="100">
-        <mat-form-field>
+        <mat-form-field appearance="fill">
           <mat-label>ISO code</mat-label>
           <input matInput placeholder="" formControlName="isoCode" [(ngModel)]="isoCode"
                  required>
