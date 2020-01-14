@@ -363,6 +363,16 @@
           "state": "500",
           "name": "500",
           "type": "link"
+        },
+        {
+          "state": "account_nature",
+          "name": "Account Nature",
+          "type": "link"
+        },
+        {
+          "state": "account_type",
+          "name": "Account Type",
+          "type": "link"
         }
       ]
     },
