@@ -1,0 +1,29 @@
+<mat-dialog-content>
+  <div class="headerStyle">
+    <h3 mat-dialog-title>Add Account Nature</h3>
+  </div>
+
+  <form [formGroup]="reactiveForm5" class="matero-form-horizontal">
+    <div fxLayout="column">
+      <mat-form-field>
+        <mat-label>Account Nature</mat-label>
+        <input matInput placeholder="" formControlName="account_nature"
+               required>
+        <mat-error *ngIf="reactiveForm5.get('account_nature').invalid">Account Nature Required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Full Name</mat-label>
+        <input matInput placeholder="" formControlName="full_name"
+               required>
+        <mat-error *ngIf="reactiveForm5.get('full_name').invalid">Full Name Required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button color="accent" mat-dialog-close >Close</button>
+  <button (click)='addCurrency(reactiveForm5.value)' [disabled]="!reactiveForm5.valid"
+          mat-raised-button color="red" class="mat-raised-button mat-primary">Save</button>
+</mat-dialog-actions>

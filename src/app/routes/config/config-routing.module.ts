@@ -7,10 +7,14 @@ const routes: Routes = [
   { path: 'country', loadChildren: () => import('./country/country.module').then(m => m.CountryModule) },
   { path: 'currency', loadChildren: () => import('./currency/currency.module').then(m => m.CurrencyModule) },
   { path: 'time', loadChildren: () => import('./timestamp/timestamp.module').then(m => m.TimestampModule) },
+<<<<<<< Updated upstream
+  { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) }
+=======
   { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) },
-  { path: 'officer', loadChildren: () => import('./officer-info/officer-info.module').then(m => m.OfficerInfoModule) },
-  { path: 'paymentType', loadChildren: () => import('./payment-type/payment-type.module').then(m => m.PaymentTypeModule) },
-  { path: 'branch', loadChildren: () => import('./branch-info/branch-info.module').then(m => m.BranchInfoModule) }
+  { path: 'branch', loadChildren: () => import('./branch-info/branch-info.module').then(m => m.BranchInfoModule) },
+  { path: 'account_nature', loadChildren: () => import('./account-nature/account-nature.module').then(m => m.AccountNatureModule) },
+  { path: 'account_type', loadChildren: () => import('./account-type/account-type.module').then(m => m.AccountTypeModule) }
+>>>>>>> Stashed changes
 ];
 
 @NgModule({

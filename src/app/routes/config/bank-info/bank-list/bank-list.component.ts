@@ -16,11 +16,11 @@ import { BankDeleteComponent } from '../bank-delete/bank-delete.component';
   styleUrls: ['./bank-list.component.scss']
 })
 export class BankListComponent implements OnInit {
-   public dataSource: MatTableDataSource<BankInfo>;
-   public displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'details', 'update', 'delete'];
-   private dialogRef: any;
+  public dataSource: MatTableDataSource<BankInfo>;
+  public displayedColumns: string[] = ['sl', 'fullName', 'shortName', 'swiftCode', 'reportName', 'details', 'update', 'delete'];
+  private dialogRef: any;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
-   constructor(private bankService: BankService, public dialog: MatDialog) { }
+  constructor(private bankService: BankService, public dialog: MatDialog) { }
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   public doFilter = (value: string) => {

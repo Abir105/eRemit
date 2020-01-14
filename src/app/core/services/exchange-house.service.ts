@@ -8,7 +8,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class ExchangeHouseService {
-  Url = 'http://10.11.201.92:3001/';
+  Url = 'http://10.11.201.67:3001/';
 
   constructor(private http: HttpClient) { }
 
