@@ -111,15 +111,22 @@ export class CountryListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialogRef = this.matDialog.open(DeleteCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
+<<<<<<< Updated upstream
       const obj = JSON.parse(value);
       console.log(obj);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
+=======
+    const obj = JSON.parse(value);
+    //  console.log(obj);
+    const affectedRows = obj.data.affectedRows;
+    if (affectedRows === 1) {
+>>>>>>> Stashed changes
         this.notification.successmsg('Country Deleted successfully');
         this.getAllCountries();
-      } else {
+    } else {
         this.notification.errorsmsg('Sorry! Country not Deleted');
-      }
+    }
     });
   }
 

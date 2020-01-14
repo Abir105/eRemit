@@ -1,0 +1,35 @@
+<h2 mat-dialog-title align="center">Update Currency</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="reactiveForm5" class="matero-form-horizontal">
+
+    <div fxLayout="column wrap">
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Account Nature</mat-label>
+          <input matInput placeholder="" formControlName="account_nature" [ngModel]="accountnature"
+                 required>
+          <mat-error *ngIf="reactiveForm5.get('account_nature').invalid">Account Nature Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field>
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="" formControlName="full_name" [(ngModel)]="fullname"
+                 required>
+          <mat-error *ngIf="reactiveForm5.get('full_name').invalid">Please enter Full name
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50" fxFlex.lt-sm="100">
+
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button mat-dialog-close color="accent">Close</button>
+  <button (click)='accountnatureupdate(reactiveForm5.value)' [disabled]="!reactiveForm5.valid" mat-raised-button color="primary" >Update</button>
+</div>

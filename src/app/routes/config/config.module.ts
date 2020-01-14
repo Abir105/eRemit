@@ -7,6 +7,8 @@ import {MaterialModule} from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ThemeModule } from '../../theme/theme.module';
 
+
+
 const COMPONENTS = [ ];
 const COMPONENTS_DYNAMIC = [];
 
