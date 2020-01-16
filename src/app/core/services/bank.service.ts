@@ -12,7 +12,6 @@ import { BankInfo } from '../../routes/model/BankInfo';
 })
 
 export class BankService {
-<<<<<<< HEAD
   Url = 'http://10.11.201.92:3001/';
   Url2 = 'http://10.11.201.92:3001/';
 
@@ -25,12 +24,6 @@ export class BankService {
   //     catchError(error => of(null))
   //   );
   // }
-=======
-  Url = 'http://10.11.201.67:3001/';
-  Url2 = 'http://10.11.201.67:3001/';
-
-  constructor(private http: HttpClient) { }
->>>>>>> mukti
   public getDevision = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'location/division');
   };
@@ -116,11 +109,7 @@ export class BankService {
         'Content-Type': 'application/json',
       })
     };
-<<<<<<< HEAD
     return this.http.delete(`http://10.11.201.92:3001/branch/${id}`, options);
-=======
-    return this.http.delete(`http://10.11.201.67:3001/branch/${id}`, options);
->>>>>>> mukti
   };
 
   public update = (route: string, element) => {
@@ -139,9 +128,5 @@ export class BankService {
   }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> mukti
 }
 
