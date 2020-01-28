@@ -42,7 +42,7 @@ export class CountryListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       });
-  //  console.log(this.dataSource);
+    //  console.log(this.dataSource);
   };
   addNew() {
     const dialogConfig = new MatDialogConfig();
@@ -79,7 +79,7 @@ export class CountryListComponent implements OnInit {
     this.dialogRef = this.dialog.open(DeleteCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);
-    //  console.log(obj);
+      //  console.log(obj);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
         this.notification.successmsg('Country Deleted successfully');
@@ -102,7 +102,7 @@ export class CountryListComponent implements OnInit {
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);
-     // console.log(obj);
+      // console.log(obj);
       const affectedRows = obj.data.affectedRows;
       if (affectedRows === 1) {
         this.notification.successmsg('Country Updated successfully');

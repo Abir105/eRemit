@@ -1,0 +1,91 @@
+<app-notification-comp></app-notification-comp>
+
+<div class="card">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="3" >
+        <button style="margin-top: 10px" mat-icon-button [routerLink]="['']">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="40" >
+        <h3>Account Nature</h3>
+      </div>
+      <div fxFlex="30" >
+        <mat-form-field >
+          <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex="27"  >
+        <div class="right-nevigation">
+          <button mat-icon-button color="primary" matTooltip="Add New"
+                  (click)="addNew()">
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container">
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort matSortStart="desc">
+        <ng-container matColumnDef="sl">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+          <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+        </ng-container>
+        <ng-container matColumnDef="account_nature">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Nature</th>
+          <td mat-cell *matCellDef="let row"> {{row.account_nature}} </td>
+        </ng-container>
+        <ng-container matColumnDef="full_name">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Full Name</th>
+          <td mat-cell *matCellDef="let row"> {{row.full_name}} </td>
+        </ng-container>
+        <ng-container matColumnDef="create_by">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Create By</th>
+          <td mat-cell *matCellDef="let row"> {{row.create_by}} </td>
+        </ng-container>
+        <ng-container matColumnDef="create_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Create Date</th>
+          <td mat-cell *matCellDef="let row"> {{row.create_date | date: 'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="update">
+          <th mat-header-cell *matHeaderCellDef>Update</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" (click)="UpdateAccountNature(element)">
+              <mat-icon class="mat-18">update</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+
+        <ng-container matColumnDef="delete">
+          <th mat-header-cell *matHeaderCellDef>Delete</th>
+          <td mat-cell *matCellDef="let row">
+            <button mat-icon-button color="warn" (click)="deleteCurrencyRow(row.cur_id)">
+              <mat-icon class="mat-18">delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+      </table>
+
+      <mat-paginator  [pageSizeOptions]="[5,10,20]">
+      </mat-paginator>
+    </div>
+  </div>
+</div>
+
+
+
+
+

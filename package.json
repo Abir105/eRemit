@@ -3,7 +3,7 @@
   "version": "0.0.0-NOT-USED",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host 10.11.201.92",
+    "start": "ng serve --host 10.11.201.67",
     "test": "ng test",
     "e2e": "ng e2e",
     "build": "ng build",
@@ -60,7 +60,7 @@
     "zone.js": "~0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.802.2",
+    "@angular-devkit/build-angular": "^0.803.21",
     "@angular/cli": "^8.2.2",
     "@angular/compiler-cli": "~8.2.2",
     "@angular/language-service": "~8.2.2",
