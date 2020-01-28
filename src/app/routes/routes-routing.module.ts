@@ -20,6 +20,11 @@ const routes: Routes = [
         component: DashboardComponent,
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
+      // {
+      //   path: 'login',
+      //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+      //   data: { title: 'Login', titleI18n: 'login' },
+      // },
       {
         path: 'config',
         loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),

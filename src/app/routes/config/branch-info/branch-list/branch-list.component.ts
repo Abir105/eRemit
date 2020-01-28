@@ -18,7 +18,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class BranchListComponent implements OnInit {
   selectedBank = 0;
-  displayedColumns: string[] = ['fullName', 'shortName', 'routingNo', 'reportName', 'swiftCode', 'update', 'delete'];
+  displayedColumns: string[] = ['fullName', 'shortName', 'routingNo', 'reportName', 'swiftCode', 'details', 'update', 'delete'];
   private dialogRef: any;
   dataSource: MatTableDataSource<any>;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;

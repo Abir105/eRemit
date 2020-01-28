@@ -1,0 +1,108 @@
+
+<!--<pre>{{ExHouseDetailsData.id | json}}</pre>-->
+<app-notification-comp></app-notification-comp>
+<div class="mainCard">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="2" >
+        <button style="margin-top: 4px" mat-icon-button [routerLink]="['../../info']" >
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="48" >
+        <h3 style="padding-left: 8px">Exchange House Details</h3>
+      </div>
+      <div fxFlex="50"  >
+        <div class="right-nevigation" *ngIf="ExHouseDetailsData">
+          <button mat-icon-button matTooltip="edit" [routerLink]="['../../update' , ExHouseDetailsData.ex_house_code]" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div fxLayout="column" *ngIf="ExHouseDetailsData" class="mainContainer">
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3 >Basic Information</h3>
+      </div>
+      <div fxLayout="row" class="container">
+        <div fxFlex="33">
+          <div class="info"><b>Ex House name:</b> {{ExHouseDetailsData.ex_house_name}}</div>
+          <div class="info"><b>Currancy :</b> {{ExHouseDetailsData.currency_code}}</div>
+          <div class="info"><b>State:</b> {{ExHouseDetailsData.state}}</div>
+          <div class="info"><b>Account Nature:</b> {{ExHouseDetailsData.account_nature}}</div>
+          <div class="info"><b>Web Address:</b> {{ExHouseDetailsData.web_address}}</div>
+
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Ex House Prefix:</b> {{ExHouseDetailsData.ex_house_prefix}}</div>
+          <div class="info"><b>City:</b> {{ExHouseDetailsData.city}}</div>
+          <div class="info"><b>Created By:</b> {{ExHouseDetailsData.create_by}}</div>
+          <div class="info"><b>Account Type:</b> {{ExHouseDetailsData.account_type}}</div>
+          <div class="info"><b>Address:</b> {{ExHouseDetailsData.ex_house_address}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Country:</b> {{ExHouseDetailsData.country_code}}</div>
+          <div class="info"><b>Postal Code:</b> {{ExHouseDetailsData.postal_code}}</div>
+          <div class="info"><b>Created Date:</b> {{ExHouseDetailsData.create_date | date: 'dd/MM/yyyy'}}</div>
+          <div class="info"><b>Account Number:</b> {{ExHouseDetailsData.account_number}}</div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3>Account Information</h3>
+      </div>
+
+      <div fxLayout="row" class="container">
+        <table style="width: 100%">
+          <tr style="text-align: left">
+            <th fxFlex="33">Transection Type</th>
+            <th fxFlex="33">Debit Account Type</th>
+            <th fxFlex="33">Debit Instruction</th>
+          </tr>
+          <tr *ngFor="let d of debitInsData">
+            <td fxFlex="33"> {{d.transaction_type}}</td>
+            <td fxFlex="33">{{d.debit_account_type}}</td>
+            <td fxFlex="33">{{d.debit_instruction}}</td>
+          </tr>
+
+        </table>
+
+      </div>
+    </div>
+    <br>
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3>Assigned Officers</h3>
+      </div>
+      <div fxLayout="row" class="container" >
+        <table style="width: 100%">
+          <tr style="text-align: left">
+            <th fxFlex="33">Officer Name</th>
+            <th fxFlex="33">Email</th>
+            <th fxFlex="33">Phone Number</th>
+          </tr>
+          <tr *ngFor="let a of assignedOfficerData">
+            <td fxFlex="33"> {{a.employeeName}}</td>
+            <td fxFlex="33">{{a.emailAddress}}</td>
+            <td fxFlex="33">{{a.phoneNumber}}</td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+

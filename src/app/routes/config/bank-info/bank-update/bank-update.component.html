@@ -20,7 +20,7 @@
             <!--            <button mat-icon-button color="warn" matTooltip="Cancel" >-->
             <!--              <mat-icon>cancel</mat-icon>-->
             <!--            </button>-->
-            <button mat-icon-button color="primary" type="submit" [disabled]="!reactiveForm4.valid" *ngIf="reactiveForm4"  matTooltip="Save">
+            <button mat-icon-button color="primary" type="submit"     *ngIf="reactiveForm4"  matTooltip="Save">
               <mat-icon>save</mat-icon>
             </button>
           </div>
@@ -349,7 +349,7 @@
                               fxFlex.xs="100%" appearance="fill" *ngIf="bankUpzilla">
                 <mat-label>Upzilla</mat-label>
                 <mat-select placeholder="Upzilla" [(ngModel)]="bankUpzilla"  formControlName="upzilla" required>
-                  <mat-option *ngFor="let upzilla of upzillaData" [value]="upzilla.id">{{upzilla.name}} </mat-option>
+                  <mat-option *ngFor="let upzilla of upzillaData" [value]="upzilla.name">{{upzilla.name}} </mat-option>
                 </mat-select>
                 <div *ngIf="upzilla.invalid && (upzilla.dirty || upzilla.touched)"
                      class="alert alert-danger">

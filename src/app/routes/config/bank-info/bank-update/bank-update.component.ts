@@ -117,7 +117,7 @@ export class BankUpdateComponent implements OnInit {
       this.selectedDivision = +this.bankDetailsData.division;
       this.bankCity = this.bankDetailsData.city;
       this.selectedDistrict = +this.bankDetailsData.district;
-      this.bankUpzilla = +this.bankDetailsData.upzilla;
+      this.bankUpzilla = this.bankDetailsData.upzilla;
       this.bankPostalcode = this.bankDetailsData.postalcode;
     });
 

@@ -17,6 +17,8 @@ export class ExchangeHouseDeleteComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
   deleteExchangeHouse() {
     this.exchangeHouseService.delete(this.id).subscribe((res) => {
         this.dialogRef.close(JSON.stringify(res));

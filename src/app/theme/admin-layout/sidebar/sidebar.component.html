@@ -4,7 +4,7 @@
   <mat-slide-toggle (change)="toggleCollapsed.emit()" *ngIf="showToggle"></mat-slide-toggle>
 </div>
 
-<div class="matero-sidebar-inner">
+<div class="matero-sidebar-inner menu-name">
   <app-user-panel *ngIf="showUser"></app-user-panel>
 <!--  <app-sidemenu [ripple]="showToggle" ></app-sidemenu>-->
   <app-sidemenu [ripple]="showToggle" (toggleSidenavAfterClick) ="toggleCollapsedSideMenu.emit()" ></app-sidemenu>

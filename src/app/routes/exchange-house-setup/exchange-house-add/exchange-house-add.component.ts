@@ -6,6 +6,7 @@ import { CurrencyService } from '@core/services/currency.service';
 import { BankService } from '@core/services/bank.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { OfficerService } from '@core/services/officer.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-exchange-house-add',
@@ -18,6 +19,9 @@ export class ExchangeHouseAddComponent implements OnInit {
     transaction_type: string;
     debit_account_type: string;
     debit_instruction: string;
+  };
+  officerDataOb: {
+    id: number;
   };
 
   officerData = [];
@@ -60,7 +64,7 @@ export class ExchangeHouseAddComponent implements OnInit {
   private officerListData: any;
   private isShow: boolean;
   get formArray(): AbstractControl | null { return this.reactiveForm1.get('formArray'); }
-  constructor(private fb: FormBuilder, private officerService: OfficerService, private bankService: BankService, private currencyService: CurrencyService, private exchangeHouseService: ExchangeHouseService) {}
+  constructor(private router: Router, private fb: FormBuilder, private officerService: OfficerService, private bankService: BankService, private currencyService: CurrencyService, private exchangeHouseService: ExchangeHouseService) {}
   ngOnInit() {
     this.reactiveForm1 = this.fb.group({
       formArray: this.fb.array([
@@ -124,21 +128,40 @@ export class ExchangeHouseAddComponent implements OnInit {
     }
     if (!this.showData.find(i => i.transaction_type === this.showDataOb.transaction_type )) {
       this.showData = [this.showDataOb, ...this.showData];
-      this.isShow = false;
     }
   }
   getofficerdata( officer) {
-
-    if (!this.officerData.find(i => i.officer === officer)) {
-      this.officerData = [officer, ...this.officerData];
-      this.officerIdData = [officer.id, ...this.officerIdData];
+    const id = officer.id;
+    this.officerDataOb = {
+      id,
     }
+    if (!this.officerData.find(i => i.id === this.officerDataOb.id)) {
+      this.officerData = [officer, ...this.officerData];
+      this.officerIdData = [id, ...this.officerIdData];
+    }
+  }
+
+
+  deleteExDebitIns(tp) {
+      for (let i = 0; i < this.showData.length; ++i) {
+        if (this.showData[i].transaction_type === tp) {
+          this.showData.splice(i, 1);
+        }
+      }
+  }
+  deleteOfficer(id) {
+      for (let i = 0; i < this.officerData.length; ++i) {
+        if (this.officerData[i].id === id) {
+          this.officerData.splice(i, 1);
+          this.officerIdData.splice(i, 1);
+        }
+      }
   }
   // tslint:disable-next-line:variable-name
   exchangeHouseAdd(ex_house_name, ex_house_prefix, ex_house_address, country_code, currency_code, city, postal_code,  state, web_address, account_nature, account_type, account_number) {
-    const debitFrom = this.showData;
-    const officerId =  this.officerIdData;
-    this.exHouse = {
+     const debitFrom = this.showData;
+     const officerId =  this.officerIdData;
+     this.exHouse = {
       ex_house_name,
       ex_house_prefix,
       ex_house_address,
@@ -151,12 +174,12 @@ export class ExchangeHouseAddComponent implements OnInit {
       account_nature,
       account_type,
       account_number,
-      debitFrom,
-      officerId
-    };
-    this.exchangeHouseService.addExchangeHouse(this.exHouse)
-      .subscribe(data => {
+       debitFrom,
+       officerId
+      };
+     this.exchangeHouseService.addExchangeHouse(this.exHouse).subscribe(data => {
           this.notification.successmsg('Exchange House  added successfully');
+        this.router.navigate(['../exchangeHouse/info']);
         }, (err) => {
           this.notification.errorsmsg('Sorry! Exchange House not added');
         }

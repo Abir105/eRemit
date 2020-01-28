@@ -48,8 +48,17 @@
     {
       "state": "exchangeHouse",
       "name": "Exchange House",
-      "type": "link",
-      "icon": "apps"
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "info",
+          "name": "Exchange House Setup",
+          "type": "link"
+        }
+
+      ]
     }
+
   ]
 }

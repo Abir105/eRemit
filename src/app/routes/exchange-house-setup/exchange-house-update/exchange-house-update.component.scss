@@ -1,0 +1,82 @@
+.card-header{
+  border-radius: 5px 5px 0 0;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  height:83vh;
+}
+
+.right-nevigation {
+  float: right;
+  margin-top: 10px;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.exhouseTable {
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 150px;
+}
+
+.exhouseTable td, .exhouseTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.exhouseTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.exhouseTable tr:hover {background-color: #ddd;}
+
+.exhouseTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #1F5090;
+  color: white;
+}
+.exhouseTable td {
+  text-align: center;
+}
+
+
+.officerTable {
+  border-collapse: collapse;
+  width: 70%;
+  margin-left: 150px;
+}
+
+.officerTable td, .officerTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.officerTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.officerTable tr:hover {background-color: #ddd;}
+
+.officerTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #1F5090;
+  color: white;
+}
+.officerTable td {
+  text-align: center;
+}
+
+.navigationButtons {
+  float: right;
+}
