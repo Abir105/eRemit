@@ -9,12 +9,12 @@ import { of } from 'rxjs';
 })
 
 export class AccountNatureService {
-  Url = 'http://10.11.201.67:3001/';
+  Url = 'http://10.11.201.92:3001/';
    constructor(private http: HttpClient) {
   }
 
   public getData = (route: string): Observable<any> => {
-    return this.http.get('http://10.11.201.67:3001/account_nature');
+    return this.http.get('http://10.11.201.92:3001/account_nature');
   };
 
 
@@ -22,7 +22,7 @@ export class AccountNatureService {
   public account_nature_create = ({ route, body }: { route: string, body: any }) => {
     // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     console.log(body);
-    return this.http.post('http://10.11.201.67:3001/account_nature', body);
+    return this.http.post('http://10.11.201.92:3001/account_nature', body);
   };
   public delete = (curid) => {
     const options = {
@@ -30,12 +30,12 @@ export class AccountNatureService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.67:3001/account_nature/${curid}`, options);
+    return this.http.delete(`http://10.11.201.92:3001/account_nature/${curid}`, options);
   };
 
   public updateaccountnature = (route: string, element) => {
     console.log(element);
-    return this.http.put('http://10.11.201.67:3001/account_nature', element);
+    return this.http.put('http://10.11.201.92:3001/account_nature', element);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

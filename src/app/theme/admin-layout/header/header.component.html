@@ -4,7 +4,8 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <app-branding *ngIf="showBranding"></app-branding>
+<!--  <app-branding *ngIf="showBranding"></app-branding>-->
+  <app-branding ></app-branding>
   <span fxFlex></span>
 
   <!--app-github-button></app-github-button-->
@@ -21,7 +22,7 @@
 
   <app-user></app-user>
 
-  <button mat-button class="matero-hamburger" (click)="toggleSidenavRight.emit()" fxHide.lt-sm>
+  <button mat-button class="matero-hamburger" (click)="toggleSidenavRight.emit()" *ngIf="showToggle && !hideMenuButton" fxHide.lt-sm>
     <mat-icon>list</mat-icon>
   </button>
 

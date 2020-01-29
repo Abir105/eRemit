@@ -49,13 +49,20 @@
   mat-label {
     color: black;
   }
+  .eraLogo{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 38px;
+  }
+
 </style>
 
 <div class="loginStyle" fxLayout="column">
   <form [formGroup]="reactiveForm">
     <div fxLayout="row" fxLayout.sm="column"  fxLayout.xs="column">
         <div fxFlex="65">
-          <img src="../../../../assets/images/bank-asia-limited.png">
+          <img style="padding-top: 15px; padding-left: 15px" height="84" width="84" src="../../../../assets/images/Bank_Asia_Limited.svg">
         </div>
         <div fxFlex="35">
           <div  style="float: right; padding-top: 20px;">
@@ -89,6 +96,9 @@
 <!--      <button mat-raised-button style="background-color: #154364; color: #fff">-->
 <!--        Login-->
 <!--      </button>-->
+    </div>
+    <div fxLayout.xs="row" class="eraLogo">
+      <img style="padding-top: 15px; padding-left: 15px" height="64" width="130" src="../../../../assets/images/logo38.png">
     </div>
   </form>
 </div>
