@@ -1,6 +1,5 @@
 import {  Component, OnInit, ViewChild } from '@angular/core';
 import { IncentiveService } from '@core/services/incentive.service';
-import { IncentiveInfo } from '../../../model/incentiveInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { AddIncentiveComponent } from '../add-incentive/add-incentive.component';
 import { DeleteIncentiveComponent } from '../delete-incentive/delete-incentive.component';
@@ -9,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { IncentiveInfo } from '../../../model/IncentiveInfo';
 
 @Component({
   selector: 'app-incentive-list',
