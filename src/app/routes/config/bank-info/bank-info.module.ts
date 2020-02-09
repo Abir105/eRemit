@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { BankInfoRoutingModule } from './bank-info-routing.module';
 import { BankListComponent } from './bank-list/bank-list.component';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';

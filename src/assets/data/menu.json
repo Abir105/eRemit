@@ -52,6 +52,11 @@
           "state": "account_type",
           "name": "Account Type",
           "type": "link"
+        },
+        {
+          "state": "incentive",
+          "name": "Incentive Policy",
+          "type": "link"
         }
       ]
     },
@@ -60,6 +65,19 @@
       "name": "Exchange House",
       "type": "link",
       "icon": "apps"
+    },
+    {
+      "state": "transaction",
+      "name": "Transaction",
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "cashPaymentForOtherWebsite",
+          "name": "Cash Payment For Other Website",
+          "type": "link"
+        }
+      ]
     }
   ]
 }

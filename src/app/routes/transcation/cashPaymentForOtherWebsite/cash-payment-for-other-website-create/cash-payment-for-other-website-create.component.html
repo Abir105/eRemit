@@ -1,0 +1,149 @@
+<app-notification-comp></app-notification-comp>
+<form [id]="cashPaymentForOtherWebsiteAddId" [formGroup]="reactiveForm4" (ngSubmit)="addCashPaymentForOtherWebsite(reactiveForm4.value)" class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+        <div fxFlex="2">
+          <button style="margin-top: 4px" mat-icon-button [routerLink]="['../']">
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="38">
+          <h3 style="padding-left: 8px"> Cash Payment For Other Website </h3>
+        </div>
+        <div fxFlexOffset="33" fxFlex="30">
+          <div class="right-nevigation">
+            <button mat-icon-button matTooltip="Go Back" [routerLink]="['../']">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button mat-icon-button (click)='cashPaymentForOtherWebsiteFormSubmit(reactiveForm4.value)' mat-raised-button color="primary" class="mat-raised-button mat-primary" type="submit" [disabled]="!reactiveForm4.valid" matTooltip="Save">
+              <mat-icon>save</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Basic Information">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Exchange House Name: </mat-label>
+                <input matInput placeholder="Exchange House Name" formControlName="exchangeHouseName" required />
+                <div *ngIf="exchangeHouseName.invalid && (exchangeHouseName.dirty || exchangeHouseName.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="exchangeHouseName.errors.required">Exchange House Name is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Reference No: </mat-label>
+                <input matInput type="number" min="0" placeholder="Reference No" formControlName="referenceNo" required />
+                <div *ngIf="referenceNo.invalid && (referenceNo.dirty || referenceNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="referenceNo.errors.required">Reference No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Receiver Name: </mat-label>
+                <input matInput placeholder="Receiver Name" formControlName="receiverName" required />
+                <div *ngIf="receiverName.invalid && (receiverName.dirty || receiverName.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="receiverName.errors.required">Receiver Name is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Remitter Name: </mat-label>
+                <input matInput placeholder="Remitter Name" formControlName="remitterName" required />
+                <div *ngIf="remitterName.invalid && (remitterName.dirty || remitterName.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="remitterName.errors.required">Remitter Name is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Beneficiary Mobile No: </mat-label>
+                <input matInput placeholder="Beneficiary Mobile No" formControlName="beneficiaryMobileNo" minlength="14" maxlength="14" pattern="[0-9]{14}" required />
+                <div *ngIf="beneficiaryMobileNo.invalid && (beneficiaryMobileNo.dirty || beneficiaryMobileNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="beneficiaryMobileNo.errors.required">Beneficiary Mobile No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification Type: </mat-label>
+
+                <mat-select matInput placeholder="Identification Type"  [(ngModel)]="selectedValue" name="identificationType" formControlName="identificationType" required>
+                  <mat-option *ngFor="let identificationType of identificationTypes" [value]="identificationType.value" >
+                    {{identificationType.viewValue}}
+                  </mat-option>
+                </mat-select>
+
+                <div *ngIf="identificationType.invalid && (identificationType.dirty || identificationType.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="identificationType.errors.required">Identification Type is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification No: </mat-label>
+                <input matInput type="number" min="0" placeholder="Identification No" formControlName="identificationNo" required />
+                <div *ngIf="identificationNo.invalid && (identificationNo.dirty || identificationNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="identificationNo.errors.required">Identification No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification Issuer: </mat-label>
+                <input matInput placeholder="Identification Issuer" formControlName="identificationIssuer" required />
+                <div *ngIf="identificationIssuer.invalid && (identificationIssuer.dirty || identificationIssuer.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="identificationIssuer.errors.required"> Identification Issuer is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Expired Date: </mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Choose Expired Date" formControlName="expiredDate" required />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="expiredDate.invalid && (expiredDate.dirty || expiredDate.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="expiredDate.errors.required"> Expired Date is required. </div>
+                </div>
+              </mat-form-field>
+
+            </div>
+          </div>
+        </mat-tab>
+
+        <mat-tab label="Amount Calculation">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Amount: </mat-label>
+                <input matInput (keyup)="cal($event)" type="number" value="true" min="0" placeholder="Amount" formControlName="amount" required />
+                <div *ngIf="amount.invalid && (amount.dirty || amount.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="amount.errors.required"> Amount is required. </div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill" *ngIf="fieldHidden">
+                <mat-label>Incentive Percentage: </mat-label>
+                <input type="numder" formControlName="incentivePercentage" [readonly]="isReadonly" matInput placeholder="Incentive Percentage" required />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill" *ngIf="fieldHidden">
+                <mat-label>Incentive Amount: </mat-label>
+                <input [readonly]="isReadonly" matInput placeholder="Incentive Amount" formControlName="incentiveAmount" required />
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill" *ngIf="fieldHidden">
+                <mat-label>Total Amount: </mat-label>
+                <input [readonly]="isReadonly" matInput placeholder="Total Amount" formControlName="totalAmount" required />
+              </mat-form-field>
+
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</form>

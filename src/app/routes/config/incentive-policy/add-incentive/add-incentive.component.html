@@ -1,0 +1,49 @@
+<h2 mat-dialog-title align="center">Add Incentive Policy</h2>
+
+<mat-dialog-content>
+
+  <form [formGroup]="reactiveForm1" class="matero-form-horizontal">
+
+    <div fxLayout="column wrap">
+
+      <div  fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Incentive Percentage</mat-label>
+          <input matInput placeholder="" formControlName="incentivePercentage" type="number" min="0"
+                 required>
+          <mat-error *ngIf="reactiveForm1.get('incentivePercentage').invalid">Incentive Percentage Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Maximum Amount(USD)</mat-label>
+          <input matInput placeholder="" formControlName="maximumAmount" type="number" min="0"
+                 required>
+          <mat-error *ngIf="reactiveForm1.get('maximumAmount').invalid">Maximum Amount(USD) Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Rate</mat-label>
+          <input matInput placeholder="" formControlName="rate" type="number" min="0"
+                 required>
+          <mat-error *ngIf="reactiveForm1.get('rate').invalid">Rate Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<div mat-dialog-actions align="center">
+  <button mat-raised-button color="accent" mat-dialog-close >Close</button>
+  <button (click)='incentiveFormSubmit(reactiveForm1.value)'  [disabled]="!reactiveForm1.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
+</div>
+
+
+

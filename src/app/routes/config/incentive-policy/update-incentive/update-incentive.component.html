@@ -1,0 +1,46 @@
+<app-notification-comp></app-notification-comp>
+<h2 mat-dialog-title align="center">Update Incentive Policy</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="reactiveForm2" class="matero-form-horizontal">
+
+    <div fxLayout="column wrap">
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Incentive Percentage</mat-label>
+          <input matInput  formControlName="incentivePercentage" [(ngModel)]="incentivePercentage" type="number" min="0" max="100"
+                 required>
+          <mat-error *ngIf="reactiveForm2.get('incentivePercentage').invalid">Please Enter Incentive Percentage
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Maximum Amount(USD)</mat-label>
+          <input matInput placeholder="" formControlName="maximumAmount" [ngModel]="maximumAmount" type="number" min="0"
+                 required>
+          <mat-error *ngIf="reactiveForm2.get('maximumAmount').invalid">Maximum Amount Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div fxFlex="50" fxFlex.lt-sm="100">
+        <mat-form-field appearance="fill">
+          <mat-label>Rate</mat-label>
+          <input matInput placeholder="" formControlName="rate" [ngModel]="rate" type="number" min="0"
+                 required>
+          <mat-error *ngIf="reactiveForm2.get('rate').invalid">Rate Required
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions  align="center">
+  <button class="mat-raised-button" mat-dialog-close color="accent">Close</button>
+  <button (click)='incentiveFormUpdate(reactiveForm2.value)' [disabled]="!reactiveForm2.valid" mat-raised-button color="primary" class="mat-raised-button mat-primary">Save</button>
+</mat-dialog-actions>

@@ -1,0 +1,90 @@
+<app-notification-comp></app-notification-comp>
+<div class="card">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="2" >
+        <button style="margin-top: 4px" mat-icon-button [routerLink]="['']">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="41" >
+        <h3 style="padding-left: 8px" > Incentive Policy Info </h3>
+      </div>
+      <div fxFlex="30" >
+        <mat-form-field >
+          <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
+          <button mat-button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>search</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div fxFlex="27"  >
+        <div class="right-nevigation">
+
+          <button mat-icon-button color="primary" matTooltip="Add New"
+                  [disabled] = "incentiveDataLength > 0" (click)="addNew()">
+            <mat-icon>add_box</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="sl">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+        <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="incentive_percentage">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Incentive Percentage (%)</th>
+        <td mat-cell *matCellDef="let element"> {{element.incentivePercentage}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maximum_amount">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Maximum Amount (USD)</th>
+        <td mat-cell *matCellDef="let element"> {{element.maximumAmount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="rate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Exchange Rate</th>
+        <td mat-cell *matCellDef="let element"> {{element.rate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="balance">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Equivalent Local Currency Balance</th>
+        <td mat-cell *matCellDef="let element"> {{element.balance}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="update">
+        <th mat-header-cell *matHeaderCellDef> Update</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="accent" (click)="UpdateIncentive(element)">
+            <mat-icon class="mat-18">update</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Delete</th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="warn" (click)="deleteIncentiveRow(element.id)">
+            <mat-icon class="mat-18">delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+    </mat-paginator>
+  </div>
+</div>
+
+

@@ -1,21 +1,21 @@
 import { NgModule } from '@angular/core';
 import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule } from '@angular/material';
 import { ToastrModule } from 'ngx-toastr';
-import { ConfigRoutingModule } from './config-routing.module';
+import { TranscationRoutingModule} from './transcation-routing.module';
 import { SharedModule } from '@shared/shared.module';
-import {MaterialModule} from '../material/material.module';
+import { MaterialModule} from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 const COMPONENTS = [ ];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({
-  imports: [ SharedModule, ConfigRoutingModule, MaterialModule, MatTableModule, MatSortModule,
+  imports: [ SharedModule, TranscationRoutingModule, MaterialModule, MatTableModule, MatSortModule,
     ToastrModule.forRoot({
-        closeButton: true, })
+      closeButton: true, })
   ],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
   entryComponents: COMPONENTS_DYNAMIC,
   exports: [MatTableModule, MatSortModule, MatInputModule, FlexLayoutModule, MatPaginatorModule]
 })
-export class ConfigModule { }
+export class TranscationModule { }

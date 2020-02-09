@@ -26,6 +26,11 @@ const routes: Routes = [
         data: { title: 'Config', titleI18n: 'config' },
       },
       {
+        path: 'transaction',
+        loadChildren: () => import('./transcation/transcation.module').then(m => m.TranscationModule),
+        data: { title: 'Transaction', titleI18n: 'transaction' },
+      },
+      {
         path: 'exchangeHouse',
         loadChildren: () => import('./exchange-house-setup/exchange-house-setup.module').then(m => m.ExchangeHouseSetupModule),
         data: { title: 'ExchangeHouse', titleI18n: 'exchangeHouse' },

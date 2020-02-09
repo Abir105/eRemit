@@ -12,7 +12,8 @@ export class AddCurrencyComponent implements OnInit {
   description = 'Add New Currency';
   reactiveForm2: FormGroup;
 
-  constructor(public dialogRef: MatDialogRef<AddCurrencyComponent>, private fb: FormBuilder, private repoService: CurrencyService) {
+  constructor(public dialogRef: MatDialogRef<AddCurrencyComponent>,
+              private fb: FormBuilder, private repoService: CurrencyService) {
     this.reactiveForm2 = this.fb.group({
       cur_name: ['', [Validators.required]],
       cur_short_name: ['', [Validators.required]],
