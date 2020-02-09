@@ -9,18 +9,18 @@ import { of } from 'rxjs';
 })
 
 export class AccountTypeService {
-  Url = 'http://10.11.201.67:3001/';
+  Url = 'http://10.11.201.92:3001/';
   constructor(private http: HttpClient) {
   }
 
   public getData = (route: string): Observable<any> => {
-    return this.http.get('http://10.11.201.67:3001/account_type');
+    return this.http.get('http://10.11.201.92:3001/account_type');
   };
 
   public accounttypecreate = ({ route, body }: { route: string, body: any }) => {
 
     console.log(body);
-    return this.http.post('http://10.11.201.67:3001/account_type', body);
+    return this.http.post('http://10.11.201.92:3001/account_type', body);
   };
   public delete = (actid) => {
     const options = {
@@ -28,12 +28,12 @@ export class AccountTypeService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.67:3001/account_type/${actid}`, options);
+    return this.http.delete(`http://10.11.201.92:3001/account_type/${actid}`, options);
   };
 
   public updateaccounttype = (route: string, element) => {
     console.log(element);
-    return this.http.put('http://10.11.201.67:3001/account_type', element);
+    return this.http.put('http://10.11.201.92:3001/account_type', element);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

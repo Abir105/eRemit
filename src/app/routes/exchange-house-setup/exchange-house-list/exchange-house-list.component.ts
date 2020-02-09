@@ -6,6 +6,7 @@ import { ExchangeHouseService } from '@core/services/exchange-house.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationCompoComponent } from '../../notificationComp/notificationCompo.component';
 import { ExchangeHouseDeleteComponent } from '../exchange-house-delete/exchange-house-delete.component';
+import { OfficerDeleteComponent } from '../../config/officer-info/officer-delete/officer-delete.component';
 
 @Component({
   selector: 'app-exchange-house-list',
@@ -13,7 +14,7 @@ import { ExchangeHouseDeleteComponent } from '../exchange-house-delete/exchange-
   styleUrls: ['./exchange-house-list.component.scss']
 })
 export class ExchangeHouseListComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'progress', 'color', 'acDbIns', 'acDbFrom', 'delete'];
+  displayedColumns: string[] = ['sl', 'ex_house_code', 'ex_house_name', 'ex_house_prefix', 'country_code', 'currency_code', 'update', 'details', 'delete'];
   private dialogRef: any;
   dataSource: MatTableDataSource<any>;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
@@ -44,7 +45,8 @@ export class ExchangeHouseListComponent implements OnInit {
       this.dataSource.paginator.firstPage();
     }
   }
-  deleteExHouse(id: number) {
+
+  deleteExHouse(id: string) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = { id };
     dialogConfig.disableClose = true;
@@ -52,7 +54,7 @@ export class ExchangeHouseListComponent implements OnInit {
     this.dialogRef = this.dialog.open(ExchangeHouseDeleteComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
       const obj = JSON.parse(value);
-      const affectedRows = obj.data.affectedRows;
+      const affectedRows = obj.affectedRows;
       if (affectedRows === 1) {
         this.notification.successmsg('Exchange House Deleted successfully');
         this.getAllExchangeHouse();

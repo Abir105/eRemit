@@ -1,1 +1,98 @@
-<p>branch-details works!</p>
+
+<!--<pre>{{branchDetailsData.id | json}}</pre>-->
+<app-notification-comp></app-notification-comp>
+<div class="mainCard">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="2" >
+        <button style="margin-top: 4px" mat-icon-button>
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="48" >
+        <h3 style="padding-left: 8px">Branch Details</h3>
+      </div>
+      <div fxFlex="50"  >
+        <div class="right-nevigation" *ngIf="branchDetailsData">
+          <button mat-icon-button matTooltip="edit" [routerLink]="['../../update' , branchDetailsData.id]" >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+  <div fxLayout="column" *ngIf="branchDetailsData" class="mainContainer">
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3 >Basic Information</h3>
+      </div>
+      <div fxLayout="row" class="container">
+        <div fxFlex="33">
+          <div class="info"><b>Full Name:</b> {{branchDetailsData.fullName}}</div>
+          <div class="info"><b>Branch Code:</b> {{branchDetailsData.branchcode}}</div>
+          <div class="info"><b>BB Reg No:</b> {{branchDetailsData.bbReg}}</div>
+
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Short Name:</b> {{branchDetailsData.shortName}}</div>
+          <div class="info"><b>Swift Code:</b> {{branchDetailsData.swiftCode}}</div>
+          <div class="info"><b>Currancy:</b> {{branchDetailsData.baseCurrency}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Report Name:</b> {{branchDetailsData.reportName}}</div>
+          <div class="info"><b>BB Code:</b> {{branchDetailsData.bbCode}}</div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3>Other Information</h3>
+      </div>
+
+      <div fxLayout="row" class="container">
+        <div fxFlex="33">
+          <div class="info"><b>Open Date:</b> {{branchDetailsData.openDate | date: 'dd/MM/yyyy'}}</div>
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Created By:</b> {{branchDetailsData.create_by}}</div>
+
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Routing No:</b> {{branchDetailsData.routingNo}}</div>
+
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3>Address</h3>
+      </div>
+      <div fxLayout="row" class="container" >
+        <div fxFlex="33">
+          <div class="info"><b>Country:</b> {{branchDetailsData.country}}</div>
+
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>Division:</b> {{branchDetailsData.division}}</div>
+
+        </div>
+        <div fxFlex="33">
+          <div class="info"><b>City:</b> {{branchDetailsData.city}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+

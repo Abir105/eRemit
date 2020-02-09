@@ -38,7 +38,7 @@
 // Fix the init content width
 .matero-content-width-fix {
   .matero-content-wrap {
-    margin-left: 240px;
+    margin-left: 500px;
 
     [dir='rtl'] & {
       margin-left: auto;
@@ -54,22 +54,13 @@
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: #212121;
-  background-image: linear-gradient(
-    45deg,
-    rgba(255, 255, 255, .05) 25%,
-    transparent 25%,
-    transparent 75%,
-    rgba(255, 255, 255, .05) 75%,
-    rgba(255, 255, 255, .05)
-  ),
-    linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, .05) 25%,
-    transparent 25%,
-    transparent 75%,
-    rgba(255, 255, 255, .05) 75%,
-    rgba(255, 255, 255, .05)
-  );
-  background-size: 60px 60px;
+  background-color: rgba(250, 250, 250, 200);
+  background-image: url("~assets/images/world-map-vector.jpg");
+
+
+}
+
+.verticalLogin {
+  background-color: transparent;
+
 }

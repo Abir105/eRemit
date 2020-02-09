@@ -6,9 +6,7 @@ import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.compone
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
-import { RegisterComponent } from './sessions/register/register.component';
 import { HelpersComponent } from './helpers/helpers.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -96,16 +94,12 @@ const routes: Routes = [
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        data: { title: 'Register', titleI18n: 'Register' },
-      },
+      { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } }
     ],
   },
   { path: '**', redirectTo: 'login' },
 ];
+
 
 @NgModule({
   imports: [
