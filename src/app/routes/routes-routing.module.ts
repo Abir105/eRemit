@@ -6,9 +6,7 @@ import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.compone
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
-import { RegisterComponent } from './sessions/register/register.component';
 import { HelpersComponent } from './helpers/helpers.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -20,11 +18,6 @@ const routes: Routes = [
         component: DashboardComponent,
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
-      // {
-      //   path: 'login',
-      //   loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
-      //   data: { title: 'Login', titleI18n: 'login' },
-      // },
       {
         path: 'config',
         loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),
@@ -91,16 +84,12 @@ const routes: Routes = [
     path: '',
     component: AuthLayoutComponent,
     children: [
-      { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } },
-      {
-        path: 'register',
-        component: RegisterComponent,
-        data: { title: 'Register', titleI18n: 'Register' },
-      },
+      { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } }
     ],
   },
   { path: '**', redirectTo: 'login' },
 ];
+
 
 @NgModule({
   imports: [

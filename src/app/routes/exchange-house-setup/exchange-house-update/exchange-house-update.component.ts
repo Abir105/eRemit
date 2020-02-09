@@ -24,7 +24,7 @@ export class ExchangeHouseUpdateComponent implements OnInit {
     debit_account_type: string;
     debit_instruction: string;
   };
-  officerIdOb: {
+  officerDataOb: {
     id: number;
   };
 
@@ -148,7 +148,7 @@ export class ExchangeHouseUpdateComponent implements OnInit {
   };
   // tslint:disable-next-line:variable-name
   getdebitfromDAta( transaction_type, debit_account_type, debit_instruction) {
-    console.log(transaction_type);
+    // console.log(transaction_type);
     // @ts-ignore
     if (transaction_type !== undefined && debit_account_type !== undefined && debit_instruction !== undefined  ) {
       this.showDataOb = {
@@ -158,21 +158,36 @@ export class ExchangeHouseUpdateComponent implements OnInit {
       };
       if (!this.showData.find(i => i.transaction_type === this.showDataOb.transaction_type)) {
         this.showData = [this.showDataOb, ...this.showData];
+       // console.log(this.showData);
         this.updatedDebitFromData = [this.showDataOb, ...this.updatedDebitFromData];
-        this.isShow = false;
+        console.log(this.updatedDebitFromData.length);
       }
     }
   }
   getofficerdata( officer) {
+    const id = officer.id;
+    this.officerDataOb = {
+      id,
+    }
 
-    if (!this.officerData.find(i => i.officer === officer)) {
+    if (!this.officerData.find(i => i.id === this.officerDataOb.id))
+
+    {
       this.officerData = [officer, ...this.officerData];
       this.officerIdData = [officer.id, ...this.officerIdData];
       this.updatedOfficerIdData = [officer.id, ...this.updatedOfficerIdData];
     }
   }
   deleteExDebitIns(id , tp) {
-    if (id) {
+
+    if (!id) {
+      for (let i = 0; i < this.showData.length; ++i) {
+        if (this.showData[i].transaction_type === tp) {
+          this.showData.splice(i, 1);
+          this.updatedDebitFromData.splice(i, 1);
+        }
+      }
+    } else {
       this.exchangeHouseService.deleteDebitIns(id)
         .subscribe( data => {
           for (let i = 0; i < this.showData.length; ++i) {
@@ -181,35 +196,19 @@ export class ExchangeHouseUpdateComponent implements OnInit {
             }
           }
         });
-    } else {
-      for (let i = 0; i < this.showData.length; ++i) {
-        if (this.showData[i].transaction_type === tp) {
-          this.showData.splice(i, 1);
-          this.updatedDebitFromData[i].splice(i, 1);
-        }
-      }
     }
   }
   deleteOfficer(id) {
-    console.log(id);
-    if (id) {
       this.exchangeHouseService.deleteExOfficer(id)
         .subscribe( data => {
           for (let i = 0; i < this.officerData.length; ++i) {
             if (this.officerData[i].id === id) {
               this.officerData.splice(i, 1);
+              this.officerIdData.splice(i, 1);
+              this.updatedOfficerIdData.splice(i, 1);
             }
           }
         });
-    } else {
-      for (let i = 0; i < this.officerData.length; ++i) {
-        if (this.officerData[i] === id) {
-          this.officerData.splice(i, 1);
-          this.officerIdData.splice(i, 1);
-          this.updatedOfficerIdData.splice(i, 1);
-        }
-      }
-    }
   }
 
 

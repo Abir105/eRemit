@@ -5,7 +5,7 @@
   </button>
 
 <!--  <app-branding *ngIf="showBranding"></app-branding>-->
-  <app-branding ></app-branding>
+  <app-branding ></app-branding> <span *ngIf="!showBranding"> | Bank Asia Limited</span>
   <span fxFlex></span>
 
   <!--app-github-button></app-github-button-->
@@ -20,7 +20,7 @@
 
 <!--  <app-notification fxHide.lt-sm></app-notification>-->
 
-  <app-user></app-user>
+  <app-user *ngIf="!hideMenuButton"></app-user>
 
   <button mat-button class="matero-hamburger" (click)="toggleSidenavRight.emit()" *ngIf="showToggle && !hideMenuButton" fxHide.lt-sm>
     <mat-icon>list</mat-icon>

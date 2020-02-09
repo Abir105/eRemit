@@ -179,7 +179,7 @@ export class ExchangeHouseAddComponent implements OnInit {
       };
      this.exchangeHouseService.addExchangeHouse(this.exHouse).subscribe(data => {
           this.notification.successmsg('Exchange House  added successfully');
-        this.router.navigate(['../exchangeHouse/info']);
+          this.router.navigate(['../exchangeHouse/info']);
         }, (err) => {
           this.notification.errorsmsg('Sorry! Exchange House not added');
         }
