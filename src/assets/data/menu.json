@@ -62,33 +62,22 @@
       ]
     },
     {
-      "state": "exchangeHouse",
-      "name": "Exchange House",
-<<<<<<< HEAD
+      "state": "fileProcessing",
+      "name": "File Processing",
       "type": "link",
       "icon": "apps"
     },
     {
-      "state": "transaction",
-      "name": "Transaction",
-=======
->>>>>>> master
+      "state": "exchangeHouse",
+      "name": "Exchange House",
       "type": "sub",
       "icon": "apps",
       "children": [
         {
-<<<<<<< HEAD
-          "state": "cashPaymentForOtherWebsite",
-          "name": "Cash Payment For Other Website",
-          "type": "link"
-        }
-=======
           "state": "info",
           "name": "Exchange House Setup",
           "type": "link"
         }
-
->>>>>>> master
       ]
     }
   ]
