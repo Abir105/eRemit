@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'create', component: BranchCreateComponent},
   { path: 'update/:id', component: BranchUpdateComponent},
   { path: 'delete', component: BranchDeleteComponent},
-  { path: 'details', component: BranchDetailsComponent}
+  { path: 'details/:id', component: BranchDetailsComponent}
 ];
 
 @NgModule({

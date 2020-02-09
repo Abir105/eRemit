@@ -1,3 +1,4 @@
+
 {
   "menu": [
     {
@@ -63,20 +64,31 @@
     {
       "state": "exchangeHouse",
       "name": "Exchange House",
+<<<<<<< HEAD
       "type": "link",
       "icon": "apps"
     },
     {
       "state": "transaction",
       "name": "Transaction",
+=======
+>>>>>>> master
       "type": "sub",
       "icon": "apps",
       "children": [
         {
+<<<<<<< HEAD
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
           "type": "link"
         }
+=======
+          "state": "info",
+          "name": "Exchange House Setup",
+          "type": "link"
+        }
+
+>>>>>>> master
       ]
     }
   ]

@@ -10,6 +10,8 @@ const routes: Routes = [
   { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) },
   { path: 'bank', loadChildren: () => import('./bank-info/bank-info.module').then(m => m.BankInfoModule) },
   { path: 'branch', loadChildren: () => import('./branch-info/branch-info.module').then(m => m.BranchInfoModule) },
+  { path: 'officer', loadChildren: () => import('./officer-info/officer-info.module').then(m => m.OfficerInfoModule) },
+  { path: 'paymentType', loadChildren: () => import('./payment-type/payment-type.module').then(m => m.PaymentTypeModule) },
   { path: 'account_nature', loadChildren: () => import('./account-nature/account-nature.module').then(m => m.AccountNatureModule) },
   { path: 'account_type', loadChildren: () => import('./account-type/account-type.module').then(m => m.AccountTypeModule) },
   { path: 'incentive', loadChildren: () => import('./incentive-policy/incentive-policy.module').then(m => m.IncentivePolicyModule) }

@@ -21,10 +21,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MaterialModule } from '../../material.module';
 import { MatStepperModule } from '@angular/material/stepper';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { ExchangeHouseDetailsComponent } from './exchange-house-details/exchange-house-details.component';
 
 
 @NgModule({
-  declarations: [ExchangeHouseListComponent, ExchangeHouseAddComponent, ExchangeHouseUpdateComponent, ExchangeHouseDeleteComponent],
+  declarations: [ExchangeHouseListComponent, ExchangeHouseAddComponent, ExchangeHouseUpdateComponent, ExchangeHouseDeleteComponent, ExchangeHouseDetailsComponent],
   imports: [
     CommonModule,
     MatInputModule,

@@ -1,0 +1,14 @@
+
+.login-wrapper {
+  margin-top: 10%;
+}
+
+.box{
+  width:100%;background:#fff;
+  border-radius:10px;
+  z-index:5;max-width:330px;
+}
+.login-wrapper .example-full-width,.login-wrapper .btn-block{width:100%;}
+.login-wrapper mat-card-header{text-align:center;width:100%;display:block;font-weight:700;}
+.login-wrapper mat-card-header mat-card-title{font-size:30px;margin:0;}
+
