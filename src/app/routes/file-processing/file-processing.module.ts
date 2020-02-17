@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule } from '@angular/material';
 import { MaterialModule} from '../material/material.module';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,11 +18,13 @@ import { AddFileProcessingComponent } from './add-file-processing/add-file-proce
 import { FileProcessingRoutingModule } from './file-processing-routing.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
+import { CompletedBatchesComponent } from './completed-batches/completed-batches.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
-  declarations: [AddFileProcessingComponent],
+  declarations: [AddFileProcessingComponent, CompletedBatchesComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -44,6 +46,8 @@ import { MatRadioModule } from '@angular/material/radio';
     CKEditorModule,
     MatDividerModule,
     MatRadioModule,
+    FormsModule,
+    MatDialogModule,
   ],
 })
 export class FileProcessingModule { }

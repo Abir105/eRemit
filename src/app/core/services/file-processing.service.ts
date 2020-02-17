@@ -9,7 +9,7 @@ import { of } from 'rxjs';
   providedIn: 'root'
 })
 export class FileProcessingService {
-  Url = 'http://10.11.201.87:3001/';
+  Url = 'http://10.11.201.92:3001/';
   private httpClient: any;
   constructor(private http: HttpClient) { }
 
@@ -44,7 +44,7 @@ export class FileProcessingService {
 
   public addFileUpload = ({ route, body }: { route: string, body: any }) => {
     console.log(body);
-    return this.http.post('http://10.11.201.87:3001/ex_house_name', body);
+    return this.http.post('http://10.11.201.92:3001/ex_house_name', body);
   };
 }
 

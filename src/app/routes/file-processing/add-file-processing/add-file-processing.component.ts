@@ -1,10 +1,18 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FileProcessingService } from '@core/services/file-processing.service';
 import { NotificationCompoComponent } from '../../notificationComp/notificationCompo.component';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
+import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
 
 
 @Component({
@@ -13,7 +21,10 @@ import * as XLSX from 'ts-xlsx';
   styleUrls: ['./add-file-processing.component.scss']
 })
 export class AddFileProcessingComponent implements OnInit {
-    [x: string]: any;
+  animal: string;
+  name: string;
+
+  [x: string]: any;
 
   fileProcessing = Subscription;
   reactiveForm1: FormGroup;
@@ -26,7 +37,8 @@ export class AddFileProcessingComponent implements OnInit {
   isShow: any;
   get formArray(): AbstractControl | null { return this.reactiveForm1.get('formArray'); }
 
-  constructor(private router:Router, private _formBuilder: FormBuilder, private fb: FormBuilder, private fileProcessingService : FileProcessingService) {}
+  constructor(private router: Router, private fb: FormBuilder, private fileProcessingService: FileProcessingService, public dialog: MatDialog) {}
+
   ngOnInit() {
 
     this.reactiveForm1 = this.fb.group({
@@ -50,6 +62,18 @@ export class AddFileProcessingComponent implements OnInit {
       ])
     });
     this.getAllXpressMoneyName();
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CompletedBatchesComponent, {
+      width: '500px',
+      height: '500px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
   get data() { return this.reactiveForm1.get('data'); }
