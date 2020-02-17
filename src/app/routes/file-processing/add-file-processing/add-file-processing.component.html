@@ -1,0 +1,135 @@
+<!--suppress ALL -->
+<app-notification-comp></app-notification-comp>
+
+<form [formGroup]="reactiveForm1"  class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+
+        <div fxFlex="2" >
+          <button style="margin-top: 4px" mat-icon-button  [routerLink]="['../']" >
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+
+        <div fxFlex="38" >
+          <h3 style="padding-left: 8px"> Add File Processing </h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <div fxLayout="column">
+        <mat-horizontal-stepper #fileProcessingStepper formArrayName="formArray" [linear]="false">
+          <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+            <ng-template matStepLabel><b>Exchange House Transaction</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+                <mat-card class="example-card"  *ngFor="let x of xPressMoneyName">
+                  <mat-card-header>
+                    <div fxLayout="column">
+                      <div fxLayout="row">
+                        <mat-card-title class="name"> {{x.ex_house_name}} </mat-card-title>
+                        <hr>
+                        <div mat-card-avatar class="example-header-image"></div>
+                      </div>
+                      <div>
+                        <br>
+                        <mat-divider></mat-divider>
+                        <br>
+                        <div fxLayout="row">
+                          <div fxLayout="column">
+                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of completed bach: 5</a></mat-card-content>
+                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete bach: 2</a></mat-card-content>
+                          </div>
+                          <div class="navigationButtons">
+                            <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-card-header>
+                </mat-card>
+
+            </div>
+              </div>
+
+            <div class="navigationButtons">
+              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+
+          </mat-step>
+          <mat-step class="step2" formGroupName="1" [stepControl]="formArray?.get([1])">
+            <ng-template matStepLabel><b>Step 2</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+
+                <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
+                <button type="submit" class="btn btn-info" (click)="Upload(file.value)" >Upload</button>
+
+
+              </div>
+          </div>
+
+          </mat-step>
+
+          <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+            <ng-template matStepLabel><b>Step 3</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+                <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
+                <button type="submit" class="btn btn-info" (click)="Upload(file.value)" >Upload</button>
+
+
+              </div>
+            </div>
+
+            <div class="navigationButtons">
+              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+
+          </mat-step>
+
+          <mat-step formGroupName="3" [stepControl]="formArray?.get([3])">
+            <ng-template matStepLabel><b>step 4</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                <mat-card>Simple card 4</mat-card>
+
+
+
+              </div>
+            </div>
+
+              <div class="navigationButtons">
+                <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+                <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+              </div>
+
+
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+
