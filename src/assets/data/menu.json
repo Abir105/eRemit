@@ -82,9 +82,27 @@
       "icon": "apps",
       "children": [
         {
-
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "state": "fileProcessing",
+      "name": "File Processing",
+      "type": "link",
+      "icon": "apps"
+    },
+    {
+      "state": "exchangeHouse",
+      "name": "Exchange House",
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "info",
+          "name": "Exchange House Setup",
           "type": "link"
         }
       ]
