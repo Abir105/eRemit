@@ -62,6 +62,19 @@
       ]
     },
     {
+      "state": "transaction",
+      "name": "Transcation",
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "cashPaymentForOtherWebsite",
+          "name": "Cash Payment For Other Website",
+          "type": "link"
+        }
+      ]
+    },
+    {
       "state": "fileProcessing",
       "name": "File Processing",
       "type": "link",

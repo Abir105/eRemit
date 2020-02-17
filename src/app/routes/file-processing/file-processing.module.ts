@@ -16,6 +16,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AddFileProcessingComponent } from './add-file-processing/add-file-processing.component';
 import { FileProcessingRoutingModule } from './file-processing-routing.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 
@@ -39,7 +41,9 @@ import { FileProcessingRoutingModule } from './file-processing-routing.module';
     MatDatepickerModule,
     MaterialModule,
     MatStepperModule,
-    CKEditorModule
+    CKEditorModule,
+    MatDividerModule,
+    MatRadioModule,
   ],
 })
 export class FileProcessingModule { }

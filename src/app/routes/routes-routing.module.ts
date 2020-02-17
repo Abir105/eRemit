@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { environment } from '@env/environment';
-
 import { AdminLayoutComponent } from '../theme/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -91,10 +90,10 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: 'login',
     component: AuthLayoutComponent,
     children: [
-      { path: 'login', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } }
+      { path: '', component: LoginComponent, data: { title: 'Login', titleI18n: 'Login' } }
     ],
   },
   { path: '**', redirectTo: 'login' },

@@ -1,0 +1,15 @@
+export interface FileProcessingInfo {
+  Sl_No: string,
+  TT_No: string,
+  Date: string,
+  Amount: string,
+  Beneficiary: string,
+  AC_No: string,
+  Bank: string,
+  Branch: string,
+  Payment: string,
+  Remitter: string,
+  City_Remitter: string,
+  Amount_words: string,
+  Cont_Benef: string,
+}
