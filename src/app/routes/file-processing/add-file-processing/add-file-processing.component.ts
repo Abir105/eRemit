@@ -7,13 +7,13 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
 import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
-
+import { PageEvent } from '@angular/material/paginator';
+import { OrderPipe } from 'ngx-order-pipe';
+import { MatTableDataSource } from '@angular/material/table';
 export interface DialogData {
   animal: string;
   name: string;
 }
-
-
 
 @Component({
   selector: 'app-add-file-processing',
@@ -21,30 +21,39 @@ export interface DialogData {
   styleUrls: ['./add-file-processing.component.scss']
 })
 export class AddFileProcessingComponent implements OnInit {
+  order = 'ex_house_name';
+  searchText;
   animal: string;
   name: string;
-
   [x: string]: any;
-
   fileProcessing = Subscription;
   reactiveForm1: FormGroup;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
   fileToUpload: File = null;
   dataSource: any;
   displayedColumns: any;
-  private xPressMoneyName: string;
+  xPressMoneyName = [];
+  pagedList = [];
+  length = 0;
+  pageSize = 3;
+  pageSizeOptions: number[] = [3];
+  breakpoint = 3;
   date: string;
   isShow: any;
   get formArray(): AbstractControl | null { return this.reactiveForm1.get('formArray'); }
+  sortedCollection: any[];
 
-  constructor(private router: Router, private fb: FormBuilder, private fileProcessingService: FileProcessingService, public dialog: MatDialog) {}
-
+  constructor(private router: Router, private fb: FormBuilder,
+              private fileProcessingService: FileProcessingService,
+              public dialog: MatDialog, private orderPipe: OrderPipe) {
+    this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
+  }
   ngOnInit() {
-
     this.reactiveForm1 = this.fb.group({
 
       formArray: this.fb.array([
         this.fb.group({
+          searchText: ['', [Validators.required]],
         }),
         this.fb.group({
             date: ['', [Validators.required]],
@@ -63,10 +72,27 @@ export class AddFileProcessingComponent implements OnInit {
     });
     this.getAllXpressMoneyName();
   }
+  public getAllXpressMoneyName = () => {
+    this.fileProcessingService.getXpressMoneyName()
+      .subscribe(res  => {
+        this.xPressMoneyName = res.data;
+        this.pagedList = this.xPressMoneyName.slice(0, 3);
+        this.length = this.xPressMoneyName.length;
+        // this.xPressMoneyName.paginator = this.paginator;
+      });
+  };
+  OnPageChange(event: PageEvent) { const startIndex = event.pageIndex * event.pageSize;
+                                   let endIndex = startIndex + event.pageSize;
+                                   if (endIndex > this.length) { endIndex = this.length; }
+                                   this.pagedList = this.xPressMoneyName.slice(startIndex, endIndex);
+  }
+
+  // onResize(event) {  this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 3; }
+
   openDialog(): void {
     const dialogRef = this.dialog.open(CompletedBatchesComponent, {
       width: '500px',
-      height: '500px',
+      height: '320px',
       data: {name: this.name, animal: this.animal}
     });
 
@@ -90,13 +116,6 @@ export class AddFileProcessingComponent implements OnInit {
   //   });
   // }
 
-  private getAllXpressMoneyName() {
-    this.fileProcessingService.getXpressMoneyName('xPressMoneyName')
-      .subscribe(res => {
-        this.xPressMoneyName =  res.data;
-      });
-  }
-
   // fileUploadFormSubmit(date, uploaded_file) {
   //   let data = {
   //     date,
@@ -112,32 +131,31 @@ export class AddFileProcessingComponent implements OnInit {
   //       });
   // }
 
-  arrayBuffer:any;
+  arrayBuffer : any;
 
-  file:File;
-  incomingfile(event)
-  {
-
-    this.file= event.target.files[0];
+  file : File;
+  incomingfile(event) {
+    this.file = event.target.files[0];
   }
 
   Upload(file) {
-    let fileReader = new FileReader();
+    const fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
-      var data = new Uint8Array(this.arrayBuffer);
-      var arr = new Array();
-      for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-      var bstr = arr.join("");
-      var workbook = XLSX.read(bstr, {type:"binary"});
-      var first_sheet_name = workbook.SheetNames[0];
-      var worksheet = workbook.Sheets[first_sheet_name];
-      console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
+      const data = new Uint8Array(this.arrayBuffer);
+      const arr = new Array();
+      for (let i = 0; i !== data.length; ++i) { arr[i] = String.fromCharCode(data[i]); }
+      const bstr = arr.join('');
+      const workbook = XLSX.read(bstr, {type: 'binary'});
+      const first_sheet_name = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[first_sheet_name];
+      console.log(XLSX.utils.sheet_to_json(worksheet,{raw: true}));
     }
     fileReader.readAsArrayBuffer(this.file);
-    let data = file;
-    console.log(data);
-    this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: data })
+    const data1 = file;
+    console.log(data1);
+    this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: data1 })
+    // tslint:disable-next-line:no-shadowed-variable
       .subscribe(data => {
         this.notification.successmsg('File was uploaded successfully');
         this.reactiveForm1.reset();

@@ -13,8 +13,11 @@ export class FileProcessingService {
   private httpClient: any;
   constructor(private http: HttpClient) { }
 
-  public getXpressMoneyName = (route: string): Observable<any> => {
+  public getXpressMoneyName = (): Observable<any> => {
     return this.http.get(this.Url + 'ex_house_name');
+  };
+  public getIncompleteBatch = (): Observable<any> => {
+    return this.http.get(this.Url + 'ex_house_name/exFileInfo');
   };
   private createCompleteRoute = (route: string, envAddress: string) => {
     return '${envAddress}/${route}';

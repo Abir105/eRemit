@@ -20,6 +20,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
 import { CompletedBatchesComponent } from './completed-batches/completed-batches.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { OrderModule } from 'ngx-order-pipe';
+
 
 
 
@@ -48,6 +52,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatRadioModule,
     FormsModule,
     MatDialogModule,
+    Ng2SearchPipeModule,
+    MatGridListModule,
+    OrderModule,
   ],
 })
 export class FileProcessingModule { }
