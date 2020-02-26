@@ -12,4 +12,7 @@ export interface FileProcessingInfo {
   City_Remitter: string,
   Amount_words: string,
   Cont_Benef: string,
+  Routing_No: string,
+  ex_house_code: string,
+  file_name: string,
 }
