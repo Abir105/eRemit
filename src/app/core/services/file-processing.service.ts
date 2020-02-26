@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { FileProcessingInfo } from '../../routes/model/FileProcessingInfo';
+
 
 @Injectable({
   providedIn: 'root'
@@ -36,6 +36,7 @@ export class FileProcessingService {
     console.log(body , "service");
     const config = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
     return this.http.post('http://10.11.201.87:3001/file_processing/file_name', body,{ headers: config });
+
   };
 
 }

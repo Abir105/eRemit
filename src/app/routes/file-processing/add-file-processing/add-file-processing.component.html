@@ -43,8 +43,8 @@
                         <br>
                         <div fxLayout="row">
                           <div fxLayout="column">
-                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of completed bach: 5</a></mat-card-content>
-                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete bach: 2</a></mat-card-content>
+                            <mat-card-content class="no"><a (click)="openDialog()">No of completed batch: 5</a></mat-card-content>
+                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a></mat-card-content>
                           </div>
                           <div class="navigationButtons">
                             <button  mat-button matStepperNext type="button" (click)="StepperNext(x.ex_house_name, x.ex_house_code)"> <mat-icon>arrow_forward</mat-icon></button>
