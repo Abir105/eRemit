@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, Inject } from '@angular/core';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { FileProcessingService } from '@core/services/file-processing.service';
 import { NotificationCompoComponent } from '../../notificationComp/notificationCompo.component';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
+<<<<<<< HEAD
 import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
 import { PageEvent } from '@angular/material/paginator';
 import { OrderPipe } from 'ngx-order-pipe';
@@ -14,13 +14,18 @@ export interface DialogData {
   animal: string;
   name: string;
 }
+=======
+import { MatTableDataSource } from '@angular/material/table';
+import { FileProcessingInfo } from '../../model/FileProcessingInfo';
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
 
 @Component({
   selector: 'app-add-file-processing',
   templateUrl: './add-file-processing.component.html',
-  styleUrls: ['./add-file-processing.component.scss']
+  styleUrls: ['./add-file-processing.component.scss'],
 })
 export class AddFileProcessingComponent implements OnInit {
+<<<<<<< HEAD
   order = 'ex_house_name';
   searchText;
   animal: string;
@@ -48,10 +53,38 @@ export class AddFileProcessingComponent implements OnInit {
               public dialog: MatDialog, private orderPipe: OrderPipe) {
     this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
   }
+=======
+  public dataSource = new MatTableDataSource<FileProcessingInfo>();
+  public doFilter = (value: string) => {
+    value = value.trim(); // Remove whitespace
+    value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = value;
+  };
+
+
+  [x: string]: any;
+  public displayedColumns = ['ID','Sl_No', 'TT_No', 'Date', 'Amount', 'Beneficiary', 'AC_No', 'Bank', 'Branch', 'Payment', 'Remitter', 'City_Remitter', 'Amount_words', 'Cont_Benef','Routing_No'];
+  fileProcessing = Subscription;
+  reactiveForm1: FormGroup;
+  @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
+  private ex_house_code: string;
+  private xPressMoneyName: string;
+  private uploadFileData: string;
+  date: string;
+
+  get formArray(): AbstractControl | null {
+    return this.reactiveForm1.get('formArray');
+  }
+
+  constructor(private router: Router, private _formBuilder: FormBuilder, private fb: FormBuilder, private fileProcessingService: FileProcessingService) {
+  }
+
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
   ngOnInit() {
     this.reactiveForm1 = this.fb.group({
 
       formArray: this.fb.array([
+<<<<<<< HEAD
         this.fb.group({
           searchText: ['', [Validators.required]],
         }),
@@ -100,14 +133,25 @@ export class AddFileProcessingComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+=======
+        this.fb.group({}),
+        this.fb.group({}),
+        this.fb.group({}),
+        this.fb.group({}),
+      ]),
+    });
+    this.getAllXpressMoneyName();
+    this.getAllUploadFileData();
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
   }
 
-  get data() { return this.reactiveForm1.get('data'); }
-  get file1() { return this.reactiveForm1.get('file1'); }
-
-  handleFileInput(files: FileList) {
-    this.fileToUpload = files.item(0);
+  private getAllUploadFileData() {
+    this.fileProcessingService.getUploadFileData('uploadFileData')
+      .subscribe(res => {
+        this.uploadFileData = res.data;
+      });
   }
+<<<<<<< HEAD
   // uploadFileToActivity() {
   //   this.fileProcessingService.postFile(this.fileToUpload).subscribe(data => {
   //     console.log('File Uploaded Successfully.');
@@ -136,8 +180,24 @@ export class AddFileProcessingComponent implements OnInit {
   file : File;
   incomingfile(event) {
     this.file = event.target.files[0];
+=======
+  private getAllXpressMoneyName() {
+    this.fileProcessingService.getXpressMoneyName('xPressMoneyName')
+      .subscribe(res => {
+        this.xPressMoneyName = res.data;
+      });
   }
+  StepperNext(ex_house_name, ex_house_code){
+    // @ts-ignore
+    this.showDataOb = {ex_house_name, ex_house_code};
+    console.log(this.showDataOb);
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
+  }
+//file upload
+  arrayBuffer: any;
+  file: File;
 
+<<<<<<< HEAD
   Upload(file) {
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
@@ -164,7 +224,43 @@ export class AddFileProcessingComponent implements OnInit {
       });
 
 
+=======
+  incomingfile(event) {
+    this.file = event.target.files[0];
+    console.log(this.file.name);
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
   }
 
+  Upload() {
+    var fileDoc = { ex_house_code: this.showDataOb.ex_house_code, file_name: this.file.name}
+    var myJSON = JSON.stringify(fileDoc);
+    console.log(myJSON);
+    this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd =>{
+      console.log(dd);
+    });
+    console.log( myJSON , 'myJson');
+
+    // let fileReader = new FileReader();
+    // fileReader.onload = (e) => {
+    //   this.arrayBuffer = fileReader.result;
+    //   var data = new Uint8Array(this.arrayBuffer);
+    //   var arr = new Array();
+    //   for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+    //   var bstr = arr.join('');
+    //   var workbook = XLSX.read(bstr, { type: 'binary' });
+    //   var first_sheet_name = workbook.SheetNames[0];
+    //   var worksheet = workbook.Sheets[first_sheet_name];
+    //   var jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+    //
+    //   this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
+    //     .subscribe(data => {
+    //       this.notification.successmsg('File was uploaded successfully');
+    //       this.reactiveForm1.reset();
+    //     }, (err) => {
+    //       this.notification.errorsmsg('Sorry! file can not be added');
+    //     });
+    // };
+    // fileReader.readAsArrayBuffer(this.file);
+  }
 
 }
