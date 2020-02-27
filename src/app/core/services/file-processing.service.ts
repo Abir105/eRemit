@@ -7,27 +7,21 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class FileProcessingService {
-  Url = 'http://10.11.201.87:3001/';
+  Url = 'http://10.11.201.92:3001/';
   private httpClient: any;
   constructor(private http: HttpClient) { }
 
-<<<<<<< HEAD
+
   public getXpressMoneyName = (): Observable<any> => {
     return this.http.get(this.Url + 'ex_house_name');
   };
   public getIncompleteBatch = (): Observable<any> => {
     return this.http.get(this.Url + 'ex_house_name/exFileInfo');
   };
-=======
-  public getXpressMoneyName = (route: string): Observable<any> => {
-    return this.http.get(this.Url + 'file_processing');
-  };
-
   public getUploadFileData = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'file_processing/file_upload');
   };
 
->>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
   private createCompleteRoute = (route: string, envAddress: string) => {
     return '${envAddress}/${route}';
   };
@@ -42,9 +36,9 @@ export class FileProcessingService {
     return this.http.post('http://10.11.201.87:3001/file_processing', body);
   };
   public fileName = ({ route, body }: { route: string, body: any }) => {
-    console.log(body , "service");
+    console.log(body , 'service');
     const config = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
-    return this.http.post('http://10.11.201.87:3001/file_processing/file_name', body,{ headers: config });
+    return this.http.post('http://10.11.201.87:3001/file_processing/file_name', body, { headers: config });
 
   };
 
