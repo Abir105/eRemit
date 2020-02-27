@@ -1,7 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { DialogData } from '../add-file-processing/add-file-processing.component';
-import { FileProcessingService } from '@core/services/file-processing.service';
 
 @Component({
   selector: 'app-completed-batches',
@@ -12,9 +10,9 @@ export class CompletedBatchesComponent implements OnInit {
   displayedColumns: string[] = ['weight', 'position', 'name' ];
   dataSource = [];
 
-  constructor(private fileProcessingService: FileProcessingService,
-              public dialogRef: MatDialogRef<CompletedBatchesComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  constructor(
+    public dialogRef: MatDialogRef<CompletedBatchesComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();
