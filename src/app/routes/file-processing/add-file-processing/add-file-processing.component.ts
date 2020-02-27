@@ -37,7 +37,7 @@ export class AddFileProcessingComponent implements OnInit {
     return this.reactiveForm1.get('formArray');
   }
 
-  constructor(private router: Router, private _formBuilder: FormBuilder, private fb: FormBuilder, private fileProcessingService: FileProcessingService) {
+  constructor(private router: Router, private fb: FormBuilder, private fileProcessingService: FileProcessingService) {
   }
 
   ngOnInit() {
