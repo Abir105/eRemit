@@ -11,6 +11,14 @@ export class FileProcessingService {
   private httpClient: any;
   constructor(private http: HttpClient) { }
 
+<<<<<<< HEAD
+  public getXpressMoneyName = (): Observable<any> => {
+    return this.http.get(this.Url + 'ex_house_name');
+  };
+  public getIncompleteBatch = (): Observable<any> => {
+    return this.http.get(this.Url + 'ex_house_name/exFileInfo');
+  };
+=======
   public getXpressMoneyName = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'file_processing');
   };
@@ -19,6 +27,7 @@ export class FileProcessingService {
     return this.http.get(this.Url + 'file_processing/file_upload');
   };
 
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
   private createCompleteRoute = (route: string, envAddress: string) => {
     return '${envAddress}/${route}';
   };

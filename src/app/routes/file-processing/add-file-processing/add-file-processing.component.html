@@ -27,6 +27,44 @@
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
               <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
                    fxFlex.xs="100%" fxLayoutAlign="flex-start">
+<<<<<<< HEAD
+                <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                                fxFlex.xs="100%"  fxFlexOffset="35%">
+                  <mat-label>Search</mat-label>
+                  <input matInput [(ngModel)]="searchText" formControlName="searchText" placeholder="Ex. ium">
+                </mat-form-field>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div fxLayout="row wrap"  fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+                  <mat-card class="example-card" *ngFor="let x of pagedList | filter:searchText">
+                    <mat-card-header>
+                      <div fxLayout="column">
+                        <div fxLayout="row">
+                          <mat-card-title class="name"> {{x.ex_house_name}} </mat-card-title>
+                          <hr>
+                          <div mat-card-avatar class="example-header-image"></div>
+                        </div>
+                        <div>
+                          <br>
+                          <mat-divider></mat-divider>
+                          <br>
+                          <div fxLayout="row">
+                            <div fxLayout="column">
+                              <mat-card-content class="no"><a (click)="openDialog()">No of completed batch: 5</a></mat-card-content>
+                              <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a></mat-card-content>
+                            </div>
+                            <div class="navigationButtons">
+                              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </mat-card-header>
+                  </mat-card>
+                </div>
+=======
 
                 <mat-card class="example-card" *ngFor="let x of xPressMoneyName">
                   <mat-card-header>
@@ -55,7 +93,14 @@
                   </mat-card-header>
                 </mat-card>
             </div>
+>>>>>>> 03b6a2a97744e3013ad7e40f8ed7e119fcab8d43
               </div>
+            <mat-paginator [length]="length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="pageEvent = OnPageChange($event)">
+            </mat-paginator>
+
 
             <div class="navigationButtons">
               <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>

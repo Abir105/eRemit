@@ -7,6 +7,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./completed-batches.component.scss']
 })
 export class CompletedBatchesComponent implements OnInit {
+  displayedColumns: string[] = ['weight', 'position', 'name' ];
+  dataSource = [];
 
   constructor(
     public dialogRef: MatDialogRef<CompletedBatchesComponent>,
@@ -17,6 +19,14 @@ export class CompletedBatchesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getAllIncompleteBatches ();
   }
+  public getAllIncompleteBatches = () => {
+    this.fileProcessingService.getIncompleteBatch()
+      .subscribe(res  => {
+        this.dataSource = res.data;
+        console.log(this.dataSource);
+      });
+  };
 
 }
