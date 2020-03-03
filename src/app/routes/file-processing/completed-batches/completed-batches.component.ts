@@ -9,6 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class CompletedBatchesComponent implements OnInit {
   displayedColumns: string[] = ['weight', 'position', 'name' ];
   dataSource = [];
+  fileProcessingService: any;
 
   constructor(
     public dialogRef: MatDialogRef<CompletedBatchesComponent>,

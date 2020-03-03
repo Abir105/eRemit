@@ -14,8 +14,9 @@ export interface DialogData {
   animal: string;
   name: string;
 }
- 
+
 import { FileProcessingInfo } from '../../model/FileProcessingInfo';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class AddFileProcessingComponent implements OnInit {
   searchText;
   animal: string;
   name: string;
+  uploadFileData: any;
   [x: string]: any;
   fileProcessing = Subscription;
   reactiveForm1: FormGroup;
@@ -141,10 +143,10 @@ export class AddFileProcessingComponent implements OnInit {
     this.file = event.target.files[0];
   }
 //file upload
-  arrayBuffer: any;
-  file: File;
+  //arrayBuffer: any;
+ // file: File;
 
-  Upload(file) {
+  /*Upload(file) {
     const fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -170,7 +172,7 @@ export class AddFileProcessingComponent implements OnInit {
       });
 
 
-  }
+  }*/
 
   Upload() {
     var fileDoc = { ex_house_code: this.showDataOb.ex_house_code, file_name: this.file.name}
