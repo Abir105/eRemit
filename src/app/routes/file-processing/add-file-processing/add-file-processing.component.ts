@@ -88,30 +88,31 @@ export class AddFileProcessingComponent implements OnInit {
     console.log(myJSON);
     this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd =>{
       console.log(dd);
+      this.notification.successmsg('File was uploaded successfully');
     });
     console.log( myJSON , 'myJson');
 
-    // let fileReader = new FileReader();
-    // fileReader.onload = (e) => {
-    //   this.arrayBuffer = fileReader.result;
-    //   var data = new Uint8Array(this.arrayBuffer);
-    //   var arr = new Array();
-    //   for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-    //   var bstr = arr.join('');
-    //   var workbook = XLSX.read(bstr, { type: 'binary' });
-    //   var first_sheet_name = workbook.SheetNames[0];
-    //   var worksheet = workbook.Sheets[first_sheet_name];
-    //   var jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
-    //
-    //   this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
-    //     .subscribe(data => {
-    //       this.notification.successmsg('File was uploaded successfully');
-    //       this.reactiveForm1.reset();
-    //     }, (err) => {
-    //       this.notification.errorsmsg('Sorry! file can not be added');
-    //     });
-    // };
-    // fileReader.readAsArrayBuffer(this.file);
+    let fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      this.arrayBuffer = fileReader.result;
+      var data = new Uint8Array(this.arrayBuffer);
+      var arr = new Array();
+      for (var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+      var bstr = arr.join('');
+      var workbook = XLSX.read(bstr, { type: 'binary' });
+      var first_sheet_name = workbook.SheetNames[0];
+      var worksheet = workbook.Sheets[first_sheet_name];
+      var jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
+
+      this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
+        .subscribe(data => {
+          this.notification.successmsg('File was uploaded successfully');
+          this.reactiveForm1.reset();
+        }, (err) => {
+          this.notification.errorsmsg('Sorry! file can not be added');
+        });
+    };
+    fileReader.readAsArrayBuffer(this.file);
   }
 
 }
