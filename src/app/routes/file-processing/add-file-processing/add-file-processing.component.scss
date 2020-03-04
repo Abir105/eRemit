@@ -7,8 +7,37 @@
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  border-radius: 5px;
+
   height:83vh;
+}
+.card-small {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  margin-left: 80px;
+  width: 25%;
+}
+.container-small {
+  font-size: 15px;
+  padding: 10px;
+}
+.linkstyle {
+  padding-bottom: 10px;
+}
+.exhouseProperty {
+  background-color: #4D6FAC;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  font-size: 20px;
+  color: #f2f2f2;
+}
+.exHouseName {
+  border-right: 1px solid white;
+
 }
 
 .right-nevigation {
@@ -46,6 +75,13 @@ p {
   background-image: url('../../../../assets/images/XM.jpg');
   background-size: cover;
   right: 30px;
+}
+.exhouseImage {
+  height: 42px;
+  width: 42px;
+  float: right;
+  border-radius: 50%;
+
 }
 .c {
 

@@ -34,35 +34,61 @@
                 </mat-form-field>
               </div>
             </div>
-            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
-              <div fxLayout="row wrap"  fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
-                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
-                  <mat-card class="example-card" *ngFor="let x of pagedList | filter:searchText">
-                    <mat-card-header>
-                      <div fxLayout="column">
-                        <div fxLayout="row">
-                          <mat-card-title class="name"> {{x.ex_house_name}} </mat-card-title>
-                          <hr>
-                          <div mat-card-avatar class="example-header-image"></div>
-                        </div>
-                        <div>
-                          <br>
-                          <mat-divider></mat-divider>
-                          <br>
-                          <div fxLayout="row">
-                            <div fxLayout="column">
-                              <mat-card-content class="no"><a (click)="openDialog()">No of completed batch: 5</a></mat-card-content>
-                              <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a></mat-card-content>
-                            </div>
-                            <div class="navigationButtons">
-                              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </mat-card-header>
-                  </mat-card>
+            <div fxLayout="row"  class="tab">
+              <div class="card-small" *ngFor="let x of pagedList | filter:searchText">
+                <div class="exhouseProperty">
+                  <div fxFlex="50" class="exHouseName">
+                    <span>{{x.ex_house_name}}</span>
+                  </div>
+                  <div fxFlex="50" >
+                    <img src="../../../../assets/images/XM.jpg" class="exhouseImage" >
+                  </div>
                 </div>
+                <div class="container-small">
+                  <div fxFlex="60">
+                    <div class="linkstyle" >
+                      <a  (click)="openDialog()">No of completed batch: 5</a>
+                    </div>
+                    <div class="linkstyle" >
+                      <a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a>
+                    </div>
+
+
+                  </div>
+                  <div fxFlex="40">
+<!--
+-->
+                  </div>
+                </div>
+              </div>
+<!--              <div fxLayout="row wrap"  fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"-->
+<!--                   fxFlex.xs="100%" fxLayoutAlign="flex-start">-->
+<!--                  <mat-card class="example-card" *ngFor="let x of pagedList | filter:searchText">-->
+<!--                    <mat-card-header>-->
+<!--                      <div fxLayout="column" style="background-color: #4D6FAC;">-->
+<!--                        <div fxLayout="row" >-->
+<!--                          <mat-card-title class="name"> {{x.ex_house_name}} </mat-card-title>-->
+<!--                          <hr>-->
+<!--                          <div mat-card-avatar class="example-header-image"></div>-->
+<!--                        </div>-->
+<!--                        <div>-->
+<!--                          <br>-->
+<!--                          <mat-divider></mat-divider>-->
+<!--                          <br>-->
+<!--                          <div fxLayout="row">-->
+<!--                            <div fxLayout="column">-->
+<!--                              <mat-card-content class="no"><a (click)="openDialog()">No of completed batch: 5</a></mat-card-content>-->
+<!--                              <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a></mat-card-content>-->
+<!--                            </div>-->
+<!--                            <div class="navigationButtons">-->
+<!--                              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>-->
+<!--                            </div>-->
+<!--                          </div>-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </mat-card-header>-->
+<!--                  </mat-card>-->
+<!--                </div>-->
               </div>
             <mat-paginator [length]="length"
                            [pageSize]="pageSize"
