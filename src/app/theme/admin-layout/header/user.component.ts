@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@core/services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -21,11 +22,13 @@ import { Component } from '@angular/core';
 <!--        <mat-icon>settings</mat-icon>-->
 <!--        <span>Settings</span>-->
 <!--      </a>-->
-      <a routerLink="/auth/login" mat-menu-item>
+        <a routerLink="/auth/login" style="cursor: pointer" *ngIf="_authService.loggedIn()"  (click)="_authService.logoutUser()" mat-menu-item>
         <mat-icon>exit_to_app</mat-icon>
         <span>Logout</span>
       </a>
     </mat-menu>
   `,
 })
-export class UserComponent {}
+export class UserComponent {
+  constructor(private _authService:AuthService){}
+}

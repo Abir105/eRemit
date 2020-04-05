@@ -85,6 +85,11 @@
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
           "type": "link"
+        },
+        {
+          "state": "treasuryModule",
+          "name": "Treasury Module",
+          "type": "link"
         }
       ]
     },
@@ -106,6 +111,12 @@
           "type": "link"
         }
       ]
+    },
+    {
+      "state": "treasuryModule",
+      "name": "Treasury Module",
+      "type": "link",
+      "icon": "apps"
     }
   ]
 }

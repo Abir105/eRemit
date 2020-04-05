@@ -14,7 +14,7 @@ const COMPONENTS_DYNAMIC = [];
     ToastrModule.forRoot({
       closeButton: true, })
   ],
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ],
   entryComponents: COMPONENTS_DYNAMIC,
   exports: [MatTableModule, MatSortModule, MatInputModule, FlexLayoutModule, MatPaginatorModule]
 })

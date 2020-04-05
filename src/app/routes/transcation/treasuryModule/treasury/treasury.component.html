@@ -1,0 +1,228 @@
+<app-notification-comp></app-notification-comp>
+
+<form [formGroup]="reactiveForm1"  class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+
+        <div fxFlex="2" >
+          <button style="margin-top: 4px" mat-icon-button  [routerLink]="['../']" >
+            <mat-icon>home</mat-icon>
+          </button>
+        </div>
+
+        <div fxFlex="38" >
+          <h3 style="padding-left: 8px; font-size: 15px"><b> Treasury Transcations </b></h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <div fxLayout="column">
+        <mat-horizontal-stepper #treasueyfileProcessingStepper formArrayName="formArray" [linear]="false">
+          <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+            <ng-template matStepLabel><b>File Upload For Treasury</b></ng-template>
+
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div class="butt" fxLayout="row">
+                <button mat-button color="primary">Execute</button>
+                <button mat-button color="primary">Clear</button>
+              </div>
+              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+                <div class="cen">
+                  <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
+                  <button type="submit" mat-raised-button class="btn btn-info" (click)="Upload()" >Upload</button>
+                </div>
+              </div>
+              <div class="navigationButtons">
+                <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+              </div>
+            </div>
+            <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
+            <mat-tab>
+              <table class="uploadTable" >
+                <tr>
+                  <th>Sr.No</th>
+                  <th>V_Date</th>
+                  <th>Exchange House</th>
+                  <th>Cur</th>
+                  <th>USD Credit</th>
+                  <th>Comp</th>
+                  <th>Ex.Rate</th>
+                  <th>FCAccount</th>
+                  <th>BDT Account</th>
+                  <th>Nostro Account</th>
+                  <th>Account Name</th>
+                  <th>Converted BTK</th>
+                  <th>Exch.Gain</th>
+                  <th>BTK@ nRate</th>
+                  <th>Bank Name</th>
+                  <th>National Rate</th>
+                </tr>
+                <tr *ngFor="let s of uploadFileData">
+                  <td>{{s.Sr_No}}</td>
+                  <td>{{s.V_Date}}</td>
+                  <td>{{s.Exchange_House}}</td>
+                  <td>{{s.Cur}}</td>
+                  <td>{{s.USD_Credit}}</td>
+                  <td>{{s.Comp}}</td>
+                  <td>{{s.Ex_Rate}}</td>
+                  <td>{{s.FCAccount}}</td>
+                  <td>{{s.BDT_Account}}</td>
+                  <td>{{s.Nostro_Account}}</td>
+                  <td>{{s.Account_Name}}</td>
+                  <td>{{s.Converted_BTK}}</td>
+                  <td>{{s.Exch_Gain}}</td>
+                  <td>{{s.BTK_nRate}}</td>
+                  <td>{{s.Bank_Name}}</td>
+                  <td>{{s.National_Rate}}</td>
+                </tr>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+
+          </mat-step>
+          <mat-step class="step2" formGroupName="1" [stepControl]="formArray?.get([1])">
+            <ng-template matStepLabel><b> Treasury Data Validation </b></ng-template>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div class="butt" fxLayout="row">
+                <button mat-button color="primary">Execute</button>
+                <button mat-button color="primary">Clear</button>
+                <button mat-button color="primary">Search</button>
+              </div>
+            </div>
+
+            <div class="navigationButtons">
+              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+            <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
+              <mat-tab>
+                <table class="validationTable" >
+                  <tr>
+                    <th>Sr.No</th>
+                    <th>V_Date</th>
+                    <th>Exchange House</th>
+                    <th>Cur</th>
+                    <th>Stelar Cur</th>
+                    <th>USD Credit</th>
+                    <th>Comp</th>
+                    <th>Ex.Rate</th>
+                    <th>FCAccount</th>
+                    <th>BDT Account</th>
+                    <th>Nostro Account</th>
+                    <th>Account Name</th>
+                    <th>Converted BTK</th>
+                    <th>Bank Name</th>
+                    <th>National Rate</th>
+                    <th>Valid</th>
+                    <th>Message</th>
+                    <th>Cancel</th>
+                  </tr>
+                  <tr *ngFor="let s of uploadFileData">
+                    <td>{{s.Sr_No}}</td>
+                    <td>{{s.V_Date}}</td>
+                    <td>{{s.Exchange_House}}</td>
+                    <td>{{s.Cur}}</td>
+                    <td>{{s.Stelar_Cur}}</td>
+                    <td>{{s.USD_Credit}}</td>
+                    <td>{{s.Comp}}</td>
+                    <td>{{s.Ex_Rate}}</td>
+                    <td>{{s.FCAccount}}</td>
+                    <td>{{s.BDT_Account}}</td>
+                    <td>{{s.Nostro_Account}}</td>
+                    <td>{{s.Account_Name}}</td>
+                    <td>{{s.Converted_BTK}}</td>
+                    <td>{{s.Bank_Name}}</td>
+                    <td>{{s.National_Rate}}</td>
+                    <td>{{s.Valid}}</td>
+                    <td>{{s.Message}}</td>
+                    <td>{{s.Cancel}}</td>
+                  </tr>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-step>
+
+          <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
+            <ng-template matStepLabel><b>File Upload For Treasury Approval</b></ng-template>
+            <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+              <div class="butt" fxLayout="row">
+                <button mat-button color="primary">Execute</button>
+                <button mat-button color="primary">Search</button>
+                <button mat-button color="primary">Clear</button>
+              </div>
+            </div>
+            <div class="navigationButtons">
+              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
+              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
+            </div>
+            <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
+              <mat-tab>
+                <table class="approvalTable" >
+                  <tr>
+                    <th>Sr.No</th>
+                    <th>V_Date</th>
+                    <th>Exchange House</th>
+                    <th>Cur</th>
+                    <th>USD Credit</th>
+                    <th>Comp</th>
+                    <th>Ex.Rate</th>
+                    <th>FCAccount</th>
+                    <th>BDT Account</th>
+                    <th>Nostro Account</th>
+                    <th>Converted BTK</th>
+                    <th>Exch.Gain</th>
+                    <th>BTK@ nRate</th>
+                    <th>Bank Name</th>
+                    <th>National Rate</th>
+                    <th>Approve</th>
+                    <th>Cancel</th>
+                    <th>Message</th>
+                  </tr>
+                  <tr *ngFor="let s of uploadFileData">
+                    <td>{{s.Sr_No}}</td>
+                    <td>{{s.V_Date}}</td>
+                    <td>{{s.Exchange_House}}</td>
+                    <td>{{s.Cur}}</td>
+                    <td>{{s.USD_Credit}}</td>
+                    <td>{{s.Comp}}</td>
+                    <td>{{s.Ex_Rate}}</td>
+                    <td>{{s.FCAccount}}</td>
+                    <td>{{s.BDT_Account}}</td>
+                    <td>{{s.Nostro_Account}}</td>
+                    <td>{{s.Converted_BTK}}</td>
+                    <td>{{s.Exch_Gain}}</td>
+                    <td>{{s.BTK_nRate}}</td>
+                    <td>{{s.Bank_Name}}</td>
+                    <td>{{s.National_Rate}}</td>
+                    <td>{{s.Approve}}</td>
+                    <td>{{s.Cancel}}</td>
+                    <td>{{s.Message}}</td>
+                  </tr>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+
+
