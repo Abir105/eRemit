@@ -17,7 +17,7 @@
         <mat-form-field >
           <mat-label>Select a bank</mat-label>
           <mat-select placeholder="Select a bank" [ngModel]="selectedBank" (ngModelChange)="onSelect($event)" >
-            <mat-option *ngFor="let bank of bankData" [value]="bank.id">{{bank.fullName}} </mat-option>
+            <mat-option *ngFor="let bank of bankData" [value]="bank.bbCode">{{bank.fullName}} </mat-option>
           </mat-select>
         </mat-form-field>
       </div>

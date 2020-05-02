@@ -21,12 +21,14 @@ export class LoginComponent implements OnInit {
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
   ngOnInit() {}
 
-  login(data) {
-    const remitdt = 'remit';
-    if (data.userName === remitdt && data.password === remitdt ) {
-      this.router.navigateByUrl('/dashboard');
-    } else {
-      this.toastr.error('Please Provide valid Username and Password');
-    }
-  }
+  login() {
+    const data = this.loginForm.value;
+    console.log(data , 'dattatatattata');
+  //   const remitdt = 'remit';
+  //   if (data.userName === remitdt && data.password === remitdt ) {
+  //     this.router.navigateByUrl('/dashboard');
+  //   } else {
+  //     this.toastr.error('Please Provide valid Username and Password');
+  //   }
+   }
 }
