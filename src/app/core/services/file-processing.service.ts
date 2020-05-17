@@ -18,12 +18,6 @@ export class FileProcessingService {
     return this.http.get('http://10.11.201.37:5000/connect-to-cbs');
   };
 
-<<<<<<< HEAD
-
-  public getXpressMoneyName = (): Observable<any> => {
-    return this.http.get(this.Url + 'ex_house_name');
-  };
-=======
   public getXpressMoneyName = (): Observable<any> => {
     return this.http.get(this.Url + 'file_processing');
   };
@@ -32,17 +26,9 @@ export class FileProcessingService {
     return this.http.get(this.Url + 'file_processing/file_upload');
   };
 
->>>>>>> shafeisnine
   public getIncompleteBatch = (): Observable<any> => {
     return this.http.get(this.Url + 'file_processing/InCompleteBatches');
   };
-<<<<<<< HEAD
-  public getUploadFileData = (route: string): Observable<any> => {
-    return this.http.get(this.Url + 'file_processing/file_upload');
-  };
-
-=======
->>>>>>> shafeisnine
   private createCompleteRoute = (route: string, envAddress: string) => {
     return '${envAddress}/${route}';
   };
@@ -59,9 +45,6 @@ export class FileProcessingService {
   public fileName = ({ route, body }: { route: string, body: any }) => {
     console.log(body , 'service');
     const config = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
-<<<<<<< HEAD
-    return this.http.post('http://10.11.201.87:3001/file_processing/file_name', body, { headers: config });
-=======
     return this.http.post(this.Url + 'file_processing/file_name', body, { headers: config });
 
   };
@@ -69,7 +52,6 @@ export class FileProcessingService {
     console.log(body);
     return this.http.post('10.11.201.37:5000/connect-to-cbs-via-json', body);
    // return this.http.post(this.Url + 'file_processing/testPost', body );
->>>>>>> shafeisnine
 
   };
 
