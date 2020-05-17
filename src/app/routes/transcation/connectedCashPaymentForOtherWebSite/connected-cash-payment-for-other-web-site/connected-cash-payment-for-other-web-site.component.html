@@ -1,0 +1,150 @@
+<app-notification-comp></app-notification-comp>
+<form [formGroup]="reactiveForm" class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+        <div fxFlex="2" >
+          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+            <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="38">
+          <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> API Cash Payment For Other Website </b></h3>
+        </div>
+
+        <div fxFlexOffset="33" fxFlex="30">
+          <div class="right-nevigation">
+            <div fxLayout="row" style="padding: 20px; margin-right: 75px" class="btn-group" role="group" aria-label="Basic example">
+              <div style="padding-right: 8px">
+                <button class="btn success">Verify</button>
+              </div>
+              <div style="padding-right: 8px">
+                <button class="btn danger">Clear</button>
+              </div>
+              <div style="padding-right: 8px">
+                <button class="btn warning">Unlock</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <mat-tab-group dynamicHeight>
+        <mat-tab label="Submit KYC">
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Pin No: </mat-label>
+                <input matInput type="number" min="0" placeholder="Pin No" formControlName="pinNo" required />
+                <div *ngIf="pinNo.invalid && (pinNo.dirty || pinNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="pinNo.errors.required">Reference No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Exchange House Name: </mat-label>
+                <input matInput placeholder="Exchange House Name" formControlName="exchangeHouseName" required />
+                <div *ngIf="exchangeHouseName.invalid && (exchangeHouseName.dirty || exchangeHouseName.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="exchangeHouseName.errors.required">Exchange House Name is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Beneficiary Mobile No: </mat-label>
+                <input matInput placeholder="Beneficiary Mobile No" formControlName="beneficiaryMobileNo" minlength="14" maxlength="14" pattern="[0-9]{14}" required />
+                <div *ngIf="beneficiaryMobileNo.invalid && (beneficiaryMobileNo.dirty || beneficiaryMobileNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="beneficiaryMobileNo.errors.required">Beneficiary Mobile No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Date Of Birth: </mat-label>
+                <input matInput [matDatepicker]="picker0" placeholder="Date Of Birth" formControlName="dateOfBirth" required />
+                <mat-datepicker-toggle matSuffix [for]="picker0"></mat-datepicker-toggle>
+                <mat-datepicker #picker0></mat-datepicker>
+                <div *ngIf="dateOfBirth.invalid && (dateOfBirth.dirty || dateOfBirth.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="dateOfBirth.errors.required"> Expired Date is required. </div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification Type: </mat-label>
+
+                <mat-select matInput placeholder="Identification Type"  [(ngModel)]="selectedValue" name="identificationType" formControlName="identificationType" required>
+                  <mat-option *ngFor="let identificationType of identificationTypes" [value]="identificationType.value" >
+                    {{identificationType.viewValue}}
+                  </mat-option>
+                </mat-select>
+
+                <div *ngIf="identificationType.invalid && (identificationType.dirty || identificationType.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="identificationType.errors.required">Identification Type is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification No: </mat-label>
+                <input matInput type="number" min="0" placeholder="Identification No" formControlName="identificationNo" required />
+                <div *ngIf="identificationNo.invalid && (identificationNo.dirty || identificationNo.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="identificationNo.errors.required">Identification No is required.</div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Document Issuer Date: </mat-label>
+                <input matInput [matDatepicker]="picker" placeholder="Document Issuer Date" formControlName="documentIssuerDate" required />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="documentIssuerDate.invalid && (documentIssuerDate.dirty || documentIssuerDate.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="documentIssuerDate.errors.required"> Document Issuer Date is required. </div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%" fxFlex.xs="100%" appearance="fill">
+                <mat-label>Expired Date: </mat-label>
+                <input matInput [matDatepicker]="picker1" placeholder="Choose Expired Date" formControlName="expiredDate" required />
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <div *ngIf="expiredDate.invalid && (expiredDate.dirty || expiredDate.touched)" class="alert alert-danger">
+                  <div style="color: red" *ngIf="expiredDate.errors.required"> Expired Date is required. </div>
+                </div>
+              </mat-form-field>
+
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">Exchange House Details</div>
+            <div class="panel-body">
+              <dl fxLayout="row">
+                <div>
+                  <dt>Ref No:</dt>
+                  <!--  <dd>{{pinNo}}</dd>-->
+                  <dt>Remitter Name:</dt>
+                  <dt>Remitter Address:</dt>
+                  <dt>Remitter Mobile:</dt>
+                  <dt>Remitter City:</dt>
+                  <dt>Remitter Country:</dt>
+                  <dt>Beneficiary Name: </dt>
+                  <dt>Beneficiary Address: </dt>
+                </div>
+
+                <div style="margin-left: 400px">
+                  <dt>Beneficiary Country: </dt>
+                  <dt><b>Amount:</b></dt>
+                  <dt>Incentive Amount:</dt>
+                  <dt>Total Amount:</dt>
+                  <dt>Date:</dt>
+                  <dt>Token No:</dt>
+                  <dt>Message:</dt>
+                </div>
+
+              </dl>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</form>

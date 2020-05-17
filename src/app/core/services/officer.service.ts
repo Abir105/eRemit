@@ -7,7 +7,7 @@ import { catchError, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class OfficerService {
-  Url = 'http://10.11.201.92:3001/';
+  Url = 'http://10.11.201.87:3001/';
 
   constructor(private http: HttpClient) { }
 

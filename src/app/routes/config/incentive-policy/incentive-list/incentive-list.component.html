@@ -3,16 +3,16 @@
   <div class="card-header">
     <div fxLayout="row">
       <div fxFlex="2" >
-        <button style="margin-top: 4px" mat-icon-button [routerLink]="['']">
+        <button style="margin-top: 15px;padding-left: 45px; color: darkblue;" mat-icon-button [routerLink]="['']" >
           <mat-icon>home</mat-icon>
         </button>
       </div>
-      <div fxFlex="41" >
-        <h3 style="padding-left: 8px" > Incentive Policy Info </h3>
+      <div fxFlex="38">
+        <h3 style="padding-left: 60px; font-size: 24px;"><b> Incentive Policy Info </b></h3>
       </div>
-      <div fxFlex="30" >
+      <div fxFlex="30" style="margin-top: 15px;padding-left: 85px;">
         <mat-form-field >
-          <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
+          <input type="search" aria-label="Search" placeholder="Search" style="hight:80px" matInput (keyup)="doFilter($event.target.value)" />
           <button mat-button matSuffix mat-icon-button aria-label="Clear">
             <mat-icon>search</mat-icon>
           </button>

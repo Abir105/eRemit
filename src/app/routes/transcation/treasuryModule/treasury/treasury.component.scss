@@ -8,6 +8,11 @@
 p {
   font-family: Lato;
 }
+//.mat-icon{
+//  height:35px !important;
+//  width:35px !important;
+//  font-size:35px !important;
+//}
 .c {
   width: 300px;
   height: 100px;
@@ -43,13 +48,12 @@ a:active {
 .uploadTable {
   border-collapse: collapse;
   width: 100%;
-  position: fixed;
-  right: 0;
-  //margin-left: 0px;
 }
+
 .uploadTable td, .uploadTable th {
   border: 1px solid #ddd;
   padding: 8px;
+  text-align: right;
 }
 .uploadTable tr:nth-child(even){background-color: #f2f2f2;}
 .uploadTable tr:hover {background-color: #ddd;}
@@ -57,20 +61,18 @@ a:active {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #1F5090;
+  background-color: #ff9933;
   color: white;
 }
 .uploadTable td {
-  text-align: center;
+  text-align: left;
 }
 .navigationButtons {
   float: right;
 }
 .cen {
   border-collapse: collapse;
-  margin-left: 200px;
+  margin-left: 350px;
 }
-.butt{
 
-}
 

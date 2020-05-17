@@ -1,0 +1,54 @@
+<app-notification-comp></app-notification-comp>
+
+<form [id]="AddId" [formGroup]="reactiveForm" class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+        <div fxFlex="2" >
+          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+            <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="38">
+          <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> USD Selling </b></h3>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div fxLayout="column">
+                  <table class="uploadTable" >
+                    <tr>
+                      <th>Sl.No</th>
+                      <th>Exchange House</th>
+                      <th>Account Number</th>
+                      <th>Treasury Rate</th>
+                      <th>Offer Rate</th>
+                      <th>Current Balance</th>
+                      <th>Selling Amount</th>
+                      <th>Message</th>
+                      <th>Save</th>
+                    </tr>
+                    <tr *ngFor="let s of usdSellingData, let Sl_No=index ">
+                      <td>{{Sl_No+1}}</td>
+                      <td>{{s.Exchange_House}}</td>
+                      <td>{{s.BDT_Account}}</td>
+                      <td><input type="number" formControlName="Treasury_Rate" placeholder="Treasury Rate"  ></td>
+                      <td><input type="number" formControlName="Offer_Rate" placeholder="Offer Rate"  ></td>
+                      <td>{{s.USD_CREDIT}}</td>
+                      <td><input type="number" formControlName="Selling_Amount" placeholder="Selling Amount" ></td>
+                      <td>{{s.Approve}}</td>
+                      <td>
+                        <button mat-icon-button color="accent" (click)="saveById(reactiveForm.value,s)">
+                          <mat-icon class="mat-18">save</mat-icon>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+                  </mat-paginator>
+      </div>
+    </div>
+  </div>
+</form>

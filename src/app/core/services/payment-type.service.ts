@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PaymentTypeService {
-  Url = 'http://10.11.201.92:3001/';
+  Url = 'http://10.11.201.87:3001/';
 
   constructor(private http: HttpClient) { }
 

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
 import { MatTableDataSource } from '@angular/material/table';
-import { FileProcessingInfo } from '../../model/FileProcessingInfo';
+import { FileProcessingInfo } from '../../notificationComp/model/FileProcessingInfo';
 
 
 

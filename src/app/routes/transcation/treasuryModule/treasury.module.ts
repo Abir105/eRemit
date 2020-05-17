@@ -9,12 +9,14 @@ import { CountryModule } from '../../config/country/country.module';
 import { TreasuryComponent } from './treasury/treasury.component';
 import { TreasuryRoutingModule } from './treasury-routing.module';
 import { TreasuryService } from '@core/services/treasury.service';
+import { TreasuryDeleteComponent } from './treasury-delete/treasury-delete.component';
+import { TreasuryUpdateComponent } from './treasury-update/treasury-update.component';
 
 const COMPONENTS = [TreasuryComponent];
-const COMPONENTS_DYNAMIC = [ TreasuryComponent, ];
+const COMPONENTS_DYNAMIC = [ TreasuryComponent,TreasuryDeleteComponent, TreasuryUpdateComponent,  ];
 
 @NgModule({
-  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, TreasuryComponent],
+  declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, TreasuryComponent, TreasuryDeleteComponent, TreasuryUpdateComponent],
   imports: [
     SharedModule,
     TreasuryRoutingModule,
@@ -38,7 +40,9 @@ const COMPONENTS_DYNAMIC = [ TreasuryComponent, ];
     MatInputModule,
     FlexLayoutModule,
     MatPaginatorModule,
-    TreasuryComponent
+    TreasuryComponent,
+    TreasuryDeleteComponent,
+    TreasuryUpdateComponent
   ],
 })
 export class TreasuryModule { }

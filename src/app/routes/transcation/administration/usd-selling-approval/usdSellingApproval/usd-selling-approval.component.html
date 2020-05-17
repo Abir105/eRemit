@@ -1,0 +1,94 @@
+<app-notification-comp></app-notification-comp>
+<form [formGroup]="reactiveForm1"  class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+        <div fxFlex="2" >
+          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+            <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="38">
+          <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> USD Selling Approval </b></h3>
+        </div>
+        <div fxFlex="27"  >
+          <div class="right-nevigation" style="padding-right: 54px">
+            <mat-form-field >
+              <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="doFilter($event.target.value)" />
+              <button mat-button matSuffix mat-icon-button aria-label="Clear">
+                <mat-icon>search</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="sl">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+          <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Exchange_House">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Exchange House</th>
+          <td mat-cell *matCellDef="let element"> {{element.Exchange_House}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Account_Number">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Account Number</th>
+          <td mat-cell *matCellDef="let element"> {{element.Account_Number}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Treasury_Rate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Treasury Rate</th>
+          <td mat-cell *matCellDef="let element"> {{element.Treasury_Rate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Offer_Rate">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Offer Rate</th>
+          <td mat-cell *matCellDef="let element"> {{element.Offer_Rate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Current_Balance">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Current Balance</th>
+          <td mat-cell *matCellDef="let element"> {{element.Current_Balance}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Selling_Amount">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Selling Amount</th>
+          <td mat-cell *matCellDef="let element"> {{element.Selling_Amount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Approve">
+          <th mat-header-cell *matHeaderCellDef>Approve</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="accent" (click)="approveUSDSellingRow(element)">
+              <mat-icon class="mat-18">thumb_up</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Message">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Message</th>
+          <td mat-cell *matCellDef="let element"> {{element.Message}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Cancel">
+          <th mat-header-cell *matHeaderCellDef> Cancel </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="warn" (click)="deleteUSDSellingRow(element.id)">
+              <mat-icon class="mat-18">delete_forever</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </div>
+</div>
+</form>
