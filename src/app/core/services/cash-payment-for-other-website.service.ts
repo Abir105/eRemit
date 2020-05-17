@@ -13,7 +13,7 @@ export class CashPaymentForOtherWebsiteService {
    // public getCashPaymentForOtherWebsite = (route: string): Observable<any> => {
   //  return this.http.get(this.Url + 'cash-payment-for-other-website');
  // };
-//"http://10.11.201.87:3001/incentive_ex_house
+// http://10.11.201.87:3001/incentive_ex_house
   public addCashPaymentForOtherWebsite = ({ route, body }: { route: string, body: any }) => {
     console.log(body);
     return this.http.post(this.Url + 'incentive_ex_house', body);

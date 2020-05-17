@@ -26,6 +26,11 @@ const routes: Routes = [
         data: { title: 'Config', titleI18n: 'config' },
       },
       {
+        path: 'cashPayment',
+        loadChildren: () => import('./cash-payment/cash-payment.module').then(m => m.CashPaymentModule),
+        data: { title: 'CashPayment', titleI18n: 'CashPayment' },
+      },
+      {
         path: 'fileProcessing',
         loadChildren: () => import('./file-processing/file-processing.module').then(m => m.FileProcessingModule),
         data: { title: 'File-Processing', titleI18n: 'fileProcessing' },

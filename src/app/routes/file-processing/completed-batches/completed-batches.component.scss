@@ -1,0 +1,16 @@
+#customers {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+}

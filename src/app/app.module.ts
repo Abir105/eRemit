@@ -52,6 +52,7 @@ import { AuthGuard } from './routes/sessions/login/auth.guard';
     MatInputModule,
     MatButtonModule,
     MatInputModule,
+    AutocompleteLibModule,
     FormlyModule.forRoot(),
     ToastrModule.forRoot(),
   ],

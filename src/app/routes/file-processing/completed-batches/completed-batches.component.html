@@ -1,32 +1,51 @@
-<table mat-table [dataSource]="dataSource">
+<h1 mat-dialog-title>Failed transactions</h1>
+<div mat-dialog-content>
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+  <table id="customers">
+    <tr>
+      <th>Serial No</th>
+      <th title="Transaction Number">Transac. No</th>
+      <th>Beneficiary</th>
+      <th>Amount</th>
+      <th>Bank</th>
+      <th>Branch</th>
+      <th>Payment type</th>
+      <th>Reason of failure</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>0509201901</td>
+      <td>MAHINUR AKTER ktf</td>
+      <td>2000000</td>
+      <td>Bank Asia</td>
+      <td>Fatullah</td>
+      <td>BEFTN</td>
+      <td>AML verification Failed</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>0509201902</td>
+      <td>NAZMA KHANOM</td>
+      <td>5000000</td>
+      <td>Dutch Bangla BAnk</td>
+      <td>Keraniganj</td>
+      <td>ACTRF</td>
+      <td>Account Title Mismatch</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>0509201903</td>
+      <td>Arifur Rahman</td>
+      <td>7000000</td>
+      <td>Agrani Bank</td>
+      <td>Dhaka</td>
+      <td>Cash</td>
+      <td>Account Number not found in CBS</td>
+    </tr>
+  </table>
+</div>
 
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> File Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.file_name }} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> Code </th>
-    <td mat-cell *matCellDef="let element"> {{element.ex_house_code}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Date </th>
-    <td mat-cell *matCellDef="let element"> {{element.upload_date | date}} </td>
-  </ng-container>
-
-
-
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
 <div mat-dialog-actions style="float: right">
-<!--  <button mat-button (click)="onNoClick()">No Thanks</button>-->
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Ok</button>
+<!--  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
 </div>

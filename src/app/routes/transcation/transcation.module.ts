@@ -5,6 +5,8 @@ import { TranscationRoutingModule} from './transcation-routing.module';
 import { SharedModule } from '@shared/shared.module';
 import { MaterialModule} from '../material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { BeftnAmendmentComponent } from './beftn-amendment/beftn-amendment.component';
+import { BeftnResendComponent } from './beftn-resend/beftn-resend.component';
 
 const COMPONENTS = [ ];
 const COMPONENTS_DYNAMIC = [];
