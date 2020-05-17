@@ -23,6 +23,11 @@ const routes: Routes = [
         data: { title: 'Config', titleI18n: 'config' },
       },
       {
+        path: 'reports',
+        loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
+        data: { title: 'Reports', titleI18n: 'Reports' },
+      },
+      {
         path: 'fileProcessing',
         loadChildren: () => import('./file-processing/file-processing.module').then(m => m.FileProcessingModule),
         data: { title: 'Transaction', titleI18n: 'transaction' },
