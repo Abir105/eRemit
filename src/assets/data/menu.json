@@ -85,6 +85,16 @@
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
           "type": "link"
+        },
+        {
+          "state": "beftnAmendment",
+          "name": "Beftn Amendment",
+          "type": "link"
+        },
+        {
+          "state": "beftnResend",
+          "name": "Beftn Resend",
+          "type": "link"
         }
       ]
     },
@@ -95,17 +105,10 @@
       "icon": "apps"
     },
     {
-      "state": "exchangeHouse",
-      "name": "Exchange House",
-      "type": "sub",
-      "icon": "apps",
-      "children": [
-        {
-          "state": "info",
-          "name": "Exchange House Setup",
-          "type": "link"
-        }
-      ]
+      "state": "cashPayment",
+      "name": "Cash Payment",
+      "type": "link",
+      "icon": "apps"
     }
   ]
 }

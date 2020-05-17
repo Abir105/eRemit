@@ -30,6 +30,7 @@ import {
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
+import { AutocompleteLibModule } from 'angular-ng-autocomplete';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {
     MatInputModule,
     MatButtonModule,
     MatInputModule,
+    AutocompleteLibModule,
     FormlyModule.forRoot(),
     ToastrModule.forRoot(),
   ],

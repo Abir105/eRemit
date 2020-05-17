@@ -4,7 +4,7 @@ import { CashPaymentForOtherWebsiteCreateComponent } from './cash-payment-for-ot
 
 const routes: Routes = [
   { path: '', component: CashPaymentForOtherWebsiteCreateComponent},
-  { path: 'create', component: CashPaymentForOtherWebsiteCreateComponent},
+  { path: 'create', component: CashPaymentForOtherWebsiteCreateComponent}
 ];
 
 @NgModule({

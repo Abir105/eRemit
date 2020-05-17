@@ -1,0 +1,212 @@
+<app-notification-comp></app-notification-comp>
+<form [id]="bankAddId" [formGroup]="reactiveForm4" (ngSubmit)="addPayment(reactiveForm4.value)" class="matero-form-horizontal">
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+        <div fxFlex="7" >
+          <button  mat-icon-button  [routerLink]="['../']" >
+            <mat-icon style="font-size: 40px; margin-top: 18px;">home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="35" >
+          <h3>Cash Payment</h3>
+        </div>
+        <div fxFlexOffset="54" fxFlex="6"  >
+          <div class="right-nevigation">
+
+            <button mat-icon-button color="primary" type="submit"  matTooltip="Save">
+              <mat-icon style="font-size: 40px;">save</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="container">
+
+          <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
+            <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
+                 fxFlex.xs="100%" fxLayoutAlign="flex-start">
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Reference No</mat-label>
+                <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+                <mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn"  (optionSelected)="onSelect($event.option.value)">
+                  <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option.TT_No}}
+                  </mat-option>
+                </mat-autocomplete>
+
+                <div *ngIf="referenceNo.invalid && (referenceNo.dirty || referenceNo.touched)">
+                  <div style="color: red" *ngIf="referenceNo.errors.required">
+                    Reference No is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Exchange House Name</mat-label>
+                <input matInput placeholder="Exchange House Name" formControlName="exHouseName" required />
+                <div *ngIf="exHouseName.invalid && (exHouseName.dirty || exHouseName.touched)"
+                     >
+                  <div style="color: red" *ngIf="exHouseName.errors.required">
+                    Exchange House Name is required.
+                  </div>
+                </div>
+
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <input matInput [matDatepicker]="picker" ng-model-options="{ timezone: 'utc' }" placeholder="Remit Date" formControlName="remitDate" required >
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <div *ngIf="remitDate.invalid && (remitDate.dirty || remitDate.touched)"
+                     >
+                  <div style="color: red" *ngIf="remitDate.errors.required">
+                    Remit Date is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Beneficiary Name</mat-label>
+                <input matInput placeholder="Beneficiary Name" formControlName="beneficiaryName" required />
+                <div *ngIf="beneficiaryName.invalid && (beneficiaryName.dirty || beneficiaryName.touched)"
+                     >
+
+                  <div style="color: red" *ngIf="beneficiaryName.errors.required">
+                    Beneficiary Name is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Remitter Name</mat-label>
+
+                <input matInput placeholder="Remitter Name" formControlName="remitterName" required />
+                <div *ngIf="remitterName.invalid && (remitterName.dirty || remitterName.touched)"
+                     >
+
+                  <div style="color: red" *ngIf="remitterName.errors.required">
+                    Remitter Name is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Pin No.</mat-label>
+                <input matInput placeholder="Pin No." formControlName="pinNo" required />
+                <div *ngIf="pinNo.invalid && (pinNo.dirty || pinNo.touched)"
+                     >
+
+                  <div style="color: red" *ngIf="pinNo.errors.required">
+                    Pin No. is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Remit Amount</mat-label>
+                <input matInput placeholder="Remit Amount" formControlName="remitAmount" required />
+                <div *ngIf="remitAmount.invalid && (remitAmount.dirty || remitAmount.touched)"
+                     >
+                  <div style="color: red" *ngIf="remitAmount.errors.required">
+                    Remit Amount is required.
+                  </div>
+                </div>
+              </mat-form-field>
+
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Mobile No</mat-label>
+                <input matInput placeholder="Phone" formControlName="phone" type="number" min="11" max="11" required />
+                <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
+                     >
+
+                  <div style="color: red" *ngIf="phone.errors.required">
+                    Mobile No is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification Type</mat-label>
+                <mat-select placeholder="Identification Type" formControlName="identificationType" required>
+                  <mat-option *ngFor="let i of IdentificationType" [value]="i.typeName">{{i.typeName}} </mat-option>
+                </mat-select>
+                <div *ngIf="identificationType.invalid && (identificationType.dirty || identificationType.touched)">
+
+                  <div style="color: red" *ngIf="identificationType.errors.required">
+                    Identification Type is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification No.</mat-label>
+                <input matInput placeholder="Identification No." formControlName="identificationNo" required />
+                <div *ngIf="identificationNo.invalid && (identificationNo.dirty || identificationNo.touched)"
+                     >
+                  <div style="color: red" *ngIf="identificationNo.errors.required">
+                    Identification No is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Identification Issuer</mat-label>
+                <input matInput placeholder="Identification Issuer" formControlName="identificationIssuer" required />
+                <div *ngIf="identificationIssuer.invalid && (identificationIssuer.dirty || identificationIssuer.touched)"
+                     >
+                  <div style="color: red" *ngIf="identificationIssuer.errors.required">
+                    Identification Issuer is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <input matInput [matDatepicker]="picker1" ng-model-options="{ timezone: 'utc' }"
+                       placeholder="Expired Date" formControlName="expiredDate" required >
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <div *ngIf="expiredDate.invalid && (expiredDate.dirty || expiredDate.touched)"
+                     >
+                  <div style="color: red" *ngIf="expiredDate.errors.required">
+                    Expired Date is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Incentive Amount</mat-label>
+                <input matInput placeholder="Incentive Amount" formControlName="incentiveAmount" required />
+                <div *ngIf="incentiveAmount.invalid && (incentiveAmount.dirty || incentiveAmount.touched)"
+                     >
+                  <div style="color: red" *ngIf="incentiveAmount.errors.required">
+                    Incentive Amount is required.
+                  </div>
+                </div>
+              </mat-form-field>
+              <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
+                              fxFlex.xs="100%" appearance="fill">
+                <mat-label>Total Amount</mat-label>
+                <input matInput placeholder="Total Amount" formControlName="totalAmount" required />
+                <div *ngIf="totalAmount.invalid && (totalAmount.dirty || totalAmount.touched)"
+                     >
+                  <div style="color: red" *ngIf="totalAmount.errors.required">
+                    Total Amount is required.
+                  </div>
+                </div>
+              </mat-form-field>
+            </div>
+          </div>
+    </div>
+  </div>
+</form>
+
+
+
+
+
+
+

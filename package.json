@@ -57,6 +57,7 @@
     "ngx-toastr": "^10.2.0",
     "photoviewer": "3.3.0",
     "popper.js": "^1.15.0",
+    "read-excel-file": "^4.0.6",
     "rxjs": "~6.5.2",
     "screenfull": "^4.2.1",
     "ts-xlsx": "0.0.11",

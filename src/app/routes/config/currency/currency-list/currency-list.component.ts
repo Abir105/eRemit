@@ -56,14 +56,17 @@ export class CurrencyListComponent implements OnInit  {
       disableClose: true
     });
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Currency Added successfully');
-        this.getAllCurrencies();
-      } else {
-        this.notification.errorsmsg('Sorry! Currency not Added');
+
+      if (value) {
+        const obj = JSON.parse(value);
+        console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Currency Added successfully');
+          this.getAllCurrencies();
+        } else {
+          this.notification.errorsmsg('Sorry! Currency not Added');
+        }
       }
     });
   }
@@ -78,14 +81,17 @@ export class CurrencyListComponent implements OnInit  {
     dialogConfig.width = '400px';
     this.dialogRef = this.matDialog.open(UpdateCurrencyComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Currency Updated successfully');
-        this.getAllCurrencies();
-      } else {
-        this.notification.errorsmsg('Sorry! Currency not Updated');
+
+      if (value) {
+        const obj = JSON.parse(value);
+        console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Currency Updated successfully');
+          this.getAllCurrencies();
+        } else {
+          this.notification.errorsmsg('Sorry! Currency not Updated');
+        }
       }
     });
   }
@@ -97,14 +103,17 @@ export class CurrencyListComponent implements OnInit  {
     dialogConfig.autoFocus = true;
     this.dialogRef = this.matDialog.open(DeleteCurrencyComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Currency Deleted successfully');
-        this.getAllCurrencies();
-      } else {
-        this.notification.errorsmsg('Sorry! Currency not Deleted');
+
+      if (value) {
+        const obj = JSON.parse(value);
+        console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Currency Deleted successfully');
+          this.getAllCurrencies();
+        } else {
+          this.notification.errorsmsg('Sorry! Currency not Deleted');
+        }
       }
     });
   }
