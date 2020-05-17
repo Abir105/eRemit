@@ -85,12 +85,28 @@
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
           "type": "link"
+        },
+        {
+          "state": "beftnAmendment",
+          "name": "Beftn Amendment",
+          "type": "link"
+        },
+        {
+          "state": "beftnResend",
+          "name": "Beftn Resend",
+          "type": "link"
         }
       ]
     },
     {
       "state": "fileProcessing",
       "name": "File Processing",
+      "type": "link",
+      "icon": "apps"
+    },
+    {
+      "state": "cashPayment",
+      "name": "Cash Payment",
       "type": "link",
       "icon": "apps"
     }

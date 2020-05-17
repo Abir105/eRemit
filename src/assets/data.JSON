@@ -1,0 +1,14 @@
+{
+  "ex_code": "110",
+  "ex_acc_type": "deb",
+  "ex_acc_no": "11025685",
+  "debit_from": "23589662555",
+  "gl_no": "256323",
+  "tt_no": "2368546",
+  "beni_name": "Samsul Islam Khan",
+  "routing_no": "23584",
+  "beni_acc_no": "049340032841",
+  "amount": "50",
+  "payment_type": "ACTRF",
+  "user_id": "INPAYADM"
+}

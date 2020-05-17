@@ -14,8 +14,8 @@ export class FileProcessingService {
   private httpClient: any;
   constructor(private http: HttpClient) { }
   public getX = (): Observable<any> => {
-    console.log('seragagga')
-    return this.http.get('http://10.11.201.37:5000');
+    console.log('seragagga');
+    return this.http.get('http://10.11.201.37:5000/connect-to-cbs');
   };
 
   public getXpressMoneyName = (): Observable<any> => {

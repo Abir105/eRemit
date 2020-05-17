@@ -6,13 +6,13 @@
     <div class="card-header">
       <div fxLayout="row">
 
-        <div fxFlex="2" >
-          <button style="margin-top: 8px" mat-icon-button  [routerLink]="['../']" >
-            <mat-icon>home</mat-icon>
+        <div fxFlex="4" >
+          <button  mat-icon-button  [routerLink]="['../']" >
+            <mat-icon style="font-size: 40px; margin-top: 18px; color: #283891">home</mat-icon>
           </button>
         </div>
 
-        <div fxFlex="38" >
+        <div fxFlex="36" >
           <h3 style="padding-left: 8px"> File Processing </h3>
         </div>
 
@@ -323,7 +323,7 @@
                     <td>{{s.Payment}}</td>
                     <td>{{s.Routing_No}}</td>
                     <td style="color: #4caf50">Success</td>
-                    <td style="color: #4caf50">Send</td>
+                    <td style="color: #4caf50">Sent</td>
                   </tr>
                   </tbody>
 
@@ -342,35 +342,28 @@
           <mat-step formGroupName="4" [stepControl]="formArray?.get([4])">
             <ng-template matStepLabel><b>Summary</b></ng-template>
             <div fxLayout="row">
-              <div class="card-small" fxFlexOffset="25" fxFlex="50">
+              <div class="card-small" fxFlexOffset="15" fxFlex="20">
                 <div class="exhouseProperty">
-                  <div fxFlex="100" >
-                    <span>MoneyGram</span>
-                  </div>
-
+                    Total Transaction
                 </div>
-                <div class="container-small">
-                  <div style="margin-top: 30px">
-                    <table class="card-table"  >
-                      <thead>
-                      <tr style=" padding-bottom: 5px; font-size: 18px">
-                        <th>Total Transections</th>
-                        <th>Successful Transection</th>
-                        <th>Failed Transection</th>
-                      </tr>
-                      </thead>
-                      <tbody >
-                      <tr style="padding-bottom: 5px; font-size: 25px">
-                        <td >
-                          3
-                        </td>
-                        <td>3</td>
-                        <td>0</td>
-                      </tr>
-                      </tbody>
-                    </table>
-                  </div>
-
+                <div class="container-summary">
+                    3
+                </div>
+              </div>
+              <div class="card-small"  fxFlex="20">
+                <div class="exhouseProperty">
+                  Successful Transaction
+                </div>
+                <div class="container-summary">
+                  3
+                </div>
+              </div>
+              <div class="card-small"  fxFlex="20">
+                <div class="exhouseProperty">
+                  Failed Transaction
+                </div>
+                <div class="container-summary">
+                  0
                 </div>
               </div>
             </div>

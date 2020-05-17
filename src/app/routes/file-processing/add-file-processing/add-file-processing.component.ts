@@ -20,6 +20,7 @@ export class AddFileProcessingComponent implements OnInit {
 
 
   statusValue = 20;
+  private jsonURL = 'src/assets/data.json';
   private isButtonVisible = false;
   private isTableVisible = false;
   order = 'ex_house_name';
@@ -89,7 +90,8 @@ export class AddFileProcessingComponent implements OnInit {
   public getAllX = () => {
     this.fileProcessingService.getX()
       .subscribe(res  => {
-        console.log(res,'lelelelelellee')
+        console.log('response');
+        console.log(res);
       });
   };
 
@@ -213,13 +215,12 @@ export class AddFileProcessingComponent implements OnInit {
       payment_type: 'ACTRF',
       user_id: 'INPAYADM'
     };
+    const jsonUR = this.jsonURL;
     const jsonData = JSON.stringify(transactionData);
     this.fileProcessingService.transactionApi
-    ({ route: 'transactionApi', body: jsonData }).subscribe(res => {
+    ({ route: 'transactionApi', body: transactionData }).subscribe(res => {
       console.log(res, 'Transection API');
-      const response = JSON.stringify(res);
-      console.log(response,"transaction API");
-      this.notification.successmsg(response);
+      this.notification.successmsg(res);
     }, (err) => {
       console.log(err,'erarara');
       this.notification.errorsmsg('Transaction not successful ');
