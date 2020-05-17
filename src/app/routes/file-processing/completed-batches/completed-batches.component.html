@@ -1,5 +1,32 @@
+<table mat-table [dataSource]="dataSource">
 
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> File Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.file_name }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Code </th>
+    <td mat-cell *matCellDef="let element"> {{element.ex_house_code}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.upload_date | date}} </td>
+  </ng-container>
+
+
+
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<div mat-dialog-actions style="float: right">
+<!--  <button mat-button (click)="onNoClick()">No Thanks</button>-->
   <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
 </div>

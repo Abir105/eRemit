@@ -5,9 +5,18 @@ import { NotificationCompoComponent } from '../../notificationComp/notificationC
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
-import { MatTableDataSource } from '@angular/material/table';
-import { FileProcessingInfo } from '../../notificationComp/model/FileProcessingInfo';
 
+import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
+import { PageEvent } from '@angular/material/paginator';
+import { OrderPipe } from 'ngx-order-pipe';
+import { MatTableDataSource } from '@angular/material/table';
+export interface DialogData {
+  animal: string;
+  name: string;
+}
+
+import { FileProcessingInfo } from '../../model/FileProcessingInfo';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -16,44 +25,86 @@ import { FileProcessingInfo } from '../../notificationComp/model/FileProcessingI
   styleUrls: ['./add-file-processing.component.scss'],
 })
 export class AddFileProcessingComponent implements OnInit {
-  public dataSource = new MatTableDataSource<FileProcessingInfo>();
-  public doFilter = (value: string) => {
-    value = value.trim(); // Remove whitespace
-    value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = value;
-  };
-
-
+  order = 'ex_house_name';
+  searchText;
+  animal: string;
+  name: string;
+  uploadFileData: any;
   [x: string]: any;
-  public displayedColumns = ['ID','Sl_No', 'TT_No', 'Date', 'Amount', 'Beneficiary', 'AC_No', 'Bank', 'Branch', 'Payment', 'Remitter', 'City_Remitter', 'Amount_words', 'Cont_Benef','Routing_No'];
   fileProcessing = Subscription;
   reactiveForm1: FormGroup;
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
-  private ex_house_code: string;
-  private xPressMoneyName: string;
-  private uploadFileData: string;
+  fileToUpload: File = null;
+  dataSource: any;
+  displayedColumns: any;
+  xPressMoneyName = [];
+  pagedList = [];
+  length = 0;
+  pageSize = 3;
+  pageSizeOptions: number[] = [3];
+  breakpoint = 3;
   date: string;
+  isShow: any;
+  get formArray(): AbstractControl | null { return this.reactiveForm1.get('formArray'); }
+  sortedCollection: any[];
 
-  get formArray(): AbstractControl | null {
-    return this.reactiveForm1.get('formArray');
+  constructor(private router: Router, private fb: FormBuilder,
+              private fileProcessingService: FileProcessingService,
+              public dialog: MatDialog, private orderPipe: OrderPipe) {
+    this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
   }
-
-  constructor(private router: Router, private _formBuilder: FormBuilder, private fb: FormBuilder, private fileProcessingService: FileProcessingService) {
-  }
-
   ngOnInit() {
-
     this.reactiveForm1 = this.fb.group({
 
       formArray: this.fb.array([
-        this.fb.group({}),
-        this.fb.group({}),
-        this.fb.group({}),
-        this.fb.group({}),
-      ]),
+        this.fb.group({
+          searchText: ['', [Validators.required]],
+        }),
+        this.fb.group({
+            date: ['', [Validators.required]],
+          uploaded_file: ['', [Validators.required]],
+        }),
+        this.fb.group({
+
+        }),
+        this.fb.group({
+
+        }),
+        this.fb.group({
+
+        }),
+      ])
     });
     this.getAllXpressMoneyName();
-    this.getAllUploadFileData();
+  }
+  public getAllXpressMoneyName = () => {
+    this.fileProcessingService.getXpressMoneyName()
+      .subscribe(res  => {
+        this.xPressMoneyName = res.data;
+        this.pagedList = this.xPressMoneyName.slice(0, 3);
+        this.length = this.xPressMoneyName.length;
+        // this.xPressMoneyName.paginator = this.paginator;
+      });
+  };
+  OnPageChange(event: PageEvent) { const startIndex = event.pageIndex * event.pageSize;
+                                   let endIndex = startIndex + event.pageSize;
+                                   if (endIndex > this.length) { endIndex = this.length; }
+                                   this.pagedList = this.xPressMoneyName.slice(startIndex, endIndex);
+  }
+
+  // onResize(event) {  this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 3; }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(CompletedBatchesComponent, {
+      width: '500px',
+      height: '320px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
   private getAllUploadFileData() {
@@ -62,25 +113,66 @@ export class AddFileProcessingComponent implements OnInit {
         this.uploadFileData = res.data;
       });
   }
-  private getAllXpressMoneyName() {
-    this.fileProcessingService.getXpressMoneyName('xPressMoneyName')
-      .subscribe(res => {
-        this.xPressMoneyName = res.data;
-      });
-  }
-  StepperNext(ex_house_name, ex_house_code){
-    // @ts-ignore
-    this.showDataOb = {ex_house_name, ex_house_code};
-    console.log(this.showDataOb);
-  }
-//file upload
-  arrayBuffer: any;
-  file: File;
+  // uploadFileToActivity() {
+  //   this.fileProcessingService.postFile(this.fileToUpload).subscribe(data => {
+  //     console.log('File Uploaded Successfully.');
+  //   }, error => {
+  //     console.log(error);
+  //   });
+  // }
 
+  // fileUploadFormSubmit(date, uploaded_file) {
+  //   let data = {
+  //     date,
+  //     uploaded_file
+  //   }
+  //     console.log(data);
+  //     this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: data })
+  //       .subscribe(data => {
+  //         this.notification.successmsg('File was uploaded successfully');
+  //         this.reactiveForm1.reset();
+  //       }, (err) => {
+  //         this.notification.errorsmsg('Sorry! file can not be added');
+  //       });
+  // }
+
+  arrayBuffer : any;
+
+  file : File;
   incomingfile(event) {
     this.file = event.target.files[0];
-    console.log(this.file.name);
   }
+//file upload
+  //arrayBuffer: any;
+ // file: File;
+
+  /*Upload(file) {
+    const fileReader = new FileReader();
+    fileReader.onload = (e) => {
+      this.arrayBuffer = fileReader.result;
+      const data = new Uint8Array(this.arrayBuffer);
+      const arr = new Array();
+      for (let i = 0; i !== data.length; ++i) { arr[i] = String.fromCharCode(data[i]); }
+      const bstr = arr.join('');
+      const workbook = XLSX.read(bstr, {type: 'binary'});
+      const first_sheet_name = workbook.SheetNames[0];
+      const worksheet = workbook.Sheets[first_sheet_name];
+      console.log(XLSX.utils.sheet_to_json(worksheet,{raw: true}));
+    }
+    fileReader.readAsArrayBuffer(this.file);
+    const data1 = file;
+    console.log(data1);
+    this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: data1 })
+    // tslint:disable-next-line:no-shadowed-variable
+      .subscribe(data => {
+        this.notification.successmsg('File was uploaded successfully');
+        this.reactiveForm1.reset();
+      }, (err) => {
+        this.notification.errorsmsg('Sorry! file can not be added');
+      });
+
+
+  }*/
 
   Upload() {
     var fileDoc = { ex_house_code: this.showDataOb.ex_house_code, file_name: this.file.name}
