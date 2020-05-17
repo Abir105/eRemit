@@ -5,35 +5,35 @@
 <div class="card">
   <div class="card-header">
     <div fxLayout="row">
-      <div fxFlex="2" >
-        <button style="margin-top: 3px" mat-icon-button [routerLink]="['']">
-          <mat-icon>home</mat-icon>
+      <div fxFlex="7" >
+        <button mat-icon-button [routerLink]="['']">
+          <mat-icon style="font-size: 40px; margin-top: 18px; color: #4d6fac;">home</mat-icon>
         </button>
       </div>
-      <div fxFlex="18" >
-        <h3 style="padding-left: 8px">Branch Info</h3>
+      <div fxFlex="20" >
+        <h3 >Branch Info</h3>
       </div>
-      <div fxFlex="30">
-        <mat-form-field >
+      <div fxFlex="30" >
+        <mat-form-field style="margin-top: 5px;" >
           <mat-label>Select a bank</mat-label>
           <mat-select placeholder="Select a bank" [ngModel]="selectedBank" (ngModelChange)="onSelect($event)" >
             <mat-option *ngFor="let bank of bankData" [value]="bank.bbCode">{{bank.fullName}} </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
-      <div fxFlex="30" >
-        <mat-form-field >
+      <div fxFlex="37" >
+        <mat-form-field style="margin-top: 5px;" >
           <input type="search" aria-label="Search" placeholder="Search" matInput (keyup)="applyFilter($event.target.value)" />
           <button mat-button matSuffix mat-icon-button aria-label="Clear">
             <mat-icon>search</mat-icon>
           </button>
         </mat-form-field>
       </div>
-      <div fxFlex="20"  >
+      <div fxFlex="6"  >
         <div class="right-nevigation">
 
           <button mat-icon-button color="primary" matTooltip="Add New"  [routerLink]="['create']">
-            <mat-icon>add_box</mat-icon>
+            <mat-icon style="font-size: 40px; margin-top: 18px;">add_box</mat-icon>
           </button>
         </div>
 
