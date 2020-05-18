@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 
@@ -14,13 +15,10 @@ import * as jsPDF from 'jspdf';
 })
 export class PrintReportModalPopupComponent implements OnInit {
 
+  // @ViewChild('pdfsave') content: ElementRef;
   excelFileName = 'ExcelSheet.xlsx';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
-
-
-  // --------------end-------------------------
-
 
 
   // summation of total amount of the 'Amount' column
@@ -34,25 +32,30 @@ export class PrintReportModalPopupComponent implements OnInit {
     return sum;
   }
 
+  // -------------------end-------------------------------
+
 
 
   // save report as PDF format
 
   public savePDF(): void {
-    let DATA = window.document.getElementById('htmlData');
-    let doc = new jsPDF('p', 'pt', 'a4');
+    // let doc = new jsPDF();
 
-    let handleElement = {
-      '#htmlData'(element, renderer) {
-        return true;
-      }
-    };
-    doc.fromHTML(DATA.innerHTML, 15, 15, {
-      width: 200,
-      elementHandlers: handleElement
-    });
+    // let specialElementHandlers = {
+    //   '#editor': function (element, renderer) {
+    //     return true;
+    //   }
+    // };
 
-    doc.save('angular-demo.pdf');
+    // let content = this.pdfsave.nativeElement;
+    // const element = document.getElementById('pdfsaves');
+    // doc.fromHTML(element, 15, 15, {
+    //   'width': 190,
+    //   // 'elementHandlers': specialElementHandlers
+    // });
+
+    // doc.save('test.pdf');
+
   }
 
   // ------------------end---------------------

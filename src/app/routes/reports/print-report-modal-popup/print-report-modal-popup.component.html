@@ -1,5 +1,6 @@
 <div *ngIf="data.conditionValue == 'excel-wise-report'; else branchCashPaymentSummary">
   <div class="container">
+    <!-- <pre>{{data.passedValue | json}} </pre> -->
 
     <div class="row">
       <div class="col-12">
@@ -26,9 +27,9 @@
   <div class="row pdfPrint">
     <div class="col-12">
 
-      <div id="htmlData" #htmlData>
-        <div id="excel-table">
-          <div id="print-section">
+      <div id="excel-table">
+        <div id="print-section">
+          <div id="pdfsave" #pdfsave>
 
             <div class="reportLogo">
               <img src="../../../../assets/images/bank_asia_logo.jpg" alt="">
@@ -58,9 +59,20 @@
               <tbody>
                 <tr *ngFor="let item of data.passedValue; let i = index ">
                   <td>{{i+1}}</td>
-                  <td>{{item.value}}</td>
-                  <td>{{item.testValue}}</td>
-                  <!-- <td>{{item.data.conditionValue}}</td> -->
+                  <td>{{item.excel_no}}</td>
+                  <td>{{item.ex_house_name}}</td>
+                  <td>{{item.TT_No}}</td>
+                  <td>{{item.Invoice_Date}}</td>
+                  <td>{{item.Amount}}</td>
+                  <td>{{item.Benificiary_Name}}</td>
+                  <td>{{item.Account_No}}</td>
+                  <td>{{item.Payment_Type}}</td>
+                  <td>{{item.record_status}}</td>
+                  <td>{{item.company_act}}</td>
+                  <td>{{item.payment_status}}</td>
+                  <td>{{item.incentive}}</td>
+                  <td>{{item.incentive_amount}}</td>
+                  <td>{{item.total_amount}}</td>
                 </tr>
                 <tr>
                   <td><b>Total:</b> {{this.data.passedValue.length}}</td>
@@ -68,14 +80,12 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td><b>Total Amount:</b> {{ getSum('testValue') }}</td>
+                  <td><b>Total Amount:</b> {{ getSum('Amount') }}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-
-
       </div>
 
     </div>
