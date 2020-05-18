@@ -56,15 +56,16 @@
   float: right;
   margin-top: 10px;
 }
+
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
-.container {
-  padding: 2px 16px;
-}
+
+
 p {
   font-family: Lato;
 }
+
 .example-card {
   max-width: 400px;
   max-height: 400px;
@@ -72,6 +73,7 @@ p {
   margin-left: 80px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
+
 .example-header-image {
   // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-image: url('../../../../assets/images/XM.jpg');
@@ -86,6 +88,7 @@ p {
 
 }
 .c {
+
   width: 300px;
   height: 100px;
   position: absolute;
@@ -101,26 +104,47 @@ p {
   position: relative;
   left: -30px;
 }
+
 .line {
   position: center;
+
 }
+
 a:link {
   text-decoration: none;
 }
+
 a:visited {
   text-decoration: none;
   color: black;
 }
+
 a:hover {
   text-decoration: underline;
 }
+
 a:active {
   text-decoration: underline;
 }
+
+.card-header{
+  border-radius: 5px 5px 0 0;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  border-bottom: 1px solid #E0E0E0;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  height:83vh;
+}
+
 .right-nevigation {
   float: right;
   margin-top: 10px;
 }
+
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -144,26 +168,24 @@ a:active {
   position: fixed;
   margin-left: 2px;
 }
+
 .uploadTable td, .uploadTable th {
   border: 1px solid #ddd;
   padding: 8px;
 }
+
 .uploadTable tr:nth-child(even){background-color: #f2f2f2;}
+
 .uploadTable tr:hover {background-color: #ddd;}
+
 .uploadTable th {
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #fc9d2e;
   color: white;
 }
-<<<<<<< HEAD
-.uploadTable td {
-  text-align: center;
-}
-=======
 
 
->>>>>>> f793a991b08bce9298022e001a56a92a08917d6d
 .navigationButtons {
   float: right;
 }
@@ -171,11 +193,8 @@ a:active {
 .cen {
   border-collapse: collapse;
   margin-left: 400px;
+
 }
-<<<<<<< HEAD
-.hr{
-  color: blue;
-=======
 
 //.mat-tab-group {
 //  margin-bottom: 48px;
@@ -207,5 +226,4 @@ a:active {
   width: 20%;
   height: 4px;
   background-color: #1f5090;
->>>>>>> f793a991b08bce9298022e001a56a92a08917d6d
 }

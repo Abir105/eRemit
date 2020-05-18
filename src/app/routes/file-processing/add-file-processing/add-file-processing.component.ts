@@ -5,26 +5,11 @@ import { NotificationCompoComponent } from '../../notificationComp/notificationC
 import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
-
-import { MatTableDataSource } from '@angular/material/table';
-import { FileProcessingInfo } from '../../model/FileProcessingInfo';
-
 import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { OrderPipe } from 'ngx-order-pipe';
 import { MatTableDataSource } from '@angular/material/table';
-
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
-import { FileProcessingInfo } from '../../model/FileProcessingInfo';
-import { MatDialog } from '@angular/material/dialog';
-
-
 import { MatDialog } from '@angular/material';
-
 
 @Component({
   selector: 'app-add-file-processing',
@@ -32,33 +17,6 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./add-file-processing.component.scss'],
 })
 export class AddFileProcessingComponent implements OnInit {
-
-  public dataSource = new MatTableDataSource<FileProcessingInfo>();
-  public doFilter = (value: string) => {
-    value = value.trim(); // Remove whitespace
-    value = value.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    this.dataSource.filter = value;
-  };
-
-
-  [x: string]: any;
-  public displayedColumns = ['ID','Sl_No', 'TT_No', 'Date', 'Amount', 'Beneficiary', 'AC_No', 'Bank', 'Branch', 'Payment', 'Remitter', 'City_Remitter', 'Amount_words', 'Cont_Benef','Routing_No'];
-  fileProcessing = Subscription;
-  reactiveForm1: FormGroup;
-  @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
-  private ex_house_code: string;
-  private xPressMoneyName: string;
-  private uploadFileData: string;
-  date: string;
-
-  get formArray(): AbstractControl | null {
-    return this.reactiveForm1.get('formArray');
-  }
-
-  constructor(private router: Router, private fb: FormBuilder, private fileProcessingService: FileProcessingService) {
-  }
-
-
 
 
   statusValue = 20;
@@ -104,9 +62,7 @@ export class AddFileProcessingComponent implements OnInit {
               public dialog: MatDialog, private orderPipe: OrderPipe) {
     this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
   }
->>>>>>> shafeisnine
   ngOnInit() {
-
     this.reactiveForm1 = this.fb.group({
 
       formArray: this.fb.array([
@@ -114,7 +70,7 @@ export class AddFileProcessingComponent implements OnInit {
           searchText: ['', [Validators.required]],
         }),
         this.fb.group({
-            date: ['', [Validators.required]],
+          date: ['', [Validators.required]],
           uploaded_file: ['', [Validators.required]],
         }),
         this.fb.group({
@@ -177,10 +133,10 @@ export class AddFileProcessingComponent implements OnInit {
       });
   }
   OnDataPageChange(event: PageEvent)
-    { const startIndex = event.pageIndex * event.pageSize;
-      let endIndex = startIndex + event.pageSize;
-      if (endIndex > this.length) { endIndex = this.length; }
-      this.paginatedFileData = this.uploadFileData.slice(startIndex, endIndex);
+  { const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.length) { endIndex = this.length; }
+    this.paginatedFileData = this.uploadFileData.slice(startIndex, endIndex);
   }
   private getIncompleteBatchData() {
     this.fileProcessingService.getIncompleteBatch()
@@ -196,7 +152,7 @@ export class AddFileProcessingComponent implements OnInit {
     this.showDataOb = {ex_house_name, ex_house_code};
     console.log(this.showDataOb, 'show dt');
   }
- // file upload
+  // file upload
   arrayBuffer: any;
   file: File;
   pageEvent: void;
@@ -212,7 +168,7 @@ export class AddFileProcessingComponent implements OnInit {
     console.log(myJSON);
     this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd => {
       console.log(dd,"asdvasgdasd");
-   });
+    });
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -226,22 +182,22 @@ export class AddFileProcessingComponent implements OnInit {
       let jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       // for (let j = 0; j < jsonData.length; j++) {
       //   this.ttNoFromFile  = jsonData[j].TT_No;
-        // this.getAllUploadFileData();
-        // console.log(this.uploadFileData.TT_No);
-       // }
-     // console.log(this.ttNoFromFile,'tttNo');
+      // this.getAllUploadFileData();
+      // console.log(this.uploadFileData.TT_No);
+      // }
+      // console.log(this.ttNoFromFile,'tttNo');
 
       this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
-         .subscribe(resp => {
-         // console.log(jsonData , "json data")
+        .subscribe(resp => {
+          // console.log(jsonData , "json data")
           this.notification.successmsg('File was uploaded successfully');
           this.myInputVariable.nativeElement.value = '';
           this.getAllUploadFileData();
           this.isButtonVisible = true;
-          }, (err) => {
+        }, (err) => {
           this.notification.errorsmsg('Sorry! file can not be added');
         });
-   };
+    };
     fileReader.readAsArrayBuffer(this.file);
   }
   transectionApi() {

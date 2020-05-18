@@ -14,7 +14,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatStepperModule } from '@angular/material/stepper';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { AddFileProcessingComponent } from './add-file-processing/add-file-processing.component';
 import { FileProcessingRoutingModule } from './file-processing-routing.module';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatRadioModule } from '@angular/material/radio';
@@ -25,6 +24,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { OrderModule } from 'ngx-order-pipe';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSliderModule } from '@angular/material/slider';
+import { AddFileProcessingComponent } from './add-file-processing/add-file-processing.component';
 
 
 
