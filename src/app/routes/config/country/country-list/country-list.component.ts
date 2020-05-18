@@ -1,6 +1,6 @@
 import {  Component, OnInit, ViewChild } from '@angular/core';
 import { CountryService } from '@core/services/country.service';
-import { CountryInfo } from '../../../model/countryInfo';
+import { CountryInfo } from '../../../notificationComp/model/countryInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { DeleteCountryComponent } from '../delete-country/delete-country.component';
@@ -56,14 +56,16 @@ export class CountryListComponent implements OnInit {
       disableClose: true
     });
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Country Added successfully');
-        this.getAllCountries();
-      } else {
-        this.notification.errorsmsg('Sorry! Country not Added');
+      if (value) {
+        const obj = JSON.parse(value);
+        console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Country Added successfully');
+          this.getAllCountries();
+        } else {
+          this.notification.errorsmsg('Sorry! Country not Added');
+        }
       }
     });
   }
@@ -78,14 +80,17 @@ export class CountryListComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialogRef = this.dialog.open(DeleteCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      //  console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Country Deleted successfully');
-        this.getAllCountries();
-      } else {
-        this.notification.errorsmsg('Sorry! Country not Deleted');
+
+      if (value) {
+        const obj = JSON.parse(value);
+        //  console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Country Deleted successfully');
+          this.getAllCountries();
+        } else {
+          this.notification.errorsmsg('Sorry! Country not Deleted');
+        }
       }
     });
   }
@@ -101,14 +106,17 @@ export class CountryListComponent implements OnInit {
     dialogConfig.width = '400px';
     this.dialogRef = this.dialog.open(UpdateCountryComponent, dialogConfig);
     this.dialogRef.afterClosed().subscribe(value => {
-      const obj = JSON.parse(value);
-      // console.log(obj);
-      const affectedRows = obj.data.affectedRows;
-      if (affectedRows === 1) {
-        this.notification.successmsg('Country Updated successfully');
-        this.getAllCountries();
-      } else {
-        this.notification.errorsmsg('Sorry! Country not Updated');
+
+      if (value) {
+        const obj = JSON.parse(value);
+        // console.log(obj);
+        const affectedRows = obj.data.affectedRows;
+        if (affectedRows === 1) {
+          this.notification.successmsg('Country Updated successfully');
+          this.getAllCountries();
+        } else {
+          this.notification.errorsmsg('Sorry! Country not Updated');
+        }
       }
     });
   }

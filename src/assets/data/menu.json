@@ -82,6 +82,59 @@
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
           "type": "link"
+        },
+        {
+          "state": "treasury",
+          "name": "File Upload For Treasury",
+          "type": "link"
+        },
+        {
+          "state": "usdselling",
+          "name": "USD Selling",
+          "type": "link"
+        },
+        {
+          "state": "administration",
+          "name": "Administration",
+          "type": "sub",
+          "icon": "apps",
+          "children": [
+            {
+              "state": "treasuryApproval",
+              "name": "Treasury Approval",
+              "type": "link"
+            },
+            {
+              "state": "usdSellingApproval",
+              "name": "USD Selling Approval",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "state": "transactionDetails",
+          "name": "API Transaction Details",
+          "type": "link"
+        },
+        {
+          "state": "invoiceDataValidation",
+          "name": "Invoice Data Validation",
+          "type": "link"
+        },
+        {
+          "state": "connectedCashPaymentForOtherWebSite",
+          "name": "API Cash Payment For Other WebSite",
+          "type": "link"
+        },
+        {
+          "state": "beftnAmendment",
+          "name": "Beftn Amendment",
+          "type": "link"
+        },
+        {
+          "state": "beftnResend",
+          "name": "Beftn Resend",
+          "type": "link"
         }
       ]
     },
@@ -118,6 +171,12 @@
           "type": "link"
         }
       ]
+    },
+    {
+      "state": "cashPayment",
+      "name": "Cash Payment",
+      "type": "link",
+      "icon": "apps"
     }
   ]
 }

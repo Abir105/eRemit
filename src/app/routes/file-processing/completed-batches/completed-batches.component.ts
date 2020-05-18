@@ -8,8 +8,7 @@ import { FileProcessingService } from '@core/services/file-processing.service';
   styleUrls: ['./completed-batches.component.scss']
 })
 export class CompletedBatchesComponent implements OnInit {
-  displayedColumns: string[] = ['weight', 'position', 'name' ];
-  dataSource = [];
+ // dataSource = [];
 
 
   constructor( private fileProcessingService: FileProcessingService,
@@ -21,14 +20,14 @@ export class CompletedBatchesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllIncompleteBatches ();
+   // this.getAllIncompleteBatches ();
   }
-  public getAllIncompleteBatches = () => {
-    this.fileProcessingService.getIncompleteBatch()
-      .subscribe(res  => {
-        this.dataSource = res.data;
-        console.log(this.dataSource);
-      });
-  };
+  // public getAllIncompleteBatches = () => {
+  //   this.fileProcessingService.getIncompleteBatch()
+  //     .subscribe(res  => {
+  //       this.dataSource = res.data;
+  //       console.log(this.dataSource);
+  //     });
+  // };
 
 }

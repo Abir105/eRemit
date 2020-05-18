@@ -1,6 +1,6 @@
 import { Component,  OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { CurrencyInfo } from '../../../model/currencyInfo';
+import { CurrencyInfo } from '../../../notificationComp/model/currencyInfo';
 import { AccountTypeUpdateComponent } from '../account-type-update/account-type-update.component';
 import { AccountTypeService } from '@core/services/account-type.service';
 import { ToastrService } from 'ngx-toastr';

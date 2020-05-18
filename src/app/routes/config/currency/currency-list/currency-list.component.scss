@@ -11,7 +11,7 @@
 }
 .right-nevigation {
   float: right;
-  margin-top: 10px;
+  padding-right: 30px;
 }
 
 .card:hover {
@@ -25,10 +25,12 @@ table {
   overflow-y: hidden;
 }
 
+
 th.mat-header-cell {
   text-align: left;
   font-weight: bold;
-  background-color: #4D6FAC;
+  //background-color: #4D6FAC;
+  background-color: #fc9d2e;
   color: white;
 }
 
@@ -36,4 +38,5 @@ tr:hover {
   background-color: #e0e0e0;
   font-weight: bold;
 }
+tr:nth-child(even){background-color: #ddd;}
 

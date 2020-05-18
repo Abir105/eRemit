@@ -8,7 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { IncentiveInfo } from '../../../model/IncentiveInfo';
+import { IncentiveInfo } from '../../../notificationComp/model/IncentiveInfo';
 
 @Component({
   selector: 'app-incentive-list',

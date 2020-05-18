@@ -3,6 +3,10 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationCompoComponent } from '../../notificationComp/notificationCompo.component';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '@core/services/auth.service';
+import { TokenParam } from './tokenParam';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-login',
@@ -11,22 +15,36 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-
-  constructor(private fb: FormBuilder, private router: Router,  private toastr: ToastrService) {
+  tokenParam: TokenParam;
+  constructor(private fb: FormBuilder, private _router: Router,  private toastr: ToastrService ,private  authService : AuthService ) {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
   @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
+
   ngOnInit() {}
 
-  login(data) {
-    const remitdt = 'remit';
-    if (data.userName === remitdt && data.password === remitdt ) {
-      this.router.navigateByUrl('/dashboard');
-    } else {
-      this.toastr.error('Please Provide valid Username and Password');
+token: any;
+  login() {
+    const val = this.loginForm.value;
+    if (val.userName && val.password) {
+      this.authService.gToken(val.userName, val.password)
+        .subscribe(
+                res => {
+                  console.log(res);
+                  localStorage.setItem('token', res.token);
+                  this._router.navigate(['/dashboard']);
+                  this.toastr.success('Logged in successfully')
+                },
+                err => {
+                  if( err instanceof HttpErrorResponse){
+                    if(err.status === 401){ this._router.navigate(['/login'])
+                    }
+                    this.toastr.error('Invalid Username and/or Password.');
+                  }
+                });
     }
   }
 }

@@ -3,19 +3,16 @@
   <div class="card">
     <div class="card-header">
       <div fxLayout="row">
-        <div fxFlex="2">
-          <button style="margin-top: 4px" mat-icon-button [routerLink]="['../']">
-            <mat-icon>home</mat-icon>
+        <div fxFlex="2" >
+          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+            <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
           </button>
         </div>
         <div fxFlex="38">
-          <h3 style="padding-left: 8px"> Cash Payment For Other Website </h3>
+          <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> Cash Payment For Other Website </b></h3>
         </div>
         <div fxFlexOffset="33" fxFlex="30">
-          <div class="right-nevigation">
-            <button mat-icon-button matTooltip="Go Back" [routerLink]="['../']">
-              <mat-icon>arrow_back</mat-icon>
-            </button>
+          <div class="right-nevigation" style="margin-top: 20px; padding-right: 60px">
             <button mat-icon-button (click)='cashPaymentForOtherWebsiteFormSubmit(reactiveForm4.value)' mat-raised-button color="primary" class="mat-raised-button mat-primary" type="submit" [disabled]="!reactiveForm4.valid" matTooltip="Save">
               <mat-icon>save</mat-icon>
             </button>

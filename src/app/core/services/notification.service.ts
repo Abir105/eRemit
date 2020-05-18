@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, Observable, from } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
-import {Notification, NotificationType} from '../../routes/model/Notification';
+import {Notification, NotificationType} from '../../routes/notificationComp/model/Notification';
 
 // tslint:disable-next-line:import-spacing
 @Injectable({

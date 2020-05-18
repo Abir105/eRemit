@@ -1,0 +1,75 @@
+<app-notification-comp></app-notification-comp>
+  <div class="card">
+    <div class="card-header">
+      <div fxLayout="row">
+
+        <div fxFlex="2" >
+          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+            <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
+          </button>
+        </div>
+        <div fxFlex="38">
+          <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> Invoice Data Validation </b></h3>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <table mat-table [dataSource]="dataSource" matSort>
+
+
+
+<!--        <ng-container matColumnDef="play_arrow">-->
+<!--          <th mat-header-cell *matHeaderCellDef mat-sort-header> </th>-->
+<!--          <td mat-cell [routerLink]="['../details']"><mat-icon style="color: darkblue; font-size: 17px;">play_arrow</mat-icon></td>-->
+<!--        </ng-container>-->
+
+        <ng-container matColumnDef="sl">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let row; let sl = index;"><mat-icon style="color:darkblue; font-size: 17px;">play_arrow</mat-icon>{{sl+1}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Invoice Date</th>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let element"> {{element.Date}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Payment">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Payment Type</th>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let element"> {{element.Payment}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="TT_No">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction No</th>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let element"> {{element.TT_No}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Beneficiary">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Beneficiary Name</th>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let element"> {{element.Beneficiary}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Release_Status">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button style="color: white; background-color: chocolate"  (click)="Release_Row(element)">Release</button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row class="heading" *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
+        <tr class="clickable"  mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+
+      <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
+      </mat-paginator>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
