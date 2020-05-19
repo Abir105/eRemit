@@ -26,6 +26,11 @@ const routes: Routes = [
         data: { title: 'Config', titleI18n: 'config' },
       },
       {
+        path: 'reports',
+        loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
+        data: { title: 'Reports', titleI18n: 'Reports'},
+      },
+      {
         path: 'cashPayment',
         loadChildren: () => import('./cash-payment/cash-payment.module').then(m => m.CashPaymentModule),
         data: { title: 'CashPayment', titleI18n: 'CashPayment' },
@@ -116,4 +121,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class RoutesRoutingModule {}
+export class RoutesRoutingModule { }

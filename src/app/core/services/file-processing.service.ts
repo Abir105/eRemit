@@ -21,38 +21,40 @@ export class FileProcessingService {
   public getXpressMoneyName = (): Observable<any> => {
     return this.http.get(this.Url + 'file_processing');
   };
-  public getIncompleteBatch = (): Observable<any> => {
-    return this.http.get(this.Url + 'file_processing/exFileInfo');
-  };
-
-  /*public getXpressMoneyName = (route: string): Observable<any> => {
-    return this.http.get(this.Url + 'file_processing');
-  };*/
 
   public getUploadFileData = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'file_processing/file_upload');
   };
 
+  public getIncompleteBatch = (): Observable<any> => {
+    return this.http.get(this.Url + 'file_processing/InCompleteBatches');
+  };
   private createCompleteRoute = (route: string, envAddress: string) => {
     return '${envAddress}/${route}';
   };
+
   private generateHeaders = () => {
     return {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
+  }
+  public addFileUpload = ({ route, body }: { route: string, body: any }) => {
+    console.log(body);
+    return this.http.post(this.Url + 'file_processing', body);
+  };
+  public fileName = ({ route, body }: { route: string, body: any }) => {
+    console.log(body , 'service');
+    const config = new HttpHeaders().set('Content-Type', 'application/json').set('Accept', 'application/json');
+    return this.http.post(this.Url + 'file_processing/file_name', body, { headers: config });
+
+  };
+  public transactionApi = ({ route, body }: { route: string, body: any }) => {
+    console.log(body);
+    return this.http.post('10.11.201.37:5000/connect-to-cbs-via-json', body);
+   // return this.http.post(this.Url + 'file_processing/testPost', body );
+
   };
 
-  fileName(param: {route: string; body: string}) {
-
-  }
-
-  addFileUpload(param: { route: string; body: unknown[] }) {
-
-  }
-
-  transactionApi(param: {route: string; body: {beni_acc_no: string; routing_no: string; amount: string; payment_type: string; debit_from: string; user_id: string; gl_no: string; tt_no: string; ex_acc_type: string; ex_code: string; beni_name: string; ex_acc_no: string}}) {
-
-  }
 }
 
 

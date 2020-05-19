@@ -10,8 +10,10 @@ import { FileProcessingService } from '@core/services/file-processing.service';
 export class CompletedBatchesComponent implements OnInit {
  // dataSource = [];
 
-  constructor(private fileProcessingService: FileProcessingService,
-              public dialogRef: MatDialogRef<CompletedBatchesComponent>) {}
+
+  constructor( private fileProcessingService: FileProcessingService,
+               public dialogRef: MatDialogRef<CompletedBatchesComponent>,
+               @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   onNoClick(): void {
     this.dialogRef.close();
