@@ -127,6 +127,9 @@
         {
           "state": "connectedCashPaymentForOtherWebSite",
           "name": "API Cash Payment For Other WebSite",
+          "type": "link"
+        },
+        {
           "state": "beftnAmendment",
           "name": "Beftn Amendment",
           "type": "link"

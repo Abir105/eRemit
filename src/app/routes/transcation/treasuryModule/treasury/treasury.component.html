@@ -45,17 +45,17 @@
                   <th>Notional Rate</th>
                 </tr>
                 <tr *ngFor="let s of uploadFileData, let Sl_No=index">
-                  <td>{{Sl_No+1}}</td>
-                  <td>{{s.V_Date}}</td>
-                  <td>{{s.Exchange_House}}</td>
-                  <td>{{s.Cur}}</td>
-                  <td>{{s.USD_CREDIT}}</td>
-                  <td>{{s.Ex_HouseRate}}</td>
-                  <td>{{s.FC_Account}}</td>
-                  <td>{{s.BDT_Account}}</td>
-                  <td>{{s.NOSTRO_ACCOUNT}}</td>
-                  <td>{{s.Bank_Name}}</td>
-                  <td>{{s.Notional_Rate}}</td>
+                  <td style=" text-align: right;">{{Sl_No+1}}</td>
+                  <td style=" text-align: right;">{{s.V_Date}}</td>
+                  <td style=" text-align: left;">{{s.Exchange_House}}</td>
+                  <td style=" text-align: left;">{{s.Cur}}</td>
+                  <td style=" text-align: right;">{{s.USD_CREDIT}}</td>
+                  <td style=" text-align: right;">{{s.Ex_HouseRate}}</td>
+                  <td style=" text-align: right;">{{s.FC_Account}}</td>
+                  <td style=" text-align: right;">{{s.BDT_Account}}</td>
+                  <td style=" text-align: right;">{{s.NOSTRO_ACCOUNT}}</td>
+                  <td style=" text-align: left;">{{s.Bank_Name}}</td>
+                  <td style=" text-align: right;">{{s.Notional_Rate}}</td>
                 </tr>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
@@ -68,7 +68,7 @@
           <mat-step class="step2" formGroupName="1" [stepControl]="formArray?.get([1])">
             <ng-template matStepLabel><b> Validation </b></ng-template>
 
-                <div style="padding-top: 40px">
+                <div style="padding-top: 40px;">
                 <table class="uploadTable" >
                   <tr>
                     <th>Sl.No</th>
@@ -78,8 +78,8 @@
                     <th>Stelar Cur</th>
                     <th>USD Credit</th>
                     <th>Ex.House Rate</th>
-                    <th>FC Account</th>
-                    <th>BDT Account</th>
+<!--                    <th>FC Account</th>-->
+<!--                    <th>BDT Account</th>-->
                     <th>Nostro Account</th>
                     <th>Bank Name</th>
                     <th>Notional Rate</th>
@@ -88,18 +88,18 @@
                     <th>Cancel</th>
                   </tr>
                   <tr *ngFor="let s of uploadFileData, let Sl_No=index">
-                    <td>{{Sl_No+1}}</td>
-                    <td>{{s.V_Date}}</td>
-                    <td>{{s.Exchange_House}}</td>
-                    <td>{{s.Cur}}</td>
-                    <td>{{s.Stelar_Cur}}</td>
-                    <td>{{s.USD_CREDIT}}</td>
-                    <td>{{s.Ex_HouseRate}}</td>
-                    <td>{{s.FC_Account}}</td>
-                    <td>{{s.BDT_Account}}</td>
-                    <td>{{s.NOSTRO_ACCOUNT}}</td>
-                    <td>{{s.Bank_Name}}</td>
-                    <td>{{s.Notional_Rate}}</td>
+                    <td style=" text-align: right;">{{Sl_No+1}}</td>
+                    <td style=" text-align: right;">{{s.V_Date}}</td>
+                    <td style=" text-align: left;">{{s.Exchange_House}}</td>
+                    <td style=" text-align: left;">{{s.Cur}}</td>
+                    <td style=" text-align: left;">{{s.Stelar_Cur}}</td>
+                    <td style=" text-align: right;">{{s.USD_CREDIT}}</td>
+                    <td style=" text-align: right;">{{s.Ex_HouseRate}}</td>
+<!--                    <td style=" text-align: right;">{{s.FC_Account}}</td>-->
+<!--                    <td style=" text-align: right;">{{s.BDT_Account}}</td>-->
+                    <td style=" text-align: right;">{{s.NOSTRO_ACCOUNT}}</td>
+                    <td style=" text-align: left;">{{s.Bank_Name}}</td>
+                    <td style=" text-align: right;">{{s.Notional_Rate}}</td>
                     <td>
                       <button mat-icon-button color="accent" (click)="UpdateCur(s)">
                         <mat-icon class="mat-18">update</mat-icon>

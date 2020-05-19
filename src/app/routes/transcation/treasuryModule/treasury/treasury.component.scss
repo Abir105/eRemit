@@ -52,8 +52,8 @@ a:active {
 
 .uploadTable td, .uploadTable th {
   border: 1px solid #ddd;
-  padding: 8px;
-  text-align: right;
+  padding: 4px;
+ // text-align: right;
 }
 .uploadTable tr:nth-child(even){background-color: #f2f2f2;}
 .uploadTable tr:hover {background-color: #ddd;}
@@ -64,9 +64,7 @@ a:active {
   background-color: #ff9933;
   color: white;
 }
-.uploadTable td {
-  text-align: left;
-}
+
 .navigationButtons {
   float: right;
 }

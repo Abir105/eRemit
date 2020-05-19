@@ -133,19 +133,19 @@
           </thead>
           <tbody>
           <tr *ngFor="let club of clubs; let sl = index;">
-            <td [routerLink]="['../details']">{{sl+1}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{sl+1}}</td>
             <td [routerLink]="['../details']">{{club.Company_Prefix}}</td>
-            <td [routerLink]="['../details']">{{club.Transaction_No}}</td>
-            <td [routerLink]="['../details']">{{club.Transaction_Date}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Transaction_No}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Transaction_Date}}</td>
             <td [routerLink]="['../details']">{{club.Beneficiary_Name}}</td>
             <td [routerLink]="['../details']">{{club.Bank_Name}}</td>
 <!--            <td>{{club.Branch_Name}}</td>-->
 <!--            <td>{{club.Routing_No}}</td>-->
-            <td [routerLink]="['../details']">{{club.Account_No}}</td>
-            <td [routerLink]="['../details']">{{club.Amount}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Account_No}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Amount}}</td>
 <!--            <td>{{club.Incentive}}</td>-->
-            <td [routerLink]="['../details']">{{club.Incentive_Amount}}</td>
-            <td [routerLink]="['../details']">{{club.Total_Amount}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Incentive_Amount}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']">{{club.Total_Amount}}</td>
 <!--            <td>{{club.Payment_Type}}</td>-->
 <!--            <td>{{club.Remitter_Name}}</td>-->
             <td [routerLink]="['../details']">{{club.Message}}</td>

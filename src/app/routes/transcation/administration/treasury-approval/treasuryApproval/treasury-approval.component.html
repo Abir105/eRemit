@@ -28,7 +28,7 @@
 
       <ng-container matColumnDef="sl">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
-        <td mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
+        <td style=" text-align: left;" mat-cell *matCellDef="let row; let sl = index;"> {{sl+1}} </td>
       </ng-container>
 
       <ng-container matColumnDef="V_Date">
@@ -56,20 +56,20 @@
         <td mat-cell *matCellDef="let element"> {{element.Ex_HouseRate}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="FC_Account">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>FC Account</th>
-        <td mat-cell *matCellDef="let element"> {{element.FC_Account}} </td>
-      </ng-container>
+<!--      <ng-container matColumnDef="FC_Account">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header>FC Account</th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{element.FC_Account}} </td>-->
+<!--      </ng-container>-->
 
-      <ng-container matColumnDef="BDT_Account">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>BDT Account</th>
-        <td mat-cell *matCellDef="let element"> {{element.BDT_Account}} </td>
-      </ng-container>
+<!--      <ng-container matColumnDef="BDT_Account">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header>BDT Account</th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{element.BDT_Account}} </td>-->
+<!--      </ng-container>-->
 
-      <ng-container matColumnDef="NOSTRO_ACCOUNT">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nostro Account</th>
-        <td mat-cell *matCellDef="let element"> {{element.NOSTRO_ACCOUNT}} </td>
-      </ng-container>
+<!--      <ng-container matColumnDef="NOSTRO_ACCOUNT">-->
+<!--        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nostro Account</th>-->
+<!--        <td mat-cell *matCellDef="let element"> {{element.NOSTRO_ACCOUNT}} </td>-->
+<!--      </ng-container>-->
 
       <ng-container matColumnDef="Bank_Name">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Bank Name</th>

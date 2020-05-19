@@ -41,6 +41,18 @@ export class FileProcessingService {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
   };
+
+  fileName(param: {route: string; body: string}) {
+
+  }
+
+  addFileUpload(param: { route: string; body: unknown[] }) {
+
+  }
+
+  transactionApi(param: {route: string; body: {beni_acc_no: string; routing_no: string; amount: string; payment_type: string; debit_from: string; user_id: string; gl_no: string; tt_no: string; ex_acc_type: string; ex_code: string; beni_name: string; ex_acc_no: string}}) {
+
+  }
 }
 
 
