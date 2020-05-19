@@ -25,314 +25,96 @@
             <ng-template matStepLabel ><b>Exchange House</b></ng-template>
 
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
-<<<<<<< HEAD
-              <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column"
-                   fxFlex.xs="100%" fxLayoutAlign="flex-start">
-
-                <mat-card class="example-card" *ngFor="let x of xPressMoneyName">
-                  <mat-card-header>
-                    <div fxLayout="column">
-                      <div fxLayout="row">
-                        <mat-card-title class="name"> {{x.ex_house_name}} </mat-card-title>
-                        <hr>
-                        <div mat-card-avatar class="example-header-image"></div>
-                      </div>
-                      <!--<mat-card-subtitle class="code">{{x.ex_house_code}} </mat-card-subtitle>-->
-                      <div>
-                        <br>
-                        <mat-divider></mat-divider>
-                        <br>
-                        <div fxLayout="row">
-                          <div fxLayout="column">
-                            <mat-card-content class="no"><a (click)="openDialog()">No of completed batch: 5</a></mat-card-content>
-                            <mat-card-content class="no"><a href="https://www.w3schools.com" target="_blank">No of incomplete batch: 2</a></mat-card-content>
-                          </div>
-                          <div class="navigationButtons">
-                            <button  mat-button matStepperNext type="button" (click)="StepperNext(x.ex_house_name, x.ex_house_code)"> <mat-icon>arrow_forward</mat-icon></button>
-                          </div>
-=======
 
             </div>
             <div   class="tab">
-<!--                  <div class="card-small" *ngFor="let x of pagedList | filter:searchText">-->
-                  <div fxLayout="row">
-                    <div class="card-small" fxFlex="50" *ngFor="let x of pagedList">
-                      <div class="exhouseProperty">
-                        <div fxFlex="70" class="exHouseName">
-                          <span>{{x.ex_house_name}}</span>
-                        </div>
-                        <div fxFlex="30" >
-                          <button style="float: right"  mat-button matStepperNext (click)="StepperNext(x.ex_house_name ,x.ex_house_code)" type="button"> <mat-icon>arrow_forward</mat-icon></button>
-                          <!--                        <img src="../../../../assets/images/XM.jpg" class="exhouseImage" >-->
->>>>>>> shafeisnine
-                        </div>
-                      </div>
-                      <div class="container-small">
-                        <table class="card-table">
-                          <tbody *ngFor="let dt of incompleteBatchData">
-                          <tr *ngIf="x.ex_house_name === dt.exHouseName"
-                              style="padding-bottom: 5px; font-size: 18px">
-                            <td >
-                              {{dt.InCompleteFileName}}
-                            </td>
-                            <td>{{dt.openDate | date}}</td>
-                            <td><a (click)="openDialog()">details</a></td>
-                          </tr>
-                          </tbody>
-                        </table>
-
-                      </div>
+              <!--                  <div class="card-small" *ngFor="let x of pagedList | filter:searchText">-->
+              <div fxLayout="row">
+                <div class="card-small" fxFlex="50" *ngFor="let x of pagedList">
+                  <div class="exhouseProperty">
+                    <div fxFlex="70" class="exHouseName">
+                      <span>{{x.ex_house_name}}</span>
                     </div>
-<<<<<<< HEAD
-                  </mat-card-header>
-                </mat-card>
+                    <div fxFlex="30" >
+                      <button style="float: right"  mat-button matStepperNext (click)="StepperNext(x.ex_house_name ,x.ex_house_code)" type="button"> <mat-icon>arrow_forward</mat-icon></button>
+                      <!--                        <img src="../../../../assets/images/XM.jpg" class="exhouseImage" >-->
+                    </div>
+                  </div>
+                  <div class="container-small">
+                    <table class="card-table">
+                      <tbody *ngFor="let dt of incompleteBatchData">
+                      <tr *ngIf="x.ex_house_name === dt.exHouseName"
+                          style="padding-bottom: 5px; font-size: 18px">
+                        <td >
+                          {{dt.InCompleteFileName}}
+                        </td>
+                        <td>{{dt.openDate | date}}</td>
+                        <td><a (click)="openDialog()">details</a></td>
+                      </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
+              </div>
+              <div fxLayout="row">
+                <div class="card-small" fxFlex="50" *ngFor="let x of pagedList2">
+                  <div class="exhouseProperty">
+                    <div fxFlex="70" class="exHouseName">
+                      <span>{{x.ex_house_name}}</span>
+                    </div>
+                    <div fxFlex="30" >
+                      <button style="float: right"  mat-button matStepperNext (click)="StepperNext(x.ex_house_name ,x.ex_house_code)" type="button"> <mat-icon>arrow_forward</mat-icon></button>
+                      <!--                        <img src="../../../../assets/images/XM.jpg" class="exhouseImage" >-->
+                    </div>
+                  </div>
+                  <div class="container-small">
+                    <table class="card-table">
+                      <tbody *ngFor="let dt of incompleteBatchData">
+                      <tr *ngIf="x.ex_house_name === dt.exHouseName"
+                          style="padding-bottom: 5px; font-size: 18px">
+                        <td >
+                          {{dt.InCompleteFileName}}
+                        </td>
+                        <td>{{dt.openDate | date}}</td>
+                        <td><a (click)="openDialog()">details</a></td>
+                      </tr>
+                      </tbody>
+                    </table>
+
+                  </div>
+                </div>
               </div>
             </div>
-=======
-                  </div>
-                  <div fxLayout="row">
-                    <div class="card-small" fxFlex="50" *ngFor="let x of pagedList2">
-                      <div class="exhouseProperty">
-                        <div fxFlex="70" class="exHouseName">
-                          <span>{{x.ex_house_name}}</span>
-                        </div>
-                        <div fxFlex="30" >
-                          <button style="float: right"  mat-button matStepperNext (click)="StepperNext(x.ex_house_name ,x.ex_house_code)" type="button"> <mat-icon>arrow_forward</mat-icon></button>
-                          <!--                        <img src="../../../../assets/images/XM.jpg" class="exhouseImage" >-->
-                        </div>
-                      </div>
-                      <div class="container-small">
-                        <table class="card-table">
-                          <tbody *ngFor="let dt of incompleteBatchData">
-                          <tr *ngIf="x.ex_house_name === dt.exHouseName"
-                              style="padding-bottom: 5px; font-size: 18px">
-                            <td >
-                              {{dt.InCompleteFileName}}
-                            </td>
-                            <td>{{dt.openDate | date}}</td>
-                            <td><a (click)="openDialog()">details</a></td>
-                          </tr>
-                          </tbody>
-                        </table>
->>>>>>> shafeisnine
-
-                      </div>
-                    </div>
-                  </div>
-            </div>
-<!--            <mat-paginator [length]="length"-->
-<!--                           [pageSize]="pageSize"-->
-<!--                           [pageSizeOptions]="pageSizeOptions"-->
-<!--                           (page)="pageEvent = OnPageChange($event)">-->
-<!--            </mat-paginator>-->
+            <!--            <mat-paginator [length]="length"-->
+            <!--                           [pageSize]="pageSize"-->
+            <!--                           [pageSizeOptions]="pageSizeOptions"-->
+            <!--                           (page)="pageEvent = OnPageChange($event)">-->
+            <!--            </mat-paginator>-->
 
 
-<!--            <div class="navigationButtons">-->
-<!--              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>-->
-<!--            </div>-->
+            <!--            <div class="navigationButtons">-->
+            <!--              <button  mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>-->
+            <!--            </div>-->
 
           </mat-step>
-<<<<<<< HEAD
           <mat-step class="step2" formGroupName="1" [stepControl]="formArray?.get([1])">
-            <ng-template matStepLabel><b>Step 2</b></ng-template>
+            <ng-template matStepLabel><b>File Upload</b></ng-template>
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
               <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
                 <div class="cen">
-                  <input type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
+                  <input #myInput type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
                   <button type="submit" mat-raised-button class="btn btn-info" (click)="Upload()" >Upload</button>
-                  <div class="navigationButtons">
-                    <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
-                    <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
-                  </div>
+                  <button mat-raised-button  matStepperNext
+                          style="margin-left: 80px" (click)="amlTableVisible()" color="primary">Next</button>
                 </div>
               </div>
             </div>
             <br>
-            <mat-tab-group animationDuration="2000ms" mat-align-tabs="center">
-              <mat-tab label="Total">
-                <table class="uploadTable" >
-                  <tr>
-                    <th>ID</th>
-                    <th>Sl_No</th>
-                    <th>TT_No</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Beneficiary</th>
-                    <th>AC_No</th>
-                    <th>Bank</th>
-                    <th>Branch</th>
-                    <th>Payment</th>
-                    <th>Remitter</th>
-                    <th>City_Remitter</th>
-                    <th>Amount_words</th>
-                    <th>Cont_Benef</th>
-                    <th>Routing_No</th>
-                  </tr>
-                  <tr *ngFor="let s of uploadFileData">
-                    <td>{{s.ID}}</td>
-                    <td>{{s.Sl_No}}</td>
-                    <td>{{s.TT_No}}</td>
-                    <td>{{s.Date}}</td>
-                    <td>{{s.Amount}}</td>
-                    <td>{{s.Beneficiary }}</td>
-                    <td>{{s.AC_No}}</td>
-                    <td>{{s.Bank}}</td>
-                    <td>{{s.Branch}}</td>
-                    <td>{{s.Payment}}</td>
-                    <td>{{s.Remitter}}</td>
-                    <td>{{s.City_Remitter}}</td>
-                    <td>{{s.Amount_words}}</td>
-                    <td>{{s.Cont_Benef}}</td>
-                    <td>{{s.Routing_No}}</td>
-                  </tr>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                </table>
-              </mat-tab>
-              <mat-tab label="Success">
-                <table class="uploadTable" >
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Sl_No</th>
-                    <th>TT_No</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Beneficiary</th>
-                    <th>AC_No</th>
-                    <th>Bank</th>
-                    <th>Branch</th>
-                    <th>Payment</th>
-                    <th>Remitter</th>
-                    <th>City_Remitter</th>
-                    <th>Amount_words</th>
-                    <th>Cont_Benef</th>
-                    <th>Routing_No</th>
-                  </tr>
-                  </thead>
-                  <tbody *ngFor="let s of uploadFileData">
-                  <tr *ngIf="(s.Routing_No == 1)">
-                    <td>{{s.ID}}</td>
-                    <td>{{s.Sl_No}}</td>
-                    <td>{{s.TT_No}}</td>
-                    <td>{{s.Date}}</td>
-                    <td>{{s.Amount}}</td>
-                    <td>{{s.Beneficiary }}</td>
-                    <td>{{s.AC_No}}</td>
-                    <td>{{s.Bank}}</td>
-                    <td>{{s.Branch}}</td>
-                    <td>{{s.Payment}}</td>
-                    <td>{{s.Remitter}}</td>
-                    <td>{{s.City_Remitter}}</td>
-                    <td>{{s.Amount_words}}</td>
-                    <td>{{s.Cont_Benef}}</td>
-                    <td >{{s.Routing_No}}</td>
-                  </tr>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </tbody>
-                </table>
-              </mat-tab>
-              <mat-tab label="Failure">
-                <table class="uploadTable" >
-                  <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Sl_No</th>
-                    <th>TT_No</th>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Beneficiary</th>
-                    <th>AC_No</th>
-                    <th>Bank</th>
-                    <th>Branch</th>
-                    <th>Payment</th>
-                    <th>Remitter</th>
-                    <th>City_Remitter</th>
-                    <th>Amount_words</th>
-                    <th>Cont_Benef</th>
-                    <th>Routing_No</th>
-                  </tr>
-                  </thead>
-                  <tbody *ngFor="let s of uploadFileData">
-                  <tr *ngIf="(s.Routing_No == 0)">
-                    <td>{{s.ID}}</td>
-                    <td>{{s.Sl_No}}</td>
-                    <td>{{s.TT_No}}</td>
-                    <td>{{s.Date}}</td>
-                    <td>{{s.Amount}}</td>
-                    <td>{{s.Beneficiary }}</td>
-                    <td>{{s.AC_No}}</td>
-                    <td>{{s.Bank}}</td>
-                    <td>{{s.Branch}}</td>
-                    <td>{{s.Payment}}</td>
-                    <td>{{s.Remitter}}</td>
-                    <td>{{s.City_Remitter}}</td>
-                    <td>{{s.Amount_words}}</td>
-                    <td>{{s.Cont_Benef}}</td>
-                    <td >{{s.Routing_No}}</td>
-                  </tr>
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  </tbody>
-                </table>
-=======
-   <mat-step class="step2" formGroupName="1" [stepControl]="formArray?.get([1])">
-     <ng-template matStepLabel><b>File Upload</b></ng-template>
-      <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
-        <div fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100%" fxFlex.sm="50%" fxLayout.lt-sm="column" fxFlex.xs="100%" fxLayoutAlign="flex-start">
-          <div class="cen">
-                <input #myInput type="file" style="display: inline-block;" (change)="incomingfile($event)" placeholder="Upload file" accept=".xlsx, .xls, .csv">
-                <button type="submit" mat-raised-button class="btn btn-info" (click)="Upload()" >Upload</button>
-            <button mat-raised-button  matStepperNext
-                    style="margin-left: 80px" (click)="amlTableVisible()" color="primary">Next</button>
-          </div>
-        </div>
-      </div>
-     <br>
             <mat-tab-group animationDuration="2000ms" *ngIf="this.isButtonVisible" mat-align-tabs="center">
               <mat-tab label="Total">
-                  <div class="row " fxFlex="100">
-                    <table class="uploadTable" >
-                      <tr>
-                        <th>Serial No</th>
-                        <th title="Transaction Number">Transac. No</th>
-                        <th>Benificiary Name</th>
-                        <th>Bank</th>
-                        <th>Branch</th>
-                        <th>Account Number</th>
-                        <th>Amount</th>
-                        <th>Payment</th>
-                        <th>Routing No</th>
-                        <th>Remitter Name</th>
-                      </tr>
-                      <tr *ngFor="let s of paginatedFileData">
-                        <td>{{s.Sl_No}}</td>
-                        <td>{{s.TT_No}}</td>
-                        <td>{{s.Beneficiary}}</td>
-                        <td>{{s.Bank}}</td>
-                        <td>{{s.Branch}}</td>
-                        <td>{{s.AC_No}}</td>
-                        <td>{{s.Amount}}</td>
-                        <td>{{s.Payment}}</td>
-                        <td>{{s.Routing_No}}</td>
-                        <td>{{s.Remitter}}</td>
-                      </tr>
-
-                    </table>
-                  </div>
-                <div class="row" fxFlex="100">
-                  <mat-paginator style="padding-top: 200px;" [length]="length"
-                                 [pageSize]="pageSize"
-                                 [pageSizeOptions]="pageSizeOptions"
-                                 (page)="pageEvent = OnDataPageChange($event)">
-                  </mat-paginator>
-                </div>
-
-              </mat-tab>
-              <mat-tab label="Failure">
+                <div class="row " fxFlex="100">
                   <table class="uploadTable" >
-                    <thead>
                     <tr>
                       <th>Serial No</th>
                       <th title="Transaction Number">Transac. No</th>
@@ -345,9 +127,7 @@
                       <th>Routing No</th>
                       <th>Remitter Name</th>
                     </tr>
-                    </thead>
-                    <tbody *ngFor="let s of uploadFileData">
-                    <tr *ngIf="(s.Routing_No == null)">
+                    <tr *ngFor="let s of paginatedFileData">
                       <td>{{s.Sl_No}}</td>
                       <td>{{s.TT_No}}</td>
                       <td>{{s.Beneficiary}}</td>
@@ -359,8 +139,49 @@
                       <td>{{s.Routing_No}}</td>
                       <td>{{s.Remitter}}</td>
                     </tr>
-                    </tbody>
+
                   </table>
+                </div>
+                <div class="row" fxFlex="100">
+                  <mat-paginator style="padding-top: 200px;" [length]="length"
+                                 [pageSize]="pageSize"
+                                 [pageSizeOptions]="pageSizeOptions"
+                                 (page)="pageEvent = OnDataPageChange($event)">
+                  </mat-paginator>
+                </div>
+
+              </mat-tab>
+              <mat-tab label="Failure">
+                <table class="uploadTable" >
+                  <thead>
+                  <tr>
+                    <th>Serial No</th>
+                    <th title="Transaction Number">Transac. No</th>
+                    <th>Benificiary Name</th>
+                    <th>Bank</th>
+                    <th>Branch</th>
+                    <th>Account Number</th>
+                    <th>Amount</th>
+                    <th>Payment</th>
+                    <th>Routing No</th>
+                    <th>Remitter Name</th>
+                  </tr>
+                  </thead>
+                  <tbody *ngFor="let s of uploadFileData">
+                  <tr *ngIf="(s.Routing_No == null)">
+                    <td>{{s.Sl_No}}</td>
+                    <td>{{s.TT_No}}</td>
+                    <td>{{s.Beneficiary}}</td>
+                    <td>{{s.Bank}}</td>
+                    <td>{{s.Branch}}</td>
+                    <td>{{s.AC_No}}</td>
+                    <td>{{s.Amount}}</td>
+                    <td>{{s.Payment}}</td>
+                    <td>{{s.Routing_No}}</td>
+                    <td>{{s.Remitter}}</td>
+                  </tr>
+                  </tbody>
+                </table>
                 <div class="row" fxFlex="100">
                   <mat-paginator style="padding-top: 200px;" [length]="length"
                                  [pageSize]="pageSize"
@@ -408,7 +229,6 @@
                                  (page)="pageEvent = OnDataPageChange($event)">
                   </mat-paginator>
                 </div>
->>>>>>> shafeisnine
               </mat-tab>
 
             </mat-tab-group>
@@ -416,7 +236,7 @@
 
           <mat-step formGroupName="2" [stepControl]="formArray?.get([2])">
             <ng-template matStepLabel><b>AML Verification</b></ng-template>
-<!--            {{ barValue.value }}-->
+            <!--            {{ barValue.value }}-->
             <div fxLayout="row">
               <div fxFlexOffset="90" >
                 <button mat-raised-button  matStepperNext style="margin-bottom: 10px"
@@ -426,47 +246,47 @@
             <div id="myProgress">
               <div id="myBar"></div>
             </div>
-<!--            <mat-progress-bar style="margin-bottom: 5px" mode="determinate"  [value]="statusValue"></mat-progress-bar>-->
+            <!--            <mat-progress-bar style="margin-bottom: 5px" mode="determinate"  [value]="statusValue"></mat-progress-bar>-->
 
 
             <div fxLayout="row" *ngIf="this.isTableVisible" fxLayout.xs="column" fxLayout.sm="column" class="tab">
 
-                <table class="uploadTable"  >
-                  <tr>
-                    <th>Serial No</th>
-                    <th title="Transaction Number">Transac. No</th>
-                    <th>Account Number</th>
-                    <th>Benificiary Name</th>
-                    <th>Remitter Name</th>
-                    <th>Bank</th>
-                    <th>Branch</th>
-                    <th>Payment</th>
-                    <th>Routing No</th>
-                    <th>AML Sending Status</th>
-                  </tr>
-                  <tbody *ngFor="let s of paginatedFileData">
-                      <tr *ngIf="(s.Routing_No != null)">
-                        <td>{{s.Sl_No}}</td>
-                        <td>{{s.TT_No}}</td>
-                        <td>{{s.AC_No}}</td>
-                        <td>{{s.Beneficiary}}</td>
-                        <td>{{s.Remitter}}</td>
-                        <td>{{s.Bank}}</td>
-                        <td>{{s.Branch}}</td>
-                        <td>{{s.Payment}}</td>
-                        <td>{{s.Routing_No}}</td>
-                        <td style="color: #4caf50">Success</td>
-                      </tr>
-                  </tbody>
+              <table class="uploadTable"  >
+                <tr>
+                  <th>Serial No</th>
+                  <th title="Transaction Number">Transac. No</th>
+                  <th>Account Number</th>
+                  <th>Benificiary Name</th>
+                  <th>Remitter Name</th>
+                  <th>Bank</th>
+                  <th>Branch</th>
+                  <th>Payment</th>
+                  <th>Routing No</th>
+                  <th>AML Sending Status</th>
+                </tr>
+                <tbody *ngFor="let s of paginatedFileData">
+                <tr *ngIf="(s.Routing_No != null)">
+                  <td>{{s.Sl_No}}</td>
+                  <td>{{s.TT_No}}</td>
+                  <td>{{s.AC_No}}</td>
+                  <td>{{s.Beneficiary}}</td>
+                  <td>{{s.Remitter}}</td>
+                  <td>{{s.Bank}}</td>
+                  <td>{{s.Branch}}</td>
+                  <td>{{s.Payment}}</td>
+                  <td>{{s.Routing_No}}</td>
+                  <td style="color: #4caf50">Success</td>
+                </tr>
+                </tbody>
 
-                </table>
-                <div class="row" fxFlex="100">
-                  <mat-paginator style="padding-top: 300px;" [length]="length"
-                                 [pageSize]="pageSize"
-                                 [pageSizeOptions]="pageSizeOptions"
-                                 (page)="pageEvent = OnDataPageChange($event)">
-                  </mat-paginator>
-                </div>
+              </table>
+              <div class="row" fxFlex="100">
+                <mat-paginator style="padding-top: 300px;" [length]="length"
+                               [pageSize]="pageSize"
+                               [pageSizeOptions]="pageSizeOptions"
+                               (page)="pageEvent = OnDataPageChange($event)">
+                </mat-paginator>
+              </div>
             </div>
 
           </mat-step>
@@ -518,25 +338,16 @@
 
               </div>
             </div>
-<<<<<<< HEAD
-
-            <div class="navigationButtons">
-              <button mat-button matStepperPrevious type="button"> <mat-icon>arrow_back</mat-icon></button>
-              <button mat-button matStepperNext type="button"> <mat-icon>arrow_forward</mat-icon></button>
-            </div>
-
-
-=======
           </mat-step>
           <mat-step formGroupName="4" [stepControl]="formArray?.get([4])">
             <ng-template matStepLabel><b>Summary</b></ng-template>
             <div fxLayout="row">
               <div class="card-small" fxFlexOffset="15" fxFlex="20">
                 <div class="exhouseProperty">
-                    Total Transaction
+                  Total Transaction
                 </div>
                 <div class="container-summary">
-                    3
+                  3
                 </div>
               </div>
               <div class="card-small"  fxFlex="20">
@@ -556,7 +367,6 @@
                 </div>
               </div>
             </div>
->>>>>>> shafeisnine
           </mat-step>
         </mat-horizontal-stepper>
 
