@@ -29,17 +29,17 @@ export class AddFileProcessingComponent implements OnInit {
   name: string;
   uploadFileData: any;
   incompleteBatchData: any;
-  //[x: string]: any;
-  //fileProcessing = Subscription;
+  [x: string]: any;
+  fileProcessing = Subscription;
   subscription: Subscription;
-  //reactiveForm1: FormGroup;
- // @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
+  reactiveForm1: FormGroup;
+  @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
   barValue = new FormControl('');
   fileToUpload: File = null;
-  //dataSource: any;
+  dataSource: any;
   jsonData: any;
   ttNoFromFile: any;
-  //displayedColumns: any;
+  displayedColumns: any;
   xPressMoneyName = [];
   pagedList = [];
   pagedList2 = [];
@@ -48,7 +48,7 @@ export class AddFileProcessingComponent implements OnInit {
   pageSize = 5;
   pageSizeOptions: number[] = [3, 5];
   breakpoint = 3;
-  ///date: string;
+  date: string;
   isShow: any;
   displayedColumn: string[] = [ 'InCompleteFileName'];
   dataSource1 = new MatTableDataSource<any>();
@@ -59,10 +59,8 @@ export class AddFileProcessingComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder,
               private fileProcessingService: FileProcessingService,
-              public dialog: MatDialog,
-              //private orderPipe: OrderPipe
-  ) {
-    //this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
+              public dialog: MatDialog, private orderPipe: OrderPipe) {
+    this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
   }
   ngOnInit() {
     this.reactiveForm1 = this.fb.group({
@@ -220,14 +218,13 @@ export class AddFileProcessingComponent implements OnInit {
     const jsonUR = this.jsonURL;
     const jsonData = JSON.stringify(transactionData);
     this.fileProcessingService.transactionApi
-    ({ route: 'transactionApi', body: transactionData })
-    //   .subscribe(res => {
-    //   console.log(res, 'Transection API');
-    //   this.notification.successmsg(res);
-    // }, (err) => {
-    //   console.log(err,'erarara');
-    //   this.notification.errorsmsg('Transaction not successful ');
-    // });
+    ({ route: 'transactionApi', body: transactionData }).subscribe(res => {
+      console.log(res, 'Transection API');
+      this.notification.successmsg(res);
+    }, (err) => {
+      console.log(err,'erarara');
+      this.notification.errorsmsg('Transaction not successful ');
+    });
   }
 
   amlTableVisible() {
