@@ -1,0 +1,91 @@
+<app-notification-comp></app-notification-comp>
+<div class="mainCard">
+  <div class="card-header">
+    <div fxLayout="row">
+      <div fxFlex="2" >
+        <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+          <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
+        </button>
+      </div>
+      <div fxFlex="38">
+        <h3 style="margin-top: 24px; padding-left: 50px; font-size: 24px;"><b> Transaction Details </b></h3>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" style="margin-top: 50px" class="mainContainer">
+    <div class="detailsCard">
+      <div class="headerStyle">
+        <h3 >Transaction Information</h3>
+      </div>
+      <div fxLayout="row" class="container">
+
+        <div fxFlex="33">
+          <div class="info"><b>Transaction Id :</b> {{club.Transaction_Id}}</div>
+          <div class="info"><b>Account No :</b> {{club.Account_No}}</div>
+          <div class="info"><b>Transaction Date :</b> {{club.Transaction_Date}}</div>
+        </div>
+
+        <div fxFlex="33">
+          <div class="info"><b>Transaction No :</b> {{club.Transaction_No}}</div>
+          <div class="info"><b>Status :</b> {{club.Status}}</div>
+          <div class="info"><b>Amount :</b> {{club.Amount}}</div>
+        </div>
+
+      </div>
+    </div>
+<!--    <br>-->
+<!--    <div class="detailsCard">-->
+<!--      <div class="headerStyle">-->
+<!--        <h3>Account Information</h3>-->
+<!--      </div>-->
+
+<!--      <div fxLayout="column" class="container">-->
+<!--        <div fxLayout="row">-->
+<!--          <div fxFlex="33">-->
+<!--            <div class="info"><b>Account Nature:</b> {{DetailsData.account_nature}}</div>-->
+<!--          </div>-->
+<!--          <div fxFlex="33">-->
+<!--            <div class="info"><b>Account Type:</b> {{DetailsData.account_type}}</div>-->
+<!--          </div>-->
+<!--          <div fxFlex="33">-->
+<!--            <div class="info"><b>Account Number:</b> {{DetailsData.account_number}}</div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div fxLayout="row">-->
+<!--          <table  style="width: 100%">-->
+<!--            <tr style="text-align: left">-->
+<!--              <th fxFlex="33">Transection Type</th>-->
+<!--              <th fxFlex="33">Debit Account Type</th>-->
+<!--              <th fxFlex="33">Debit Instruction</th>-->
+<!--            </tr>-->
+<!--            <tr *ngFor="let d of debitInsData">-->
+<!--              <td fxFlex="33"> {{d.transaction_type}}</td>-->
+<!--              <td fxFlex="33">{{d.debit_account_type}}</td>-->
+<!--              <td fxFlex="33">{{d.debit_instruction}}</td>-->
+<!--            </tr>-->
+<!--          </table>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <br>-->
+<!--    <div class="detailsCard">-->
+<!--      <div class="headerStyle">-->
+<!--        <h3>Assigned Officers</h3>-->
+<!--      </div>-->
+<!--      <div fxLayout="row" class="container" >-->
+<!--        <table style="width: 100%">-->
+<!--          <tr style="text-align: left">-->
+<!--            <th fxFlex="33">Officer Name</th>-->
+<!--            <th fxFlex="33">Email</th>-->
+<!--            <th fxFlex="33">Phone Number</th>-->
+<!--          </tr>-->
+<!--          <tr *ngFor="let a of assignedOfficerData">-->
+<!--            <td fxFlex="33"> {{a.employeeName}}</td>-->
+<!--            <td fxFlex="33">{{a.emailAddress}}</td>-->
+<!--            <td fxFlex="33">{{a.phoneNumber}}</td>-->
+<!--          </tr>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+</div>

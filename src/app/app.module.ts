@@ -16,6 +16,8 @@ import { DatePipe } from '@angular/common';
 
 import { DefaultInterceptor } from '@core';
 import { StartupService } from '@core';
+import { TokenInterceptorService } from '@core/services/token-interceptor.service';
+
 
 export function StartupServiceFactory(startupService: StartupService) {
   return () => startupService.load();
@@ -30,7 +32,8 @@ import {
   MatInputModule,
   MatButtonModule
 } from '@angular/material';
-import { AutocompleteLibModule } from 'angular-ng-autocomplete';
+import { AuthService } from '@core/services/auth.service';
+import { AuthGuard } from './routes/sessions/login/auth.guard';
 
 
 @NgModule({
@@ -49,12 +52,11 @@ import { AutocompleteLibModule } from 'angular-ng-autocomplete';
     MatInputModule,
     MatButtonModule,
     MatInputModule,
-    AutocompleteLibModule,
     FormlyModule.forRoot(),
     ToastrModule.forRoot(),
   ],
-  providers: [ DatePipe,
-    { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },
+  providers: [ DatePipe,AuthService, AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     StartupService,
     {
       provide: APP_INITIALIZER,

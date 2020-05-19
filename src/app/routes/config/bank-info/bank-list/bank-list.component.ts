@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { BankInfo } from '../../../model/BankInfo';
+import { BankInfo } from '../../../notificationComp/model/BankInfo';
 import { BankService } from '@core/services/bank.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';

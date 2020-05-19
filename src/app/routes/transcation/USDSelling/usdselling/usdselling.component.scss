@@ -1,0 +1,77 @@
+.right-nevigation {
+  float: right;
+  margin-top: 10px;
+}
+.container {
+  padding: 2px 16px;
+  padding-top: 30px;
+}
+p {
+  font-family: Lato;
+}
+.mat-icon{
+  height:35px !important;
+  width:35px !important;
+  font-size:35px !important;
+}
+.c {
+  width: 300px;
+  height: 100px;
+  position: absolute;
+  left: 45%;
+  margin-left: -50px;
+}
+.no {
+  position: relative;
+  left: -30px;
+  bottom: 2px;
+}
+.name {
+  position: relative;
+  left: -30px;
+}
+.line {
+  position: center;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: underline;
+}
+.uploadTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+.uploadTable td, .uploadTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+.uploadTable tr:nth-child(even){background-color: #f2f2f2;}
+.uploadTable tr:hover {background-color: #ddd;}
+.uploadTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff9933;
+  color: white;
+}
+.uploadTable td {
+  text-align: center;
+}
+.navigationButtons {
+  float: right;
+}
+.cen {
+  border-collapse: collapse;
+  margin-left: 350px;
+}
+
+

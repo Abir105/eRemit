@@ -1,4 +1,3 @@
-
 {
   "menu": [
     {
@@ -23,7 +22,6 @@
           "name": "Currency Info",
           "type": "link"
         },
-
         {
           "state": "bank",
           "name": "Bank Info",
@@ -74,7 +72,6 @@
         }
       ]
     },
-
     {
       "state": "transaction",
       "name": "Transaction",
@@ -84,6 +81,49 @@
         {
           "state": "cashPaymentForOtherWebsite",
           "name": "Cash Payment For Other Website",
+          "type": "link"
+        },
+        {
+          "state": "treasury",
+          "name": "File Upload For Treasury",
+          "type": "link"
+        },
+        {
+          "state": "usdselling",
+          "name": "USD Selling",
+          "type": "link"
+        },
+        {
+          "state": "administration",
+          "name": "Administration",
+          "type": "sub",
+          "icon": "apps",
+          "children": [
+            {
+              "state": "treasuryApproval",
+              "name": "Treasury Approval",
+              "type": "link"
+            },
+            {
+              "state": "usdSellingApproval",
+              "name": "USD Selling Approval",
+              "type": "link"
+            }
+          ]
+        },
+        {
+          "state": "transactionDetails",
+          "name": "API Transaction Details",
+          "type": "link"
+        },
+        {
+          "state": "invoiceDataValidation",
+          "name": "Invoice Data Validation",
+          "type": "link"
+        },
+        {
+          "state": "connectedCashPaymentForOtherWebSite",
+          "name": "API Cash Payment For Other WebSite",
           "type": "link"
         },
         {
@@ -103,6 +143,34 @@
       "name": "File Processing",
       "type": "link",
       "icon": "apps"
+    },
+    {
+      "state": "reports",
+      "name": "Reports",
+      "type": "sub",
+      "icon": "apps",
+      "children": [
+        {
+          "state": "excel-report",
+          "name": "Excel Wise Report",
+          "type": "link"
+        },
+        {
+          "state": "branch-cash-payment-summary",
+          "name": "Branch Cash Payment Summary",
+          "type": "link"
+        },
+        {
+          "state": "website-cash-payment-summary",
+          "name": "Website Cash Payment Summary",
+          "type": "link"
+        },
+        {
+          "state": "day&exchange-house-BEFTN-send-report",
+          "name": "Day & Enchange House Wise BEFTN Send Report",
+          "type": "link"
+        }
+      ]
     },
     {
       "state": "cashPayment",
