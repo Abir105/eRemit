@@ -16,35 +16,36 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   tokenParam: TokenParam;
-  constructor(private fb: FormBuilder, private _router: Router,  private toastr: ToastrService ,private  authService : AuthService ) {
-    this.loginForm = this.fb.group({
-      userName: ['', [Validators.required]],
-      password: ['', [Validators.required]],
-    });
+  constructor(private fb: FormBuilder, private _router: Router, private toastr: ToastrService, private authService: AuthService) {
+    // this.loginForm = this.fb.group({
+    //   userName: ['', [Validators.required]],
+    //   password: ['', [Validators.required]],
+    // });
   }
-  @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
+  // @ViewChild(NotificationCompoComponent, { static: false }) notification: NotificationCompoComponent;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-token: any;
-  login() {
-    const val = this.loginForm.value;
-    if (val.userName && val.password) {
-      this.authService.gToken(val.userName, val.password)
-        .subscribe(
-                res => {
-                  console.log(res);
-                  localStorage.setItem('token', res.token);
-                  this._router.navigate(['/dashboard']);
-                  this.toastr.success('Logged in successfully')
-                },
-                err => {
-                  if( err instanceof HttpErrorResponse){
-                    if(err.status === 401){ this._router.navigate(['/login'])
-                    }
-                    this.toastr.error('Invalid Username and/or Password.');
-                  }
-                });
-    }
-  }
+  // token: any;
+  // login() {
+  //   const val = this.loginForm.value;
+  //   if (val.userName && val.password) {
+  //     this.authService.gToken(val.userName, val.password)
+  //       .subscribe(
+  //         res => {
+  //           console.log(res);
+  //           localStorage.setItem('token', res.token);
+  //           this._router.navigate(['/dashboard']);
+  //           this.toastr.success('Logged in successfully');
+  //         },
+  //         err => {
+  //           if (err instanceof HttpErrorResponse) {
+  //             if (err.status === 401) {
+  //               this._router.navigate(['/login'])
+  //             }
+  //             this.toastr.error('Invalid Username and/or Password.');
+  //           }
+  //         });
+  //   }
+  // }
 }
