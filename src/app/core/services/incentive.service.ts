@@ -6,9 +6,8 @@ import { Observable } from 'rxjs/internal/Observable';
   providedIn: 'root'
 })
 export class IncentiveService {
-  Url = 'http://10.11.201.87:3001/';
+  Url = 'http://10.11.201.92:3001/';
   constructor(private http: HttpClient) { }
-
   public getIncentive = (route: string): Observable<any> => {
     return this.http.get(this.Url + 'incentive');
   };

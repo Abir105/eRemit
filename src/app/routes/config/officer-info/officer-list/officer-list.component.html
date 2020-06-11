@@ -4,7 +4,7 @@
     <div fxLayout="row">
       <div fxFlex="7" >
         <button  mat-icon-button [routerLink]="['']">
-          <mat-icon style="font-size: 40px; margin-top: 18px; color: #4d6fac;">home</mat-icon>
+          <mat-icon style="font-size: 40px; margin-top: 18px; color: #2C3D8B;">home</mat-icon>
         </button>
       </div>
       <div fxFlex="35" >
@@ -33,7 +33,7 @@
 
   </div>
   <div class="container">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table class="uploadTable" [dataSource]="dataSource" matSort>
 
 
       <ng-container matColumnDef="employeeCode">

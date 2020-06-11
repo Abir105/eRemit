@@ -2,9 +2,9 @@
 <div class="card">
   <div class="card-header">
     <div fxLayout="row">
-      <div fxFlex="2" >
-        <button style="margin-top: 22px;padding-left: 18px; color: darkblue" mat-icon-button [routerLink]="['../']" >
-          <mat-icon style="height:38px !important;width:38px !important; font-size:38px !important;">home</mat-icon>
+      <div fxFlex="7" >
+        <button mat-icon-button [routerLink]="['']">
+          <mat-icon style="font-size: 40px; margin-top: 18px; color: #2C3D8B;">home</mat-icon>
         </button>
       </div>
       <div fxFlex="38">
@@ -41,7 +41,7 @@
 
   </div>
   <div class="container">
-    <table mat-table [dataSource]="dataSource" matSort>
+    <table mat-table class="uploadTable" [dataSource]="dataSource" matSort>
 
       <ng-container matColumnDef="sl">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
