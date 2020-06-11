@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
-import { CurrencyInfo } from '../../../model/currencyInfo';
+import { CurrencyInfo } from '../../../notificationComp/model/currencyInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { AccountNatureService } from '@core/services/account-nature.service';
 import { AccountNatureDeleteComponent } from '../account-nature-delete/account-nature-delete.component';

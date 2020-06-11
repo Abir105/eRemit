@@ -1,0 +1,244 @@
+<div *ngIf="data.conditionValue == 'excel-wise-report'; else branchCashPaymentSummary">
+  <div class="container">
+    <!-- <pre>{{data.passedValue | json}} </pre> -->
+
+    <div class="row">
+      <div class="col-12">
+        <button class="print_export" [useExistingCss]="true" type="submit"
+                printSectionId="print-section"
+                mat-raised-button color="success" ngxPrint><span class="material-icons">
+            print</span> Print
+        </button>
+        <button class="print_export" mat-raised-button color="success" (click)="savePDF()"><span
+                class="material-icons">
+            import_export
+          </span> Export as PDF</button>
+        <button class="print_export" mat-raised-button color="success" (click)="exportexcel()"><span
+                class="material-icons">
+            import_export
+          </span>
+          Export as Excel</button>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="row pdfPrint">
+    <div class="col-12">
+
+      <div id="excel-table">
+        <div id="print-section">
+          <div id="pdfsave" #pdfsave>
+
+            <div class="reportLogo">
+              <img src="../../../../assets/images/bank_asia_logo.jpg" alt="">
+              <h4 class="display4"><b>Excel Wise Invoice Status Report</b></h4>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Srl</th>
+                  <th scope="col">Excel No</th>
+                  <th scope="col">Ex. House Name</th>
+                  <th scope="col">TT No</th>
+                  <th scope="col">Invoice Date</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Beneficiary Name</th>
+                  <th scope="col">Account No</th>
+                  <th scope="col">Payment Type</th>
+                  <th scope="col">Record Status</th>
+                  <th scope="col">Company Act.</th>
+                  <th scope="col">Payment Status</th>
+                  <th scope="col">Incentive</th>
+                  <th scope="col">Incentive Amount</th>
+                  <th scope="col">Total Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data.passedValue; let i = index ">
+                  <td>{{i+1}}</td>
+                  <td>{{item.excel_no}}</td>
+                  <td>{{item.ex_house_name}}</td>
+                  <td>{{item.TT_No}}</td>
+                  <td>{{item.Invoice_Date}}</td>
+                  <td>{{item.Amount}}</td>
+                  <td>{{item.Benificiary_Name}}</td>
+                  <td>{{item.Account_No}}</td>
+                  <td>{{item.Payment_Type}}</td>
+                  <td>{{item.record_status}}</td>
+                  <td>{{item.company_act}}</td>
+                  <td>{{item.payment_status}}</td>
+                  <td>{{item.incentive}}</td>
+                  <td>{{item.incentive_amount}}</td>
+                  <td>{{item.total_amount}}</td>
+                </tr>
+                <tr>
+                  <td><b>Total:</b> {{this.data.passedValue.length}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><b>Total Amount:</b> {{ getSum('Amount') }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #branchCashPaymentSummary>
+  <div *ngIf="data.conditionValue == 'branch-cash-payment-summary'; else websiteCashPaymentSummary">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12">
+          <button class="print_export" [useExistingCss]="true" type="submit"
+                  printSectionId="print-section"
+                  mat-raised-button color="success" ngxPrint><span class="material-icons">
+              print</span> Print
+          </button>
+          <button class="print_export" mat-raised-button color="success"><span
+                  class="material-icons">
+              import_export
+            </span> Export as PDF</button>
+          <button class="print_export" mat-raised-button color="success"
+                  (click)="exportexcel()"><span class="material-icons">
+              import_export
+            </span>
+            Export as Excel</button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row pdfPrint">
+      <div class="col-12">
+
+        <div id="excel-table">
+          <div id="print-section">
+
+            <div class="reportLogo text-center">
+              <img src="../../../../assets/images/bank_asia_logo.jpg" alt="">
+              <h4 class="display4"><b>Branch Cash Payment Summary</b></h4>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Serial No</th>
+                  <th scope="col">Exchange House</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Total Invoice</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data.passedValue let i = index ">
+                  <td>{{i+1}}</td>
+                  <td>{{item.value}}</td>
+                  <td>{{item.testValue}}</td>
+                </tr>
+                <tr>
+                  <td><b>Total:</b> {{this.data.passedValue.length}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><b>Total Amount:</b> {{ getSum('testValue') }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+
+<ng-template #websiteCashPaymentSummary>
+  <div *ngIf="data.conditionValue == 'website-cash-payment-summary'; else noRecordFound">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-12">
+          <button class="print_export" [useExistingCss]="true" type="submit"
+                  printSectionId="print-section"
+                  mat-raised-button color="success" ngxPrint><span class="material-icons">
+              print</span> Print
+          </button>
+          <button class="print_export" mat-raised-button color="success"><span
+                  class="material-icons">
+              import_export
+            </span> Export as PDF</button>
+          <button class="print_export" mat-raised-button color="success"
+                  (click)="exportexcel()"><span class="material-icons">
+              import_export
+            </span>
+            Export as Excel</button>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="row pdfPrint">
+      <div class="col-12">
+
+        <div id="excel-table">
+          <div id="print-section">
+
+            <div class="reportLogo text-center">
+              <img src="../../../../assets/images/bank_asia_logo.jpg" alt="">
+              <h4 class="display4"><b>Website Cash Payment Summary</b></h4>
+            </div>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Serial No</th>
+                  <th scope="col">Exchange House</th>
+                  <th scope="col">Payment Date</th>
+                  <th scope="col">Total Invoice</th>
+                  <th scope="col">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of data.passedValue; let i = index ">
+                  <td>{{i+1}}</td>
+                  <td>{{item.value}}</td>
+                  <td>{{item.testValue}}</td>
+                </tr>
+                <tr>
+                  <td><b>Total:</b> {{this.data.passedValue.length}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><b>Total Amount:</b> {{ getSum('testValue') }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</ng-template>
+
+
+<ng-template #noRecordFound>
+  <div class="text-center">
+    <h3 class="display 2">No Record Found</h3>
+  </div>
+</ng-template>

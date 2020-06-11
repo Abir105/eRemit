@@ -6,7 +6,7 @@ import { CurrencyService } from '@core/services/currency.service';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { AddCurrencyComponent } from '../add-currency/add-currency.component';
-import { CurrencyInfo } from '../../../model/currencyInfo';
+import { CurrencyInfo } from '../../../notificationComp/model/currencyInfo';
 import { UpdateCurrencyComponent } from '../update-currency/update-currency.component';
 import { DeleteCurrencyComponent } from '../delete-currency/delete-currency.component';
 

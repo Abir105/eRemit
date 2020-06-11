@@ -1,0 +1,61 @@
+
+<div class="container">
+
+  <!-- <div class="row">
+    <div class="col-sm-12 col-md-4">
+      <button style="margin-top: 4px" mat-icon-button [routerLink]="['']">
+        <mat-icon>home</mat-icon>
+      </button><span><h3>Bank Info</h3></span>
+    </div>
+  </div> -->
+
+  <form #frm="ngForm" (ngSubmit)="searchExcelWiseInvoiceStatus(frm)">
+
+    <div class="row">
+      <div class="col-12">
+        <br><br>
+        <button class="formButton" mat-raised-button color="primary"><span class="material-icons">
+            find_in_page
+          </span> Execute</button>
+      </div>
+    </div>
+
+    <div class="row reportForm">
+      <div class="col-sm-12 col-md-4 text-center">
+        <h4>Exchange House Code</h4>
+        <mat-form-field class="formFields">
+          <mat-label>Exchange House Code</mat-label>
+          <mat-select name="exchangeHouseCode" ngModel>
+            <mat-option *ngFor="let exchangeHouseCode of exchangeHouseCode"
+                        [value]="exchangeHouseCode.ex_house_code">
+              {{exchangeHouseCode.ex_house_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-4 text-center">
+        <h4>Invoice Date</h4>
+        <mat-form-field class="formFields">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="picker" name="invoiceDate" ngModel>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="col-sm-12 col-md-4 text-center">
+        <h4>Excel No</h4>
+        <mat-form-field class="formFields">
+          <mat-label>Excel No</mat-label>
+          <mat-select name="excelNo" ngModel>
+            <mat-option *ngFor="let excelNo of excelNo" [value]="excelNo.value">
+              {{excelNo.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+

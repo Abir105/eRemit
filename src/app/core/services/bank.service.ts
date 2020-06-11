@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment } from '@env/environment.prod';
-import { CountryInfo } from 'app/routes/model/countryInfo';
+import { CountryInfo } from 'app/routes/notificationComp/model/countryInfo';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError, map } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { BankInfo } from '../../routes/model/BankInfo';
+import { BankInfo } from '../../routes/notificationComp/model/BankInfo';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class BankService {
-  Url = 'http://10.11.201.92:3001/';
-  Url2 = 'http://10.11.201.92:3001/';
+  Url = 'http://10.11.201.87:3001/';
+  Url2 = 'http://10.11.201.87:3001/';
 
   constructor(private http: HttpClient) { }
 
@@ -89,7 +89,7 @@ export class BankService {
 
   public create = (route: string, body) => {
     console.log(body);
-    return this.http.post('http://10.11.201.40:3000/bank', body);
+    return this.http.post('http://10.11.201.87:3000/bank', body);
   };
 
 
@@ -99,7 +99,7 @@ export class BankService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.40:3000/bank/${id}`, options);
+    return this.http.delete(`http://10.11.201.87:3000/bank/${id}`, options);
     // return this.http.put(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     // return this.http.put('http://10.11.201.37:3000/updateCountry', body);
   };
@@ -109,12 +109,12 @@ export class BankService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.92:3001/branch/${id}`, options);
+    return this.http.delete(`http://10.11.201.87:3001/branch/${id}`, options);
   };
 
   public update = (route: string, element) => {
     console.log(element);
-    return this.http.put('http://10.11.201.37:3000/updateCountry', element);
+    return this.http.put('http://10.11.201.87:3000/updateCountry', element);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

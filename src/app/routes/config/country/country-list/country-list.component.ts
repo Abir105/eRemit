@@ -1,6 +1,6 @@
 import {  Component, OnInit, ViewChild } from '@angular/core';
 import { CountryService } from '@core/services/country.service';
-import { CountryInfo } from '../../../model/countryInfo';
+import { CountryInfo } from '../../../notificationComp/model/countryInfo';
 import { NotificationCompoComponent } from '../../../notificationComp/notificationCompo.component';
 import { AddCountryComponent } from '../add-country/add-country.component';
 import { DeleteCountryComponent } from '../delete-country/delete-country.component';

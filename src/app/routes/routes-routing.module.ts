@@ -6,21 +6,29 @@ import { AuthLayoutComponent } from '../theme/auth-layout/auth-layout.component'
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { HelpersComponent } from './helpers/helpers.component';
+import { AuthGuard } from './sessions/login/auth.guard';
 const routes: Routes = [
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: '',
     component: AdminLayoutComponent,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'login', pathMatch: 'full' },
       {
         path: 'dashboard',
         component: DashboardComponent,
+        canActivate: [AuthGuard],
         data: { title: 'Dashboard', titleI18n: 'dashboard' },
       },
       {
         path: 'config',
         loadChildren: () => import('./config/config.module').then(m => m.ConfigModule),
         data: { title: 'Config', titleI18n: 'config' },
+      },
+      {
+        path: 'reports',
+        loadChildren: () => import('./reports/reports.module').then(m => m.ReportsModule),
+        data: { title: 'Reports', titleI18n: 'Reports'},
       },
       {
         path: 'cashPayment',
@@ -30,7 +38,7 @@ const routes: Routes = [
       {
         path: 'fileProcessing',
         loadChildren: () => import('./file-processing/file-processing.module').then(m => m.FileProcessingModule),
-        data: { title: 'FileProcessing', titleI18n: 'FileProcessing' },
+        data: { title: 'File-Processing', titleI18n: 'fileProcessing' },
       },
       {
         path: 'transaction',
@@ -113,4 +121,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class RoutesRoutingModule {}
+export class RoutesRoutingModule { }

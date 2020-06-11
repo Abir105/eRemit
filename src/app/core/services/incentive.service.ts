@@ -14,7 +14,7 @@ export class IncentiveService {
   public create = ({ route, body }: { route: string, body: any }) => {
     // return this.http.post(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     console.log(body);
-    return this.http.post('http://10.11.201.92:3001/incentive', body);
+    return this.http.post(this.Url + 'incentive', body);
   };
 
   public delete = (body) => {
@@ -24,14 +24,14 @@ export class IncentiveService {
       }),
       body: {id: body},
     };
-    return this.http.delete('http://10.11.201.92:3001/incentive', options);
+    return this.http.delete(this.Url + 'incentive', options);
     // return this.http.put(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     // return this.http.put('http://10.11.201.37:3000/updateCountry', body);
   };
 
   public update = (route: string, element) => {
     console.log(element);
-    return this.http.put('http://10.11.201.92:3001/incentive', element);
+    return this.http.put(this.Url + 'incentive', element);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

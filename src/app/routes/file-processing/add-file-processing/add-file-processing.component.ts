@@ -70,7 +70,7 @@ export class AddFileProcessingComponent implements OnInit {
           searchText: ['', [Validators.required]],
         }),
         this.fb.group({
-            date: ['', [Validators.required]],
+          date: ['', [Validators.required]],
           uploaded_file: ['', [Validators.required]],
         }),
         this.fb.group({
@@ -133,10 +133,10 @@ export class AddFileProcessingComponent implements OnInit {
       });
   }
   OnDataPageChange(event: PageEvent)
-    { const startIndex = event.pageIndex * event.pageSize;
-      let endIndex = startIndex + event.pageSize;
-      if (endIndex > this.length) { endIndex = this.length; }
-      this.paginatedFileData = this.uploadFileData.slice(startIndex, endIndex);
+  { const startIndex = event.pageIndex * event.pageSize;
+    let endIndex = startIndex + event.pageSize;
+    if (endIndex > this.length) { endIndex = this.length; }
+    this.paginatedFileData = this.uploadFileData.slice(startIndex, endIndex);
   }
   private getIncompleteBatchData() {
     this.fileProcessingService.getIncompleteBatch()
@@ -152,7 +152,7 @@ export class AddFileProcessingComponent implements OnInit {
     this.showDataOb = {ex_house_name, ex_house_code};
     console.log(this.showDataOb, 'show dt');
   }
- // file upload
+  // file upload
   arrayBuffer: any;
   file: File;
   pageEvent: void;
@@ -182,22 +182,22 @@ export class AddFileProcessingComponent implements OnInit {
       let jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: true });
       // for (let j = 0; j < jsonData.length; j++) {
       //   this.ttNoFromFile  = jsonData[j].TT_No;
-        // this.getAllUploadFileData();
-        // console.log(this.uploadFileData.TT_No);
-       // }
-     // console.log(this.ttNoFromFile,'tttNo');
+      // this.getAllUploadFileData();
+      // console.log(this.uploadFileData.TT_No);
+      // }
+      // console.log(this.ttNoFromFile,'tttNo');
 
       this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
-         .subscribe(resp => {
-         // console.log(jsonData , "json data")
+        .subscribe(resp => {
+          // console.log(jsonData , "json data")
           this.notification.successmsg('File was uploaded successfully');
           this.myInputVariable.nativeElement.value = '';
           this.getAllUploadFileData();
           this.isButtonVisible = true;
-          }, (err) => {
+        }, (err) => {
           this.notification.errorsmsg('Sorry! file can not be added');
         });
-   };
+    };
     fileReader.readAsArrayBuffer(this.file);
   }
   transectionApi() {
