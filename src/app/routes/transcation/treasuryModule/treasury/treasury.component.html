@@ -5,7 +5,7 @@
     <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="2" >
-          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+          <button style="margin-top: 20px;padding-left: 25px; color: #2C3D8B" mat-icon-button [routerLink]="['../']" >
             <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
           </button>
         </div>
@@ -17,7 +17,7 @@
     <div class="container">
       <div fxLayout="column">
         <mat-horizontal-stepper #treasueyStepper formArrayName="formArray" [linear]="false">
-          <mat-step formGroupName="0" [stepControl]="formArray?.get([0])">
+          <mat-step class="step1" formGroupName="0" [stepControl]="formArray?.get([0])">
             <ng-template matStepLabel><b> File Upload </b></ng-template>
 
             <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" class="tab">
@@ -45,7 +45,7 @@
                   <th>Notional Rate</th>
                 </tr>
                 <tr *ngFor="let s of uploadFileData, let Sl_No=index">
-                  <td style=" text-align: right;">{{Sl_No+1}}</td>
+                  <td style=" text-align: right;"><mat-icon style="color:darkblue; font-size: 16px;">play_arrow</mat-icon> {{Sl_No+1}}</td>
                   <td style=" text-align: right;">{{s.V_Date}}</td>
                   <td style=" text-align: left;">{{s.Exchange_House}}</td>
                   <td style=" text-align: left;">{{s.Cur}}</td>
@@ -60,8 +60,8 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
-                <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-                </mat-paginator>
+<!--                <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">-->
+<!--                </mat-paginator>-->
               </div>
 
           </mat-step>
@@ -71,7 +71,7 @@
                 <div style="padding-top: 40px;">
                 <table class="uploadTable" >
                   <tr>
-                    <th>Sl.No</th>
+                    <th>Sl No</th>
                     <th>Date</th>
                     <th>Exchange House</th>
                     <th>Cur</th>
@@ -82,13 +82,13 @@
 <!--                    <th>BDT Account</th>-->
                     <th>Nostro Account</th>
                     <th>Bank Name</th>
-                    <th>Notional Rate</th>
+<!--                    <th>Notional Rate</th>-->
                     <th>Valid</th>
                     <th>Message</th>
                     <th>Cancel</th>
                   </tr>
                   <tr *ngFor="let s of uploadFileData, let Sl_No=index">
-                    <td style=" text-align: right;">{{Sl_No+1}}</td>
+                    <td style=" text-align: right;"><mat-icon style="color:darkblue; font-size: 16px;">play_arrow</mat-icon> {{Sl_No+1}}</td>
                     <td style=" text-align: right;">{{s.V_Date}}</td>
                     <td style=" text-align: left;">{{s.Exchange_House}}</td>
                     <td style=" text-align: left;">{{s.Cur}}</td>
@@ -99,7 +99,7 @@
 <!--                    <td style=" text-align: right;">{{s.BDT_Account}}</td>-->
                     <td style=" text-align: right;">{{s.NOSTRO_ACCOUNT}}</td>
                     <td style=" text-align: left;">{{s.Bank_Name}}</td>
-                    <td style=" text-align: right;">{{s.Notional_Rate}}</td>
+<!--                    <td style=" text-align: right;">{{s.Notional_Rate}}</td>-->
                     <td>
                       <button mat-icon-button color="accent" (click)="UpdateCur(s)">
                         <mat-icon class="mat-18">update</mat-icon>
@@ -115,8 +115,8 @@
                   <tr mat-header-row *matHeaderRowDef="displayedColumns" bgColor="accent"></tr>
                   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                 </table>
-                  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">
-                  </mat-paginator>
+<!--                  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]">-->
+<!--                  </mat-paginator>-->
                 </div>
 
           </mat-step>

@@ -5,7 +5,7 @@
     <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="2" >
-          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+          <button style="margin-top: 20px;padding-left: 25px; color: #2C3D8B" mat-icon-button [routerLink]="['../']" >
             <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
           </button>
         </div>
@@ -32,10 +32,10 @@
                       <td>{{Sl_No+1}}</td>
                       <td>{{s.Exchange_House}}</td>
                       <td>{{s.BDT_Account}}</td>
-                      <td><input type="number" formControlName="Treasury_Rate" placeholder="Treasury Rate"  ></td>
-                      <td><input type="number" formControlName="Offer_Rate" placeholder="Offer Rate"  ></td>
+                      <td><input type="number" style="border-color: white" formControlName="Treasury_Rate" placeholder="Treasury Rate"  ></td>
+                      <td><input type="number" style="border-color: white" formControlName="Offer_Rate" placeholder="Offer Rate"  ></td>
                       <td>{{s.USD_CREDIT}}</td>
-                      <td><input type="number" formControlName="Selling_Amount" placeholder="Selling Amount" ></td>
+                      <td><input type="number" style="border-color: white" formControlName="Selling_Amount" placeholder="Selling Amount" ></td>
                       <td>{{s.Approve}}</td>
                       <td>
                         <button mat-icon-button color="accent" (click)="saveById(reactiveForm.value,s)">

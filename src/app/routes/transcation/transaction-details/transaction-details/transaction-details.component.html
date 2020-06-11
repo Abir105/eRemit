@@ -4,7 +4,7 @@
     <div class="card-header">
       <div fxLayout="row">
         <div fxFlex="2" >
-          <button style="margin-top: 22px;padding-left: 8px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+          <button style="margin-top: 22px;padding-left: 8px; color: #2C3D8B;" mat-icon-button [routerLink]="['../']" >
             <mat-icon style="height:38px !important;width:38px !important; font-size:38px !important;">home</mat-icon>
           </button>
         </div>
@@ -108,7 +108,7 @@
             </div>
           </div>
         </div>
-        <table class="table table-bordered">
+        <table class="table">
           <thead class="thead-dark">
           <tr>
             <th>Sl No</th>
@@ -133,7 +133,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let club of clubs; let sl = index;">
-            <td style=" text-align: right;" [routerLink]="['../details']">{{sl+1}}</td>
+            <td style=" text-align: right;" [routerLink]="['../details']"><mat-icon style="color:darkblue; font-size: 17px;">play_arrow</mat-icon> {{sl+1}}</td>
             <td [routerLink]="['../details']">{{club.Company_Prefix}}</td>
             <td style=" text-align: right;" [routerLink]="['../details']">{{club.Transaction_No}}</td>
             <td style=" text-align: right;" [routerLink]="['../details']">{{club.Transaction_Date}}</td>

@@ -4,7 +4,7 @@
       <div fxLayout="row">
 
         <div fxFlex="2" >
-          <button style="margin-top: 20px;padding-left: 25px; color: darkblue" mat-icon-button [routerLink]="['../']" >
+          <button style="margin-top: 20px;padding-left: 25px; color: #2C3D8B" mat-icon-button [routerLink]="['../']" >
             <mat-icon style="height:35px !important;width:35px !important; font-size:36px !important;">home</mat-icon>
           </button>
         </div>
@@ -26,7 +26,7 @@
 
         <ng-container matColumnDef="sl">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> SL# </th>
-          <td mat-cell [routerLink]="['../details']" *matCellDef="let row; let sl = index;"><mat-icon style="color:darkblue; font-size: 17px;">play_arrow</mat-icon>{{sl+1}} </td>
+          <td mat-cell [routerLink]="['../details']" *matCellDef="let row; let sl = index;"><mat-icon style="color:darkblue; font-size: 17px;">play_arrow</mat-icon> {{sl+1}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Date">
