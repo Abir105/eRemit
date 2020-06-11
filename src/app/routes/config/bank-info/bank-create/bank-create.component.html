@@ -131,7 +131,7 @@
             <mat-form-field fxFlex="0 1 calc(33.33% - 10px)" fxFlex.lt-md="0 1 calc(50% - 10px)" fxFlex.lt-sm="100%"
                             fxFlex.xs="100%" appearance="fill">
               <mat-label>Phone</mat-label>
-                <input matInput placeholder="Phone" formControlName="phone" type="number" min="11" max="11" required />
+                <input matInput placeholder="Phone" formControlName="phone" type="number"  required />
               <div *ngIf="phone.invalid && (phone.dirty || phone.touched)"
                    class="alert alert-danger">
 

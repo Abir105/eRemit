@@ -17,25 +17,31 @@
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-table {
+.uploadTable {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-th.mat-header-cell {
-  text-align: left;
+.uploadTable td, .uploadTable th {
+  // border: 1px solid #ddd;
+  padding: 6px;
+  // text-align: right;
+}
+.uploadTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.uploadTable tr:hover {
+  background-color: #AEE3F0;
   font-weight: bold;
-  //background-color: #4D6FAC;
-  background-color: #fc9d2e;
-  color: white;
+  color: #2C3D8B;
 }
 
-tr:hover {
-  background-color: #e0e0e0;
+.uploadTable th {
+  text-align: left;
   font-weight: bold;
+  color: #2C3D8B;
+  border-bottom: 1px solid #EE2024;
 }
-tr:nth-child(even){background-color: #ddd;}
 
 .right-nevigation {
 

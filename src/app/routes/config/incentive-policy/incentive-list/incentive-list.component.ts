@@ -38,7 +38,8 @@ export class IncentiveListComponent implements OnInit {
   public getAllIncentives = () => {
     this.incentiveService.getIncentive('incentive_percentage')
       .subscribe(res => {
-        this.incentiveDataLength = res.data.length;
+        console.log(res );
+       // this.incentiveDataLength = res.data.length;
         this.dataSource = new MatTableDataSource(res.data);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;

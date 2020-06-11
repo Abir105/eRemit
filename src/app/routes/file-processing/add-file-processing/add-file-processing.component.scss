@@ -162,26 +162,35 @@ a:active {
 }
 
 .uploadTable {
-  border-collapse: collapse;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
   position: fixed;
   margin-left: 2px;
 }
 
-.uploadTable td, .uploadTable th {
-  border: 1px solid #ddd;
+
+.uploadTable td {
   padding: 8px;
+  border-bottom: 1px solid rgb(192,192,192,0.8);
 }
 
 .uploadTable tr:nth-child(even){background-color: #f2f2f2;}
 
-.uploadTable tr:hover {background-color: #ddd;}
+
+
+.uploadTable tr:hover {
+  background-color: #AEE3F0;
+  font-weight: bold;
+  color: #2C3D8B;
+}
 
 .uploadTable th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background-color: #fc9d2e;
-  color: white;
+  padding: 8px;
+  text-align: left;
+  font-weight: bold;
+  color: #2C3D8B;
+  border-bottom: 1px solid #EE2024;
 }
 
 

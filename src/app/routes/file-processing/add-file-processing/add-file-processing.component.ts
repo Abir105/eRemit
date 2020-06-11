@@ -166,9 +166,9 @@ export class AddFileProcessingComponent implements OnInit {
     var fileDoc = { ex_house_code: this.showDataOb.ex_house_code, file_name: this.file.name}
     var myJSON = JSON.stringify(fileDoc);
     console.log(myJSON);
-    this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd => {
-      console.log(dd,"asdvasgdasd");
-   });
+   //  this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd => {
+   //    console.log(dd,"asdvasgdasd");
+   // });
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
