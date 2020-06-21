@@ -73,6 +73,12 @@
       ]
     },
     {
+      "state": "fileProcessing",
+      "name": "File Processing",
+      "type": "link",
+      "icon": "apps"
+    },
+    {
       "state": "transaction",
       "name": "Transaction",
       "type": "sub",
@@ -130,19 +136,8 @@
           "state": "beftnAmendment",
           "name": "Beftn Amendment",
           "type": "link"
-        },
-        {
-          "state": "beftnResend",
-          "name": "Beftn Resend",
-          "type": "link"
         }
       ]
-    },
-    {
-      "state": "fileProcessing",
-      "name": "File Processing",
-      "type": "link",
-      "icon": "apps"
     },
     {
       "state": "reports",

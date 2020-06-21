@@ -34,7 +34,7 @@ token: any;
         .subscribe(
                 res => {
                   console.log(res);
-                  localStorage.setItem('token', res.token);
+                  localStorage.setItem('token', this.token);
                   this._router.navigate(['/dashboard']);
                   this.toastr.success('Logged in successfully')
                 },

@@ -12,7 +12,7 @@ import { BankInfo } from '../../routes/notificationComp/model/BankInfo';
 })
 
 export class BankService {
-  Url = 'http://10.11.201.87:3001/';
+  Url = 'http://10.11.201.92:3001/';
   Url2 = 'http://10.11.201.87:3001/';
 
   constructor(private http: HttpClient) { }
@@ -48,14 +48,14 @@ export class BankService {
     );
   }
   getBranchByBankCode(bc: string): Observable<any> {
-    return this.http.get<any>(this.Url2 + `branch/bankcode/${bc}`).pipe(
+    return this.http.get<any>(this.Url + `branch/bankcode/${bc}`).pipe(
       map(response => response.data
       ),
       catchError(error => of(null))
     );
   }
   getBranchById(id: string): Observable<any> {
-    return this.http.get<any>(this.Url2 + `branch/${id}`).pipe(
+    return this.http.get<any>(this.Url + `branch/${id}`).pipe(
       map(response => response.data
       ),
       catchError(error => of(null))
@@ -69,7 +69,7 @@ export class BankService {
     );
   }
   branchAdd(branch): Observable<any> {
-    return this.http.post<any>(this.Url2 + 'branch', branch).pipe(
+    return this.http.post<any>(this.Url + 'branch', branch).pipe(
       map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
@@ -81,7 +81,7 @@ export class BankService {
     );
   }
   branchUpdate(branch): Observable<any> {
-    return this.http.put<any>(this.Url2 + 'branch/', branch).pipe(
+    return this.http.put<any>(this.Url + 'branch/', branch).pipe(
       map(response => (!!(response.isExecuted && response.data))),
       catchError(error => of(false))
     );
@@ -89,7 +89,7 @@ export class BankService {
 
   public create = (route: string, body) => {
     console.log(body);
-    return this.http.post('http://10.11.201.87:3000/bank', body);
+    return this.http.post(this.Url + 'bank', body);
   };
 
 
@@ -99,7 +99,7 @@ export class BankService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.87:3000/bank/${id}`, options);
+    return this.http.delete(this.Url + 'bank/${id}', options);
     // return this.http.put(this.createCompleteRoute(route, environment.SERVER_URL), body, this.generateHeaders());
     // return this.http.put('http://10.11.201.37:3000/updateCountry', body);
   };
@@ -109,12 +109,12 @@ export class BankService {
         'Content-Type': 'application/json',
       })
     };
-    return this.http.delete(`http://10.11.201.87:3001/branch/${id}`, options);
+    return this.http.delete(this.Url + 'branch/${id}', options);
   };
 
   public update = (route: string, element) => {
     console.log(element);
-    return this.http.put('http://10.11.201.87:3000/updateCountry', element);
+    return this.http.put(this.Url + 'updateCountry', element);
   };
 
   private createCompleteRoute = (route: string, envAddress: string) => {

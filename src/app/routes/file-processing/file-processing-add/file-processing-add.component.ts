@@ -5,18 +5,20 @@ import { NotificationCompoComponent } from '../../notificationComp/notificationC
 import { Router } from '@angular/router';
 import { Subscription, interval } from 'rxjs';
 import * as XLSX from 'ts-xlsx';
-import { CompletedBatchesComponent } from '../completed-batches/completed-batches.component';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { OrderPipe } from 'ngx-order-pipe';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material';
+import { IncompletedBatchesComponent } from '../incompleted-batches/incompleted-batches.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-add-file-processing',
-  templateUrl: './add-file-processing.component.html',
-  styleUrls: ['./add-file-processing.component.scss'],
+  selector: 'app-file-processing-add',
+  templateUrl: './file-processing-add.component.html',
+  styleUrls: ['./file-processing-add.component.scss']
 })
-export class AddFileProcessingComponent implements OnInit {
+
+
+export class FileProcessingAddComponent implements OnInit {
 
 
   statusValue = 20;
@@ -59,8 +61,7 @@ export class AddFileProcessingComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder,
               private fileProcessingService: FileProcessingService,
-              public dialog: MatDialog, private orderPipe: OrderPipe) {
-    this.sortedCollection = orderPipe.transform(this.pagedList, 'ex_house_name');
+              public dialog: MatDialog,private toastr: ToastrService) {
   }
   ngOnInit() {
     this.reactiveForm1 = this.fb.group({
@@ -115,7 +116,7 @@ export class AddFileProcessingComponent implements OnInit {
   // onResize(event) {  this.breakpoint = (event.target.innerWidth <= 800) ? 1 : 3; }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(CompletedBatchesComponent, {
+    const dialogRef = this.dialog.open(IncompletedBatchesComponent, {
       height: '310px',
     });
 
@@ -166,9 +167,9 @@ export class AddFileProcessingComponent implements OnInit {
     var fileDoc = { ex_house_code: this.showDataOb.ex_house_code, file_name: this.file.name}
     var myJSON = JSON.stringify(fileDoc);
     console.log(myJSON);
-   //  this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd => {
-   //    console.log(dd,"asdvasgdasd");
-   // });
+    //  this.fileProcessingService.fileName({ route: 'fileName', body: myJSON }).subscribe(dd => {
+    //    console.log(dd,"asdvasgdasd");
+    // });
     let fileReader = new FileReader();
     fileReader.onload = (e) => {
       this.arrayBuffer = fileReader.result;
@@ -190,72 +191,71 @@ export class AddFileProcessingComponent implements OnInit {
       this.fileProcessingService.addFileUpload({ route: 'addFileUpload', body: jsonData })
         .subscribe(resp => {
           // console.log(jsonData , "json data")
-          this.notification.successmsg('File was uploaded successfully');
+          this.toastr.success('File was uploaded successfully');
           this.myInputVariable.nativeElement.value = '';
           this.getAllUploadFileData();
           this.isButtonVisible = true;
         }, (err) => {
-          this.notification.errorsmsg('Sorry! file can not be added');
+          this.toastr.error('Sorry! file can not be added');
         });
     };
     fileReader.readAsArrayBuffer(this.file);
   }
   transectionApi() {
-    const transactionData = {
-      ex_code: '110',
-      ex_acc_type: 'deb',
-      ex_acc_no: '11025685',
-      debit_from: '23589662555',
-      gl_no: '256323',
-      tt_no: '2368546',
-      beni_name: 'Samsul Islam Khan',
-      routing_no: '23584',
-      beni_acc_no: '049340032841',
-      amount: '50',
-      payment_type: 'ACTRF',
-      user_id: 'INPAYADM'
-    };
-    const jsonUR = this.jsonURL;
-    const jsonData = JSON.stringify(transactionData);
-    this.fileProcessingService.transactionApi
-    ({ route: 'transactionApi', body: transactionData }).subscribe(res => {
-      console.log(res, 'Transection API');
-      this.notification.successmsg(res);
-    }, (err) => {
-      console.log(err,'erarara');
-      this.notification.errorsmsg('Transaction not successful ');
-    });
+    // this.toastr.success( 'transaction Successful');
+    // const transactionData = {
+    //   ex_code: '110',
+    //   ex_acc_type: 'deb',
+    //   ex_acc_no: '11025685',
+    //   debit_from: '23589662555',
+    //   gl_no: '256323',
+    //   tt_no: '2368546',
+    //   beni_name: 'Samsul Islam Khan',
+    //   routing_no: '23584',
+    //   beni_acc_no: '049340032841',
+    //   amount: '50',
+    //   payment_type: 'ACTRF',
+    //   user_id: 'INPAYADM'
+    // };
+    // const jsonUR = this.jsonURL;
+    // const jsonData = JSON.stringify(transactionData);
+    // this.fileProcessingService.transactionApi
+    // ({ route: 'transactionApi', body: transactionData }).subscribe(res => {
+    //   console.log(res, 'Transection API');
+    //   this.toastr.success( 'transaction Successful');
+    // }, (err) => {
+    //   console.log(err,'erarara');
+    //   this.toastr.error('Transaction not successful ');
+    // });
   }
 
   amlTableVisible() {
     this.isTableVisible = true;
-    move();
-    function move() {
-      let i = 0;
-      if (i === 0) {
-        i = 1;
-        const elem = document.getElementById('myBar');
-        let width = 1;
-        const id = setInterval(frame, 2000);
-        function frame() {
-          if (width >= 100) {
-            clearInterval(id);
-            console.log('clear')
-            i = 0;
-          } else {
-            width += 20;
-            elem.style.width = width + '%';
-            console.log('clear')
-            // f();
-          }
-        }
-      }
-    }
-    function f() {
-      this.statusValue += 20;
-    }
+    // move();
+    // function move() {
+    //   let i = 0;
+    //   if (i === 0) {
+    //     i = 1;
+    //     const elem = document.getElementById('myBar');
+    //     let width = 1;
+    //     const id = setInterval(frame, 2000);
+    //     function frame() {
+    //       if (width >= 100) {
+    //         clearInterval(id);
+    //         console.log('clear')
+    //         i = 0;
+    //       } else {
+    //         width += 20;
+    //         elem.style.width = width + '%';
+    //         console.log('clear')
+    //         // f();
+    //       }
+    //     }
+    //   }
+    // }
+    // function f() {
+    //   this.statusValue += 20;
+    // }
   }
 
 }
-
-

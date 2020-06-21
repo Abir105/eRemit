@@ -1,6 +1,5 @@
 import { DialogFruitComponent } from './routes/material/dialog/dialog.component';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -11,9 +10,6 @@ import { ThemeModule } from './theme/theme.module';
 import { RoutesModule } from './routes/routes.module';
 import { AppComponent } from './app.component';
 import { DatePipe } from '@angular/common';
-
-
-
 import { DefaultInterceptor } from '@core';
 import { StartupService } from '@core';
 import { TokenInterceptorService } from '@core/services/token-interceptor.service';
@@ -34,6 +30,7 @@ import {
 } from '@angular/material';
 import { AuthService } from '@core/services/auth.service';
 import { AuthGuard } from './routes/sessions/login/auth.guard';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -41,7 +38,6 @@ import { AuthGuard } from './routes/sessions/login/auth.guard';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     CoreModule,
     SharedModule,
     ThemeModule,
@@ -52,10 +48,11 @@ import { AuthGuard } from './routes/sessions/login/auth.guard';
     MatInputModule,
     MatButtonModule,
     MatInputModule,
+    HttpClientModule,
     FormlyModule.forRoot(),
     ToastrModule.forRoot(),
   ],
-  providers: [ DatePipe,AuthService, AuthGuard,
+  providers: [ DatePipe, AuthService, AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
     StartupService,
     {

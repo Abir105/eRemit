@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 
 export class CountryService {
-  Url = 'http://10.11.201.87:3001/';
+  Url = 'http://10.11.201.92:3001/';
 
   constructor(private http: HttpClient) { }
 

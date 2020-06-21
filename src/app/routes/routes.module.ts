@@ -5,13 +5,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './sessions/login/login.component';
 import { RegisterComponent } from './sessions/register/register.component';
 import { HelpersComponent } from './helpers/helpers.component';
-import { CountryModule } from './config/country/country.module';
+
 
 const COMPONENTS = [DashboardComponent, LoginComponent, RegisterComponent, HelpersComponent];
 const COMPONENTS_DYNAMIC = [];
 
 @NgModule({
-  imports: [SharedModule, RoutesRoutingModule, CountryModule],
+  imports: [SharedModule, RoutesRoutingModule],
   declarations: [...COMPONENTS, ...COMPONENTS_DYNAMIC, ],
   entryComponents: COMPONENTS_DYNAMIC,
 })

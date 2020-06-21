@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AddFileProcessingComponent } from './add-file-processing/add-file-processing.component';
-import { CompletedBatchesComponent } from './completed-batches/completed-batches.component';
+import { FileProcessingAddComponent } from './file-processing-add/file-processing-add.component';
+import { IncompletedBatchesComponent } from './incompleted-batches/incompleted-batches.component';
 
 
 const routes: Routes = [
-  { path: '', component: AddFileProcessingComponent },
-  {path: 'add', component: AddFileProcessingComponent},
-  {path: 'completed', component: CompletedBatchesComponent}
+  { path: '', component: FileProcessingAddComponent },
+  {path: 'incomplete', component: IncompletedBatchesComponent},
+
 
 ];
 

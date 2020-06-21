@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BeftnAmendmentComponent } from './beftn-amendment/beftn-amendment.component';
-import { BeftnResendComponent } from './beftn-resend/beftn-resend.component';
-
 
 const routes: Routes = [
   { path: 'cashPaymentForOtherWebsite', loadChildren: () => import('./cashPaymentForOtherWebsite/cash-payment-for-other-website.module').then(m => m.CashPaymentForOtherWebsiteModule) },
@@ -12,6 +10,7 @@ const routes: Routes = [
   { path: 'transactionDetails', loadChildren: () => import('./transaction-details/transaction-details.module').then(m => m.TransactionDetailsModule) },
   { path: 'invoiceDataValidation', loadChildren: () => import('./invoice-data-validation/invoice-data-validation.module').then(m => m.InvoiceDataValidationModule) },
   { path: 'connectedCashPaymentForOtherWebSite', loadChildren: () => import('./connectedCashPaymentForOtherWebSite/connected-cash-payment-for-other-web-site.module').then(m => m.ConnectedCashPaymentForOtherWebSiteModule) },
+  { path: 'beftnAmendment', component: BeftnAmendmentComponent}
   ];
 
 
